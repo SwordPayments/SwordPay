@@ -96,6 +96,85 @@ Users agree to a 10% fee on each FileShare sent.
 21. Contact Us
 For any questions, complaints, and queries or to report any violations, kindly send an email to support@swordpay.io`;
 
+const PRIVACY_CONTENT = `Privacy Policy
+www.swordpay.com
+Effective date: 8th October 2024
+
+EXCALIBUR ASCENSION ("Sword Pay", "we", "us" and "our") respects your privacy and is committed to taking reasonable steps towards protecting your privacy online and managing your information responsibly.
+
+PERSONAL INFORMATION WE COLLECT
+
+Personal information you provide to us:
+- Contact data: first and last name, email and mailing addresses, phone number and professional title.
+- Your Contacts: if you choose to sync your contacts, we collect names, phone numbers, and email addresses.
+- Registration data: information provided to register for an account including your date of birth.
+- Profile data: your username, password, interests and preferences.
+- Communications: information you provide when you contact us with questions or feedback.
+- Marketing data: email or contact details used to send marketing communications.
+- Purchase data: order history and information needed to process and fulfill your order.
+
+Data from other sources:
+- Business partners, data providers, and public sources such as blogs, forums or social media platforms.
+
+Automatic Collection:
+- Device data: operating system, browser type, screen resolution, IP address, general location.
+- Online activity data: pages viewed, time spent, navigation paths, access times.
+- Cookies and similar technologies.
+
+HOW WE USE YOUR PERSONAL INFORMATION
+
+- Service delivery: provide, operate and improve the Service; establish and maintain your account; send announcements, updates, security alerts; provide customer support.
+- Direct Marketing: send Sword Pay-related marketing communications as permitted by law.
+- Research and development: analyze and improve the Service and our business.
+- Anonymous data: create aggregated, de-identified data for lawful business purposes.
+- Interest-based advertising: display ads via third-party advertising companies.
+- Legal compliance: comply with applicable laws, lawful requests, and legal process.
+- Fraud prevention and safety: protect rights, privacy, safety or property.
+
+HOW WE SHARE YOUR PERSONAL INFORMATION
+
+- Affiliates: our subsidiaries and affiliates.
+- Service providers: companies that provide services on our behalf.
+- Advertising partners: third party advertising companies.
+- Third party platforms: social media platforms you connect to the Service.
+- Professional advisors: lawyers, bankers, auditors and insurers.
+- Authorities: law enforcement and government authorities as required by law.
+- Business transferees: in connection with any merger, financing, or acquisition.
+
+YOUR CHOICES
+
+- Access or update your account information by logging into your account.
+- Opt out of marketing emails by following the unsubscribe instructions.
+- Manage cookies through your browser settings.
+- Opt-out of interest-based advertising.
+- Disable location access in your mobile device settings.
+
+SECURITY PRACTICES
+We employ organizational, technical and physical safeguards to protect your personal information. However, we cannot guarantee absolute security.
+
+INTERNATIONAL DATA TRANSFERS
+Sword Pay is headquartered in the UK and may have service providers in other countries.
+
+CHILDREN
+We do not knowingly collect information about children under age 13.
+
+DATA PROTECTION RIGHTS UNDER THE GDPR
+- Right to information (Art. 15 GDPR)
+- Right to correction (Art. 16 GDPR)
+- Right to deletion / "Right to be forgotten" (Art. 17 GDPR)
+- Right to limit processing (Art. 18 GDPR)
+- Right to data transmissibility (Art. 20 GDPR)
+- Right to object (Art. 21 GDPR)
+
+CCPA (California Residents)
+We do not sell personal information. California residents have the right to request information, access, and deletion of their personal data. To exercise your rights, email support@swordpay.io.
+
+FOR UK RESIDENTS – ICO UK
+Contact the Information Commissioner's Office on (0044) 303 123 1113 or visit ico.org.uk.
+
+CONTACT US
+For any questions or complaints regarding this privacy policy, please contact support@swordpay.io`;
+
 function TermsModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
@@ -123,11 +202,40 @@ function TermsModal({ onClose }: { onClose: () => void }) {
   );
 }
 
+function PrivacyModal({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
+      <div
+        className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-4 max-h-[85vh] flex flex-col"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+          <h2 className="text-xl font-black text-[#1e3a8a]">Privacy Policy</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
+        </div>
+        <div className="overflow-y-auto px-6 py-4 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
+          {PRIVACY_CONTENT}
+        </div>
+        <div className="px-6 py-4 border-t border-gray-100 text-right">
+          <button
+            onClick={onClose}
+            className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Footer() {
   const [showTerms, setShowTerms] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false);
   return (
     <>
     {showTerms && <TermsModal onClose={() => setShowTerms(false)} />}
+    {showPrivacy && <PrivacyModal onClose={() => setShowPrivacy(false)} />}
     <footer className="bg-white border-t border-gray-100" data-testid="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* SWORD Header */}
@@ -161,9 +269,9 @@ export function Footer() {
                 </button>
               </li>
               <li>
-                <Link href="/privacy" className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors">
+                <button onClick={() => setShowPrivacy(true)} className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left">
                   Privacy Policy
-                </Link>
+                </button>
               </li>
               <li>
                 <Link href="/cookies" className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors">
