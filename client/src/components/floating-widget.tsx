@@ -34,7 +34,7 @@ export function FloatingWidget() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/30 dark:border-white/10 overflow-hidden" style={{ width: '265px', fontSize: '16px' }} data-testid="floating-widget">
+    <div className="fixed bottom-6 right-6 z-50 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/30 dark:border-white/10 overflow-hidden" style={{ width: '310px', fontSize: '16px' }} data-testid="floating-widget">
       <button
         onClick={() => setCollapsed(true)}
         className="absolute top-1 right-1 text-muted-foreground hover:text-foreground z-10"
@@ -42,9 +42,9 @@ export function FloatingWidget() {
       >
         <ChevronDown className="h-3 w-3" />
       </button>
-      <div className="px-2 pt-3 pb-0 text-center">
+      <div className="px-3 pt-3 pb-0 text-center">
         <p className="font-black text-lg leading-tight text-center w-full whitespace-nowrap">Sell your content in seconds</p>
-        <p className="font-black text-center w-full" style={{color:'#1d4ed8', letterSpacing:'0', whiteSpace:'nowrap', fontSize:'13px'}}>SET PRICE * ADD FILE * SHARE</p>
+        <p className="font-black text-center w-full whitespace-nowrap" style={{color:'#1d4ed8', fontSize:'18px', letterSpacing:'-0.02em'}}>SET PRICE * ADD FILE * SHARE</p>
         <a href="https://swordpay.me" target="_blank" rel="noopener noreferrer" className="block mt-1">
           <Button className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-pulse" style={{fontSize:'15.4px'}} data-testid="button-try-it-now">
             Start Free Today
