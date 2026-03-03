@@ -44,7 +44,7 @@ export function FloatingWidget() {
       </button>
       <div className="px-3 pt-3 pb-0 text-center">
         <p className="font-black text-lg leading-tight text-center w-full whitespace-nowrap">Sell your content in seconds</p>
-        <p className="font-black text-center w-full" style={{fontSize:'14px', color:'#1d4ed8', letterSpacing:'0.05em', whiteSpace:'nowrap', display:'block'}}>SET PRICE * ADD FILE * SHARE</p>
+        <p className="font-black text-center w-full" style={{fontSize:'15px', color:'#1d4ed8', letterSpacing:'0.05em', whiteSpace:'nowrap', display:'block'}}>SET PRICE * ADD FILE * SHARE</p>
         <a href="https://swordpay.me" target="_blank" rel="noopener noreferrer" className="block mt-1">
           <Button className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-pulse" style={{fontSize:'15.4px'}} data-testid="button-try-it-now">
             Start Free Today
