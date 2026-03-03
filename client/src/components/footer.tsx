@@ -202,6 +202,40 @@ function TermsModal({ onClose }: { onClose: () => void }) {
   );
 }
 
+const COOKIE_CONTENT = `Cookie Policy
+www.swordpay.com
+Effective date: 8th October 2024
+
+What Are Cookies
+Cookies are small text files stored on your device when you visit a website. They help the website remember your preferences and improve your experience.
+
+How We Use Cookies
+SwordPay uses cookies to:
+- Keep you logged in during your session
+- Remember your preferences and settings
+- Analyze how our website is used so we can improve it
+- Support security features and fraud prevention
+- Enable advertising and marketing features
+
+Types of Cookies We Use
+
+Essential Cookies — Required for the website to function. Without these, services like login and payments cannot work.
+Analytics Cookies — Help us understand how visitors interact with the site (e.g. Google Analytics).
+Preference Cookies — Remember your settings and preferences across visits.
+Marketing Cookies — Used to deliver relevant advertisements and track campaign performance.
+
+Third Party Cookies
+Some cookies are placed by third party services we use, including Google Analytics and advertising partners. We do not control these cookies directly. Please refer to the respective third party's privacy policy for more information.
+
+Managing Cookies
+You can control and manage cookies through your browser settings. Please note that disabling certain cookies may affect the functionality of the website. To learn more about managing cookies visit: www.allaboutcookies.org
+
+Changes to This Policy
+We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated effective date.
+
+Contact Us
+For any questions regarding our Cookie Policy, please contact support@swordpay.io`;
+
 function PrivacyModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
@@ -229,13 +263,42 @@ function PrivacyModal({ onClose }: { onClose: () => void }) {
   );
 }
 
+function CookieModal({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
+      <div
+        className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-4 max-h-[85vh] flex flex-col"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+          <h2 className="text-xl font-black text-[#1e3a8a]">Cookie Policy</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
+        </div>
+        <div className="overflow-y-auto px-6 py-4 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
+          {COOKIE_CONTENT}
+        </div>
+        <div className="px-6 py-4 border-t border-gray-100 text-right">
+          <button
+            onClick={onClose}
+            className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Footer() {
   const [showTerms, setShowTerms] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showCookie, setShowCookie] = useState(false);
   return (
     <>
     {showTerms && <TermsModal onClose={() => setShowTerms(false)} />}
     {showPrivacy && <PrivacyModal onClose={() => setShowPrivacy(false)} />}
+    {showCookie && <CookieModal onClose={() => setShowCookie(false)} />}
     <footer className="bg-white border-t border-gray-100" data-testid="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* SWORD Header */}
@@ -274,9 +337,9 @@ export function Footer() {
                 </button>
               </li>
               <li>
-                <Link href="/cookies" className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors">
+                <button onClick={() => setShowCookie(true)} className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left">
                   Cookie Policy
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
