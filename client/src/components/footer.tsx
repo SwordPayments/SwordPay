@@ -91,7 +91,7 @@ If any of these Terms and Conditions shall be deemed invalid, void, or for any r
 The User shall not and hereby agrees not to utilize the Platforms to violate any legislation, regulations, statutes, and/or applicable law; violate any other person's rights; undertake, facilitate or support criminal activity of any kind; or engage in any form of abusive or fraudulent activity.
 
 20. Fees
-Users agree to a 10% fee on each FileShare sent.
+Users agree to a 10% + $0.50 fee on each FileShare sent.
 
 21. Contact Us
 For any questions, complaints, and queries or to report any violations, kindly send an email to support@swordpay.io`;
