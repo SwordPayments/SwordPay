@@ -43,8 +43,8 @@ export function FloatingWidget() {
         <ChevronDown className="h-3 w-3" />
       </button>
       <div className="px-3 pt-3 pb-0 text-center">
-        <p className="font-bold text-base leading-tight whitespace-nowrap">Sell your content in seconds</p>
-        <p className="font-black text-base leading-tight tracking-widest text-blue-700 whitespace-nowrap">SET PRICE · UPLOAD · SHARE</p>
+        <p className="font-black text-lg leading-tight text-center w-full">Sell your content in seconds</p>
+        <p className="font-black leading-tight tracking-wide text-blue-700 text-center w-full" style={{fontSize:'13px'}}>SET PRICE · UPLOAD · SHARE</p>
         <a href="https://swordpay.me" target="_blank" rel="noopener noreferrer" className="block mt-1">
           <Button className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-pulse" style={{fontSize:'15.4px'}} data-testid="button-try-it-now">
             Start Free Today
