@@ -11,22 +11,12 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import type { Creator } from "@shared/schema";
 
-const allCategories = [
-  "All",
-  "Art & Illustration",
-  "Music",
-  "Podcasts",
-  "Gaming",
-  "Writing",
-  "Video",
-  "Education",
-  "Photography",
-];
+const categoryKeys = ["all", "art", "music", "podcasts", "gaming", "writing", "video", "education", "photography"];
 
 export default function Explore() {
   const searchParams = useSearch();
   const params = new URLSearchParams(searchParams);
-  const initialCategory = params.get("category") || "All";
+  const initialCategory = params.get("category") || "all";
 
   useSEO({
     title: "Explore Creators | Sword Creator",
@@ -85,16 +75,16 @@ export default function Explore() {
             {t('explore.subtitle')}
           </p>
           <div className="flex items-center gap-2 mb-4 overflow-x-auto pb-2 flex-wrap" data-testid="category-filters">
-            {allCategories.map((cat) => (
+            {categoryKeys.map((key) => (
               <Button
-                key={cat}
-                variant={selectedCategory === cat ? "default" : "outline"}
+                key={key}
+                variant={selectedCategory === key ? "default" : "outline"}
                 size="default"
                 disabled
                 className="text-base px-5"
-                data-testid={`button-category-${cat.toLowerCase().replace(/\s+/g, "-")}`}
+                data-testid={`button-category-${key}`}
               >
-                {cat}
+                {t(`explore.categories.${key}`)}
               </Button>
             ))}
           </div>

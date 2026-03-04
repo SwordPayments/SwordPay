@@ -57,7 +57,18 @@
     "noResults": "No se encontraron creadores para",
     "noResultsSub": "Intenta ajustar tu búsqueda o navega por una categoría diferente.",
     "searchResult": "Resultado de búsqueda",
-    "clear": "Borrar"
+    "clear": "Borrar",
+    "categories": {
+      "all": "Todos",
+      "art": "Arte e Ilustración",
+      "music": "Música",
+      "podcasts": "Podcasts",
+      "gaming": "Videojuegos",
+      "writing": "Escritura",
+      "video": "Video",
+      "education": "Educación",
+      "photography": "Fotografía"
+    }
   },
   "footer": {
     "about": "Acerca de",

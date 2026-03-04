@@ -57,7 +57,18 @@
     "noResults": "クリエイターが見つかりません",
     "noResultsSub": "検索を調整するか、別のカテゴリを参照してみてください。",
     "searchResult": "検索結果",
-    "clear": "クリア"
+    "clear": "クリア",
+    "categories": {
+      "all": "すべて",
+      "art": "アート・イラスト",
+      "music": "音楽",
+      "podcasts": "ポッドキャスト",
+      "gaming": "ゲーム",
+      "writing": "ライティング",
+      "video": "ビデオ",
+      "education": "教育",
+      "photography": "写真"
+    }
   },
   "footer": {
     "about": "概要",

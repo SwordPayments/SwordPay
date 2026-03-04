@@ -57,7 +57,18 @@
     "noResults": "لم يتم العثور على منشئين لـ",
     "noResultsSub": "حاول تعديل بحثك أو تصفح فئة مختلفة.",
     "searchResult": "نتيجة البحث",
-    "clear": "مسح"
+    "clear": "مسح",
+    "categories": {
+      "all": "الكل",
+      "art": "فن ورسم",
+      "music": "موسيقى",
+      "podcasts": "بودكاست",
+      "gaming": "ألعاب",
+      "writing": "كتابة",
+      "video": "فيديو",
+      "education": "تعليم",
+      "photography": "تصوير"
+    }
   },
   "footer": {
     "about": "حول",

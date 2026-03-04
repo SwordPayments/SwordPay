@@ -57,7 +57,18 @@
     "noResults": "No creators found for",
     "noResultsSub": "Try adjusting your search or browse a different category.",
     "searchResult": "Search Result",
-    "clear": "Clear"
+    "clear": "Clear",
+    "categories": {
+      "all": "All",
+      "art": "Art & Illustration",
+      "music": "Music",
+      "podcasts": "Podcasts",
+      "gaming": "Gaming",
+      "writing": "Writing",
+      "video": "Video",
+      "education": "Education",
+      "photography": "Photography"
+    }
   },
   "footer": {
     "about": "About",

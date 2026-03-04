@@ -57,7 +57,18 @@
     "noResults": "未找到创作者",
     "noResultsSub": "尝试调整搜索条件或浏览其他类别。",
     "searchResult": "搜索结果",
-    "clear": "清除"
+    "clear": "清除",
+    "categories": {
+      "all": "全部",
+      "art": "艺术与插画",
+      "music": "音乐",
+      "podcasts": "播客",
+      "gaming": "游戏",
+      "writing": "写作",
+      "video": "视频",
+      "education": "教育",
+      "photography": "摄影"
+    }
   },
   "footer": {
     "about": "关于",
