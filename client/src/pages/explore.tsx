@@ -66,23 +66,24 @@ export default function Explore() {
               data-testid="input-search-creators"
             />
           </div>
+          <div className="flex items-center gap-2 mt-4 overflow-x-auto pb-2 flex-wrap" data-testid="category-filters">
+            {allCategories.map((cat) => (
+              <Button
+                key={cat}
+                variant={selectedCategory === cat ? "default" : "outline"}
+                size="sm"
+                disabled
+                data-testid={`button-category-${cat.toLowerCase().replace(/\s+/g, "-")}`}
+              >
+                {cat}
+              </Button>
+            ))}
+          </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2 flex-wrap" data-testid="category-filters">
-          {allCategories.map((cat) => (
-            <Button
-              key={cat}
-              variant={selectedCategory === cat ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedCategory(cat)}
-              data-testid={`button-category-${cat.toLowerCase().replace(/\s+/g, "-")}`}
-            >
-              {cat}
-            </Button>
-          ))}
-        </div>
+        <div>
 
         {error ? (
           <div className="text-center py-20" data-testid="error-explore">
