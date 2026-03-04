@@ -35,14 +35,38 @@ const countryToLang: Record<string, string> = {
 };
 
 async function detectLanguageByIP(): Promise<string> {
-  try {
-    const res = await fetch('https://ipapi.co/json/');
-    const data = await res.json();
-    const country = data.country_code?.toUpperCase();
-    return countryToLang[country] || 'en';
-  } catch {
-    return 'en';
+  // Try multiple services in case one fails
+  const services = [
+    async () => {
+      const res = await fetch('https://ip-api.com/json/?fields=countryCode');
+      const data = await res.json();
+      return data.countryCode?.toUpperCase();
+    },
+    async () => {
+      const res = await fetch('https://ipapi.co/json/');
+      const data = await res.json();
+      return data.country_code?.toUpperCase();
+    },
+    async () => {
+      const res = await fetch('https://ipwho.is/');
+      const data = await res.json();
+      return data.country_code?.toUpperCase();
+    },
+  ];
+
+  for (const service of services) {
+    try {
+      const country = await service();
+      if (country) {
+        const lang = countryToLang[country] || 'en';
+        console.log(`[i18n] Detected country: ${country} → language: ${lang}`);
+        return lang;
+      }
+    } catch {
+      continue;
+    }
   }
+  return 'en';
 }
 
 i18n

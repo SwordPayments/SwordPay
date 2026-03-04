@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -100,6 +101,7 @@ function useHero2Animation() {
 export default function Home() {
   const { phase, wordIndex, words } = useHeroAnimation();
   const { slide, textVisible } = useHero2Animation();
+  const { t } = useTranslation();
 
   useSEO({
     title: "Sword Creator - Best way for creators to get paid",
@@ -149,7 +151,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Link href="/how-it-works">
                 <Button size="lg" className="text-lg px-8 bg-blue-600 hover:bg-blue-700" data-testid="button-hero-create">
-                  Start Sharing
+                  {t('home.hero.cta')}
                 </Button>
               </Link>
             </div>
