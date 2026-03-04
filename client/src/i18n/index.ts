@@ -1,6 +1,5 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 
 import en from './locales/en.json';
 import es from './locales/es.json';
@@ -11,8 +10,42 @@ import ar from './locales/ar.json';
 import zh from './locales/zh.json';
 import ja from './locales/ja.json';
 
+// Country code → language mapping
+const countryToLang: Record<string, string> = {
+  // Spanish
+  ES: 'es', MX: 'es', AR: 'es', CO: 'es', CL: 'es', PE: 'es',
+  VE: 'es', EC: 'es', BO: 'es', PY: 'es', UY: 'es', GT: 'es',
+  HN: 'es', SV: 'es', NI: 'es', CR: 'es', PA: 'es', CU: 'es',
+  DO: 'es',
+  // Portuguese (Brazil)
+  BR: 'pt', PT: 'pt',
+  // French
+  FR: 'fr', BE: 'fr', CH: 'fr', CA: 'fr', SN: 'fr', CI: 'fr',
+  CM: 'fr', MG: 'fr', ML: 'fr', BF: 'fr',
+  // German
+  DE: 'de', AT: 'de', LI: 'de',
+  // Arabic
+  SA: 'ar', AE: 'ar', EG: 'ar', IQ: 'ar', JO: 'ar', KW: 'ar',
+  LB: 'ar', LY: 'ar', MA: 'ar', OM: 'ar', QA: 'ar', SD: 'ar',
+  SY: 'ar', TN: 'ar', YE: 'ar',
+  // Chinese
+  CN: 'zh', TW: 'zh', HK: 'zh', SG: 'zh',
+  // Japanese
+  JP: 'ja',
+};
+
+async function detectLanguageByIP(): Promise<string> {
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+    const country = data.country_code?.toUpperCase();
+    return countryToLang[country] || 'en';
+  } catch {
+    return 'en';
+  }
+}
+
 i18n
-  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
@@ -25,13 +58,16 @@ i18n
       zh: { translation: zh },
       ja: { translation: ja },
     },
+    lng: 'en',
     fallbackLng: 'en',
-    detection: {
-      order: ['navigator', 'htmlTag'],
-    },
     interpolation: {
       escapeValue: false,
     },
   });
+
+// Detect language by IP and switch
+detectLanguageByIP().then((lang) => {
+  i18n.changeLanguage(lang);
+});
 
 export default i18n;
