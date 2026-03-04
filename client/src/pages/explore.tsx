@@ -55,18 +55,7 @@ export default function Explore() {
           <p className="text-muted-foreground text-lg mb-8 max-w-lg">
             Discover and support amazing creators building communities
           </p>
-          <div className="relative max-w-xl">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="Search creators by name or topic..."
-              className="pl-10"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              data-testid="input-search-creators"
-            />
-          </div>
-          <div className="flex items-center gap-2 mt-4 overflow-x-auto pb-2 flex-wrap" data-testid="category-filters">
+          <div className="flex items-center gap-2 mb-4 overflow-x-auto pb-2 flex-wrap" data-testid="category-filters">
             {allCategories.map((cat) => (
               <Button
                 key={cat}
@@ -78,6 +67,17 @@ export default function Explore() {
                 {cat}
               </Button>
             ))}
+          </div>
+          <div className="relative max-w-xl">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder="Search creators by name or topic..."
+              className="pl-10"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              data-testid="input-search-creators"
+            />
           </div>
         </div>
       </div>
