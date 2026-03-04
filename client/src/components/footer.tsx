@@ -307,7 +307,7 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* About & Contact */}
           <div>
-            <h3 className="font-semibold text-[#1e3a8a] text-sm mb-1">About</h3>
+            <a href="https://www.swordpay.com/how-it-works" className="font-semibold text-[#1e3a8a] text-sm mb-1 hover:underline">About</a>
             <div className="mt-4">
               <h3 className="font-semibold text-[#1e3a8a] text-sm mb-1">Contact</h3>
               <a 
