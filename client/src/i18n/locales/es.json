@@ -5,7 +5,11 @@
   },
   "home": {
     "hero": {
-      "cta": "Empezar a compartir"
+      "cta": "Empezar a compartir",
+      "headline": "Gana con tu Pasión",
+      "word1": "Crea.",
+      "word2": "Gana.",
+      "word3": "Repite."
     },
     "features": {
       "title": "Ganancias Sin Fronteras.",

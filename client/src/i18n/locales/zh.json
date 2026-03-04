@@ -5,7 +5,11 @@
   },
   "home": {
     "hero": {
-      "cta": "开始分享"
+      "cta": "开始分享",
+      "headline": "从激情中获利",
+      "word1": "创作。",
+      "word2": "盈利。",
+      "word3": "重复。"
     },
     "features": {
       "title": "无国界盈利。",

@@ -5,7 +5,11 @@
   },
   "home": {
     "hero": {
-      "cta": "Start Sharing"
+      "cta": "Start Sharing",
+      "headline": "Profit from Your Passion",
+      "word1": "Create.",
+      "word2": "Profit.",
+      "word3": "Repeat."
     },
     "features": {
       "title": "Profit Beyond Borders.",

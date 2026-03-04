@@ -5,7 +5,11 @@
   },
   "home": {
     "hero": {
-      "cta": "Começar a compartilhar"
+      "cta": "Começar a compartilhar",
+      "headline": "Lucre com sua Paixão",
+      "word1": "Crie.",
+      "word2": "Lucre.",
+      "word3": "Repita."
     },
     "features": {
       "title": "Lucro Sem Fronteiras.",

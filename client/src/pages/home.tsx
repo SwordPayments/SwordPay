@@ -38,7 +38,8 @@ const categories = [
 function useHeroAnimation() {
   const [phase, setPhase] = useState<"heading-in" | "heading-out" | "words" | "done">("heading-in");
   const [wordIndex, setWordIndex] = useState(-1);
-  const words = ["Create.", "Profit.", "Repeat."];
+  const { t: tHero } = useTranslation();
+  const words = [tHero('home.hero.word1'), tHero('home.hero.word2'), tHero('home.hero.word3')];
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
@@ -127,7 +128,7 @@ export default function Home() {
           <div className="max-w-2xl">
             <div className="mb-8">
               <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-4">
-                Profit from Your Passion
+                {t('home.hero.headline')}
               </h1>
               <p
                 className={`text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight transition-opacity duration-500 ${
