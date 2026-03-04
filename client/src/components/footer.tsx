@@ -155,9 +155,6 @@ We employ organizational, technical and physical safeguards to protect your pers
 INTERNATIONAL DATA TRANSFERS
 Sword Pay is headquartered in the UK and may have service providers in other countries.
 
-CHILDREN
-We do not knowingly collect information about children under age 13.
-
 DATA PROTECTION RIGHTS UNDER THE GDPR
 - Right to information (Art. 15 GDPR)
 - Right to correction (Art. 16 GDPR)
