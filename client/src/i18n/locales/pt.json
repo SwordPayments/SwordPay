@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "howItWorks": "Como funciona",
+    "findCreator": "Encontrar um criador"
+  },
+  "home": {
+    "hero": {
+      "title": "Venda seu conteúdo.",
+      "subtitle": "Receba instantaneamente.",
+      "description": "SWORD é a maneira mais fácil de vender arquivos digitais, cobrar por conteúdo e receber pagamentos — tudo em um link compartilhável.",
+      "cta": "Começar a compartilhar",
+      "ctaSub": "Sem cartão de crédito"
+    },
+    "features": {
+      "title": "Tudo que você precisa para monetizar seu conteúdo",
+      "setPrice": "Defina um preço",
+      "setPriceDesc": "Escolha seu preço em segundos. Aceite pagamentos de qualquer lugar do mundo.",
+      "uploadFile": "Envie seu arquivo",
+      "uploadFileDesc": "Envie qualquer arquivo digital — documentos, vídeos, músicas, fotos e mais.",
+      "shareLink": "Compartilhe seu link",
+      "shareLinkDesc": "Obtenha um link único instantaneamente. Compartilhe em qualquer lugar e comece a ganhar."
+    },
+    "stats": {
+      "creators": "Criadores ativos",
+      "revenue": "Receita dos criadores",
+      "countries": "Países"
+    }
+  },
+  "explore": {
+    "title": "Explorar criadores",
+    "subtitle": "Descubra e apoie criadores incríveis que constroem comunidades",
+    "searchPlaceholder": "Buscar criadores por nome ou tópico...",
+    "noResults": "Nenhum criador encontrado",
+    "noResultsSub": "Tente ajustar sua busca ou navegue por uma categoria diferente.",
+    "searchResult": "Resultado da busca",
+    "clear": "Limpar"
+  },
+  "howItWorks": {
+    "title": "Como funciona",
+    "subtitle": "Comece a vender seu conteúdo em três passos simples"
+  },
+  "footer": {
+    "about": "Sobre",
+    "contact": "Contato",
+    "terms": "Termos e condições",
+    "privacy": "Política de privacidade",
+    "cookies": "Política de cookies",
+    "rights": "Todos os direitos reservados."
+  },
+  "widget": {
+    "sell": "Venda seu conteúdo em segundos",
+    "cta": "Comece grátis hoje"
+  }
+}

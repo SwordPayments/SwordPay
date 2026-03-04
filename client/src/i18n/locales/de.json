@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "howItWorks": "Wie es funktioniert",
+    "findCreator": "Einen Creator finden"
+  },
+  "home": {
+    "hero": {
+      "title": "Verkaufe deine Inhalte.",
+      "subtitle": "Werde sofort bezahlt.",
+      "description": "SWORD ist der einfachste Weg, digitale Dateien zu verkaufen, Inhalte zu berechnen und bezahlt zu werden — alles in einem teilbaren Link.",
+      "cta": "Jetzt teilen",
+      "ctaSub": "Keine Kreditkarte erforderlich"
+    },
+    "features": {
+      "title": "Alles, was du brauchst, um deine Inhalte zu monetarisieren",
+      "setPrice": "Preis festlegen",
+      "setPriceDesc": "Wähle deinen Preis in Sekunden. Akzeptiere Zahlungen aus der ganzen Welt.",
+      "uploadFile": "Datei hochladen",
+      "uploadFileDesc": "Lade jede digitale Datei hoch — Dokumente, Videos, Musik, Fotos und mehr.",
+      "shareLink": "Link teilen",
+      "shareLinkDesc": "Erhalte sofort einen einzigartigen Link. Teile ihn überall und fange an zu verdienen."
+    },
+    "stats": {
+      "creators": "Aktive Creators",
+      "revenue": "Creator-Einnahmen",
+      "countries": "Länder"
+    }
+  },
+  "explore": {
+    "title": "Creators entdecken",
+    "subtitle": "Entdecke und unterstütze großartige Creators, die Communitys aufbauen",
+    "searchPlaceholder": "Creators nach Name oder Thema suchen...",
+    "noResults": "Keine Creators gefunden",
+    "noResultsSub": "Versuche, deine Suche anzupassen oder eine andere Kategorie zu durchsuchen.",
+    "searchResult": "Suchergebnis",
+    "clear": "Löschen"
+  },
+  "howItWorks": {
+    "title": "Wie es funktioniert",
+    "subtitle": "Beginne in drei einfachen Schritten, deine Inhalte zu verkaufen"
+  },
+  "footer": {
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutzrichtlinie",
+    "cookies": "Cookie-Richtlinie",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "widget": {
+    "sell": "Verkaufe deine Inhalte in Sekunden",
+    "cta": "Kostenlos starten"
+  }
+}

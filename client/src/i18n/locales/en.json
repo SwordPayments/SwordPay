@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "howItWorks": "How it works",
+    "findCreator": "Find a creator"
+  },
+  "home": {
+    "hero": {
+      "title": "Sell Your Content.",
+      "subtitle": "Get Paid Instantly.",
+      "description": "SWORD is the easiest way to sell digital files, charge for content, and get paid — all in one shareable link.",
+      "cta": "Start Sharing",
+      "ctaSub": "No credit card required"
+    },
+    "features": {
+      "title": "Everything you need to monetize your content",
+      "setPrice": "Set a Price",
+      "setPriceDesc": "Choose your price in seconds. Accept payments from anywhere in the world.",
+      "uploadFile": "Upload Your File",
+      "uploadFileDesc": "Upload any digital file — documents, videos, music, photos, and more.",
+      "shareLink": "Share Your Link",
+      "shareLinkDesc": "Get a unique link instantly. Share it anywhere and start earning."
+    },
+    "stats": {
+      "creators": "Active Creators",
+      "revenue": "Creator Revenue",
+      "countries": "Countries"
+    }
+  },
+  "explore": {
+    "title": "Explore creators",
+    "subtitle": "Discover and support amazing creators building communities",
+    "searchPlaceholder": "Search creators by name or topic...",
+    "noResults": "No creators found",
+    "noResultsSub": "Try adjusting your search or browse a different category.",
+    "searchResult": "Search Result",
+    "clear": "Clear"
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "subtitle": "Start selling your content in three simple steps"
+  },
+  "footer": {
+    "about": "About",
+    "contact": "Contact",
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "rights": "All rights reserved."
+  },
+  "widget": {
+    "sell": "Sell your content in seconds",
+    "cta": "Start Free Today"
+  }
+}

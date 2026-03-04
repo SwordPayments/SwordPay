@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "howItWorks": "Comment ça marche",
+    "findCreator": "Trouver un créateur"
+  },
+  "home": {
+    "hero": {
+      "title": "Vendez votre contenu.",
+      "subtitle": "Soyez payé instantanément.",
+      "description": "SWORD est le moyen le plus simple de vendre des fichiers numériques, facturer du contenu et être payé, le tout en un lien partageable.",
+      "cta": "Commencer à partager",
+      "ctaSub": "Sans carte de crédit"
+    },
+    "features": {
+      "title": "Tout ce dont vous avez besoin pour monétiser votre contenu",
+      "setPrice": "Définissez un prix",
+      "setPriceDesc": "Choisissez votre prix en quelques secondes. Acceptez des paiements du monde entier.",
+      "uploadFile": "Téléchargez votre fichier",
+      "uploadFileDesc": "Téléchargez n'importe quel fichier numérique — documents, vidéos, musique, photos et plus.",
+      "shareLink": "Partagez votre lien",
+      "shareLinkDesc": "Obtenez un lien unique instantanément. Partagez-le partout et commencez à gagner."
+    },
+    "stats": {
+      "creators": "Créateurs actifs",
+      "revenue": "Revenus des créateurs",
+      "countries": "Pays"
+    }
+  },
+  "explore": {
+    "title": "Explorer les créateurs",
+    "subtitle": "Découvrez et soutenez des créateurs incroyables qui construisent des communautés",
+    "searchPlaceholder": "Rechercher des créateurs par nom ou sujet...",
+    "noResults": "Aucun créateur trouvé",
+    "noResultsSub": "Essayez d'ajuster votre recherche ou parcourez une autre catégorie.",
+    "searchResult": "Résultat de recherche",
+    "clear": "Effacer"
+  },
+  "howItWorks": {
+    "title": "Comment ça marche",
+    "subtitle": "Commencez à vendre votre contenu en trois étapes simples"
+  },
+  "footer": {
+    "about": "À propos",
+    "contact": "Contact",
+    "terms": "Conditions générales",
+    "privacy": "Politique de confidentialité",
+    "cookies": "Politique de cookies",
+    "rights": "Tous droits réservés."
+  },
+  "widget": {
+    "sell": "Vendez votre contenu en secondes",
+    "cta": "Commencez gratuitement"
+  }
+}

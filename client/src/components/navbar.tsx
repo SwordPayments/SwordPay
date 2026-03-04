@@ -2,10 +2,12 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export function Navbar() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b" data-testid="navbar">
@@ -26,12 +28,12 @@ export function Navbar() {
                 className="bg-blue-600 hover:bg-blue-700"
                 data-testid="link-how-it-works"
               >
-                How it works
+                {t('nav.howItWorks')}
               </Button>
             </Link>
             <Link href="/explore">
               <Button variant="default" size="sm" className="bg-blue-600 hover:bg-blue-700" data-testid="button-find-creator">
-                Find a creator
+                {t('nav.findCreator')}
               </Button>
             </Link>
           </div>
@@ -57,7 +59,7 @@ export function Navbar() {
           </Link>
           <Link href="/explore" onClick={() => setMobileMenuOpen(false)}>
             <Button variant="default" className="w-full bg-blue-600 hover:bg-blue-700" data-testid="mobile-button-find">
-              Find a creator
+              {t('nav.findCreator')}
             </Button>
           </Link>
         </div>

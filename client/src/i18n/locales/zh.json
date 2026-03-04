@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "howItWorks": "如何运作",
+    "findCreator": "寻找创作者"
+  },
+  "home": {
+    "hero": {
+      "title": "出售您的内容。",
+      "subtitle": "立即收款。",
+      "description": "SWORD 是出售数字文件、收取内容费用并获得付款的最简单方式——全部在一个可分享的链接中完成。",
+      "cta": "开始分享",
+      "ctaSub": "无需信用卡"
+    },
+    "features": {
+      "title": "实现内容变现所需的一切",
+      "setPrice": "设置价格",
+      "setPriceDesc": "几秒钟内选择您的价格。接受来自世界各地的付款。",
+      "uploadFile": "上传文件",
+      "uploadFileDesc": "上传任何数字文件——文档、视频、音乐、照片等。",
+      "shareLink": "分享链接",
+      "shareLinkDesc": "立即获得唯一链接。在任何地方分享并开始赚钱。"
+    },
+    "stats": {
+      "creators": "活跃创作者",
+      "revenue": "创作者收入",
+      "countries": "国家"
+    }
+  },
+  "explore": {
+    "title": "探索创作者",
+    "subtitle": "发现并支持正在建立社区的优秀创作者",
+    "searchPlaceholder": "按姓名或主题搜索创作者...",
+    "noResults": "未找到创作者",
+    "noResultsSub": "尝试调整搜索条件或浏览其他类别。",
+    "searchResult": "搜索结果",
+    "clear": "清除"
+  },
+  "howItWorks": {
+    "title": "如何运作",
+    "subtitle": "通过三个简单步骤开始出售您的内容"
+  },
+  "footer": {
+    "about": "关于",
+    "contact": "联系我们",
+    "terms": "条款和条件",
+    "privacy": "隐私政策",
+    "cookies": "Cookie 政策",
+    "rights": "版权所有。"
+  },
+  "widget": {
+    "sell": "几秒钟内出售您的内容",
+    "cta": "今天免费开始"
+  }
+}

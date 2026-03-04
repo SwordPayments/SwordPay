@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "howItWorks": "仕組み",
+    "findCreator": "クリエイターを探す"
+  },
+  "home": {
+    "hero": {
+      "title": "コンテンツを販売しよう。",
+      "subtitle": "即座に支払いを受けよう。",
+      "description": "SWORDはデジタルファイルを販売し、コンテンツへの支払いを受け取る最も簡単な方法です。すべて一つの共有リンクで完結します。",
+      "cta": "今すぐ始める",
+      "ctaSub": "クレジットカード不要"
+    },
+    "features": {
+      "title": "コンテンツを収益化するために必要なすべて",
+      "setPrice": "価格を設定する",
+      "setPriceDesc": "数秒で価格を設定。世界中からの支払いを受け付けます。",
+      "uploadFile": "ファイルをアップロード",
+      "uploadFileDesc": "ドキュメント、動画、音楽、写真など、あらゆるデジタルファイルをアップロード。",
+      "shareLink": "リンクを共有",
+      "shareLinkDesc": "すぐにユニークなリンクを取得。どこでも共有して稼ぎ始めましょう。"
+    },
+    "stats": {
+      "creators": "アクティブクリエイター",
+      "revenue": "クリエイター収益",
+      "countries": "対応国"
+    }
+  },
+  "explore": {
+    "title": "クリエイターを探索",
+    "subtitle": "コミュニティを構築している素晴らしいクリエイターを発見してサポートしよう",
+    "searchPlaceholder": "名前やトピックでクリエイターを検索...",
+    "noResults": "クリエイターが見つかりません",
+    "noResultsSub": "検索を調整するか、別のカテゴリを参照してみてください。",
+    "searchResult": "検索結果",
+    "clear": "クリア"
+  },
+  "howItWorks": {
+    "title": "仕組み",
+    "subtitle": "3つの簡単なステップでコンテンツの販売を始めましょう"
+  },
+  "footer": {
+    "about": "概要",
+    "contact": "お問い合わせ",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー",
+    "cookies": "Cookieポリシー",
+    "rights": "全著作権所有。"
+  },
+  "widget": {
+    "sell": "数秒でコンテンツを販売",
+    "cta": "今日から無料で始める"
+  }
+}

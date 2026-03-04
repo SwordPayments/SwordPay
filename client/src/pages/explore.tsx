@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useSearch } from "wouter";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -32,6 +33,7 @@ export default function Explore() {
     description: "Discover and support amazing creators across art, music, podcasts, gaming, writing, and more on Sword Creator.",
   });
 
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedCreator, setSelectedCreator] = useState<Creator | null>(null);
@@ -78,9 +80,9 @@ export default function Explore() {
     <div className="min-h-screen" data-testid="page-explore">
       <div className="bg-card border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-3">Explore creators</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-3">{t('explore.title')}</h1>
           <p className="text-muted-foreground text-xl mb-8 max-w-lg">
-            Discover and support amazing creators building communities
+            {t('explore.subtitle')}
           </p>
           <div className="flex items-center gap-2 mb-4 overflow-x-auto pb-2 flex-wrap" data-testid="category-filters">
             {allCategories.map((cat) => (
@@ -102,7 +104,7 @@ export default function Explore() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground z-10" />
             <Input
               type="search"
-              placeholder="Search creators by name or topic..."
+              placeholder={t('explore.searchPlaceholder')}
               className="pl-12 py-6 text-lg pr-10"
               value={searchTerm}
               onChange={(e) => {
@@ -149,7 +151,7 @@ export default function Explore() {
                     </button>
                   ))
                 ) : (
-                  <div className="px-4 py-3 text-sm text-gray-500">No creators found for "{searchTerm}"</div>
+                  <div className="px-4 py-3 text-sm text-gray-500">{t('explore.noResults')} "{searchTerm}"</div>
                 )}
               </div>
             )}
@@ -172,9 +174,9 @@ export default function Explore() {
         ) : selectedCreator ? (
           <div className="max-w-2xl mx-auto">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-gray-900">Search Result</h2>
+              <h2 className="text-xl font-bold text-gray-900">{t('explore.searchResult')}</h2>
               <button onClick={handleClear} className="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1">
-                <X className="h-4 w-4" /> Clear
+                <X className="h-4 w-4" /> {t('explore.clear')}
               </button>
             </div>
             <CreatorCard creator={selectedCreator} />
