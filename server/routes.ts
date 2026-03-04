@@ -1,4 +1,4 @@
-import type { Express } from "express";
+import type { Express, Request } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 
@@ -6,6 +6,31 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  // IP-based country detection endpoint
+  app.get("/api/country", (req: Request, res) => {
+    const ip =
+      (req.headers["x-forwarded-for"] as string)?.split(",")[0]?.trim() ||
+      req.socket.remoteAddress ||
+      "";
+    res.json({ ip, country: null }); // Render provides real IP via x-forwarded-for
+    // We return the IP and let the client resolve — or use a server-side lookup
+  });
+
+  // IP geolocation proxy (avoids CORS issues)
+  app.get("/api/geoip", async (req: Request, res) => {
+    try {
+      const ip =
+        (req.headers["x-forwarded-for"] as string)?.split(",")[0]?.trim() ||
+        req.socket.remoteAddress ||
+        "";
+      const response = await fetch(`http://ip-api.com/json/${ip}?fields=countryCode`);
+      const data = await response.json();
+      res.json({ countryCode: data.countryCode || null });
+    } catch {
+      res.json({ countryCode: null });
+    }
+  });
+
   app.get("/api/creators", async (_req, res) => {
     try {
       const creators = await storage.getAllCreators();
