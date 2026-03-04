@@ -51,8 +51,8 @@ export default function Explore() {
     <div className="min-h-screen" data-testid="page-explore">
       <div className="bg-card border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-3xl md:text-4xl font-bold mb-3">Explore creators</h1>
-          <p className="text-muted-foreground text-lg mb-8 max-w-lg">
+          <h1 className="text-4xl md:text-5xl font-bold mb-3">Explore creators</h1>
+          <p className="text-muted-foreground text-xl mb-8 max-w-lg">
             Discover and support amazing creators building communities
           </p>
           <div className="flex items-center gap-2 mb-4 overflow-x-auto pb-2 flex-wrap" data-testid="category-filters">
@@ -60,20 +60,21 @@ export default function Explore() {
               <Button
                 key={cat}
                 variant={selectedCategory === cat ? "default" : "outline"}
-                size="sm"
+                size="default"
                 disabled
+                className="text-base px-5"
                 data-testid={`button-category-${cat.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 {cat}
               </Button>
             ))}
           </div>
-          <div className="relative max-w-xl">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <div className="relative max-w-2xl">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               type="search"
               placeholder="Search creators by name or topic..."
-              className="pl-10"
+              className="pl-12 py-6 text-lg"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               data-testid="input-search-creators"
