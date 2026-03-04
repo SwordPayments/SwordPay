@@ -96,16 +96,9 @@ export default function Explore() {
             ))}
           </div>
         ) : filteredCreators && filteredCreators.length > 0 ? (
-          <>
-            <p className="text-sm text-muted-foreground mb-6" data-testid="text-results-count">
-              {filteredCreators.length} creator{filteredCreators.length !== 1 ? "s" : ""} found
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredCreators.map((creator) => (
-                <CreatorCard key={creator.id} creator={creator} />
-              ))}
-            </div>
-          </>
+          <div className="text-center py-20">
+            <p className="text-muted-foreground">Creators coming soon. Check back later!</p>
+          </div>
         ) : (
           <div className="text-center py-20" data-testid="empty-state-explore">
             <div className="mx-auto w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
