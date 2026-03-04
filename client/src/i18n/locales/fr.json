@@ -20,6 +20,26 @@
       "conversion": "Meilleure Conversion",
       "conversionDesc": "Notre PAIEMENT EXPRESS supprime toute friction, améliorant la rétention des utilisateurs et maximisant la conversion.",
       "paymentPartner": "Partenaire de Paiement de DAZN"
+    },
+    "slides": {
+      "slide1": [
+        "POUR LES",
+        "FREELANCERS",
+        "PAIEMENTS",
+        "SÉCURISÉS"
+      ],
+      "slide2": [
+        "POUR LES",
+        "PLATEFORMES",
+        "PAIEMENTS PLUS",
+        "RAPIDES ET FACILES"
+      ],
+      "slide3": [
+        "POUR LES",
+        "PLATEFORMES",
+        "PAIEMENTS PLUS",
+        "RAPIDES ET FACILES"
+      ]
     }
   },
   "howItWorks": {

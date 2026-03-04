@@ -20,6 +20,26 @@
       "conversion": "Maior Conversão",
       "conversionDesc": "Nosso CHECKOUT EXPRESSO remove toda fricção, melhorando a retenção de usuários e maximizando a conversão.",
       "paymentPartner": "Parceiro de Pagamento da DAZN"
+    },
+    "slides": {
+      "slide1": [
+        "PARA",
+        "FREELANCERS",
+        "PAGAMENTOS",
+        "SEGUROS"
+      ],
+      "slide2": [
+        "PARA PLATAFORMAS",
+        "DIGITAIS",
+        "CHECKOUTS MAIS",
+        "RÁPIDOS E FÁCEIS"
+      ],
+      "slide3": [
+        "PARA PLATAFORMAS",
+        "DIGITAIS",
+        "CHECKOUTS MAIS",
+        "RÁPIDOS E FÁCEIS"
+      ]
     }
   },
   "howItWorks": {

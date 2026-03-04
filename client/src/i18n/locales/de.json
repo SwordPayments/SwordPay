@@ -20,6 +20,26 @@
       "conversion": "Höhere Konversion",
       "conversionDesc": "Unser EXPRESS-CHECKOUT beseitigt jede Reibung, verbessert die Nutzerbindung und maximiert die Konversion.",
       "paymentPartner": "Zahlungspartner von DAZN"
+    },
+    "slides": {
+      "slide1": [
+        "FÜR",
+        "FREELANCER",
+        "SICHERE",
+        "ZAHLUNGEN"
+      ],
+      "slide2": [
+        "FÜR DIGITALE",
+        "PLATTFORMEN",
+        "SCHNELLERE",
+        "CHECKOUTS"
+      ],
+      "slide3": [
+        "FÜR DIGITALE",
+        "PLATTFORMEN",
+        "SCHNELLERE",
+        "CHECKOUTS"
+      ]
     }
   },
   "howItWorks": {

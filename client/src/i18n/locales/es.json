@@ -20,6 +20,26 @@
       "conversion": "Mayor Conversión",
       "conversionDesc": "Nuestro PAGO EXPRÉS elimina toda fricción, mejorando la retención de usuarios y maximizando la conversión.",
       "paymentPartner": "Socio de Pagos de DAZN"
+    },
+    "slides": {
+      "slide1": [
+        "PARA",
+        "FREELANCERS",
+        "PAGOS",
+        "SEGUROS"
+      ],
+      "slide2": [
+        "PARA PLATAFORMAS",
+        "DIGITALES",
+        "PAGOS MÁS",
+        "RÁPIDOS Y FÁCILES"
+      ],
+      "slide3": [
+        "PARA PLATAFORMAS",
+        "DIGITALES",
+        "PAGOS MÁS",
+        "RÁPIDOS Y FÁCILES"
+      ]
     }
   },
   "howItWorks": {
