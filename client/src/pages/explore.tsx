@@ -97,9 +97,7 @@ export default function Explore() {
             ))}
           </div>
         ) : filteredCreators && filteredCreators.length > 0 ? (
-          <div className="text-center py-20">
-            <p className="text-muted-foreground">Creators coming soon. Check back later!</p>
-          </div>
+          <div className="py-20" />
         ) : (
           <div className="text-center py-20" data-testid="empty-state-explore">
             <div className="mx-auto w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
