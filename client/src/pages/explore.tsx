@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useSearch } from "wouter";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { CreatorCard, CreatorCardSkeleton } from "@/components/creator-card";
 import { useSEO } from "@/hooks/use-seo";
-import { Search, AlertCircle } from "lucide-react";
+import { Search, AlertCircle, X, CheckCircle, Users } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import type { Creator } from "@shared/schema";
 
 const allCategories = [
@@ -32,20 +34,45 @@ export default function Explore() {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  const [selectedCreator, setSelectedCreator] = useState<Creator | null>(null);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
 
   const { data: creators, isLoading, error } = useQuery<Creator[]>({
     queryKey: ["/api/creators"],
   });
 
   const filteredCreators = creators?.filter((creator) => {
-    const matchesSearch =
-      !searchTerm ||
+    if (!searchTerm) return false;
+    return (
       creator.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      creator.tagline.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory =
-      selectedCategory === "All" || creator.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+      creator.tagline.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      creator.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   });
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setShowDropdown(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleSelect = (creator: Creator) => {
+    setSelectedCreator(creator);
+    setSearchTerm(creator.name);
+    setShowDropdown(false);
+  };
+
+  const handleClear = () => {
+    setSelectedCreator(null);
+    setSearchTerm("");
+    setShowDropdown(false);
+  };
 
   return (
     <div className="min-h-screen" data-testid="page-explore">
@@ -69,23 +96,68 @@ export default function Explore() {
               </Button>
             ))}
           </div>
-          <div className="relative max-w-2xl">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+
+          {/* Search with dropdown */}
+          <div className="relative max-w-2xl" ref={searchRef}>
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground z-10" />
             <Input
               type="search"
               placeholder="Search creators by name or topic..."
-              className="pl-12 py-6 text-lg"
+              className="pl-12 py-6 text-lg pr-10"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setSelectedCreator(null);
+                setShowDropdown(true);
+              }}
+              onFocus={() => searchTerm && setShowDropdown(true)}
               data-testid="input-search-creators"
             />
+            {searchTerm && (
+              <button
+                onClick={handleClear}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
+
+            {/* Dropdown */}
+            {showDropdown && searchTerm && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden">
+                {isLoading ? (
+                  <div className="px-4 py-3 text-sm text-gray-500">Searching...</div>
+                ) : filteredCreators && filteredCreators.length > 0 ? (
+                  filteredCreators.map((creator) => (
+                    <button
+                      key={creator.id}
+                      className="w-full flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors text-left border-b last:border-0"
+                      onClick={() => handleSelect(creator)}
+                    >
+                      <Avatar className="h-10 w-10 flex-shrink-0">
+                        <AvatarImage src={creator.avatarUrl} alt={creator.name} />
+                        <AvatarFallback>{creator.name.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-1">
+                          <span className="font-semibold text-gray-900 truncate">{creator.name}</span>
+                          {creator.isVerified && <CheckCircle className="h-3.5 w-3.5 text-blue-600 flex-shrink-0" />}
+                        </div>
+                        <p className="text-sm text-gray-500 truncate">{creator.tagline}</p>
+                      </div>
+                      <Badge variant="secondary" className="text-xs flex-shrink-0">{creator.category}</Badge>
+                    </button>
+                  ))
+                ) : (
+                  <div className="px-4 py-3 text-sm text-gray-500">No creators found for "{searchTerm}"</div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div>
-
         {error ? (
           <div className="text-center py-20" data-testid="error-explore">
             <AlertCircle className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
@@ -97,20 +169,19 @@ export default function Explore() {
               <CreatorCardSkeleton key={i} />
             ))}
           </div>
-        ) : filteredCreators && filteredCreators.length > 0 ? (
-          <div className="py-20" />
-        ) : (
-          <div className="text-center py-20" data-testid="empty-state-explore">
-            <div className="mx-auto w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
-              <Search className="h-7 w-7 text-muted-foreground" />
+        ) : selectedCreator ? (
+          <div className="max-w-2xl mx-auto">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-gray-900">Search Result</h2>
+              <button onClick={handleClear} className="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1">
+                <X className="h-4 w-4" /> Clear
+              </button>
             </div>
-            <h3 className="text-lg font-semibold mb-2">No creators found</h3>
-            <p className="text-muted-foreground max-w-sm mx-auto">
-              Try adjusting your search or browse a different category.
-            </p>
+            <CreatorCard creator={selectedCreator} />
           </div>
+        ) : (
+          <div className="py-20" />
         )}
-        </div>
       </div>
     </div>
   );
