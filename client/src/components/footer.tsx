@@ -174,6 +174,7 @@ CONTACT US
 For any questions or complaints regarding this privacy policy, please contact support@swordpay.io`;
 
 function TermsModal({ onClose }: { onClose: () => void }) {
+  const { t } = useTranslation();
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
       <div
@@ -181,18 +182,15 @@ function TermsModal({ onClose }: { onClose: () => void }) {
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h2 className="text-xl font-black text-[#1e3a8a]">Terms and Conditions</h2>
+          <h2 className="text-xl font-black text-[#1e3a8a]">{t('footer.terms')}</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
         </div>
         <div className="overflow-y-auto px-6 py-4 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
-          {TERMS_CONTENT}
+          {t('legal.terms', TERMS_CONTENT)}
         </div>
         <div className="px-6 py-4 border-t border-gray-100 text-right">
-          <button
-            onClick={onClose}
-            className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
-          >
-            Close
+          <button onClick={onClose} className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+            {t('contact.close')}
           </button>
         </div>
       </div>
@@ -263,6 +261,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
 }
 
 function PrivacyModal({ onClose }: { onClose: () => void }) {
+  const { t } = useTranslation();
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
       <div
@@ -270,18 +269,15 @@ function PrivacyModal({ onClose }: { onClose: () => void }) {
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h2 className="text-xl font-black text-[#1e3a8a]">Privacy Policy</h2>
+          <h2 className="text-xl font-black text-[#1e3a8a]">{t('footer.privacy')}</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
         </div>
         <div className="overflow-y-auto px-6 py-4 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
-          {PRIVACY_CONTENT}
+          {t('legal.privacy', PRIVACY_CONTENT)}
         </div>
         <div className="px-6 py-4 border-t border-gray-100 text-right">
-          <button
-            onClick={onClose}
-            className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
-          >
-            Close
+          <button onClick={onClose} className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+            {t('contact.close')}
           </button>
         </div>
       </div>
@@ -290,6 +286,7 @@ function PrivacyModal({ onClose }: { onClose: () => void }) {
 }
 
 function CookieModal({ onClose }: { onClose: () => void }) {
+  const { t } = useTranslation();
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
       <div
@@ -297,18 +294,15 @@ function CookieModal({ onClose }: { onClose: () => void }) {
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h2 className="text-xl font-black text-[#1e3a8a]">Cookie Policy</h2>
+          <h2 className="text-xl font-black text-[#1e3a8a]">{t('footer.cookies')}</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
         </div>
         <div className="overflow-y-auto px-6 py-4 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
-          {COOKIE_CONTENT}
+          {t('legal.cookies', COOKIE_CONTENT)}
         </div>
         <div className="px-6 py-4 border-t border-gray-100 text-right">
-          <button
-            onClick={onClose}
-            className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
-          >
-            Close
+          <button onClick={onClose} className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+            {t('contact.close')}
           </button>
         </div>
       </div>
