@@ -226,22 +226,23 @@ export function FloatingWidget() {
         <div className="px-3 pt-3 pb-0 text-center">
           <p className="font-black text-lg leading-tight text-center w-full whitespace-nowrap">Sell your content in seconds</p>
           <p className="font-black text-center w-full whitespace-nowrap" style={{color:'#1d4ed8', fontSize:'18px', letterSpacing:'-0.02em'}}>SET PRICE * ADD FILE * SHARE</p>
-          <Button
-            className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-pulse mt-1"
-            style={{fontSize:'15.4px'}}
-            onClick={() => setShowModal(true)}
-            data-testid="button-try-it-now"
-          >
-            Start Free Today
-          </Button>
+          <a href="https://www.swordpay.me" target="_blank" rel="noopener noreferrer" className="block mt-1">
+            <Button
+              className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-pulse"
+              style={{fontSize:'15.4px'}}
+              data-testid="button-try-it-now"
+            >
+              Start Free Today
+            </Button>
+          </a>
         </div>
-        <div className="relative cursor-pointer" onClick={() => setShowModal(true)}>
+        <a href="https://www.swordpay.me" target="_blank" rel="noopener noreferrer">
           <img
             src="/images/fileshare-new.jpg"
             alt="SWORD FileShare"
-            className="w-full hover:opacity-90 transition-opacity"
+            className="w-full hover:opacity-90 transition-opacity cursor-pointer"
           />
-        </div>
+        </a>
       </div>
     </>
   );
