@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useSEO } from "@/hooks/use-seo";
@@ -62,6 +63,7 @@ const patronBenefits = [
 ];
 
 export default function HowItWorks() {
+  const { t } = useTranslation();
   useSEO({
     title: "How Sword Creator Works | Sword Creator",
     description: "Learn how Sword Creator helps creators earn recurring income from their fans and build sustainable creative careers.",
@@ -72,10 +74,10 @@ export default function HowItWorks() {
       <section className="bg-card border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 text-center">
           <h1 className="text-3xl md:text-5xl font-bold mb-2 tracking-tight">
-            How SWORD works
+            {t('howItWorks.title')}
           </h1>
           <p className="text-[21px] text-blue-600 max-w-xl mx-auto">
-            Payments for the Digital Economy
+            {t('howItWorks.subtitle')}
           </p>
         </div>
       </section>
@@ -83,12 +85,12 @@ export default function HowItWorks() {
       <section className="pt-[20px] pb-0" data-testid="steps-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-[32px]">
-            Three simple steps
+            {t('howItWorks.steps')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {/* Step 1: Set Price with Video */}
             <div className="text-center space-y-2.5">
-              <h3 className="text-[22px] font-semibold">SET PRICE</h3>
+              <h3 className="text-[22px] font-semibold">{t('howItWorks.setPrice')}</h3>
               <div className="rounded-xl overflow-hidden shadow-lg max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.65] cursor-pointer">
                 <video 
                   className="w-full h-auto"
@@ -104,7 +106,7 @@ export default function HowItWorks() {
 
             {/* Step 2: Add File with Video */}
             <div className="text-center space-y-2.5">
-              <h3 className="text-[22px] font-semibold">ADD FILE</h3>
+              <h3 className="text-[22px] font-semibold">{t('howItWorks.addFile')}</h3>
               <div className="rounded-xl overflow-hidden shadow-lg max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.65] cursor-pointer">
                 <video 
                   className="w-full h-auto"
@@ -120,7 +122,7 @@ export default function HowItWorks() {
 
             {/* Step 3: Share with Video */}
             <div className="text-center space-y-2.5">
-              <h3 className="text-[22px] font-semibold">SHARE</h3>
+              <h3 className="text-[22px] font-semibold">{t('howItWorks.share')}</h3>
               <div className="rounded-xl overflow-hidden shadow-lg max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.65] cursor-pointer">
                 <video 
                   className="w-full h-auto"

@@ -5,39 +5,35 @@
   },
   "home": {
     "hero": {
-      "title": "Vende tu contenido.",
-      "subtitle": "Cobra al instante.",
-      "description": "SWORD es la forma más fácil de vender archivos digitales, cobrar por contenido y recibir pagos, todo en un enlace compartible.",
-      "cta": "Empezar a compartir",
-      "ctaSub": "Sin tarjeta de crédito"
+      "cta": "Empezar a compartir"
     },
     "features": {
-      "title": "Todo lo que necesitas para monetizar tu contenido",
-      "setPrice": "Establece un precio",
-      "setPriceDesc": "Elige tu precio en segundos. Acepta pagos de cualquier parte del mundo.",
-      "uploadFile": "Sube tu archivo",
-      "uploadFileDesc": "Sube cualquier archivo digital: documentos, videos, música, fotos y más.",
-      "shareLink": "Comparte tu enlace",
-      "shareLinkDesc": "Obtén un enlace único al instante. Compártelo en cualquier lugar y empieza a ganar."
-    },
-    "stats": {
-      "creators": "Creadores activos",
-      "revenue": "Ingresos de creadores",
-      "countries": "Países"
+      "title": "Ganancias Sin Fronteras.",
+      "marketing": "Marketing",
+      "marketingDesc": "Únete a DAZN y otras marcas líderes en SWORD, y accede a una audiencia global.",
+      "payments": "Pagos Globales",
+      "paymentsDesc": "Acepta y envía pagos ilimitados desde cualquier parte del mundo.",
+      "conversion": "Mayor Conversión",
+      "conversionDesc": "Nuestro PAGO EXPRÉS elimina toda fricción, mejorando la retención de usuarios y maximizando la conversión.",
+      "paymentPartner": "Socio de Pagos de DAZN"
     }
+  },
+  "howItWorks": {
+    "title": "Cómo funciona SWORD",
+    "subtitle": "Pagos para la Economía Digital",
+    "steps": "Tres pasos simples",
+    "setPrice": "FIJAR PRECIO",
+    "addFile": "AÑADIR ARCHIVO",
+    "share": "COMPARTIR"
   },
   "explore": {
     "title": "Explorar creadores",
     "subtitle": "Descubre y apoya a creadores increíbles que construyen comunidades",
     "searchPlaceholder": "Buscar creadores por nombre o tema...",
-    "noResults": "No se encontraron creadores",
+    "noResults": "No se encontraron creadores para",
     "noResultsSub": "Intenta ajustar tu búsqueda o navega por una categoría diferente.",
     "searchResult": "Resultado de búsqueda",
     "clear": "Borrar"
-  },
-  "howItWorks": {
-    "title": "Cómo funciona",
-    "subtitle": "Empieza a vender tu contenido en tres sencillos pasos"
   },
   "footer": {
     "about": "Acerca de",
@@ -45,10 +41,19 @@
     "terms": "Términos y condiciones",
     "privacy": "Política de privacidad",
     "cookies": "Política de cookies",
-    "rights": "Todos los derechos reservados."
+    "rights": "Todos los derechos reservados.",
+    "company": "Empresa",
+    "legal": "Legal"
   },
   "widget": {
     "sell": "Vende tu contenido en segundos",
     "cta": "Empieza gratis hoy"
+  },
+  "contact": {
+    "title": "Contacto",
+    "address1": "Tampa, FL",
+    "address2": "EE.UU.",
+    "phone": "+1.888.596.9279",
+    "close": "Cerrar"
   }
 }

@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { ChevronDown, Upload, DollarSign, Share2, Copy, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -31,7 +32,7 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
         <div className="bg-blue-600 px-5 py-4 flex items-center justify-between">
           <div>
             <h2 className="text-white font-black text-lg">SWORD FileShare</h2>
-            <p className="text-blue-100 text-xs">Sell your content in seconds</p>
+            <p className="text-blue-100 text-xs">{t('widget.sell')}</p>
           </div>
           <button onClick={onClose} className="text-white/70 hover:text-white">
             <X className="h-5 w-5" />
@@ -181,6 +182,7 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
 export function FloatingWidget() {
   const [collapsed, setCollapsed] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const { t } = useTranslation();
 
   if (collapsed) {
     return (
@@ -224,7 +226,7 @@ export function FloatingWidget() {
           <ChevronDown className="h-3 w-3" />
         </button>
         <div className="px-3 pt-3 pb-0 text-center">
-          <p className="font-black text-lg leading-tight text-center w-full whitespace-nowrap">Sell your content in seconds</p>
+          <p className="font-black text-lg leading-tight text-center w-full whitespace-nowrap">{t('widget.sell')}</p>
           <p className="font-black text-center w-full whitespace-nowrap" style={{color:'#1d4ed8', fontSize:'18px', letterSpacing:'-0.02em'}}>SET PRICE * ADD FILE * SHARE</p>
           <a href="https://www.swordpay.me" target="_blank" rel="noopener noreferrer" className="block mt-1">
             <Button

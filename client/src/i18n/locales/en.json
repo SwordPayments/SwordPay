@@ -5,39 +5,35 @@
   },
   "home": {
     "hero": {
-      "title": "Sell Your Content.",
-      "subtitle": "Get Paid Instantly.",
-      "description": "SWORD is the easiest way to sell digital files, charge for content, and get paid — all in one shareable link.",
-      "cta": "Start Sharing",
-      "ctaSub": "No credit card required"
+      "cta": "Start Sharing"
     },
     "features": {
-      "title": "Everything you need to monetize your content",
-      "setPrice": "Set a Price",
-      "setPriceDesc": "Choose your price in seconds. Accept payments from anywhere in the world.",
-      "uploadFile": "Upload Your File",
-      "uploadFileDesc": "Upload any digital file — documents, videos, music, photos, and more.",
-      "shareLink": "Share Your Link",
-      "shareLinkDesc": "Get a unique link instantly. Share it anywhere and start earning."
-    },
-    "stats": {
-      "creators": "Active Creators",
-      "revenue": "Creator Revenue",
-      "countries": "Countries"
+      "title": "Profit Beyond Borders.",
+      "marketing": "Marketing",
+      "marketingDesc": "Join DAZN and other leading brands on SWORD, and gain access to a global audience.",
+      "payments": "Global Payments",
+      "paymentsDesc": "Accept and Send unlimited Payments from anywhere in the world.",
+      "conversion": "Higher Conversion",
+      "conversionDesc": "Our EXPRESS CHECKOUT removes all friction, enhancing user retention and maximizing conversion.",
+      "paymentPartner": "Payment Partner of DAZN"
     }
+  },
+  "howItWorks": {
+    "title": "How SWORD works",
+    "subtitle": "Payments for the Digital Economy",
+    "steps": "Three simple steps",
+    "setPrice": "SET PRICE",
+    "addFile": "ADD FILE",
+    "share": "SHARE"
   },
   "explore": {
     "title": "Explore creators",
     "subtitle": "Discover and support amazing creators building communities",
     "searchPlaceholder": "Search creators by name or topic...",
-    "noResults": "No creators found",
+    "noResults": "No creators found for",
     "noResultsSub": "Try adjusting your search or browse a different category.",
     "searchResult": "Search Result",
     "clear": "Clear"
-  },
-  "howItWorks": {
-    "title": "How it works",
-    "subtitle": "Start selling your content in three simple steps"
   },
   "footer": {
     "about": "About",
@@ -45,10 +41,19 @@
     "terms": "Terms and Conditions",
     "privacy": "Privacy Policy",
     "cookies": "Cookie Policy",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "company": "Company",
+    "legal": "Legal"
   },
   "widget": {
     "sell": "Sell your content in seconds",
     "cta": "Start Free Today"
+  },
+  "contact": {
+    "title": "Contact",
+    "address1": "Tampa, FL",
+    "address2": "USA",
+    "phone": "+1.888.596.9279",
+    "close": "Close"
   }
 }

@@ -220,7 +220,7 @@ export default function Home() {
                 className="w-24 md:w-36 opacity-90"
               />
               <p className="text-white/80 text-xs md:text-sm font-semibold tracking-wider mt-3 uppercase">
-                Payment Partner of DAZN
+                {t('home.features.paymentPartner')}
               </p>
             </div>
           </div>
@@ -229,46 +229,28 @@ export default function Home() {
 
       <section className="py-3" data-testid="features-cards-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-4">Profit Beyond Borders.</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-4">{t('home.features.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <div className="rounded-xl overflow-hidden mb-1 aspect-[4/3]">
-                <img
-                  src="/images/card-marketing.webp"
-                  alt="Marketing"
-                  className="w-full h-full object-cover"
-                />
+                <img src="/images/card-marketing.webp" alt="Marketing" className="w-full h-full object-cover" />
               </div>
-              <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">Marketing</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Join <strong>DAZN</strong> and other leading brands on <strong>SWORD</strong>, and gain access to a global audience.
-              </p>
+              <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">{t('home.features.marketing')}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{t('home.features.marketingDesc')}</p>
             </div>
             <div>
               <div className="rounded-xl overflow-hidden mb-1 aspect-[4/3]">
-                <img
-                  src="/images/card-payments.jpeg"
-                  alt="Global Payments"
-                  className="w-full h-full object-cover"
-                />
+                <img src="/images/card-payments.jpeg" alt="Global Payments" className="w-full h-full object-cover" />
               </div>
-              <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">Global Payments</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                <strong>Accept and Send</strong> unlimited Payments from anywhere in the world.
-              </p>
+              <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">{t('home.features.payments')}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{t('home.features.paymentsDesc')}</p>
             </div>
             <div>
               <div className="rounded-xl overflow-hidden mb-1 aspect-[4/3]">
-                <img
-                  src="/images/card-conversion.jpeg"
-                  alt="Higher Conversion"
-                  className="w-full h-full object-cover"
-                />
+                <img src="/images/card-conversion.jpeg" alt="Higher Conversion" className="w-full h-full object-cover" />
               </div>
-              <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">Higher Conversion</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Our <strong>EXPRESS CHECKOUT</strong> removes all friction, enhancing user retention and maximizing conversion.
-              </p>
+              <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">{t('home.features.conversion')}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{t('home.features.conversionDesc')}</p>
             </div>
           </div>
         </div>

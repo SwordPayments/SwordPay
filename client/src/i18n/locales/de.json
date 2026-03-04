@@ -5,39 +5,35 @@
   },
   "home": {
     "hero": {
-      "title": "Verkaufe deine Inhalte.",
-      "subtitle": "Werde sofort bezahlt.",
-      "description": "SWORD ist der einfachste Weg, digitale Dateien zu verkaufen, Inhalte zu berechnen und bezahlt zu werden — alles in einem teilbaren Link.",
-      "cta": "Jetzt teilen",
-      "ctaSub": "Keine Kreditkarte erforderlich"
+      "cta": "Jetzt teilen"
     },
     "features": {
-      "title": "Alles, was du brauchst, um deine Inhalte zu monetarisieren",
-      "setPrice": "Preis festlegen",
-      "setPriceDesc": "Wähle deinen Preis in Sekunden. Akzeptiere Zahlungen aus der ganzen Welt.",
-      "uploadFile": "Datei hochladen",
-      "uploadFileDesc": "Lade jede digitale Datei hoch — Dokumente, Videos, Musik, Fotos und mehr.",
-      "shareLink": "Link teilen",
-      "shareLinkDesc": "Erhalte sofort einen einzigartigen Link. Teile ihn überall und fange an zu verdienen."
-    },
-    "stats": {
-      "creators": "Aktive Creators",
-      "revenue": "Creator-Einnahmen",
-      "countries": "Länder"
+      "title": "Gewinne Ohne Grenzen.",
+      "marketing": "Marketing",
+      "marketingDesc": "Schließe dich DAZN und anderen führenden Marken auf SWORD an und erreiche ein globales Publikum.",
+      "payments": "Globale Zahlungen",
+      "paymentsDesc": "Akzeptiere und sende unbegrenzte Zahlungen aus der ganzen Welt.",
+      "conversion": "Höhere Konversion",
+      "conversionDesc": "Unser EXPRESS-CHECKOUT beseitigt jede Reibung, verbessert die Nutzerbindung und maximiert die Konversion.",
+      "paymentPartner": "Zahlungspartner von DAZN"
     }
+  },
+  "howItWorks": {
+    "title": "Wie SWORD funktioniert",
+    "subtitle": "Zahlungen für die digitale Wirtschaft",
+    "steps": "Drei einfache Schritte",
+    "setPrice": "PREIS FESTLEGEN",
+    "addFile": "DATEI HINZUFÜGEN",
+    "share": "TEILEN"
   },
   "explore": {
     "title": "Creators entdecken",
     "subtitle": "Entdecke und unterstütze großartige Creators, die Communitys aufbauen",
     "searchPlaceholder": "Creators nach Name oder Thema suchen...",
-    "noResults": "Keine Creators gefunden",
+    "noResults": "Keine Creators gefunden für",
     "noResultsSub": "Versuche, deine Suche anzupassen oder eine andere Kategorie zu durchsuchen.",
     "searchResult": "Suchergebnis",
     "clear": "Löschen"
-  },
-  "howItWorks": {
-    "title": "Wie es funktioniert",
-    "subtitle": "Beginne in drei einfachen Schritten, deine Inhalte zu verkaufen"
   },
   "footer": {
     "about": "Über uns",
@@ -45,10 +41,19 @@
     "terms": "Nutzungsbedingungen",
     "privacy": "Datenschutzrichtlinie",
     "cookies": "Cookie-Richtlinie",
-    "rights": "Alle Rechte vorbehalten."
+    "rights": "Alle Rechte vorbehalten.",
+    "company": "Unternehmen",
+    "legal": "Rechtliches"
   },
   "widget": {
     "sell": "Verkaufe deine Inhalte in Sekunden",
     "cta": "Kostenlos starten"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "address1": "Tampa, FL",
+    "address2": "USA",
+    "phone": "+1.888.596.9279",
+    "close": "Schließen"
   }
 }

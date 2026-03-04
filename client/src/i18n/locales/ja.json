@@ -5,26 +5,26 @@
   },
   "home": {
     "hero": {
-      "title": "コンテンツを販売しよう。",
-      "subtitle": "即座に支払いを受けよう。",
-      "description": "SWORDはデジタルファイルを販売し、コンテンツへの支払いを受け取る最も簡単な方法です。すべて一つの共有リンクで完結します。",
-      "cta": "今すぐ始める",
-      "ctaSub": "クレジットカード不要"
+      "cta": "今すぐ始める"
     },
     "features": {
-      "title": "コンテンツを収益化するために必要なすべて",
-      "setPrice": "価格を設定する",
-      "setPriceDesc": "数秒で価格を設定。世界中からの支払いを受け付けます。",
-      "uploadFile": "ファイルをアップロード",
-      "uploadFileDesc": "ドキュメント、動画、音楽、写真など、あらゆるデジタルファイルをアップロード。",
-      "shareLink": "リンクを共有",
-      "shareLinkDesc": "すぐにユニークなリンクを取得。どこでも共有して稼ぎ始めましょう。"
-    },
-    "stats": {
-      "creators": "アクティブクリエイター",
-      "revenue": "クリエイター収益",
-      "countries": "対応国"
+      "title": "国境を超えた利益。",
+      "marketing": "マーケティング",
+      "marketingDesc": "DAZNや他の主要ブランドとSWORDに参加して、グローバルな視聴者にアクセスしましょう。",
+      "payments": "グローバル決済",
+      "paymentsDesc": "世界中から無制限の支払いを受け取り、送信できます。",
+      "conversion": "より高いコンバージョン",
+      "conversionDesc": "エクスプレスチェックアウトにより、すべての摩擦を排除し、ユーザー定着率を高め、コンバージョンを最大化します。",
+      "paymentPartner": "DAZNの決済パートナー"
     }
+  },
+  "howItWorks": {
+    "title": "SWORDの仕組み",
+    "subtitle": "デジタル経済のための決済",
+    "steps": "3つの簡単なステップ",
+    "setPrice": "価格を設定",
+    "addFile": "ファイルを追加",
+    "share": "シェア"
   },
   "explore": {
     "title": "クリエイターを探索",
@@ -35,20 +35,25 @@
     "searchResult": "検索結果",
     "clear": "クリア"
   },
-  "howItWorks": {
-    "title": "仕組み",
-    "subtitle": "3つの簡単なステップでコンテンツの販売を始めましょう"
-  },
   "footer": {
     "about": "概要",
     "contact": "お問い合わせ",
     "terms": "利用規約",
     "privacy": "プライバシーポリシー",
     "cookies": "Cookieポリシー",
-    "rights": "全著作権所有。"
+    "rights": "全著作権所有。",
+    "company": "会社",
+    "legal": "法的情報"
   },
   "widget": {
     "sell": "数秒でコンテンツを販売",
     "cta": "今日から無料で始める"
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "address1": "タンパ、フロリダ州",
+    "address2": "アメリカ合衆国",
+    "phone": "+1.888.596.9279",
+    "close": "閉じる"
   }
 }

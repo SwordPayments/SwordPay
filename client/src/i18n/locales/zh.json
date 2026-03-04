@@ -5,26 +5,26 @@
   },
   "home": {
     "hero": {
-      "title": "出售您的内容。",
-      "subtitle": "立即收款。",
-      "description": "SWORD 是出售数字文件、收取内容费用并获得付款的最简单方式——全部在一个可分享的链接中完成。",
-      "cta": "开始分享",
-      "ctaSub": "无需信用卡"
+      "cta": "开始分享"
     },
     "features": {
-      "title": "实现内容变现所需的一切",
-      "setPrice": "设置价格",
-      "setPriceDesc": "几秒钟内选择您的价格。接受来自世界各地的付款。",
-      "uploadFile": "上传文件",
-      "uploadFileDesc": "上传任何数字文件——文档、视频、音乐、照片等。",
-      "shareLink": "分享链接",
-      "shareLinkDesc": "立即获得唯一链接。在任何地方分享并开始赚钱。"
-    },
-    "stats": {
-      "creators": "活跃创作者",
-      "revenue": "创作者收入",
-      "countries": "国家"
+      "title": "无国界盈利。",
+      "marketing": "营销",
+      "marketingDesc": "加入DAZN和其他SWORD上的领先品牌，获得全球受众。",
+      "payments": "全球支付",
+      "paymentsDesc": "接受和发送来自世界各地的无限支付。",
+      "conversion": "更高转化率",
+      "conversionDesc": "我们的快速结账消除所有摩擦，提升用户留存率并最大化转化率。",
+      "paymentPartner": "DAZN支付合作伙伴"
     }
+  },
+  "howItWorks": {
+    "title": "SWORD如何运作",
+    "subtitle": "数字经济的支付解决方案",
+    "steps": "三个简单步骤",
+    "setPrice": "设置价格",
+    "addFile": "添加文件",
+    "share": "分享"
   },
   "explore": {
     "title": "探索创作者",
@@ -35,20 +35,25 @@
     "searchResult": "搜索结果",
     "clear": "清除"
   },
-  "howItWorks": {
-    "title": "如何运作",
-    "subtitle": "通过三个简单步骤开始出售您的内容"
-  },
   "footer": {
     "about": "关于",
     "contact": "联系我们",
     "terms": "条款和条件",
     "privacy": "隐私政策",
-    "cookies": "Cookie 政策",
-    "rights": "版权所有。"
+    "cookies": "Cookie政策",
+    "rights": "版权所有。",
+    "company": "公司",
+    "legal": "法律"
   },
   "widget": {
     "sell": "几秒钟内出售您的内容",
     "cta": "今天免费开始"
+  },
+  "contact": {
+    "title": "联系我们",
+    "address1": "坦帕，佛罗里达州",
+    "address2": "美国",
+    "phone": "+1.888.596.9279",
+    "close": "关闭"
   }
 }

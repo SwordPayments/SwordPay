@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
+import { useTranslation } from "react-i18next";
 
 const TERMS_CONTENT = `Terms and Conditions
 www.swordpay.com
@@ -316,6 +317,7 @@ function CookieModal({ onClose }: { onClose: () => void }) {
 }
 
 export function Footer() {
+  const { t } = useTranslation();
   const [showTerms, setShowTerms] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showCookie, setShowCookie] = useState(false);
@@ -337,31 +339,31 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* About & Contact */}
           <div>
-            <a href="https://www.swordpay.com/how-it-works" className="font-semibold text-[#1e3a8a] text-sm mb-1 hover:underline">About</a>
+            <a href="https://www.swordpay.com/how-it-works" className="font-semibold text-[#1e3a8a] text-sm mb-1 hover:underline">{t('footer.about')}</a>
             <div className="mt-4">
               <button onClick={() => setShowContact(true)} className="font-semibold text-[#1e3a8a] text-sm mb-1 hover:underline text-left">
-                Contact
+                {t('footer.contact')}
               </button>
             </div>
           </div>
 
           {/* Company */}
           <div>
-            <h3 className="font-semibold text-[#1e3a8a] text-sm mb-1">Company</h3>
+            <h3 className="font-semibold text-[#1e3a8a] text-sm mb-1">{t('footer.company')}</h3>
             <ul className="space-y-2">
               <li>
                 <button onClick={() => setShowTerms(true)} className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left">
-                  Terms and Conditions
+                  {t('footer.terms')}
                 </button>
               </li>
               <li>
                 <button onClick={() => setShowPrivacy(true)} className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left">
-                  Privacy Policy
+                  {t('footer.privacy')}
                 </button>
               </li>
               <li>
                 <button onClick={() => setShowCookie(true)} className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left">
-                  Cookie Policy
+                  {t('footer.cookies')}
                 </button>
               </li>
             </ul>
