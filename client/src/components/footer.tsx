@@ -233,6 +233,34 @@ We may update this Cookie Policy from time to time. Any changes will be posted o
 Contact Us
 For any questions regarding our Cookie Policy, please contact support@swordpay.io`;
 
+function ContactModal({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
+      <div
+        className="bg-white rounded-2xl shadow-2xl max-w-sm w-full mx-4"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+          <h2 className="text-xl font-black text-[#1e3a8a]">Contact</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
+        </div>
+        <div className="px-6 py-6 space-y-2 text-gray-700">
+          <p className="font-black text-[#1e3a8a] text-lg">SWORDPAY</p>
+          <p>Tampa, FL</p>
+          <p>USA</p>
+          <p>+1.888.596.9279</p>
+          <a href="mailto:Support@swordpay.io" className="block text-blue-600 hover:underline">Support@swordpay.io</a>
+        </div>
+        <div className="px-6 py-4 border-t border-gray-100 text-right">
+          <button onClick={onClose} className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function PrivacyModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
@@ -291,11 +319,13 @@ export function Footer() {
   const [showTerms, setShowTerms] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showCookie, setShowCookie] = useState(false);
+  const [showContact, setShowContact] = useState(false);
   return (
     <>
     {showTerms && <TermsModal onClose={() => setShowTerms(false)} />}
     {showPrivacy && <PrivacyModal onClose={() => setShowPrivacy(false)} />}
     {showCookie && <CookieModal onClose={() => setShowCookie(false)} />}
+    {showContact && <ContactModal onClose={() => setShowContact(false)} />}
     <footer className="bg-white border-t border-gray-100" data-testid="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* SWORD Header */}
@@ -309,13 +339,9 @@ export function Footer() {
           <div>
             <a href="https://www.swordpay.com/how-it-works" className="font-semibold text-[#1e3a8a] text-sm mb-1 hover:underline">About</a>
             <div className="mt-4">
-              <h3 className="font-semibold text-[#1e3a8a] text-sm mb-1">Contact</h3>
-              <a 
-                href="mailto:Support@swordpay.io" 
-                className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors"
-              >
-                Support@swordpay.io
-              </a>
+              <button onClick={() => setShowContact(true)} className="font-semibold text-[#1e3a8a] text-sm mb-1 hover:underline text-left">
+                Contact
+              </button>
             </div>
           </div>
 
