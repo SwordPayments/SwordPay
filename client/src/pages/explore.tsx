@@ -111,6 +111,7 @@ export default function Explore() {
             </p>
           </div>
         )}
+        </div>
       </div>
     </div>
   );
