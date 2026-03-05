@@ -16,7 +16,6 @@ export function Navbar() {
           <div className="flex items-center">
             <Link href="/" data-testid="link-home" className="flex items-center gap-2">
               <span className="text-3xl font-black tracking-wide text-[#1e3a8a]">SWORDPAY</span>
-              <img src="/images/sword-logo.png" alt="SwordPay" className="h-8 w-8 object-contain" />
             </Link>
           </div>
 
