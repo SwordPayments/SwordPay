@@ -139,7 +139,7 @@ export default function Home() {
                     >
                       {parts.map((part, j) => (
                         <span key={j}>
-                          {j > 0 && <span className="text-blue-400"> → </span>}
+                          {j > 0 && <span className="text-blue-400">→</span>}
                           {part}
                         </span>
                       ))}
