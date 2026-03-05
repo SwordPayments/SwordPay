@@ -53,18 +53,7 @@ export function FloatingWidget() {
           <Button className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-pulse py-1 px-3" style={{fontSize:'13.2px'}}>
             {t('widget.cta')}
           </Button>
-          <div className="relative w-full">
-            <img
-              src="/images/fileshare-new.jpg"
-              alt="SWORD FileShare"
-              className="w-full rounded-xl shadow-2xl border border-white/30"
-            />
-            <div className="absolute inset-0 rounded-xl pointer-events-none">
-              <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-pulse" style={{top:'15%', fontSize:'15.4px'}}>SET PRICE</span>
-              <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-pulse" style={{top:'35%', fontSize:'15.4px'}}>ADD FILE</span>
-              <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-pulse" style={{top:'55%', fontSize:'15.4px'}}>SHARE</span>
-            </div>
-          </div>
+
         </div>
       </>
     );
@@ -93,13 +82,7 @@ export function FloatingWidget() {
             {t('widget.cta')}
           </Button>
         </div>
-        <div className="cursor-pointer" onClick={() => setShowModal(true)}>
-          <img
-            src="/images/fileshare-new.jpg"
-            alt="SWORD FileShare"
-            className="w-full hover:opacity-90 transition-opacity"
-          />
-        </div>
+
       </div>
     </>
   );
