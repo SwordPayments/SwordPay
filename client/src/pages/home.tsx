@@ -135,7 +135,7 @@ export default function Home() {
                         : "opacity-0 translate-y-4"
                     }`}
                   >
-                    {i > 0 && <span className="text-blue-400" style={{marginLeft: '-0.15em', marginRight: '-0.15em'}}>→</span>}
+                    {i > 0 && <span className="text-blue-400" style={{marginLeft: '-0.05em', marginRight: '-0.05em', fontSize: '0.6em', verticalAlign: 'middle'}}>→</span>}
                     {word}
                   </span>
                 ))}
