@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 
 function FileshareModal({ onClose }: { onClose: () => void }) {
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col"
-        style={{ width: '420px', height: '85vh', maxHeight: '750px' }}
+        className="bg-white w-full sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col sm:w-[420px]"
+        style={{ height: '100dvh' }}
         onClick={e => e.stopPropagation()}
       >
         <div className="bg-blue-600 px-5 py-3 flex items-center justify-between shrink-0">
@@ -26,6 +26,7 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
           title="SWORD FileShare"
           allow="camera; microphone; payment"
           sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"
+          style={{ height: '100%' }}
         />
       </div>
     </div>
