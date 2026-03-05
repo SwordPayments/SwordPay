@@ -127,18 +127,22 @@ export default function Home() {
                 }`}
               >
                 {words.map((word, i) => {
-                  const hasArrow = word.startsWith('→');
-                  const text = hasArrow ? word.slice(1) : word;
+                  const parts = word.split('→');
                   return (
                     <span
                       key={word}
-                      className={`inline-block mr-0 transition-all duration-400 ease-out ${
+                      className={`inline-block transition-all duration-400 ease-out ${
                         i <= wordIndex
                           ? "opacity-100 translate-y-0"
                           : "opacity-0 translate-y-4"
                       }`}
                     >
-                      {hasArrow && <span className="text-blue-400">→</span>}{text}
+                      {parts.map((part, j) => (
+                        <span key={j}>
+                          {j > 0 && <span className="text-blue-400"> → </span>}
+                          {part}
+                        </span>
+                      ))}
                     </span>
                   );
                 })}
