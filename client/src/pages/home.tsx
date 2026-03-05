@@ -118,7 +118,7 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
           <div className="max-w-5xl">
             <div className="mb-6">
-              <h1 className="text-[7.5vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)]">
+              <h1 className="text-[8vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)]">
                 Sell Any File in Seconds
               </h1>
               <p
