@@ -122,7 +122,7 @@ export default function Home() {
                 Sell Any File in Seconds
               </h1>
               <p
-                className={`flex flex-nowrap items-baseline text-[8.8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
+                className={`flex flex-nowrap items-baseline text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
                   phase === "words" || phase === "done" ? "opacity-100" : "opacity-0"
                 }`}
               >
