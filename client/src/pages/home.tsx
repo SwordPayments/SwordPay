@@ -22,6 +22,9 @@ import {
   Users,
   CheckCircle,
   AlertCircle,
+  Upload,
+  FileText,
+  Link2,
 } from "lucide-react";
 import type { Creator } from "@shared/schema";
 
@@ -105,47 +108,88 @@ export default function Home() {
   });
 
   return (
-    <div className="min-h-screen" data-testid="page-home">
-      <section className="relative overflow-hidden min-h-[500px] md:min-h-[600px]" data-testid="hero-section">
-        <div className="absolute inset-0">
-          <img
-            src="/images/hero-bg.png"
-            alt=""
-            className="w-full h-full object-cover object-[center_top]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+    <div className="min-h-screen" style={{ background: "#0d0d1a" }} data-testid="page-home">
+      <section className="relative overflow-hidden min-h-[600px] md:min-h-[700px]" data-testid="hero-section"
+        style={{ background: "linear-gradient(160deg, #0d0d1a 0%, #110d1f 50%, #0d0d1a 100%)" }}>
+        {/* Background glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full opacity-20"
+            style={{ background: "radial-gradient(circle, #a855f7 0%, transparent 70%)" }} />
+          <div className="absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] rounded-full opacity-15"
+            style={{ background: "radial-gradient(circle, #ec4899 0%, transparent 70%)" }} />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
-          <div className="max-w-5xl">
-            <div className="mb-6">
-              <h1 className="text-[8.7vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)]">
-                Sell Any File in Seconds
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 md:pt-36 md:pb-20">
+          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+
+            {/* Left: text */}
+            <div className="flex-1">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-sm font-medium mb-6">
+                🔥 Drop your first product today
+              </div>
+
+              {/* Headline */}
+              <h1 className="text-[13vw] md:text-[5.2rem] font-black text-white leading-[1.05] tracking-tight mb-4">
+                Turn your{" "}
+                <span style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                  content
+                </span>
+                <br />into cash
               </h1>
-              <p
-                className={`flex flex-nowrap items-baseline text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
-                  phase === "words" || phase === "done" ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {words.map((word, i) => (
-                  <span
-                    key={word}
-                    className={`whitespace-nowrap transition-all duration-400 ease-out ${
-                      i <= wordIndex
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-4"
-                    }`}
-                  >
-                    {i > 0 && <span className="text-blue-400" style={{marginLeft: '-0.05em', marginRight: '-0.05em', fontSize: '0.6em', verticalAlign: 'middle'}}>→</span>}
-                    {word}
-                  </span>
-                ))}
+
+              {/* Sub */}
+              <p className="text-white/60 text-lg md:text-xl mb-8 font-normal">
+                Upload a file. Set a price. Share your link.
               </p>
+
+              {/* CTA */}
+              <div className="flex flex-col items-start gap-2">
+                <Link href="/auth">
+                  <button className="text-white font-bold px-8 py-4 rounded-full text-lg flex items-center gap-2"
+                    style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)" }}>
+                    Start for free →
+                  </button>
+                </Link>
+                <p className="text-white/35 text-sm pl-1">No credit card needed</p>
+              </div>
             </div>
-            <Link href="/how-it-works">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 rounded-full text-xl">
-                {t('nav.howItWorks')}
-              </Button>
-            </Link>
+
+            {/* Right: product card mockup */}
+            <div className="flex-shrink-0 hidden md:flex items-center justify-center">
+              <div className="bg-[#13111e] rounded-[1.5rem] border border-white/8 p-5 shadow-2xl w-[300px]"
+                style={{ boxShadow: "0 30px 80px rgba(168,85,247,0.15), 0 0 0 1px rgba(255,255,255,0.04)" }}>
+                {/* Creator row */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold"
+                    style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)" }}>Y</div>
+                  <div>
+                    <p className="text-white text-sm font-semibold leading-none">@yourname</p>
+                    <p className="text-white/40 text-xs mt-0.5">Creator</p>
+                  </div>
+                </div>
+
+                {/* Product thumbnail */}
+                <div className="rounded-xl mb-4 flex items-center justify-center h-36 text-white text-2xl font-black tracking-wider"
+                  style={{ background: "linear-gradient(135deg, #7c3aed, #a855f7, #ec4899)" }}>
+                  LR
+                </div>
+
+                {/* Product info */}
+                <p className="text-white font-semibold text-sm mb-1">Lightroom Preset Pack</p>
+                <p className="text-white font-black text-2xl mb-4">$12</p>
+
+                {/* Buy Now */}
+                <button className="w-full text-white font-bold py-3 rounded-xl text-sm mb-3"
+                  style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)" }}>
+                  Buy Now
+                </button>
+
+                {/* Stats */}
+                <p className="text-white/40 text-xs text-center">143 sales &nbsp;·&nbsp; ⭐ 4.9</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -182,62 +226,48 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden h-[320px] md:h-[500px]" data-testid="hero3-section">
-        <div className="absolute inset-0">
-          <img
-            src="/images/hero3-bg.webp"
-            alt=""
-            className="w-full h-full object-cover object-[center_20%]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-        </div>
-        <div className="relative h-full flex items-center">
-          <div className="flex items-center h-full px-4 sm:px-6 lg:px-8 gap-6 md:gap-10">
-            <div className="h-[80%] shrink-0">
-              <img
-                src="/images/liga-strip.png"
-                alt="League logos"
-                className="h-full w-auto object-contain"
-              />
-            </div>
-            <div className="shrink-0 flex flex-col items-center -mt-8">
-              <img
-                src="/images/dazn-logo.png"
-                alt="DAZN"
-                className="w-24 md:w-36 opacity-90"
-              />
-              <p className="text-white/80 text-xs md:text-sm font-semibold tracking-wider mt-3 uppercase">
-                {t('home.features.paymentPartner')}
+      <section className="py-20 md:py-28" style={{ background: "#0d0d1a" }} data-testid="features-cards-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-xs font-bold tracking-widest uppercase mb-3"
+            style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            Why creators choose SwordPay
+          </p>
+          <h2 className="text-3xl md:text-5xl font-black text-white text-center mb-12">
+            Everything you need,<br className="hidden md:block" /> nothing you don't
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1 */}
+            <div className="rounded-2xl p-6 border border-white/8" style={{ background: "rgba(255,255,255,0.03)" }}>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4"
+                style={{ background: "linear-gradient(135deg, #7c3aed, #a855f7)" }}>
+                ⬆
+              </div>
+              <h3 className="text-white font-bold text-xl mb-2">Drop any file</h3>
+              <p className="text-white/50 text-sm leading-relaxed">
+                Presets, beats, templates, PDFs, filters — if you made it, you can sell it. Any format, any size.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-3" data-testid="features-cards-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-4">{t('home.features.title')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <div className="rounded-xl overflow-hidden mb-1 aspect-[4/3]">
-                <img src="/images/card-marketing.webp" alt="Marketing" className="w-full h-full object-cover" />
+            {/* Card 2 */}
+            <div className="rounded-2xl p-6 border border-white/8" style={{ background: "rgba(255,255,255,0.03)" }}>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4"
+                style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)" }}>
+                💲
               </div>
-              <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">{t('home.features.marketing')}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{t('home.features.marketingDesc')}</p>
+              <h3 className="text-white font-bold text-xl mb-2">You keep 90%</h3>
+              <p className="text-white/50 text-sm leading-relaxed">
+                No monthly fees. No hidden costs. You earn 90¢ on every dollar and get paid out instantly.
+              </p>
             </div>
-            <div>
-              <div className="rounded-xl overflow-hidden mb-1 aspect-[4/3]">
-                <img src="/images/card-payments.jpeg" alt="Global Payments" className="w-full h-full object-cover" />
+            {/* Card 3 */}
+            <div className="rounded-2xl p-6 border border-white/8" style={{ background: "rgba(255,255,255,0.03)" }}>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4"
+                style={{ background: "linear-gradient(135deg, #3b82f6, #a855f7)" }}>
+                🔗
               </div>
-              <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">{t('home.features.payments')}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{t('home.features.paymentsDesc')}</p>
-            </div>
-            <div>
-              <div className="rounded-xl overflow-hidden mb-1 aspect-[4/3]">
-                <img src="/images/card-conversion.jpeg" alt="Higher Conversion" className="w-full h-full object-cover" />
-              </div>
-              <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">{t('home.features.conversion')}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{t('home.features.conversionDesc')}</p>
+              <h3 className="text-white font-bold text-xl mb-2">One link to sell</h3>
+              <p className="text-white/50 text-sm leading-relaxed">
+                Share it on TikTok, Instagram, Twitter, anywhere. Your buyers click, pay, and download. Done.
+              </p>
             </div>
           </div>
         </div>
