@@ -43,8 +43,8 @@ export function FloatingWidget() {
     <>
       {showModal && <FileshareModal onClose={() => setShowModal(false)} />}
       <div
-        className="fixed bottom-6 right-6 z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0"
-        style={{ width: '120px' }}
+        className="fixed bottom-4 right-2 sm:bottom-6 sm:right-6 z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0"
+        style={{ width: '100px' }}
         onClick={() => setShowModal(true)}
         data-testid="floating-widget"
       >
