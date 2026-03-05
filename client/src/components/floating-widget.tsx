@@ -42,21 +42,10 @@ export function FloatingWidget() {
   return (
     <>
       {showModal && <FileshareModal onClose={() => setShowModal(false)} />}
-      {/* Mobile: just the button */}
+      {/* Full card widget on all screen sizes */}
       <div
-        className="fixed bottom-4 right-2 z-50 flex sm:hidden"
-        onClick={() => setShowModal(true)}
-        data-testid="floating-widget-mobile"
-      >
-        <Button className="bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-pulse text-xs px-3 py-2 shadow-lg">
-          {t('widget.cta')}
-        </Button>
-      </div>
-
-      {/* Desktop: full card */}
-      <div
-        className="hidden sm:flex fixed bottom-6 right-6 z-50 cursor-pointer hover:scale-105 transition-transform flex-col items-center gap-0"
-        style={{ width: '120px' }}
+        className="fixed bottom-4 right-2 sm:bottom-6 sm:right-6 z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0"
+        style={{ width: '110px' }}
         onClick={() => setShowModal(true)}
         data-testid="floating-widget"
       >
