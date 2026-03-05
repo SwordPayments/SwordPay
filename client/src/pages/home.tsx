@@ -97,7 +97,7 @@ export default function Home() {
 
   useSEO({
     title: "Sword Creator - Best way for creators to get paid",
-    description: "Monetize Any File Instantly. Upload → Price → Share → Get Paid. Discover and support creators on Sword Creator.",
+    description: "Sell Any File in Seconds. Add File → Share → Get Paid. Discover and support creators on Sword Creator.",
   });
 
   const { data: featuredCreators, isLoading, error } = useQuery<Creator[]>({
@@ -118,11 +118,11 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
           <div className="max-w-5xl">
             <div className="mb-6">
-              <h1 className="text-[8.8vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)]">
-                Monetize Any File Instantly
+              <h1 className="text-[6vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)]">
+                Sell Any File in Seconds
               </h1>
               <p
-                className={`text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
+                className={`text-[6vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
                   phase === "words" || phase === "done" ? "opacity-100" : "opacity-0"
                 }`}
               >
