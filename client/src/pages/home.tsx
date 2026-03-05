@@ -39,7 +39,7 @@ function useHeroAnimation() {
   const [phase, setPhase] = useState<"heading-in" | "heading-out" | "words" | "done">("heading-in");
   const [wordIndex, setWordIndex] = useState(-1);
   const { t: tHero } = useTranslation();
-  const words = [tHero('home.hero.word1'), tHero('home.hero.word2'), tHero('home.hero.word3'), tHero('home.hero.word4')];
+  const words = [tHero('home.hero.word1'), tHero('home.hero.word2'), tHero('home.hero.word3')];
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
