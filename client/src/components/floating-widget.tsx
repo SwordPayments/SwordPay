@@ -45,13 +45,13 @@ export function FloatingWidget() {
       {/* Full card widget on all screen sizes */}
       <div
         className="fixed bottom-4 right-2 sm:bottom-6 sm:right-6 z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0"
-        style={{ width: '110px' }}
+        style={{ width: '127px' }}
         onClick={() => setShowModal(true)}
         data-testid="floating-widget"
       >
         <Button
           className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-pulse py-1 px-3"
-          style={{ fontSize: '13.2px' }}
+          style={{ fontSize: '15.2px' }}
         >
           {t('widget.cta')}
         </Button>
@@ -62,9 +62,9 @@ export function FloatingWidget() {
             className="w-full rounded-xl shadow-2xl border border-white/30"
           />
           <div className="absolute inset-0 rounded-xl pointer-events-none">
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-pulse" style={{ top: '15%', fontSize: '15.4px' }}>SET PRICE</span>
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-pulse" style={{ top: '35%', fontSize: '15.4px' }}>ADD FILE</span>
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-pulse" style={{ top: '55%', fontSize: '15.4px' }}>SHARE</span>
+            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-pulse" style={{ top: '15%', fontSize: '17.7px' }}>SET PRICE</span>
+            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-pulse" style={{ top: '35%', fontSize: '17.7px' }}>ADD FILE</span>
+            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-pulse" style={{ top: '55%', fontSize: '17.7px' }}>SHARE</span>
           </div>
         </div>
       </div>
