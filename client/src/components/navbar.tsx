@@ -20,19 +20,19 @@ export function Navbar() {
             </Link>
           </div>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <Link href="/how-it-works">
               <Button
                 variant="default"
                 size="sm"
-                className="bg-blue-600 hover:bg-blue-700"
+                className="bg-blue-600 hover:bg-blue-700 text-xs sm:text-sm px-2 sm:px-3"
                 data-testid="link-how-it-works"
               >
                 {t('nav.howItWorks')}
               </Button>
             </Link>
             <Link href="/explore">
-              <Button variant="default" size="sm" className="bg-blue-600 hover:bg-blue-700" data-testid="button-find-creator">
+              <Button variant="default" size="sm" className="bg-blue-600 hover:bg-blue-700 text-xs sm:text-sm px-2 sm:px-3" data-testid="button-find-creator">
                 {t('nav.findCreator')}
               </Button>
             </Link>
