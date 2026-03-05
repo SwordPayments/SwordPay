@@ -129,7 +129,7 @@ export default function Home() {
                 {words.map((word, i) => (
                   <span
                     key={word}
-                    className={`inline-block mr-[1.5vw] md:mr-4 transition-all duration-400 ease-out ${
+                    className={`inline-block mr-0 transition-all duration-400 ease-out ${
                       i <= wordIndex
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-4"
