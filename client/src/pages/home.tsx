@@ -39,7 +39,7 @@ function useHeroAnimation() {
   const [phase, setPhase] = useState<"heading-in" | "heading-out" | "words" | "done">("heading-in");
   const [wordIndex, setWordIndex] = useState(-1);
   const { t: tHero } = useTranslation();
-  const words = [tHero('home.hero.word1'), tHero('home.hero.word2'), tHero('home.hero.word3')];
+  const words = [tHero('home.hero.word1'), tHero('home.hero.word2'), tHero('home.hero.word3'), tHero('home.hero.word4')];
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
@@ -97,7 +97,7 @@ export default function Home() {
 
   useSEO({
     title: "Sword Creator - Best way for creators to get paid",
-    description: "Profit from Your Passion. Set Price. Add File. Share. Discover and support creators on Sword Creator.",
+    description: "Monetize Any File Instantly. Upload → Price → Share → Get Paid. Discover and support creators on Sword Creator.",
   });
 
   const { data: featuredCreators, isLoading, error } = useQuery<Creator[]>({
@@ -119,7 +119,7 @@ export default function Home() {
           <div className="max-w-5xl">
             <div className="mb-6">
               <h1 className="text-[8.8vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)]">
-                <span className="bg-gradient-to-r from-blue-400 to-amber-400 bg-clip-text text-transparent">Profit</span> from Your <span className="bg-gradient-to-r from-blue-400 to-amber-400 bg-clip-text text-transparent">Passion</span>
+                <span className="bg-gradient-to-r from-blue-400 to-amber-400 bg-clip-text text-transparent">Monetize</span> Any File <span className="bg-gradient-to-r from-blue-400 to-amber-400 bg-clip-text text-transparent">Instantly</span>
               </h1>
               <p
                 className={`text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
@@ -127,8 +127,8 @@ export default function Home() {
                 }`}
               >
                 {words.map((word, i) => {
-                  const hasStar = word.startsWith('*');
-                  const text = hasStar ? word.slice(1) : word;
+                  const hasArrow = word.startsWith('→');
+                  const text = hasArrow ? word.slice(1) : word;
                   return (
                     <span
                       key={word}
@@ -138,7 +138,7 @@ export default function Home() {
                           : "opacity-0 translate-y-4"
                       }`}
                     >
-                      {hasStar && <span className="text-blue-400">*</span>}{text}
+                      {hasArrow && <span className="text-blue-400">→</span>}{text}
                     </span>
                   );
                 })}
