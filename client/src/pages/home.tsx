@@ -122,7 +122,7 @@ export default function Home() {
                 Sell Any File in Seconds
               </h1>
               <p
-                className={`text-[7.5vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
+                className={`flex items-baseline text-[7.5vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
                   phase === "words" || phase === "done" ? "opacity-100" : "opacity-0"
                 }`}
               >
@@ -131,7 +131,7 @@ export default function Home() {
                   return (
                     <span
                       key={word}
-                      className={`inline-block transition-all duration-400 ease-out ${
+                      className={`transition-all duration-400 ease-out ${
                         i <= wordIndex
                           ? "opacity-100 translate-y-0"
                           : "opacity-0 translate-y-4"
