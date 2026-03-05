@@ -106,12 +106,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" data-testid="page-home">
-      <section className="relative overflow-hidden" data-testid="hero-section">
+      <section className="relative overflow-hidden min-h-[420px] md:min-h-[500px]" data-testid="hero-section">
         <div className="absolute inset-0">
           <img
             src="/images/hero-bg.png"
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[center_top]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         </div>
