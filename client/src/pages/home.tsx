@@ -149,7 +149,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden h-[300px] md:h-[350px]" data-testid="hero2-section">
+      <section className="relative overflow-hidden h-[380px] md:h-[550px]" data-testid="hero2-section">
         {hero2Images.map((img, i) => (
           <div
             key={i}
@@ -181,7 +181,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden h-[250px] md:h-[300px]" data-testid="hero3-section">
+      <section className="relative overflow-hidden h-[320px] md:h-[500px]" data-testid="hero3-section">
         <div className="absolute inset-0">
           <img
             src="/images/hero3-bg.webp"
