@@ -118,8 +118,8 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
           <div className="max-w-5xl">
             <div className="mb-6">
-              <h1 className="text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)]">
-                <span className="text-amber-400">Profit</span> from Your <span className="text-amber-400">Passion</span>
+              <h1 className="text-[8.8vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)]">
+                <span className="bg-gradient-to-r from-blue-400 to-amber-400 bg-clip-text text-transparent">Profit</span> from Your <span className="bg-gradient-to-r from-blue-400 to-amber-400 bg-clip-text text-transparent">Passion</span>
               </h1>
               <p
                 className={`text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
