@@ -126,26 +126,19 @@ export default function Home() {
                   phase === "words" || phase === "done" ? "opacity-100" : "opacity-0"
                 }`}
               >
-                {words.map((word, i) => {
-                  const parts = word.split('→');
-                  return (
-                    <span
-                      key={word}
-                      className={`whitespace-nowrap transition-all duration-400 ease-out ${
-                        i <= wordIndex
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-4"
-                      }`}
-                    >
-                      {parts.map((part, j) => (
-                        <span key={j}>
-                          {j > 0 && <span className="text-blue-400">→</span>}
-                          {part}
-                        </span>
-                      ))}
-                    </span>
-                  );
-                })}
+                {words.map((word, i) => (
+                  <span
+                    key={word}
+                    className={`whitespace-nowrap transition-all duration-400 ease-out ${
+                      i <= wordIndex
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-4"
+                    }`}
+                  >
+                    {i > 0 && <span className="text-blue-400">→</span>}
+                    {word}
+                  </span>
+                ))}
               </p>
             </div>
             <Link href="/how-it-works">
