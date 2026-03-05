@@ -118,26 +118,30 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
           <div className="max-w-5xl">
             <div className="mb-6">
-              <h1 className="text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap">
-                {t('home.hero.headline')}
+              <h1 className="text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)]">
+                <span className="text-amber-400">Profit</span> from Your <span className="text-amber-400">Passion</span>
               </h1>
               <p
-                className={`text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight whitespace-nowrap transition-opacity duration-500 ${
+                className={`text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
                   phase === "words" || phase === "done" ? "opacity-100" : "opacity-0"
                 }`}
               >
-                {words.map((word, i) => (
-                  <span
-                    key={word}
-                    className={`inline-block mr-0 transition-all duration-400 ease-out ${
-                      i <= wordIndex
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-4"
-                    }`}
-                  >
-                    {word}
-                  </span>
-                ))}
+                {words.map((word, i) => {
+                  const hasStar = word.startsWith('*');
+                  const text = hasStar ? word.slice(1) : word;
+                  return (
+                    <span
+                      key={word}
+                      className={`inline-block mr-0 transition-all duration-400 ease-out ${
+                        i <= wordIndex
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4"
+                      }`}
+                    >
+                      {hasStar && <span className="text-blue-400">*</span>}{text}
+                    </span>
+                  );
+                })}
               </p>
             </div>
             <Link href="/how-it-works">
