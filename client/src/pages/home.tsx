@@ -97,7 +97,7 @@ export default function Home() {
 
   useSEO({
     title: "Sword Creator - Best way for creators to get paid",
-    description: "Profit from Your Passion. Create. Profit. Repeat. Discover and support creators on Sword Creator.",
+    description: "Profit from Your Passion. Set Price. Add File. Share. Discover and support creators on Sword Creator.",
   });
 
   const { data: featuredCreators, isLoading, error } = useQuery<Creator[]>({
@@ -118,11 +118,11 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
           <div className="max-w-2xl">
             <div className="mb-6">
-              <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-4">
+              <h1 className="text-[2.6rem] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight mb-4">
                 {t('home.hero.headline')}
               </h1>
               <p
-                className={`text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight transition-opacity duration-500 ${
+                className={`text-[2.6rem] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight transition-opacity duration-500 ${
                   phase === "words" || phase === "done" ? "opacity-100" : "opacity-0"
                 }`}
               >
