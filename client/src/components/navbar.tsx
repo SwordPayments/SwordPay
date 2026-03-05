@@ -12,9 +12,9 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b" data-testid="navbar">
       <div className="w-full px-2 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-10 w-full">
+        <div className="flex items-center justify-between h-14 w-full">
           <Link href="/" data-testid="link-home" className="shrink-0">
-            <span className="text-lg sm:text-3xl font-black tracking-wide text-[#1e3a8a]">SWORDPAY</span>
+            <span className="text-[2.2rem] sm:text-[2.8rem] font-black tracking-wide text-[#1e3a8a] leading-none">SWORDPAY</span>
           </Link>
 
           <div className="flex items-center gap-1 shrink-0">

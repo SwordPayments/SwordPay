@@ -33,7 +33,7 @@ function App() {
       <TooltipProvider>
         <div className="min-h-screen flex flex-col">
           <Navbar />
-          <main className="flex-1 pt-10">
+          <main className="flex-1 pt-14">
             <Router />
           </main>
           {!isCreatorPage && <Footer />}
