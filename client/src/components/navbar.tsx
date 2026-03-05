@@ -14,7 +14,7 @@ export function Navbar() {
         <div className="flex items-center justify-between gap-4 h-10">
           <div className="flex items-center">
             <Link href="/" data-testid="link-home" className="flex items-center gap-2">
-              <span className="text-3xl font-black tracking-wide text-[#1e3a8a]">SWORDPAY</span>
+              <span className="text-xl sm:text-3xl font-black tracking-wide text-[#1e3a8a]">SWORDPAY</span>
             </Link>
           </div>
 

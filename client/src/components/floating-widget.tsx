@@ -10,8 +10,8 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
       onClick={onClose}
     >
       <div
-        className="relative bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col"
-        style={{ width: '420px', height: '90dvh', maxHeight: '750px' }}
+        className="relative bg-white rounded-none sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col w-full sm:w-[420px]"
+        style={{ height: '100dvh', maxHeight: '100dvh' }}
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
@@ -44,7 +44,7 @@ export function FloatingWidget() {
       {showModal && <FileshareModal onClose={() => setShowModal(false)} />}
       <div
         className="fixed bottom-4 right-2 sm:bottom-6 sm:right-6 z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0"
-        style={{ width: '100px' }}
+        style={{ width: '90px', maxWidth: 'calc(100vw - 16px)' }}
         onClick={() => setShowModal(true)}
         data-testid="floating-widget"
       >
