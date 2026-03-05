@@ -119,7 +119,7 @@ export default function Home() {
           <div className="max-w-5xl">
             <div className="mb-6">
               <h1 className="text-[8.8vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)]">
-                <span className="bg-gradient-to-r from-blue-400 to-amber-400 bg-clip-text text-transparent">Monetize</span> Any File <span className="bg-gradient-to-r from-blue-400 to-amber-400 bg-clip-text text-transparent">Instantly</span>
+                Monetize Any File Instantly
               </h1>
               <p
                 className={`text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
