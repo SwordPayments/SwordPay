@@ -141,7 +141,7 @@ export default function Home() {
               </p>
             </div>
             <Link href="/how-it-works">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 rounded-full">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 rounded-full text-2xl py-4 h-auto">
                 {t('nav.howItWorks')}
               </Button>
             </Link>
