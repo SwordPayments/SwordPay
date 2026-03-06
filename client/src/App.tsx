@@ -37,9 +37,7 @@ function App() {
             <Router />
           </main>
           {!isCreatorPage && <Footer />}
-          <div className="fixed right-2 z-50 bottom-6 sm:bottom-auto sm:top-[390px]">
-            <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[154px] min-[414px]:w-[172px] sm:w-[165px] lg:w-[198px]" />
-          </div>
+
         </div>
         <Toaster />
       </TooltipProvider>

@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { FloatingWidget } from "@/components/floating-widget";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -142,6 +143,9 @@ export default function Home() {
                     </span>
                   ))}
                 </p>
+                <div className="mt-3">
+                  <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform inline-block w-[140px] sm:w-[165px] lg:w-[198px]" />
+                </div>
               </div>
 
             </div>
