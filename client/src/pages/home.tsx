@@ -129,13 +129,12 @@ export default function Home() {
                   {words.map((word, i) => (
                     <span
                       key={word}
+                      className="animate-arrow-flash"
                       style={{
-                        animation: 'word-sequence 16.2s cubic-bezier(0.4,0,0.6,1) infinite',
-                        animationDelay: i === 0 ? '0s' : i === 1 ? '5.4s' : '10.8s',
-                        animationFillMode: 'backwards',
                         display: 'inline',
                         marginRight: '0.5em',
                         whiteSpace: 'nowrap',
+                        animationDelay: i === 0 ? '0s' : i === 1 ? '1.2s' : '2.4s',
                       }}
                     >
                       {word}
@@ -147,7 +146,7 @@ export default function Home() {
             </div>
             {/* Arrow + Widget on the right */}
             <div className="shrink-0 mt-12 sm:mt-16 flex items-start gap-1">
-              <span className="animate-arrow-flash text-white text-[4.8vw] md:text-[2.58rem]" style={{display: 'inline-block', alignSelf: 'flex-start', marginTop: '90px', animationDelay: '10.8s', textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)', verticalAlign: 'top'}}>→</span>
+              <span className="animate-arrow-flash text-white text-[4.8vw] md:text-[2.58rem]" style={{display: 'inline-block', alignSelf: 'flex-start', marginTop: '90px', animationDelay: '3s', textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)', verticalAlign: 'top'}}>→</span>
               <FloatingWidget className="relative z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0 w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]" />
             </div>
           </div>
