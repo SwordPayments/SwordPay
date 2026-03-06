@@ -49,8 +49,8 @@ export function FloatingWidget({ className }: { className?: string }) {
         data-testid="floating-widget"
       >
         <Button
-          className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold py-1 px-3 text-[18.4px] min-[414px]:text-[23px] sm:text-[19.8px] lg:text-[24px]"
-          style={{ animation: 'button-fade 5.4s linear infinite', animationDelay: '3.6s', animationFillMode: 'both' }}
+          className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold py-1 px-3 text-[18.4px] min-[414px]:text-[23px] sm:text-[19.8px] lg:text-[24px] animate-word-fade"
+          style={{ animationDelay: '3.6s', animationFillMode: 'both' }}
         >
           {t('widget.cta')}
         </Button>
