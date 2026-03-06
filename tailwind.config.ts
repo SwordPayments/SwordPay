@@ -102,7 +102,7 @@ export default {
         },
         "arrow-flash": {
           "0%, 100%": { opacity: "1", color: "rgb(255, 255, 255)", textShadow: "0 0 12px rgba(99, 179, 255, 1), 0 0 24px rgba(99, 179, 255, 0.8)" },
-          "50%": { opacity: "0.15", color: "rgb(96, 165, 250)", textShadow: "none" },
+          "50%": { opacity: "0", color: "rgb(96, 165, 250)", textShadow: "none" },
         },
         "cover-flash": {
           "0%, 100%": { opacity: "0" },
