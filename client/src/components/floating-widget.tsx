@@ -59,6 +59,7 @@ export function FloatingWidget({ className }: { className?: string }) {
             src="/images/fileshare-new.jpg"
             alt="SWORD FileShare"
             className="w-full rounded-xl shadow-2xl border border-white/30"
+            style={{ animation: 'arrow-flash 4.5s cubic-bezier(0.4, 0, 0.6, 1) infinite', animationDelay: '0s' }}
           />
 
         </div>
