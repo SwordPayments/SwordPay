@@ -97,9 +97,8 @@ export default {
           to: { height: "0" },
         },
         "flash": {
-          "0%, 44%": { opacity: "1" },
-          "45%, 55%": { opacity: "0" },
-          "56%, 100%": { opacity: "1" },
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
         },
       },
       animation: {
