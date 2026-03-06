@@ -17,8 +17,8 @@
 @keyframes word-fade {
   0% { opacity: 0; text-shadow: none; }
   10% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.95), 0 0 40px rgba(99,179,255,0.7); }
-  17% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.95), 0 0 40px rgba(99,179,255,0.7); }
-  22% { opacity: 0; text-shadow: none; }
+  25% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.95), 0 0 40px rgba(99,179,255,0.7); }
+  33% { opacity: 0; text-shadow: none; }
   100% { opacity: 0; text-shadow: none; }
 }
 

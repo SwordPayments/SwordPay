@@ -134,7 +134,7 @@ export default function Home() {
                         display: 'inline',
                         marginRight: '0.5em',
                         whiteSpace: 'nowrap',
-                        animationDelay: i === 0 ? '0s' : i === 1 ? '1.2s' : '2.4s',
+                        animationDelay: i === 0 ? '0s' : i === 1 ? '2.7s' : '5.4s',
                         animationFillMode: 'backwards',
                       }}
                     >
