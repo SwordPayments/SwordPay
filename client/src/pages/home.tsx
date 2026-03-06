@@ -92,7 +92,7 @@ function useHero2Animation() {
 }
 
 export default function Home() {
-  const { phase, wordIndex, words } = useHeroAnimation();
+  const { words } = useHeroAnimation();
   const { slideIndex, textVisible } = useHero2Animation();
   const { t } = useTranslation();
 
@@ -124,20 +124,21 @@ export default function Home() {
                   Sell Any File in Seconds
                 </h1>
                 <p
-                  className={`flex flex-nowrap items-baseline text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
-                    phase === "words" || phase === "done" ? "opacity-100" : "opacity-0"
-                  }`}
+                  className="flex flex-nowrap items-baseline text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight [text-shadow:0_0_30px_rgba(255,255,255,0.35)]"
                 >
                   {words.map((word, i) => (
                     <span
                       key={word}
-                      className={`whitespace-nowrap transition-all duration-400 ease-out ${
-                        i <= wordIndex
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-4"
-                      }`}
+                      style={{
+                        animation: 'word-sequence 16.2s cubic-bezier(0.4,0,0.6,1) infinite',
+                        animationDelay: i === 0 ? '0s' : i === 1 ? '5.4s' : '10.8s',
+                        animationFillMode: 'backwards',
+                        display: 'inline',
+                        marginRight: '0.5em',
+                        whiteSpace: 'nowrap',
+                      }}
                     >
-                      <span className="animate-arrow-flash" style={{display: 'inline', animationDelay: `${i * 1.2}s`, marginRight: '0.5em'}}>{word}</span>
+                      {word}
                     </span>
                   ))}
                 </p>
@@ -146,7 +147,7 @@ export default function Home() {
             </div>
             {/* Arrow + Widget on the right */}
             <div className="shrink-0 mt-12 sm:mt-16 flex items-start gap-1">
-              <span className="animate-arrow-flash text-white text-[4.8vw] md:text-[2.58rem]" style={{display: 'inline-block', alignSelf: 'flex-start', marginTop: '90px', animationDelay: '3s', textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)', verticalAlign: 'top'}}>→</span>
+              <span className="animate-arrow-flash text-white text-[4.8vw] md:text-[2.58rem]" style={{display: 'inline-block', alignSelf: 'flex-start', marginTop: '90px', animationDelay: '10.8s', textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)', verticalAlign: 'top'}}>→</span>
               <FloatingWidget className="relative z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0 w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]" />
             </div>
           </div>
