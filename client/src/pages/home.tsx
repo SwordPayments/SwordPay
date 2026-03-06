@@ -135,7 +135,7 @@ export default function Home() {
                         marginRight: '0.5em',
                         whiteSpace: 'nowrap',
                         animationDelay: i === 0 ? '0s' : i === 1 ? '2.3s' : '4.6s',
-
+                        animationFillMode: 'backwards',
                       }}
                     >
                       {word}
