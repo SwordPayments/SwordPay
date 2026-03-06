@@ -59,32 +59,6 @@ export function FloatingWidget({ className }: { className?: string }) {
             alt="SWORD FileShare"
             className="w-full rounded-xl shadow-2xl border-2 border-blue-500"
           />
-          {/* White cover fades IN over $0 + Set price in sync with Get Paid (delay 2.4s) */}
-          <div
-            className="absolute bg-white pointer-events-none rounded-sm"
-            style={{
-              top: '17%',
-              height: '22%',
-              left: '8%',
-              width: '84%',
-              animation: 'cover-flash 5.4s cubic-bezier(0.4,0,0.6,1) infinite',
-              animationDelay: '2.4s',
-              animationFillMode: 'backwards',
-            }}
-          />
-          {/* White cover fades IN over Add File circle in sync with Add File hero word (delay 0s) */}
-          <div
-            className="absolute bg-white pointer-events-none"
-            style={{
-              top: '51%',
-              height: '37%',
-              left: '0',
-              width: '100%',
-              animation: 'cover-flash 5.4s cubic-bezier(0.4,0,0.6,1) infinite',
-              animationDelay: '0s',
-              animationFillMode: 'backwards',
-            }}
-          />
         </div>
       </div>
     </>
