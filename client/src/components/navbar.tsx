@@ -1,12 +1,12 @@
+import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
-
+import { Search, Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 export function Navbar() {
   const [location] = useLocation();
-  
+  const [menuOpen, setMenuOpen] = useState(false);
   const { t } = useTranslation();
 
   return (
@@ -28,10 +28,35 @@ export function Navbar() {
                 <Search className="h-5 w-5 sm:h-6 sm:w-6" />
               </Button>
             </Link>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 px-2 sm:px-3 h-7 sm:h-9"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Menu"
+            >
+              {menuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
+            </Button>
           </div>
-
         </div>
       </div>
+
+      {/* Dropdown menu */}
+      {menuOpen && (
+        <div className="bg-background/98 backdrop-blur-md border-b shadow-lg" onClick={() => setMenuOpen(false)}>
+          <div className="px-4 py-3 flex flex-col gap-1">
+            <Link href="/">
+              <button className="w-full text-left px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Home</button>
+            </Link>
+            <Link href="/how-it-works">
+              <button className="w-full text-left px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">How it works</button>
+            </Link>
+            <Link href="/explore">
+              <button className="w-full text-left px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Explore</button>
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
