@@ -82,6 +82,8 @@ export function FloatingWidget({ className }: { className?: string }) {
               width: '90%',
               border: '2px solid #3b82f6',
               background: 'transparent',
+              animation: 'arrow-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite',
+              animationDelay: '2.4s',
             }}
           />
         </div>
