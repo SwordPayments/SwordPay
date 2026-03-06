@@ -40,6 +40,9 @@ function App() {
 
         </div>
         <Toaster />
+        <div className="fixed bottom-6 right-4 sm:right-6 z-50">
+          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px] lg:w-[198px]" />
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );
