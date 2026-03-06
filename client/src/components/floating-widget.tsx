@@ -55,7 +55,7 @@ export function FloatingWidget({ className }: { className?: string }) {
         </Button>
         <div className="relative w-full">
           <img
-            src="/images/fileshare-preview.png"
+            src="/images/fileshare-new.jpg"
             alt="SWORD FileShare"
             className="w-full rounded-xl shadow-2xl border border-white/30"
           />
