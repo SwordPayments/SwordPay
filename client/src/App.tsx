@@ -37,7 +37,7 @@ function App() {
             <Router />
           </main>
           {!isCreatorPage && <Footer />}
-          <div style={{ position: 'fixed', top: '390px', right: '8px', zIndex: 50 }}>
+          <div className="fixed right-2 z-50 top-[330px] sm:top-[390px]">
             <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]" />
           </div>
         </div>

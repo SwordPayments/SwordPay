@@ -19,7 +19,7 @@ export function Navbar() {
 
           <div className="flex items-center gap-1 shrink-0">
             <Link href="/how-it-works">
-              <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 sm:px-6 rounded-full text-sm sm:text-base">
+              <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 sm:px-6 rounded-full text-xs sm:text-base">
                 How it works
               </Button>
             </Link>
