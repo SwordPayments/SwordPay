@@ -8,6 +8,14 @@
   55%, 100% { opacity: 1; }
 }
 
+@keyframes arrow-seq-flash {
+  0% { opacity: 0; }
+  2% { opacity: 1; }
+  20% { opacity: 1; }
+  22% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
 @keyframes cover-flash {
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }
