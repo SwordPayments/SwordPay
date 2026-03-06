@@ -124,7 +124,7 @@ export default function Home() {
                   <span className="text-blue-500 block">in Seconds</span>
                 </h1>
                 <p
-                  className="flex flex-nowrap items-baseline justify-center text-[8vw] md:text-[4.3rem] font-bold text-blue-500 leading-tight tracking-tight"
+                  className="flex flex-nowrap items-baseline justify-center text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight"
                 >
                   {words.map((word, i) => (
                     <span
