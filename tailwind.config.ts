@@ -117,11 +117,9 @@ export default {
           "37%, 100%": { opacity: "0" },
         },
         "arrow-seq-flash": {
-          "0%": { opacity: "0" },
-          "2%": { opacity: "1" },
-          "20%": { opacity: "1" },
-          "22%": { opacity: "0" },
-          "100%": { opacity: "0" },
+          "0%, 1%": { opacity: "0" },
+          "2%, 20%": { opacity: "1" },
+          "21%, 100%": { opacity: "0" },
         },
         "word-cover": {
           "0%": { opacity: "1" },
