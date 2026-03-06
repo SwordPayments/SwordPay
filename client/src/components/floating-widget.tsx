@@ -86,6 +86,20 @@ export function FloatingWidget({ className }: { className?: string }) {
               animationDelay: '2.4s',
             }}
           />
+          {/* Blue border box over Add File area, flashing in sync with Add File (delay 0s) */}
+          <div
+            className="absolute pointer-events-none rounded-md"
+            style={{
+              top: '35%',
+              height: '57%',
+              left: '5%',
+              width: '90%',
+              border: '2px solid #3b82f6',
+              background: 'transparent',
+              animation: 'arrow-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite',
+              animationDelay: '0s',
+            }}
+          />
         </div>
       </div>
     </>
