@@ -101,9 +101,9 @@ export default {
           "50%": { opacity: "0" },
         },
         "arrow-flash": {
-          "0%, 20%": { opacity: "0.3", transform: "scale(1)" },
-          "40%": { opacity: "1", transform: "scale(1.3)", filter: "drop-shadow(0 0 6px rgba(255,255,255,0.9))" },
-          "60%, 100%": { opacity: "0.3", transform: "scale(1)" },
+          "0%, 20%": { opacity: "0.4", color: "rgb(96, 165, 250)", textShadow: "none" },
+          "40%": { opacity: "1", color: "rgb(255, 255, 255)", textShadow: "0 0 12px rgba(99, 179, 255, 1), 0 0 24px rgba(99, 179, 255, 0.8)" },
+          "60%, 100%": { opacity: "0.4", color: "rgb(96, 165, 250)", textShadow: "none" },
         },
       },
       animation: {
