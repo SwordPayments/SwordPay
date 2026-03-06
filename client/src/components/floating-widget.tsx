@@ -90,7 +90,7 @@ export function FloatingWidget({ className }: { className?: string }) {
           <span
             className="absolute pointer-events-none text-white font-bold"
             style={{
-              top: '22%',
+              top: '24%',
               right: '-8%',
               fontSize: '1em',
               textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)',
