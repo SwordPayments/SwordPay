@@ -22,16 +22,18 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
           <X className="h-4 w-4" />
         </button>
 
-        {/* iframe — loads swordpay.me upload flow directly */}
-        <iframe
-          src="https://www.swordpay.me/upload-file"
-          className="w-full border-0"
-          scrolling="no"
-          style={{ height: 'calc(100% + 90px)', marginTop: '-90px', flexShrink: 0 } as React.CSSProperties}
-          title="SWORD FileShare"
-          allow="camera; microphone; payment; clipboard-write"
-          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
-        />
+        {/* Clipping wrapper — hides iframe header at top and trust badges at bottom */}
+        <div style={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
+          <iframe
+            src="https://www.swordpay.me/upload-file"
+            className="w-full border-0"
+            scrolling="no"
+            style={{ position: 'absolute', top: '-120px', left: 0, width: '100%', height: 'calc(100% + 120px)' } as React.CSSProperties}
+            title="SWORD FileShare"
+            allow="camera; microphone; payment; clipboard-write"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+          />
+        </div>
       </div>
     </div>
   );
