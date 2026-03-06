@@ -104,7 +104,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "flash": "flash 1.6s ease-in-out infinite",
+        "flash": "flash 2.08s ease-in-out infinite",
       },
     },
   },
