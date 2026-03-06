@@ -7,13 +7,12 @@ import { Button } from "@/components/ui/button";
 function FileshareModal({ onClose, show }: { onClose: () => void; show: boolean }) {
   return (
     <div
-      className="fixed z-[100]"
-      style={{ display: show ? 'block' : 'none', top: 0, left: 0, right: 0, bottom: 0, width: '100%', height: '100%' }}
+      className="fixed inset-0 z-[100]"
+      style={{ display: show ? 'flex' : 'none' }}
       onClick={onClose}
     >
       <div
-        className="relative bg-white flex flex-col overflow-hidden"
-        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, width: '100%', height: '100%' }}
+        className="relative bg-white flex flex-col overflow-hidden w-full h-full"
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
