@@ -26,6 +26,7 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
         <iframe
           src="https://www.swordpay.me/upload-file"
           className="w-full border-0 flex-1"
+          scrolling="no"
           style={{ height: '520px', flexShrink: 0, overflow: 'hidden' } as React.CSSProperties}
           title="SWORD FileShare"
           allow="camera; microphone; payment; clipboard-write"
