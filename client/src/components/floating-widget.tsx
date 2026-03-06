@@ -11,7 +11,7 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
     >
       <div
         className="relative bg-white rounded-2xl shadow-2xl flex flex-col w-[90%] sm:w-[420px] overflow-hidden"
-        style={{ height: '72dvh', maxHeight: '72dvh' }}
+        style={{ height: '70dvh', maxHeight: '70dvh' }}
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
@@ -28,7 +28,7 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
             src="https://www.swordpay.me/upload-file"
             className="w-full border-0"
             scrolling="no"
-            style={{ position: 'absolute', top: '-120px', left: 0, width: '100%', height: 'calc(100% + 120px)' } as React.CSSProperties}
+            style={{ position: 'absolute', top: '-115px', left: 0, width: '100%', height: 'calc(100% + 115px)' } as React.CSSProperties}
             title="SWORD FileShare"
             allow="camera; microphone; payment; clipboard-write"
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
