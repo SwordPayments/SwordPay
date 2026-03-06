@@ -78,8 +78,8 @@ export function FloatingWidget({ className }: { className?: string }) {
             style={{
               top: '15%',
               height: '24%',
-              left: '5%',
-              width: '90%',
+              left: '20%',
+              width: '60%',
               border: '2px solid #3b82f6',
               background: 'transparent',
               animation: 'arrow-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite',
@@ -92,8 +92,8 @@ export function FloatingWidget({ className }: { className?: string }) {
             style={{
               top: '37%',
               height: '56%',
-              left: '5%',
-              width: '90%',
+              left: '20%',
+              width: '60%',
               border: '2px solid #3b82f6',
               background: 'transparent',
               animation: 'arrow-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite',
