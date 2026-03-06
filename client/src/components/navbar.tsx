@@ -18,6 +18,11 @@ export function Navbar() {
           </Link>
 
           <div className="flex items-center gap-1 shrink-0">
+            <Link href="/how-it-works">
+              <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 px-2 sm:px-3 h-7 sm:h-9 font-semibold text-sm sm:text-base">
+                How it works
+              </Button>
+            </Link>
             <Link href="/explore">
               <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 px-2 sm:px-3 h-7 sm:h-9" data-testid="button-search">
                 <Search className="h-5 w-5 sm:h-6 sm:w-6" />

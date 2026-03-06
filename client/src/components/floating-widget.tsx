@@ -35,7 +35,7 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
   );
 }
 
-export function FloatingWidget() {
+export function FloatingWidget({ className }: { className?: string }) {
   const [showModal, setShowModal] = useState(false);
   const { t } = useTranslation();
 
@@ -44,7 +44,7 @@ export function FloatingWidget() {
       {showModal && <FileshareModal onClose={() => setShowModal(false)} />}
       {/* Full card widget on all screen sizes */}
       <div
-        className="fixed bottom-6 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0 w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]"
+        className={className ?? "fixed bottom-6 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0 w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]"}
         onClick={() => setShowModal(true)}
         data-testid="floating-widget"
       >

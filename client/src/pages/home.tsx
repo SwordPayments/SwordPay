@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { FloatingWidget } from "@/components/floating-widget";
 import { useTranslation } from "react-i18next";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -116,36 +117,42 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
-          <div className="max-w-5xl">
-            <div className="mb-6">
-              <h1 className="text-[8.7vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)]">
-                Sell Any File in Seconds
-              </h1>
-              <p
-                className={`flex flex-nowrap items-baseline text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
-                  phase === "words" || phase === "done" ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {words.map((word, i) => (
-                  <span
-                    key={word}
-                    className={`whitespace-nowrap transition-all duration-400 ease-out ${
-                      i <= wordIndex
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-4"
-                    }`}
-                  >
-                    {i > 0 && <span className="animate-arrow-flash" style={{marginLeft: '-0.05em', marginRight: '-0.05em', fontSize: '0.6em', verticalAlign: 'middle', display: 'inline-block', animationDelay: `${i * 1.2 - 0.6}s`}}>→</span>}
-                    <span className="animate-arrow-flash" style={{display: 'inline', animationDelay: `${i * 1.2}s`}}>{word}</span>
-                  </span>
-                ))}
-              </p>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1 min-w-0">
+              <div className="mb-6">
+                <h1 className="text-[8.7vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap [text-shadow:0_0_30px_rgba(255,255,255,0.35)]">
+                  Sell Any File in Seconds
+                </h1>
+                <p
+                  className={`flex flex-nowrap items-baseline text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight [text-shadow:0_0_30px_rgba(255,255,255,0.35)] transition-opacity duration-500 ${
+                    phase === "words" || phase === "done" ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {words.map((word, i) => (
+                    <span
+                      key={word}
+                      className={`whitespace-nowrap transition-all duration-400 ease-out ${
+                        i <= wordIndex
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4"
+                      }`}
+                    >
+                      {i > 0 && <span className="animate-arrow-flash" style={{marginLeft: '-0.05em', marginRight: '-0.05em', fontSize: '0.6em', verticalAlign: 'middle', display: 'inline-block', animationDelay: `${i * 1.2 - 0.6}s`}}>→</span>}
+                      <span className="animate-arrow-flash" style={{display: 'inline', animationDelay: `${i * 1.2}s`}}>{word}</span>
+                    </span>
+                  ))}
+                </p>
+              </div>
+              <Link href="/how-it-works">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 rounded-full text-xl">
+                  {t('nav.howItWorks')}
+                </Button>
+              </Link>
             </div>
-            <Link href="/how-it-works">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 rounded-full text-xl">
-                {t('nav.howItWorks')}
-              </Button>
-            </Link>
+            {/* Widget aligned to the right, beside/under Share */}
+            <div className="shrink-0 mt-12 sm:mt-16">
+              <FloatingWidget className="relative z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0 w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]" />
+            </div>
           </div>
         </div>
       </section>
