@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { FloatingWidget } from "@/components/floating-widget";
+
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -149,10 +150,14 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
-          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform inline-block w-[126px] sm:w-[165px] lg:w-[198px]" />
-        </div>
       </section>
+
+      {/* Seam button — straddles the boundary between hero and hero2 */}
+      <div className="relative h-0">
+        <div className="absolute right-4 sm:right-6 top-0 -translate-y-1/2 z-20">
+          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px] lg:w-[198px]" />
+        </div>
+      </div>
 
       <section className="relative overflow-hidden h-[240px] md:h-[550px]" data-testid="hero2-section">
         {hero2Images.map((img, i) => (
