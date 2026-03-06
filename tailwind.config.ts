@@ -102,14 +102,14 @@ export default {
         },
         "arrow-flash": {
           "0%, 100%": { opacity: "1", color: "rgb(255, 255, 255)", textShadow: "0 0 12px rgba(99, 179, 255, 1), 0 0 24px rgba(99, 179, 255, 0.8)" },
-          "50%": { opacity: "0", color: "rgb(96, 165, 250)", textShadow: "none" },
+          "50%": { opacity: "0.15", color: "rgb(96, 165, 250)", textShadow: "none" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "flash": "flash 3.12s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "arrow-flash": "arrow-flash 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "arrow-flash": "arrow-flash 4.5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },
