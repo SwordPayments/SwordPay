@@ -100,11 +100,17 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0" },
         },
+        "arrow-flash": {
+          "0%, 20%": { opacity: "0.3", transform: "scale(1)" },
+          "40%": { opacity: "1", transform: "scale(1.3)", filter: "drop-shadow(0 0 6px rgba(255,255,255,0.9))" },
+          "60%, 100%": { opacity: "0.3", transform: "scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "flash": "flash 3.12s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "arrow-flash": "arrow-flash 1.6s ease-in-out infinite",
       },
     },
   },
