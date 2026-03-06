@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { FloatingWidget } from "@/components/floating-widget";
 
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -107,7 +108,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" data-testid="page-home">
-      <section className="relative min-h-[260px] md:min-h-[600px]" data-testid="hero-section">
+      <section className="relative min-h-[260px] md:min-h-[600px] pb-16 md:pb-20" data-testid="hero-section">
         <div className="absolute inset-0">
           <img
             src="/images/hero-bg.png"
@@ -148,6 +149,10 @@ export default function Home() {
 
             </div>
           </div>
+        </div>
+        {/* Start Now — pinned to bottom of hero */}
+        <div className="absolute bottom-4 right-4 sm:bottom-5 sm:right-6 z-10">
+          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px] lg:w-[198px]" />
         </div>
       </section>
 
