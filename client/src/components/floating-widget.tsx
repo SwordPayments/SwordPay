@@ -56,8 +56,11 @@ export function FloatingWidget({ className }: { className?: string }) {
       >
         <Button
           className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold py-1 px-3 text-[18.4px] min-[414px]:text-[23px] sm:text-[19.8px] lg:text-[24px]"
+          style={{ animation: 'button-flash 6s linear infinite', animationDelay: '3.0s' }}
         >
-          {t('widget.cta')}
+          <span style={{ animation: 'button-text-flash 6s linear infinite', animationDelay: '3.0s', display: 'inline-block' }}>
+            {t('widget.cta')}
+          </span>
         </Button>
         <div className="relative w-full">
           <img
