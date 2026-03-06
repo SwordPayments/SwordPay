@@ -49,7 +49,8 @@ export function FloatingWidget({ className }: { className?: string }) {
         data-testid="floating-widget"
       >
         <Button
-          className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-flash py-1 px-3 text-[18.4px] min-[414px]:text-[23px] sm:text-[19.8px] lg:text-[24px]"
+          className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold py-1 px-3 text-[18.4px] min-[414px]:text-[23px] sm:text-[19.8px] lg:text-[24px]"
+          style={{ animation: 'arrow-flash 4.5s cubic-bezier(0.4, 0, 0.6, 1) infinite', animationDelay: '3.6s' }}
         >
           {t('widget.cta')}
         </Button>
@@ -59,10 +60,13 @@ export function FloatingWidget({ className }: { className?: string }) {
             alt="SWORD FileShare"
             className="w-full rounded-xl shadow-2xl border border-white/30"
           />
-          <div className="absolute inset-0 rounded-xl pointer-events-none">
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[21.6px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '15%' }}>SET PRICE</span>
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[21.6px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '35%' }}>ADD FILE</span>
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[21.6px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '55%' }}>SHARE</span>
+          <div
+            className="absolute inset-0 rounded-xl pointer-events-none"
+            style={{ animation: 'arrow-flash 4.5s cubic-bezier(0.4, 0, 0.6, 1) infinite', animationDelay: '3.6s' }}
+          >
+            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block text-[21.6px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '15%' }}>SET PRICE</span>
+            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block text-[21.6px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '35%' }}>ADD FILE</span>
+            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block text-[21.6px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '55%' }}>SHARE</span>
           </div>
         </div>
       </div>
