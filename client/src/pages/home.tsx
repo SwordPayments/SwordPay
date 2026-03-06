@@ -137,7 +137,7 @@ export default function Home() {
                           : "opacity-0 translate-y-4"
                       }`}
                     >
-                      <span className="animate-arrow-flash" style={{display: 'inline', animationDelay: `${i * 1.2}s`}}>{word}</span>
+                      <span className="animate-arrow-flash" style={{display: 'inline', animationDelay: `${i * 1.2}s`, marginRight: '0.5em'}}>{word}</span>
                     </span>
                   ))}
                 </p>
