@@ -117,14 +117,14 @@ export default function Home() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
           <div className="flex items-start">
-            <div className="flex-1 min-w-0 text-center">
+            <div className="flex-1 min-w-0">
               <div className="mb-6">
-                <h1 className="text-[8.7vw] md:text-[4.73rem] font-bold leading-tight tracking-tight mb-4">
+                <h1 className="text-[8.7vw] md:text-[4.73rem] font-bold leading-tight tracking-tight mb-4 text-center">
                   <span className="block"><span className="text-blue-500">Sell</span><span className="text-white"> Any File</span></span>
                   <span className="text-blue-500 block">in Seconds</span>
                 </h1>
                 <p
-                  className="flex flex-nowrap items-baseline justify-center text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight"
+                  className="flex flex-nowrap items-baseline text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight"
                 >
                   {words.map((word, i) => (
                     <span
