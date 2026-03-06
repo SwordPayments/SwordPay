@@ -76,8 +76,8 @@ export function FloatingWidget({ className }: { className?: string }) {
           <div
             className="absolute bg-white pointer-events-none"
             style={{
-              top: '51%',
-              height: '31%',
+              top: '72%',
+              height: '16%',
               left: '0',
               width: '100%',
               animation: 'cover-flash 5.4s cubic-bezier(0.4,0,0.6,1) infinite',
