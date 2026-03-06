@@ -117,9 +117,9 @@ export default {
           "37%, 100%": { opacity: "0" },
         },
         "arrow-seq-flash": {
-          "0%, 1%": { opacity: "0" },
-          "2%, 20%": { opacity: "1" },
-          "21%, 100%": { opacity: "0" },
+          "0%, 9%": { opacity: "0" },
+          "10%, 21%": { opacity: "1" },
+          "22%, 100%": { opacity: "0" },
         },
         "word-fade": {
           '0%': { opacity: '0' },
