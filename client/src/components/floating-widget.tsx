@@ -3,10 +3,11 @@ import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-function FileshareModal({ onClose }: { onClose: () => void }) {
+function FileshareModal({ onClose, show }: { onClose: () => void; show: boolean }) {
   return (
     <div
       className="fixed inset-0 z-[100] flex items-end justify-center pb-[52px] bg-black/60 backdrop-blur-sm"
+      style={{ display: show ? 'flex' : 'none' }}
       onClick={onClose}
     >
       <div
@@ -38,15 +39,19 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
 
 export function FloatingWidget({ className }: { className?: string }) {
   const [showModal, setShowModal] = useState(false);
+  const [hasOpened, setHasOpened] = useState(false);
   const { t } = useTranslation();
+
+  const handleOpen = () => { setHasOpened(true); setShowModal(true); };
 
   return (
     <>
-      {showModal && <FileshareModal onClose={() => setShowModal(false)} />}
+      {/* Keep iframe alive after first open so user stays logged in */}
+      {hasOpened && <FileshareModal show={showModal} onClose={() => setShowModal(false)} />}
       {/* Full card widget on all screen sizes */}
       <div
         className={className ?? "fixed bottom-6 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0 w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]"}
-        onClick={() => setShowModal(true)}
+        onClick={handleOpen}
         data-testid="floating-widget"
       >
         <Button
