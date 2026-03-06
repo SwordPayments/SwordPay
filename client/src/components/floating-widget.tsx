@@ -57,7 +57,7 @@ export function FloatingWidget({ className }: { className?: string }) {
           <img
             src="/images/fileshare-new.jpg"
             alt="SWORD FileShare"
-            className="w-full rounded-xl shadow-2xl border border-white/30"
+            className="w-full rounded-xl shadow-2xl border-2 border-blue-500"
           />
           {/* White cover fades IN over $0 + Set price in sync with Get Paid (delay 2.4s) */}
           <div
@@ -68,16 +68,6 @@ export function FloatingWidget({ className }: { className?: string }) {
               animation: 'cover-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite',
               animationDelay: '2.4s',
               animationFillMode: 'backwards',
-            }}
-          />
-          {/* Debug: blue border box over $0 + Set price area */}
-          <div
-            className="absolute left-0 w-full pointer-events-none"
-            style={{
-              top: '17%',
-              height: '22%',
-              border: '2px solid blue',
-              background: 'transparent',
             }}
           />
         </div>
