@@ -143,7 +143,7 @@ export default {
         "arrow-flash": "arrow-flash 5.4s linear infinite",
         "cover-flash": "cover-flash 5.4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "arrow-seq-flash": "arrow-seq-flash 5.4s linear infinite",
-        "word-fade": "word-fade 5.4s linear infinite",
+        "word-fade": "word-fade 5.4s ease-in-out infinite",
         "word-sequence": "word-sequence 16.2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "word-cover": "word-cover 16.2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
