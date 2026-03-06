@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { FloatingWidget } from "@/components/floating-widget";
 import Home from "@/pages/home";
 import Explore from "@/pages/explore";
 import CreatorPage from "@/pages/creator";
@@ -36,6 +37,7 @@ function App() {
             <Router />
           </main>
           {!isCreatorPage && <Footer />}
+          <FloatingWidget className="fixed z-50 cursor-pointer hover:scale-105 transition-transform w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]" style={{ top: '70px', right: '16px' }} />
         </div>
         <Toaster />
       </TooltipProvider>

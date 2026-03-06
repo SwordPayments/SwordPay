@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import { FloatingWidget } from "@/components/floating-widget";
 import { useTranslation } from "react-i18next";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -117,7 +116,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
-          <div className="flex items-start justify-between gap-4">
+          <div className="flex items-start">
             <div className="flex-1 min-w-0">
               <div className="mb-6">
                 <h1 className="font-bold leading-tight tracking-tight mb-4">
@@ -146,13 +145,6 @@ export default function Home() {
                 </p>
               </div>
 
-            </div>
-            {/* Arrow + Widget on the right */}
-            <div className="shrink-0 mt-12 sm:mt-16 flex items-start gap-1" style={{position: 'relative'}}>
-              <span className="animate-word-fade text-white text-[5.52vw] md:text-[2.97rem]" style={{display: 'inline-block', alignSelf: 'flex-start', marginTop: '90px', animationDelay: '2.4s', animationFillMode: 'backwards', opacity: 0, textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)', verticalAlign: 'top'}}>→</span>
-              <span className="animate-word-fade text-white text-[5.52vw] md:text-[2.97rem]" style={{display: 'inline-block', alignSelf: 'flex-start', marginTop: '290px', position: 'absolute', animationDelay: '1.2s', animationFillMode: 'backwards', opacity: 0, textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)', verticalAlign: 'top'}}>→</span>
-              <span className="animate-word-fade text-white text-[5.52vw] md:text-[2.97rem]" style={{display: 'inline-block', alignSelf: 'flex-start', marginTop: '217px', position: 'absolute', animationDelay: '0s', animationFillMode: 'backwards', opacity: 0, textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)', verticalAlign: 'top'}}>→</span>
-              <FloatingWidget className="relative z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0 w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]" />
             </div>
           </div>
         </div>
