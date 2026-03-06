@@ -37,9 +37,9 @@ function App() {
             <Router />
           </main>
           {!isCreatorPage && <Footer />}
-          <span className="animate-word-fade" style={{ position: 'fixed', top: '480px', right: '185px', zIndex: 50, fontSize: '2.58rem', color: '#38bdf8', textShadow: '0 0 16px rgba(56,189,248,1), 0 0 32px rgba(56,189,248,0.8)', animationDelay: '2.4s' }}>→</span>
-          <span className="animate-word-fade" style={{ position: 'fixed', top: '607px', right: '185px', zIndex: 50, fontSize: '2.58rem', color: '#38bdf8', textShadow: '0 0 16px rgba(56,189,248,1), 0 0 32px rgba(56,189,248,0.8)', animationDelay: '0s' }}>→</span>
-          <span className="animate-word-fade" style={{ position: 'fixed', top: '680px', right: '185px', zIndex: 50, fontSize: '2.58rem', color: '#38bdf8', textShadow: '0 0 16px rgba(56,189,248,1), 0 0 32px rgba(56,189,248,0.8)', animationDelay: '1.2s' }}>→</span>
+          <span className="animate-word-fade" style={{ position: 'fixed', top: '480px', right: '215px', zIndex: 50, fontSize: '2.58rem', color: '#38bdf8', textShadow: '0 0 16px rgba(56,189,248,1), 0 0 32px rgba(56,189,248,0.8)', animationDelay: '2.4s' }}>→</span>
+          <span className="animate-word-fade" style={{ position: 'fixed', top: '607px', right: '215px', zIndex: 50, fontSize: '2.58rem', color: '#38bdf8', textShadow: '0 0 16px rgba(56,189,248,1), 0 0 32px rgba(56,189,248,0.8)', animationDelay: '0s' }}>→</span>
+          <span className="animate-word-fade" style={{ position: 'fixed', top: '680px', right: '215px', zIndex: 50, fontSize: '2.58rem', color: '#38bdf8', textShadow: '0 0 16px rgba(56,189,248,1), 0 0 32px rgba(56,189,248,0.8)', animationDelay: '1.2s' }}>→</span>
           <div style={{ position: 'fixed', top: '390px', right: '8px', zIndex: 50 }}>
             <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]" />
           </div>
