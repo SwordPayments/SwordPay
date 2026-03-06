@@ -54,14 +54,47 @@ export function FloatingWidget({ className }: { className?: string }) {
         >
           {t('widget.cta')}
         </Button>
-        <div className="relative w-full">
-          <img
-            src="/images/fileshare-new.jpg"
-            alt="SWORD FileShare"
-            className="w-full rounded-xl shadow-2xl border border-white/30"
-
-          />
-
+        {/* Rebuilt card as HTML so individual elements can animate */}
+        <div className="relative w-full rounded-xl shadow-2xl border border-white/10 bg-white overflow-hidden">
+          {/* Header */}
+          <div className="pt-2 pb-1 text-center">
+            <div className="font-black text-[#1e3a8a] tracking-wide leading-none" style={{fontSize:'0.75em'}}>SWORD</div>
+            <div className="font-bold text-black leading-none" style={{fontSize:'0.55em'}}>FileShare</div>
+          </div>
+          {/* Divider */}
+          <div className="mx-auto w-px bg-gray-200" style={{height:'6px'}}/>
+          {/* Price */}
+          <div className="text-center py-1">
+            <div className="text-gray-400 font-bold leading-none" style={{fontSize:'1.1em'}}>$0</div>
+            <div className="font-bold text-black leading-none" style={{fontSize:'0.45em'}}>Set price</div>
+          </div>
+          {/* Divider */}
+          <div className="mx-auto w-px bg-gray-200" style={{height:'6px'}}/>
+          {/* Views + Timer — flash in sync with "Add File" step */}
+          <div className="flex justify-center gap-4 py-2"
+            style={{ animation: 'arrow-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite', animationDelay: '0s' }}>
+            <div className="flex flex-col items-center gap-0.5">
+              <div className="bg-blue-600 rounded-full flex items-center justify-center text-white font-bold" style={{width:'2em',height:'2em',fontSize:'0.55em'}}>∞</div>
+              <span className="text-black font-semibold" style={{fontSize:'0.38em'}}>Views</span>
+            </div>
+            <div className="flex flex-col items-center gap-0.5">
+              <div className="bg-blue-600 rounded-full flex items-center justify-center text-white" style={{width:'2em',height:'2em',fontSize:'0.55em'}}>⏱</div>
+              <span className="text-black font-semibold" style={{fontSize:'0.38em'}}>Timer</span>
+            </div>
+          </div>
+          {/* Divider */}
+          <div className="mx-auto w-px bg-gray-200" style={{height:'6px'}}/>
+          {/* Add File — flash in sync with "Add File" step */}
+          <div className="flex flex-col items-center py-2"
+            style={{ animation: 'arrow-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite', animationDelay: '0s' }}>
+            <div className="bg-blue-600 rounded-full flex items-center justify-center text-white font-bold" style={{width:'2.2em',height:'2.2em',fontSize:'0.65em'}}>+</div>
+            <span className="font-bold text-black" style={{fontSize:'0.42em'}}>Add File</span>
+            <span className="text-gray-400 text-center leading-tight" style={{fontSize:'0.32em'}}>Images, Videos, Audio, Documents</span>
+          </div>
+          {/* Create link button */}
+          <div className="px-2 pb-2">
+            <div className="bg-[#1e3a8a] text-white text-center rounded-full font-bold py-1" style={{fontSize:'0.42em'}}>Create link</div>
+          </div>
         </div>
       </div>
     </>
