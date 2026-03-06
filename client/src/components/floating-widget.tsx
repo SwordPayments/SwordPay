@@ -72,6 +72,18 @@ export function FloatingWidget({ className }: { className?: string }) {
               animationFillMode: 'backwards',
             }}
           />
+          {/* Permanent blue border box around dollar-zero and Set price area */}
+          <div
+            className="absolute pointer-events-none rounded-md"
+            style={{
+              top: '15%',
+              height: '24%',
+              left: '5%',
+              width: '90%',
+              border: '2px solid #3b82f6',
+              background: 'transparent',
+            }}
+          />
         </div>
       </div>
     </>
