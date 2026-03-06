@@ -86,6 +86,18 @@ export function FloatingWidget({ className }: { className?: string }) {
               animationDelay: '2.4s',
             }}
           />
+          {/* Arrow flashing in sync with Get Paid */}
+          <span
+            className="absolute pointer-events-none text-white font-bold"
+            style={{
+              top: '22%',
+              right: '-8%',
+              fontSize: '1em',
+              textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)',
+              animation: 'arrow-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite',
+              animationDelay: '2.4s',
+            }}
+          >→</span>
         </div>
       </div>
     </>
