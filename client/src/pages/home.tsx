@@ -135,10 +135,8 @@ export default function Home() {
                         : "opacity-0 translate-y-4"
                     }`}
                   >
-                    {i > 0 && <span className="animate-arrow-flash" style={{marginLeft: '-0.05em', marginRight: '-0.05em', fontSize: '0.6em', verticalAlign: 'middle', display: 'inline-block', animationDelay: `${(i - 1) * 0.8}s`}}>→</span>}
-                    {i > 0 ? (
-                      <span className="animate-arrow-flash" style={{display: 'inline', animationDelay: `${(i - 1) * 0.8}s`}}>{word}</span>
-                    ) : word}
+                    {i > 0 && <span className="animate-arrow-flash" style={{marginLeft: '-0.05em', marginRight: '-0.05em', fontSize: '0.6em', verticalAlign: 'middle', display: 'inline-block', animationDelay: `${i * 1}s`}}>→</span>}
+                    <span className="animate-arrow-flash" style={{display: 'inline', animationDelay: `${i * 1}s`}}>{word}</span>
                   </span>
                 ))}
               </p>
