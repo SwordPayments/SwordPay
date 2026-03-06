@@ -11,7 +11,7 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
     >
       <div
         className="relative bg-white rounded-2xl shadow-2xl flex flex-col w-[94%] sm:w-[420px] overflow-hidden"
-        style={{ height: '95dvh', maxHeight: '95dvh' }}
+        style={{ height: '85dvh', maxHeight: '85dvh' }}
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
