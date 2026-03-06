@@ -181,7 +181,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden h-[320px] md:h-[500px]" data-testid="hero3-section">
+      <section className="relative overflow-hidden h-[220px] md:h-[500px]" data-testid="hero3-section">
         <div className="absolute inset-0">
           <img
             src="/images/hero3-bg.webp"
