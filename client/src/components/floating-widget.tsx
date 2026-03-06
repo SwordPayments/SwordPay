@@ -91,7 +91,7 @@ export function FloatingWidget({ className }: { className?: string }) {
             className="absolute pointer-events-none rounded-md"
             style={{
               top: '41%',
-              height: '52%',
+              height: '45%',
               left: '20%',
               width: '60%',
               border: '2px solid #3b82f6',
