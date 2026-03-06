@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes cover-flash {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
 html, body {
   overflow-x: hidden;
   max-width: 100vw;
