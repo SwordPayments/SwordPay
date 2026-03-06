@@ -11,7 +11,7 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
     >
       <div
         className="relative bg-white rounded-2xl shadow-2xl flex flex-col w-[90%] sm:w-[420px] overflow-hidden"
-        style={{ height: '82dvh', maxHeight: '82dvh' }}
+        style={{ height: '72dvh', maxHeight: '72dvh' }}
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
@@ -26,7 +26,7 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
         <iframe
           src="https://www.swordpay.me/upload-file"
           className="w-full border-0 flex-1"
-          style={{ height: '100%', overflowY: 'scroll', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
+          style={{ height: '100%', overflow: 'hidden' } as React.CSSProperties}
           title="SWORD FileShare"
           allow="camera; microphone; payment; clipboard-write"
           sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
