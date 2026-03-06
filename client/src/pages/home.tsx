@@ -143,13 +143,14 @@ export default function Home() {
                     </span>
                   ))}
                 </p>
-                <div className="mt-3">
-                  <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform inline-block w-[140px] sm:w-[165px] lg:w-[198px]" />
-                </div>
+
               </div>
 
             </div>
           </div>
+        </div>
+        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
+          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform inline-block w-[126px] sm:w-[165px] lg:w-[198px]" />
         </div>
       </section>
 
