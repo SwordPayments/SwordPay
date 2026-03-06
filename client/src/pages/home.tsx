@@ -121,7 +121,7 @@ export default function Home() {
             <div className="flex-1 min-w-0">
               <div className="mb-6">
                 <h1 className="font-bold leading-tight tracking-tight mb-4">
-                  <span className="block text-white text-[8.7vw] md:text-[4.73rem]">Sell Any File</span>
+                  <span className="block text-white text-[11vw] md:text-[6rem]">Sell Any File</span>
                   <span className="block text-[11vw] md:text-[6rem]" style={{color: '#2563eb'}}>in Seconds</span>
                 </h1>
                 <p
