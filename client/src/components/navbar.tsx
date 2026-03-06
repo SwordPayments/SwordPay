@@ -17,7 +17,7 @@ export function Navbar() {
             <span className="text-[2.2rem] sm:text-[2.8rem] font-black tracking-wide text-[#1e3a8a] leading-none">SWORDPAY</span>
           </Link>
 
-          <div className="flex items-center gap-1 shrink-0">
+          <div className="flex items-center gap-0 shrink-0">
             <Link href="/how-it-works">
               <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 sm:px-6 rounded-full text-xs sm:text-base">
                 How it works
