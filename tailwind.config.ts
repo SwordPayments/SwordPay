@@ -115,6 +115,13 @@ export default {
           "36%": { opacity: "0" },
           "37%, 100%": { opacity: "0" },
         },
+        "word-cover": {
+          "0%": { opacity: "1" },
+          "8%": { opacity: "0" },
+          "28%": { opacity: "0" },
+          "36%": { opacity: "1" },
+          "37%, 100%": { opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -123,6 +130,7 @@ export default {
         "arrow-flash": "arrow-flash 5.4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "cover-flash": "cover-flash 5.4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "word-sequence": "word-sequence 16.2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "word-cover": "word-cover 16.2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },
