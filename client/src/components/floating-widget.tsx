@@ -49,7 +49,7 @@ export function FloatingWidget() {
         data-testid="floating-widget"
       >
         <Button
-          className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-pulse py-1 px-3 text-[18.4px] min-[414px]:text-[23px] sm:text-[19.8px] lg:text-[24px]"
+          className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-flash py-1 px-3 text-[18.4px] min-[414px]:text-[23px] sm:text-[19.8px] lg:text-[24px]"
         >
           {t('widget.cta')}
         </Button>
