@@ -121,6 +121,13 @@ export default {
           "2%, 20%": { opacity: "1" },
           "21%, 100%": { opacity: "0" },
         },
+        "word-fade": {
+          '0%': { opacity: '0' },
+          '10%': { opacity: '1' },
+          '21%': { opacity: '1' },
+          '31%': { opacity: '0' },
+          '100%': { opacity: '0' },
+        },
         "word-cover": {
           "0%": { opacity: "1" },
           "8%": { opacity: "0" },
@@ -136,6 +143,7 @@ export default {
         "arrow-flash": "arrow-flash 5.4s linear infinite",
         "cover-flash": "cover-flash 5.4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "arrow-seq-flash": "arrow-seq-flash 5.4s linear infinite",
+        "word-fade": "word-fade 5.4s linear infinite",
         "word-sequence": "word-sequence 16.2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "word-cover": "word-cover 16.2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },

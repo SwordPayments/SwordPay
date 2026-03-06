@@ -129,7 +129,7 @@ export default function Home() {
                   {words.map((word, i) => (
                     <span
                       key={word}
-                      className="animate-arrow-seq-flash"
+                      className="animate-word-fade"
                       style={{
                         display: 'inline',
                         marginRight: '0.5em',

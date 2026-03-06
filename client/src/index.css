@@ -14,6 +14,14 @@
   21%, 100% { opacity: 0; }
 }
 
+@keyframes word-fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  21% { opacity: 1; }
+  31% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
 @keyframes cover-flash {
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }
