@@ -118,8 +118,8 @@ export default {
         },
         "arrow-seq-flash": {
           '0%, 4%': { opacity: '0' },
-          '5%, 31%': { opacity: '1' },
-          '32%, 100%': { opacity: '0' },
+          '5%, 19%': { opacity: '1' },
+          '20%, 100%': { opacity: '0' },
         },
         "word-fade": {
           '0%': { opacity: '0' },
