@@ -72,6 +72,19 @@ export function FloatingWidget({ className }: { className?: string }) {
               animationFillMode: 'backwards',
             }}
           />
+          {/* White cover fades IN over Add File circle in sync with Add File hero word (delay 0s) */}
+          <div
+            className="absolute bg-white pointer-events-none"
+            style={{
+              top: '51%',
+              height: '31%',
+              left: '0',
+              width: '100%',
+              animation: 'cover-flash 5.4s cubic-bezier(0.4,0,0.6,1) infinite',
+              animationDelay: '0s',
+              animationFillMode: 'backwards',
+            }}
+          />
         </div>
       </div>
     </>
