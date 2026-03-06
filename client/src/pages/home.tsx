@@ -111,7 +111,7 @@ export default function Home() {
           <img
             src="/images/hero-bg.png"
             alt=""
-            className="w-full h-full object-contain object-[center_top] md:object-cover"
+            className="w-full h-full object-cover object-center md:object-[center_top]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         </div>
