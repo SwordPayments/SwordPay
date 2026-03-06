@@ -97,14 +97,15 @@ export default {
           to: { height: "0" },
         },
         "flash": {
-          "0%, 100%": { opacity: "1" },
+          "0%, 44%": { opacity: "1" },
           "45%, 55%": { opacity: "0" },
+          "56%, 100%": { opacity: "1" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "flash": "flash 2.08s ease-in-out infinite",
+        "flash": "flash 2.08s linear infinite",
       },
     },
   },
