@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button";
 function FileshareModal({ onClose }: { onClose: () => void }) {
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm pb-[56px] sm:pb-0"
       onClick={onClose}
     >
       <div
         className="relative bg-white rounded-2xl shadow-2xl flex flex-col w-[90%] sm:w-[420px] overflow-hidden"
-        style={{ height: 'calc(99dvh - env(safe-area-inset-bottom, 16px))', maxHeight: 'calc(99dvh - env(safe-area-inset-bottom, 16px))', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
+        style={{ height: '95dvh', maxHeight: '95dvh' }}
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
