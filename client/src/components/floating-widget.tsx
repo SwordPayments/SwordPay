@@ -70,24 +70,22 @@ export function FloatingWidget({ className }: { className?: string }) {
           </div>
           {/* Divider */}
           <div className="mx-auto w-px bg-gray-200" style={{height:'6px'}}/>
-          {/* Views + Timer — flash in sync with "Add File" step */}
-          <div className="flex justify-center gap-4 py-2"
-            style={{ animation: 'arrow-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite', animationDelay: '0s' }}>
+          {/* Views + Timer — only the circles flash */}
+          <div className="flex justify-center gap-4 py-2">
             <div className="flex flex-col items-center gap-0.5">
-              <div className="bg-blue-600 rounded-full flex items-center justify-center text-white font-bold" style={{width:'2em',height:'2em',fontSize:'0.55em'}}>∞</div>
+              <div className="bg-blue-600 rounded-full flex items-center justify-center text-white font-bold" style={{width:'2em',height:'2em',fontSize:'0.55em', animation:'arrow-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite', animationDelay:'0s'}}>∞</div>
               <span className="text-black font-semibold" style={{fontSize:'0.38em'}}>Views</span>
             </div>
             <div className="flex flex-col items-center gap-0.5">
-              <div className="bg-blue-600 rounded-full flex items-center justify-center text-white" style={{width:'2em',height:'2em',fontSize:'0.55em'}}>⏱</div>
+              <div className="bg-blue-600 rounded-full flex items-center justify-center text-white" style={{width:'2em',height:'2em',fontSize:'0.55em', animation:'arrow-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite', animationDelay:'0s'}}>⏱</div>
               <span className="text-black font-semibold" style={{fontSize:'0.38em'}}>Timer</span>
             </div>
           </div>
           {/* Divider */}
           <div className="mx-auto w-px bg-gray-200" style={{height:'6px'}}/>
-          {/* Add File — flash in sync with "Add File" step */}
-          <div className="flex flex-col items-center py-2"
-            style={{ animation: 'arrow-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite', animationDelay: '0s' }}>
-            <div className="bg-blue-600 rounded-full flex items-center justify-center text-white font-bold" style={{width:'2.2em',height:'2.2em',fontSize:'0.65em'}}>+</div>
+          {/* Add File — only the + circle flashes */}
+          <div className="flex flex-col items-center py-2">
+            <div className="bg-blue-600 rounded-full flex items-center justify-center text-white font-bold" style={{width:'2.2em',height:'2.2em',fontSize:'0.65em', animation:'arrow-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite', animationDelay:'0s'}}>+</div>
             <span className="font-bold text-black" style={{fontSize:'0.42em'}}>Add File</span>
             <span className="text-gray-400 text-center leading-tight" style={{fontSize:'0.32em'}}>Images, Videos, Audio, Documents</span>
           </div>
