@@ -60,14 +60,7 @@ export function FloatingWidget({ className }: { className?: string }) {
             alt="SWORD FileShare"
             className="w-full rounded-xl shadow-2xl border border-white/30"
           />
-          <div
-            className="absolute inset-0 rounded-xl pointer-events-none"
-            style={{ animation: 'arrow-flash 4.5s cubic-bezier(0.4, 0, 0.6, 1) infinite', animationDelay: '3.6s' }}
-          >
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block text-[21.6px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '15%' }}>SET PRICE</span>
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block text-[21.6px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '35%' }}>ADD FILE</span>
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block text-[21.6px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '55%' }}>SHARE</span>
-          </div>
+
         </div>
       </div>
     </>
