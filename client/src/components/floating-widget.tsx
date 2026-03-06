@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button";
 function FileshareModal({ onClose }: { onClose: () => void }) {
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-start justify-center pt-[12vh] bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
         className="relative bg-white rounded-2xl shadow-2xl flex flex-col w-[90%] sm:w-[420px] overflow-hidden"
-        style={{ height: '82dvh', maxHeight: '82dvh' }}
+        style={{ height: '72dvh', maxHeight: '72dvh' }}
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
@@ -25,9 +25,9 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
         {/* iframe — loads swordpay.me upload flow directly */}
         <iframe
           src="https://www.swordpay.me/upload-file"
-          className="w-full border-0 flex-1"
+          className="w-full border-0"
           scrolling="no"
-          style={{ height: '520px', flexShrink: 0, overflow: 'hidden' } as React.CSSProperties}
+          style={{ height: 'calc(100% + 90px)', marginTop: '-90px', flexShrink: 0 } as React.CSSProperties}
           title="SWORD FileShare"
           allow="camera; microphone; payment; clipboard-write"
           sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
