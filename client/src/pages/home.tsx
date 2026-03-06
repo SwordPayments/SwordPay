@@ -129,12 +129,13 @@ export default function Home() {
                   {words.map((word, i) => (
                     <span
                       key={word}
-                      className="animate-arrow-flash"
+                      className="animate-arrow-seq-flash"
                       style={{
                         display: 'inline',
                         marginRight: '0.5em',
                         whiteSpace: 'nowrap',
                         animationDelay: i === 0 ? '0s' : i === 1 ? '1.2s' : '2.4s',
+                        animationFillMode: 'backwards',
                       }}
                     >
                       {word}
