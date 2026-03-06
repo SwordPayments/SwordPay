@@ -124,7 +124,7 @@ export default function Home() {
                   <span className="block"><span className="text-white">into </span><span className="text-blue-500">Cash</span></span>
                 </h1>
                 <p
-                  className="flex flex-nowrap items-baseline text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight"
+                  className="flex flex-nowrap items-baseline text-[8.8vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight"
                 >
                   {words.map((word, i) => (
                     <span
