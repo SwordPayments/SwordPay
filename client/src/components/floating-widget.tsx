@@ -62,13 +62,7 @@ export function FloatingWidget({ className }: { className?: string }) {
             {t('widget.cta')}
           </span>
         </Button>
-        <div className="relative w-full">
-          <img
-            src="/images/fileshare-new.jpg"
-            alt="SWORD FileShare"
-            className="w-full rounded-xl shadow-2xl border-2 border-blue-500"
-          />
-        </div>
+
       </div>
     </>
   );
