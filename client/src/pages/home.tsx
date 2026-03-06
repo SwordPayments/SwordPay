@@ -231,13 +231,7 @@ export default function Home() {
               <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">{t('home.features.payments')}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{t('home.features.paymentsDesc')}</p>
             </div>
-            <div>
-              <div className="rounded-xl overflow-hidden mb-1 aspect-[4/3]">
-                <img src="/images/card-conversion.jpeg" alt="Higher Conversion" className="w-full h-full object-cover" />
-              </div>
-              <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">{t('home.features.conversion')}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{t('home.features.conversionDesc')}</p>
-            </div>
+
           </div>
         </div>
       </section>
