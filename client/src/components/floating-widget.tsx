@@ -61,8 +61,8 @@ export function FloatingWidget() {
           />
           <div className="absolute inset-0 rounded-xl pointer-events-none">
             <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[20.4px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '15%' }}>SET PRICE</span>
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[20.4px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '35%', animationDelay: '0.2s' }}>ADD FILE</span>
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[20.4px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '55%', animationDelay: '0.4s' }}>SHARE</span>
+            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[20.4px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '35%' }}>ADD FILE</span>
+            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[20.4px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '55%' }}>SHARE</span>
           </div>
         </div>
       </div>
