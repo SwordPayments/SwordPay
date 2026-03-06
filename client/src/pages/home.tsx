@@ -141,6 +141,8 @@ export default function Home() {
                       <span className="animate-arrow-flash" style={{display: 'inline', animationDelay: `${i * 1.2}s`}}>{word}</span>
                     </span>
                   ))}
+                  {/* Arrow after Get Paid pointing to widget */}
+                  <span className="animate-arrow-flash whitespace-nowrap" style={{marginLeft: '0.1em', fontSize: '0.6em', verticalAlign: 'middle', display: 'inline-block', animationDelay: '3s'}}>→</span>
                 </p>
               </div>
 
