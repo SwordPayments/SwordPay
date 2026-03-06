@@ -67,7 +67,7 @@ export function FloatingWidget({ className }: { className?: string }) {
               height: '22%',
               left: '8%',
               width: '84%',
-              animation: 'cover-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite',
+              animation: 'cover-flash 5.4s cubic-bezier(0.4,0,0.6,1) infinite',
               animationDelay: '2.4s',
               animationFillMode: 'backwards',
             }}
