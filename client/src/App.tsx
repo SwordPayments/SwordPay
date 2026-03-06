@@ -37,9 +37,9 @@ function App() {
             <Router />
           </main>
           {!isCreatorPage && <Footer />}
-          <span className="animate-word-fade" style={{ position: 'fixed', top: '480px', right: '215px', zIndex: 50, fontSize: '3.1rem', color: 'white', textShadow: '0 0 16px rgba(255,255,255,1), 0 0 32px rgba(255,255,255,0.8)', animationDelay: '2.4s', animationFillMode: 'both' }}>→</span>
-          <span className="animate-word-fade" style={{ position: 'fixed', top: '607px', right: '215px', zIndex: 50, fontSize: '3.1rem', color: 'white', textShadow: '0 0 16px rgba(255,255,255,1), 0 0 32px rgba(255,255,255,0.8)', animationDelay: '0s', animationFillMode: 'both' }}>→</span>
-          <span className="animate-word-fade" style={{ position: 'fixed', top: '680px', right: '215px', zIndex: 50, fontSize: '3.1rem', color: 'white', textShadow: '0 0 16px rgba(255,255,255,1), 0 0 32px rgba(255,255,255,0.8)', animationDelay: '1.2s', animationFillMode: 'both' }}>→</span>
+          <span className="animate-word-fade" style={{ position: 'fixed', top: '480px', right: '215px', zIndex: 50, fontSize: '3.1rem', color: 'white', textShadow: '0 0 16px rgba(255,255,255,1), 0 0 32px rgba(255,255,255,0.8)', animationDelay: '2.4s', animationFillMode: 'both', background: 'rgba(59,130,246,0.25)', borderRadius: '6px', padding: '2px 8px' }}>→</span>
+          <span className="animate-word-fade" style={{ position: 'fixed', top: '607px', right: '215px', zIndex: 50, fontSize: '3.1rem', color: 'white', textShadow: '0 0 16px rgba(255,255,255,1), 0 0 32px rgba(255,255,255,0.8)', animationDelay: '0s', animationFillMode: 'both', background: 'rgba(59,130,246,0.25)', borderRadius: '6px', padding: '2px 8px' }}>→</span>
+          <span className="animate-word-fade" style={{ position: 'fixed', top: '680px', right: '215px', zIndex: 50, fontSize: '3.1rem', color: 'white', textShadow: '0 0 16px rgba(255,255,255,1), 0 0 32px rgba(255,255,255,0.8)', animationDelay: '1.2s', animationFillMode: 'both', background: 'rgba(59,130,246,0.25)', borderRadius: '6px', padding: '2px 8px' }}>→</span>
           <div style={{ position: 'fixed', top: '390px', right: '8px', zIndex: 50 }}>
             <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]" />
           </div>
