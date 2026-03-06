@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 function FileshareModal({ onClose }: { onClose: () => void }) {
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm pb-[56px] sm:pb-0"
+      className="fixed inset-0 z-[100] flex items-end justify-center bg-black/60 backdrop-blur-sm pb-[56px] sm:pb-0 sm:items-center"
       onClick={onClose}
     >
       <div
