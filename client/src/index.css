@@ -15,11 +15,11 @@
 }
 
 @keyframes word-fade {
-  0% { opacity: 0.25; text-shadow: none; }
-  10% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.95), 0 0 40px rgba(99,179,255,0.7); }
-  21% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.95), 0 0 40px rgba(99,179,255,0.7); }
-  31% { opacity: 0.25; text-shadow: none; }
-  100% { opacity: 0.25; text-shadow: none; }
+  0% { opacity: 0; text-shadow: none; }
+  15% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.95), 0 0 40px rgba(99,179,255,0.7); }
+  55% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.95), 0 0 40px rgba(99,179,255,0.7); }
+  70% { opacity: 0; text-shadow: none; }
+  100% { opacity: 0; text-shadow: none; }
 }
 
 @keyframes widget-flash {
