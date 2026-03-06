@@ -90,8 +90,8 @@ export function FloatingWidget({ className }: { className?: string }) {
           <div
             className="absolute pointer-events-none rounded-md"
             style={{
-              top: '41%',
-              height: '52%',
+              top: '37%',
+              height: '56%',
               left: '5%',
               width: '90%',
               border: '2px solid #3b82f6',
