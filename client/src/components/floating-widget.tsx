@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button";
 function FileshareModal({ onClose }: { onClose: () => void }) {
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-end justify-center pb-[52px] bg-black/60 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="relative bg-white rounded-2xl shadow-2xl flex flex-col w-[90%] sm:w-[420px] overflow-hidden"
-        style={{ height: '490px', maxHeight: '90dvh' }}
+        className="relative bg-white rounded-2xl shadow-2xl flex flex-col w-[94%] sm:w-[420px] overflow-hidden"
+        style={{ height: '83dvh', maxHeight: '83dvh' }}
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
@@ -22,18 +22,15 @@ function FileshareModal({ onClose }: { onClose: () => void }) {
           <X className="h-4 w-4" />
         </button>
 
-        {/* Clipping wrapper — hides iframe header at top and trust badges at bottom */}
-        <div style={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
-          <iframe
-            src="https://www.swordpay.me/upload-file"
-            className="w-full border-0"
-            scrolling="no"
-            style={{ position: 'absolute', top: '-115px', left: 0, width: '100%', height: 'calc(100% + 115px)' } as React.CSSProperties}
-            title="SWORD FileShare"
-            allow="camera; microphone; payment; clipboard-write"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
-          />
-        </div>
+        <iframe
+          src="https://www.swordpay.me/upload-file"
+          className="w-full border-0 flex-1"
+          scrolling="no"
+          style={{ height: '100%' } as React.CSSProperties}
+          title="SWORD FileShare"
+          allow="camera; microphone; payment; clipboard-write"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+        />
       </div>
     </div>
   );
