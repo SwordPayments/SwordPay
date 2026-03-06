@@ -9,9 +9,9 @@
 }
 
 @keyframes arrow-seq-flash {
-  0%, 9% { opacity: 0; }
-  10%, 21% { opacity: 1; }
-  22%, 100% { opacity: 0; }
+  0% { opacity: 0; }
+  1%, 31% { opacity: 1; }
+  32%, 100% { opacity: 0; }
 }
 
 @keyframes word-fade {
