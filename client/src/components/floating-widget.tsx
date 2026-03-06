@@ -64,20 +64,10 @@ export function FloatingWidget({ className }: { className?: string }) {
             className="absolute left-0 w-full bg-white pointer-events-none rounded-sm"
             style={{
               top: '17%',
-              height: '20%',
+              height: '22%',
               animation: 'cover-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite',
               animationDelay: '2.4s',
               animationFillMode: 'backwards',
-            }}
-          />
-          {/* DEBUG: visible border to confirm cover overlay position over dollar-zero and Set price */}
-          <div
-            className="absolute left-0 w-full pointer-events-none"
-            style={{
-              top: '17%',
-              height: '20%',
-              border: '2px solid red',
-              background: 'transparent',
             }}
           />
         </div>
