@@ -7,9 +7,9 @@
     "hero": {
       "cta": "Jetzt teilen",
       "headline": "Verdiene mit deiner Leidenschaft",
-      "word1": "Set Price.",
-      "word2": "Add File.",
-      "word3": "Share"
+      "word1": "Hinzufügen",
+      "word2": "Teilen",
+      "word3": "Verdiene"
     },
     "features": {
       "title": "Gewinne Ohne Grenzen.",
@@ -82,7 +82,7 @@
   },
   "widget": {
     "sell": "Verkaufe deine Inhalte in Sekunden",
-    "cta": "Jetzt kostenlos starten"
+    "cta": "Jetzt starten"
   },
   "contact": {
     "title": "Kontakt",

@@ -7,9 +7,9 @@
     "hero": {
       "cta": "开始分享",
       "headline": "从激情中获利",
-      "word1": "Set Price.",
-      "word2": "Add File.",
-      "word3": "Share"
+      "word1": "添加",
+      "word2": "分享",
+      "word3": "收款"
     },
     "features": {
       "title": "无国界盈利。",
@@ -82,7 +82,7 @@
   },
   "widget": {
     "sell": "几秒钟内出售您的内容",
-    "cta": "立即免费开始"
+    "cta": "立即开始"
   },
   "contact": {
     "title": "联系我们",

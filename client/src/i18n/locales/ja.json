@@ -7,9 +7,9 @@
     "hero": {
       "cta": "今すぐ始める",
       "headline": "情熱から利益を生む",
-      "word1": "Set Price.",
-      "word2": "Add File.",
-      "word3": "Share"
+      "word1": "追加",
+      "word2": "シェア",
+      "word3": "収益化"
     },
     "features": {
       "title": "国境を超えた利益。",
@@ -82,7 +82,7 @@
   },
   "widget": {
     "sell": "数秒でコンテンツを販売",
-    "cta": "今すぐ無料で始める"
+    "cta": "今すぐ始める"
   },
   "contact": {
     "title": "お問い合わせ",

@@ -7,9 +7,9 @@
     "hero": {
       "cta": "Começar a compartilhar",
       "headline": "Lucre com sua Paixão",
-      "word1": "Set Price.",
-      "word2": "Add File.",
-      "word3": "Share"
+      "word1": "Adicionar",
+      "word2": "Partilhar",
+      "word3": "Receba"
     },
     "features": {
       "title": "Lucro Sem Fronteiras.",
@@ -82,7 +82,7 @@
   },
   "widget": {
     "sell": "Venda seu conteúdo em segundos",
-    "cta": "Comece grátis agora"
+    "cta": "Começar"
   },
   "contact": {
     "title": "Contato",

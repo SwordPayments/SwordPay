@@ -7,9 +7,9 @@
     "hero": {
       "cta": "Commencer à partager",
       "headline": "Profitez de votre Passion",
-      "word1": "Set Price.",
-      "word2": "Add File.",
-      "word3": "Share"
+      "word1": "Ajouter",
+      "word2": "Partager",
+      "word3": "Soyez Payé"
     },
     "features": {
       "title": "Des Profits Sans Frontières.",
@@ -82,7 +82,7 @@
   },
   "widget": {
     "sell": "Vendez votre contenu en secondes",
-    "cta": "Commencez gratuitement maintenant"
+    "cta": "Commencer"
   },
   "contact": {
     "title": "Contact",
