@@ -37,7 +37,7 @@ function App() {
             <Router />
           </main>
           {!isCreatorPage && <Footer />}
-          <FloatingWidget className="fixed z-50 cursor-pointer hover:scale-105 transition-transform w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]" style={{ top: '70px', right: '16px' }} />
+          <FloatingWidget className="fixed z-50 cursor-pointer hover:scale-105 transition-transform w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]" style={{ top: '390px', right: '0px' }} />
         </div>
         <Toaster />
       </TooltipProvider>
