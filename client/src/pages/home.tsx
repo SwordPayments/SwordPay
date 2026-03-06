@@ -120,8 +120,9 @@ export default function Home() {
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1 min-w-0">
               <div className="mb-6">
-                <h1 className="text-[8.7vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight mb-4 whitespace-nowrap" style={{textShadow: '0 0 30px rgba(255,255,255,0.5)'}}>
-                  Sell Any <span style={{color: '#38bdf8', textShadow: '0 0 24px rgba(56,189,248,0.7)'}}>File</span> in <span style={{color: '#38bdf8', textShadow: '0 0 24px rgba(56,189,248,0.7)', borderBottom: '3px solid #38bdf8', paddingBottom: '2px'}}>Seconds</span>
+                <h1 className="font-bold leading-tight tracking-tight mb-4">
+                  <span className="block text-white text-[8.7vw] md:text-[4.73rem]">Sell Any File</span>
+                  <span className="block text-[11vw] md:text-[6rem]" style={{color: '#2563eb'}}>in Seconds</span>
                 </h1>
                 <p
                   className="flex flex-nowrap items-baseline text-[8vw] md:text-[4.3rem] font-bold text-white leading-tight tracking-tight [text-shadow:0_0_30px_rgba(255,255,255,0.35)]"
