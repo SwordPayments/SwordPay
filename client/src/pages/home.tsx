@@ -106,7 +106,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" data-testid="page-home">
-      <section className="relative overflow-hidden min-h-[340px] md:min-h-[600px]" data-testid="hero-section">
+      <section className="relative overflow-hidden min-h-[260px] md:min-h-[600px]" data-testid="hero-section">
         <div className="absolute inset-0">
           <img
             src="/images/hero-bg.png"
@@ -149,7 +149,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden h-[380px] md:h-[550px]" data-testid="hero2-section">
+      <section className="relative overflow-hidden h-[240px] md:h-[550px]" data-testid="hero2-section">
         {hero2Images.map((img, i) => (
           <div
             key={i}
