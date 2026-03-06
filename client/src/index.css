@@ -22,6 +22,12 @@
   100% { opacity: 0; text-shadow: none; }
 }
 
+@keyframes widget-flash {
+  0%, 9% { box-shadow: none; transform: scale(1); }
+  10%, 21% { box-shadow: 0 0 24px rgba(99,179,255,0.9), 0 0 48px rgba(99,179,255,0.4); transform: scale(1.04); }
+  31%, 100% { box-shadow: none; transform: scale(1); }
+}
+
 @keyframes cover-flash {
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }

@@ -40,7 +40,7 @@ function App() {
           <span className="animate-word-fade" style={{ position: 'fixed', top: '480px', right: '165px', zIndex: 50, fontSize: '2.58rem', color: 'white', textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)', opacity: 0, animationFillMode: 'backwards', animationDelay: '2.4s' }}>→</span>
           <span className="animate-word-fade" style={{ position: 'fixed', top: '607px', right: '165px', zIndex: 50, fontSize: '2.58rem', color: 'white', textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)', opacity: 0, animationFillMode: 'backwards', animationDelay: '0s' }}>→</span>
           <span className="animate-word-fade" style={{ position: 'fixed', top: '680px', right: '165px', zIndex: 50, fontSize: '2.58rem', color: 'white', textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)', opacity: 0, animationFillMode: 'backwards', animationDelay: '1.2s' }}>→</span>
-          <div style={{ position: 'fixed', top: '390px', right: '0', zIndex: 50 }}>
+          <div style={{ position: 'fixed', top: '390px', right: '0', zIndex: 50, animation: 'widget-flash 5.4s linear infinite', animationDelay: '2.4s', animationFillMode: 'backwards' }}>
             <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]" />
           </div>
         </div>
