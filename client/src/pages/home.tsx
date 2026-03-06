@@ -143,11 +143,7 @@ export default function Home() {
                   ))}
                 </p>
               </div>
-              <Link href="/how-it-works">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 rounded-full text-xl">
-                  {t('nav.howItWorks')}
-                </Button>
-              </Link>
+
             </div>
             {/* Widget aligned to the right, beside/under Share */}
             <div className="shrink-0 mt-12 sm:mt-16">
