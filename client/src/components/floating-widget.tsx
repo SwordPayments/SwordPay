@@ -72,19 +72,6 @@ export function FloatingWidget({ className }: { className?: string }) {
               animationFillMode: 'backwards',
             }}
           />
-          {/* White cover hides Views/Timer/Add File icons — inverse of Add File word-sequence */}
-          <div
-            className="absolute bg-white pointer-events-none"
-            style={{
-              top: '36%',
-              height: '36%',
-              left: '0',
-              width: '100%',
-              animation: 'word-cover 16.2s cubic-bezier(0.4,0,0.6,1) infinite',
-              animationDelay: '0s',
-              animationFillMode: 'backwards',
-            }}
-          />
         </div>
       </div>
     </>
