@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -46,8 +47,11 @@ export function FloatingWidget({ className }: { className?: string }) {
 
   return (
     <>
-      {/* Keep iframe alive after first open so user stays logged in */}
-      {hasOpened && <FileshareModal show={showModal} onClose={() => setShowModal(false)} />}
+      {/* Portal renders modal at document.body — escapes any CSS transform parents */}
+      {hasOpened && createPortal(
+        <FileshareModal show={showModal} onClose={() => setShowModal(false)} />,
+        document.body
+      )}
       {/* Full card widget on all screen sizes */}
       <div
         className={className ?? "fixed bottom-6 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0 w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]"}
