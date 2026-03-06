@@ -120,7 +120,7 @@ export default function Home() {
             <div className="flex-1 min-w-0">
               <div className="mb-6">
                 <h1 className="text-[8.7vw] md:text-[4.73rem] font-bold leading-tight tracking-tight mb-4">
-                  <span className="text-white block">Sell Any File</span>
+                  <span className="block"><span className="text-blue-500">Sell</span><span className="text-white"> Any File</span></span>
                   <span className="text-blue-500 block">in Seconds</span>
                 </h1>
                 <p
