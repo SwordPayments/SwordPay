@@ -70,6 +70,16 @@ export function FloatingWidget({ className }: { className?: string }) {
               animationFillMode: 'backwards',
             }}
           />
+          {/* Debug: blue border box over $0 + Set price area */}
+          <div
+            className="absolute left-0 w-full pointer-events-none"
+            style={{
+              top: '17%',
+              height: '22%',
+              border: '2px solid blue',
+              background: 'transparent',
+            }}
+          />
         </div>
       </div>
     </>
