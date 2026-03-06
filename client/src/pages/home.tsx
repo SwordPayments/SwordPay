@@ -141,14 +141,13 @@ export default function Home() {
                       <span className="animate-arrow-flash" style={{display: 'inline', animationDelay: `${i * 1.2}s`}}>{word}</span>
                     </span>
                   ))}
-                  {/* Arrow after Get Paid pointing to widget */}
-                  <span className="animate-arrow-flash whitespace-nowrap" style={{marginLeft: '0.1em', fontSize: '0.6em', verticalAlign: 'middle', display: 'inline-block', animationDelay: '3s'}}>→</span>
                 </p>
               </div>
 
             </div>
-            {/* Widget aligned to the right, beside/under Share */}
-            <div className="shrink-0 mt-12 sm:mt-16">
+            {/* Arrow + Widget on the right */}
+            <div className="shrink-0 mt-12 sm:mt-16 flex items-center gap-1">
+              <span className="animate-arrow-flash text-white" style={{fontSize: '1.8rem', display: 'inline-block', animationDelay: '3s', textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)'}}>→</span>
               <FloatingWidget className="relative z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0 w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]" />
             </div>
           </div>
