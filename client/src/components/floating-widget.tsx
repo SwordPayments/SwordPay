@@ -61,10 +61,12 @@ export function FloatingWidget({ className }: { className?: string }) {
           />
           {/* White cover fades IN over $0 + Set price in sync with Get Paid (delay 2.4s) */}
           <div
-            className="absolute left-0 w-full bg-white pointer-events-none rounded-sm"
+            className="absolute bg-white pointer-events-none rounded-sm"
             style={{
               top: '17%',
               height: '22%',
+              left: '8%',
+              width: '84%',
               animation: 'cover-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite',
               animationDelay: '2.4s',
               animationFillMode: 'backwards',
