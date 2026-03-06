@@ -72,6 +72,17 @@ export function FloatingWidget({ className }: { className?: string }) {
               animationFillMode: 'backwards',
             }}
           />
+          <span
+            className="absolute pointer-events-none font-bold text-white"
+            style={{
+              top: '57%',
+              left: '2%',
+              fontSize: '0.9em',
+              textShadow: '0 0 12px rgba(99,179,255,1), 0 0 24px rgba(99,179,255,0.8)',
+              animation: 'arrow-flash 5.4s cubic-bezier(0.4,0,0.6,1) infinite',
+              animationDelay: '0s',
+            }}
+          >→</span>
         </div>
       </div>
     </>
