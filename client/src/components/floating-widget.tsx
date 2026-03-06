@@ -44,12 +44,12 @@ export function FloatingWidget() {
       {showModal && <FileshareModal onClose={() => setShowModal(false)} />}
       {/* Full card widget on all screen sizes */}
       <div
-        className="fixed bottom-6 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0 w-[154px] sm:w-[165px] lg:w-[198px]"
+        className="fixed bottom-6 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 z-50 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center gap-0 w-[154px] min-[414px]:w-[193px] sm:w-[165px] lg:w-[198px]"
         onClick={() => setShowModal(true)}
         data-testid="floating-widget"
       >
         <Button
-          className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-pulse py-1 px-3 text-[18.4px] sm:text-[19.8px] lg:text-[24px]"
+          className="w-full bg-blue-600 hover:bg-blue-700 rounded-full font-semibold animate-pulse py-1 px-3 text-[18.4px] min-[414px]:text-[23px] sm:text-[19.8px] lg:text-[24px]"
         >
           {t('widget.cta')}
         </Button>
@@ -60,9 +60,9 @@ export function FloatingWidget() {
             className="w-full rounded-xl shadow-2xl border border-white/30"
           />
           <div className="absolute inset-0 rounded-xl pointer-events-none">
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[21.6px] sm:text-[23px] lg:text-[28px]" style={{ top: '15%' }}>SET PRICE</span>
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[21.6px] sm:text-[23px] lg:text-[28px]" style={{ top: '35%' }}>ADD FILE</span>
-            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[21.6px] sm:text-[23px] lg:text-[28px]" style={{ top: '55%' }}>SHARE</span>
+            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[21.6px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '15%' }}>SET PRICE</span>
+            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[21.6px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '35%' }}>ADD FILE</span>
+            <span className="absolute font-black text-black tracking-wider text-center bg-white rounded px-2 py-1 w-full block animate-flash text-[21.6px] min-[414px]:text-[27px] sm:text-[23px] lg:text-[28px]" style={{ top: '55%' }}>SHARE</span>
           </div>
         </div>
       </div>
