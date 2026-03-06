@@ -59,6 +59,17 @@ export function FloatingWidget({ className }: { className?: string }) {
             alt="SWORD FileShare"
             className="w-full rounded-xl shadow-2xl border border-white/30"
           />
+          {/* White cover over $0 + Set price area — synced with "Get Paid" */}
+          <div
+            className="absolute w-full bg-white pointer-events-none"
+            style={{
+              top: '19%',
+              height: '21%',
+              animation: 'cover-flash 4.5s cubic-bezier(0.4,0,0.6,1) infinite',
+              animationDelay: '2.4s',
+              animationFillMode: 'backwards',
+            }}
+          />
         </div>
       </div>
     </>

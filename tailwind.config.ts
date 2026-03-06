@@ -104,12 +104,17 @@ export default {
           "0%, 100%": { opacity: "1", color: "rgb(255, 255, 255)", textShadow: "0 0 12px rgba(99, 179, 255, 1), 0 0 24px rgba(99, 179, 255, 0.8)" },
           "50%": { opacity: "0.15", color: "rgb(96, 165, 250)", textShadow: "none" },
         },
+        "cover-flash": {
+          "0%, 100%": { opacity: "0" },
+          "50%": { opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "flash": "flash 3.12s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "arrow-flash": "arrow-flash 4.5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "cover-flash": "cover-flash 4.5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },
