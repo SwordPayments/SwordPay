@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
@@ -66,6 +66,19 @@ const patronBenefits = [
 export default function HowItWorks() {
   const { t } = useTranslation();
   const [fullscreenVideo, setFullscreenVideo] = useState<string | null>(null);
+
+  // Close the expanded video on mouseup/touchend anywhere on the document
+  useEffect(() => {
+    const close = () => setFullscreenVideo(null);
+    document.addEventListener("mouseup", close);
+    document.addEventListener("touchend", close);
+    document.addEventListener("touchcancel", close);
+    return () => {
+      document.removeEventListener("mouseup", close);
+      document.removeEventListener("touchend", close);
+      document.removeEventListener("touchcancel", close);
+    };
+  }, []);
   useSEO({
     title: "How Sword Creator Works | Sword Creator",
     description: "Learn how Sword Creator helps creators earn recurring income from their fans and build sustainable creative careers.",
@@ -78,9 +91,6 @@ export default function HowItWorks() {
       {fullscreenVideo && (
         <div
           className="fixed inset-0 z-[999] bg-black/60 flex items-center justify-center"
-          onMouseUp={() => setFullscreenVideo(null)}
-          onTouchEnd={() => setFullscreenVideo(null)}
-          onTouchCancel={() => setFullscreenVideo(null)}
         >
           <div className="w-[80vw] h-[80vh] flex items-center justify-center">
             <video
