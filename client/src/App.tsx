@@ -106,13 +106,17 @@ function App() {
 
         // rAF animation — works on ALL browsers including iOS Safari.
         // CSS top transitions are unreliable on iOS; rAF bypasses the CSS engine entirely.
+        // CRITICAL: startTime is set on the FIRST rAF callback, not the scroll event.
+        // On iOS, rAF is suspended during momentum scrolling — if we used performance.now()
+        // at scroll time, progress would jump to 1.0 on the first frame (instant snap).
         const isIPhone = /iphone/i.test(navigator.userAgent);
         const durationMs = isIPhone ? 4000 : 2000;
         const startTop = initialTopRef.current;
         const endTop = window.innerHeight - 80;
-        const startTime = performance.now();
+        let startTime = -1;
 
         const animate = (now: number) => {
+          if (startTime < 0) startTime = now; // begin timing from first actual frame
           const progress = Math.min((now - startTime) / durationMs, 1);
           // easeOutCubic — matches cubic-bezier(0.25, 0.46, 0.45, 0.94) feel
           const eased = 1 - Math.pow(1 - progress, 3);
