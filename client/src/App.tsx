@@ -1,6 +1,5 @@
 import { Switch, Route, useLocation } from "wouter";
-import { useState, useEffect, useRef } from "react";
-import { flushSync } from "react-dom";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -29,50 +28,58 @@ function Router() {
 function App() {
   const [location] = useLocation();
   const isCreatorPage = location.startsWith("/creator/");
+
+  // btnTop = hero-bottom position (static, only changes on init/resize)
   const [btnTop, setBtnTop] = useState(340);
-  const [gliding, setGliding] = useState(false);
-  const [docked, setDocked] = useState(true);   // start docked — init() un-docks on home page
-  const [btnReady, setBtnReady] = useState(false); // hidden until positioned correctly
+  // docked = switch to bottom:24px after glide
+  const [docked, setDocked] = useState(false);
   const btnRef = useRef<HTMLDivElement>(null);
   const initialTopRef = useRef(340);
   const triggeredRef = useRef(false);
 
+  // Hide before first paint on every navigation — zero flash at wrong position
+  useLayoutEffect(() => {
+    const el = btnRef.current;
+    if (el) el.style.opacity = "0";
+  }, [location]);
+
   useEffect(() => {
     const el = btnRef.current;
+    if (!el) return;
 
-    // Opacity managed via direct DOM — never put in btnStyle so React re-renders can't touch it
+    triggeredRef.current = false;
+
+    // Opacity managed entirely via DOM — no React state, safe from re-render overrides
     const updateOpacity = () => {
-      if (!el) return;
       const d = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
       el.style.opacity = d < 100 ? "0" : "1";
       el.style.pointerEvents = d < 100 ? "none" : "auto";
     };
 
-    // Non-home pages: always docked at bottom immediately, no glide
+    // Non-home pages: immediately dock at bottom, never glide
     if (location !== "/") {
       triggeredRef.current = true;
       setDocked(true);
-      setGliding(false);
-      setBtnReady(true);
       updateOpacity();
       window.addEventListener("scroll", updateOpacity, { passive: true });
       return () => window.removeEventListener("scroll", updateOpacity);
     }
 
-    // Home page: reset for potential glide
-    triggeredRef.current = false;
-
+    // Home page: position just below hero
     const init = () => {
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
-      if (!hero || window.scrollY > 0) { setDocked(true); triggeredRef.current = true; setBtnReady(true); return; }
+      if (!hero || window.scrollY > 0) {
+        setDocked(true);
+        triggeredRef.current = true;
+        updateOpacity();
+        return;
+      }
       const rect = hero.getBoundingClientRect();
       const top = Math.max(Math.min(Math.round(rect.bottom) - 52, window.innerHeight - 64), 60);
       initialTopRef.current = top;
       setBtnTop(top);
-      setGliding(false);
       setDocked(false);
-      setBtnReady(true);
-      triggeredRef.current = false;
+      updateOpacity();
     };
 
     const onScroll = () => {
@@ -83,22 +90,28 @@ function App() {
       const rect = hero.getBoundingClientRect();
       if (rect.bottom <= initialTopRef.current + 48) {
         triggeredRef.current = true;
-        // flushSync forces React to commit the transition BEFORE we change btnTop.
-        // This guarantees iOS Safari sees the transition property on the element
-        // before the position changes — the only reliable way to trigger CSS transitions on iOS.
-        flushSync(() => setGliding(true));
-        requestAnimationFrame(() => {
-          setBtnTop(window.innerHeight - 80);
-          setTimeout(() => {
-            setGliding(false);
-            setDocked(true);
-          }, 2100);
-        });
+
+        // Pure DOM CSS transition on `top`:
+        //   1. Set transition property
+        //   2. Read layout (forces browser to process the transition)
+        //   3. Change top value → transition fires
+        // Zero React state changes during the 2s animation = zero re-renders = nothing overrides el.style.top on iOS
+        el.style.transition = "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+        el.getBoundingClientRect(); // force layout flush — browser must process transition before next write
+        el.style.top = `${window.innerHeight - 80}px`;
+
+        setTimeout(() => {
+          // Lock in final position via DOM before React takes over with docked style
+          el.style.transition = "none";
+          el.style.top = "";
+          el.style.bottom = "24px";
+          setDocked(true);
+        }, 2100);
       }
     };
 
     updateOpacity();
-    const timer = setTimeout(init, 50);
+    const timer = setTimeout(init, 100);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("scroll", updateOpacity, { passive: true });
     window.addEventListener("resize", init);
@@ -108,12 +121,13 @@ function App() {
       window.removeEventListener("scroll", updateOpacity);
       window.removeEventListener("resize", init);
     };
-  }, [location]); // re-run on page navigation
+  }, [location]);
 
-  // Button hidden until init() fires — prevents flash at wrong position on any page
+  // React owns: position, left, zIndex, transform, top (static) or bottom (docked)
+  // React does NOT own: opacity (DOM ref), transition (DOM ref during animation)
   const btnStyle = docked
-    ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50, opacity: btnReady ? undefined : 0 }
-    : { position: "fixed" as const, top: btnTop, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: gliding ? "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "none", opacity: btnReady ? undefined : 0 };
+    ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50 }
+    : { position: "fixed" as const, top: btnTop, left: "50%", transform: "translateX(-50%)", zIndex: 50 };
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -126,7 +140,7 @@ function App() {
           {!isCreatorPage && <Footer />}
         </div>
         <Toaster />
-        {/* Start Now — follows hero, then glides to dock at bottom */}
+        {/* Start Now — glides to bottom on home page, always docked on other pages */}
         <div ref={btnRef} data-start-now style={btnStyle}>
           <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px] lg:w-[198px]" />
         </div>
