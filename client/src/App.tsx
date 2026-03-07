@@ -30,23 +30,22 @@ function App() {
   const isCreatorPage = location.startsWith("/creator/");
   const [btnTop, setBtnTop] = useState(340);
   const [gliding, setGliding] = useState(false);
+  const [docked, setDocked] = useState(false);
   const initialTopRef = useRef(340);
   const triggeredRef = useRef(false);
 
   useEffect(() => {
-    const bottomTop = () => window.innerHeight - 72;
-
     // Set initial resting position instantly (no animation) — only when at top
     const init = () => {
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
       if (!hero) {
-        setBtnTop(bottomTop());
+        setDocked(true);
         triggeredRef.current = true;
         return;
       }
-      // If already scrolled past hero, keep button pinned at bottom
+      // If already scrolled past hero, keep button docked at bottom
       if (triggeredRef.current || window.scrollY > 0) {
-        setBtnTop(bottomTop());
+        setDocked(true);
         triggeredRef.current = true;
         return;
       }
@@ -55,10 +54,11 @@ function App() {
       initialTopRef.current = top;
       setBtnTop(top);
       setGliding(false);
+      setDocked(false);
       triggeredRef.current = false;
     };
 
-    // On scroll: detect the moment the hero scrolls past the button and trigger glide
+    // On scroll: trigger glide when hero scrolls past the button
     const onScroll = () => {
       if (triggeredRef.current) return;
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
@@ -67,7 +67,12 @@ function App() {
       if (rect.bottom <= initialTopRef.current + 48) {
         triggeredRef.current = true;
         setGliding(true);
-        setBtnTop(bottomTop());
+        // Animate to near-bottom using top, then switch to true CSS bottom after animation
+        setBtnTop(window.innerHeight - 80);
+        setTimeout(() => {
+          setGliding(false);
+          setDocked(true);
+        }, 2100);
       }
     };
 
@@ -81,14 +86,17 @@ function App() {
     };
   }, []);
 
-  const btnStyle = {
-    position: "fixed" as const,
-    top: btnTop,
-    left: "50%",
-    transform: "translateX(-50%)",
-    zIndex: 50,
-    transition: gliding ? "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "opacity 0.2s",
-  };
+  // After glide: use true `bottom: 24px` so it always sits above mobile browser chrome
+  const btnStyle = docked
+    ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50 }
+    : {
+        position: "fixed" as const,
+        top: btnTop,
+        left: "50%",
+        transform: "translateX(-50%)",
+        zIndex: 50,
+        transition: gliding ? "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "opacity 0.2s",
+      };
 
   return (
     <QueryClientProvider client={queryClient}>
