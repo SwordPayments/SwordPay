@@ -108,10 +108,10 @@ export default function HowItWorks() {
       )}
       <section className="bg-card border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-5 text-center">
-          <h1 className="text-2xl md:text-5xl font-bold mb-1 md:mb-2 tracking-tight">
+          <h1 className="text-[28px] md:text-[58px] font-bold mb-1 md:mb-2 tracking-tight">
             {t('howItWorks.title')}
           </h1>
-          <p className="text-[21px] text-blue-600 max-w-xl mx-auto">
+          <p className="text-[24px] font-bold text-blue-600 max-w-xl mx-auto">
             {t('howItWorks.subtitle')}
           </p>
         </div>
@@ -120,7 +120,7 @@ export default function HowItWorks() {
       {/* Three Simple Steps cards */}
       <section className="py-4 md:py-10 px-3 md:px-8">
         <div className="max-w-5xl mx-auto">
-          <p className="text-[#6B7A99] text-center text-sm md:text-xl max-w-lg mx-auto mb-4 md:mb-8 leading-relaxed">
+          <p className="text-[#6B7A99] text-center text-[15px] md:text-[23px] font-bold max-w-lg mx-auto mb-4 md:mb-8 leading-relaxed">
             Easy setup, no technical skills needed.
           </p>
           <div className="grid grid-cols-3 gap-2 md:gap-10">
@@ -142,10 +142,10 @@ export default function HowItWorks() {
               },
             ].map(({ step, title, desc, icon }) => (
               <div key={step} className="border border-[#E4EAF5] rounded-xl p-2 md:p-6 hover:border-blue-500 transition-all duration-300 group bg-white">
-                <p className="text-[8px] md:text-[10px] font-extrabold text-blue-600 tracking-widest uppercase mb-1 md:mb-3">{step}</p>
+                <p className="text-[9px] md:text-[12px] font-extrabold text-blue-600 tracking-widest uppercase mb-1 md:mb-3">{step}</p>
                 <div className="w-7 h-7 md:w-11 md:h-11 bg-blue-50 rounded-lg md:rounded-xl flex items-center justify-center text-blue-600 mb-1 md:mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">{icon}</div>
-                <h3 className="text-xs md:text-lg font-extrabold text-[#1a2340] mb-0.5 md:mb-1.5">{title}</h3>
-                <p className="text-[10px] md:text-sm text-[#6B7A99] leading-tight">{desc}</p>
+                <h3 className="text-[14px] md:text-xl font-extrabold text-[#1a2340] mb-0.5 md:mb-1.5">{title}</h3>
+                <p className="text-[11.5px] md:text-[16px] font-bold text-[#6B7A99] leading-tight">{desc}</p>
               </div>
             ))}
           </div>
@@ -154,13 +154,13 @@ export default function HowItWorks() {
 
       <section className="pt-3 md:pt-[20px] pb-0" data-testid="steps-section">
         <div className="max-w-7xl mx-auto px-3 md:px-8">
-          <h2 className="text-xl md:text-5xl font-bold text-center mb-3 md:mb-[32px]">
+          <h2 className="text-[23px] md:text-[58px] font-bold text-center mb-3 md:mb-[32px]">
             {t('howItWorks.steps')}
           </h2>
           <div className="grid grid-cols-3 gap-3 md:gap-12">
             {/* Step 1: Set Price with Video */}
             <div className="text-center space-y-1">
-              <h3 className="text-[11px] md:text-[22px] font-semibold">{t('howItWorks.setPrice')}</h3>
+              <h3 className="text-[13px] md:text-[25px] font-bold">{t('howItWorks.setPrice')}</h3>
               <div data-video onMouseDown={() => setFullscreenVideo("/set-price.mp4")} onTouchStart={() => setFullscreenVideo("/set-price.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[95px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer">
                 <video className="w-full h-auto" autoPlay loop muted playsInline>
                   <source src="/set-price.mp4" type="video/mp4" />
@@ -170,7 +170,7 @@ export default function HowItWorks() {
 
             {/* Step 2: Add File with Video */}
             <div className="text-center space-y-1">
-              <h3 className="text-[11px] md:text-[22px] font-semibold">{t('howItWorks.addFile')}</h3>
+              <h3 className="text-[13px] md:text-[25px] font-bold">{t('howItWorks.addFile')}</h3>
               <div data-video onMouseDown={() => setFullscreenVideo("/add-file.mp4")} onTouchStart={() => setFullscreenVideo("/add-file.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[95px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer">
                 <video className="w-full h-auto" autoPlay loop muted playsInline>
                   <source src="/add-file.mp4" type="video/mp4" />
@@ -180,7 +180,7 @@ export default function HowItWorks() {
 
             {/* Step 3: Share with Video */}
             <div className="text-center space-y-1">
-              <h3 className="text-[11px] md:text-[22px] font-semibold">{t('howItWorks.share')}</h3>
+              <h3 className="text-[13px] md:text-[25px] font-bold">{t('howItWorks.share')}</h3>
               <div data-video onMouseDown={() => setFullscreenVideo("/share.mp4")} onTouchStart={() => setFullscreenVideo("/share.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[95px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer">
                 <video className="w-full h-auto" autoPlay loop muted playsInline>
                   <source src="/share.mp4" type="video/mp4" />
