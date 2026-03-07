@@ -31,7 +31,8 @@ function App() {
   const isCreatorPage = location.startsWith("/creator/");
   const [btnTop, setBtnTop] = useState(340);
   const [gliding, setGliding] = useState(false);
-  const [docked, setDocked] = useState(false);
+  const [docked, setDocked] = useState(true);   // start docked — init() un-docks on home page
+  const [btnReady, setBtnReady] = useState(false); // hidden until positioned correctly
   const btnRef = useRef<HTMLDivElement>(null);
   const initialTopRef = useRef(340);
   const triggeredRef = useRef(false);
@@ -48,16 +49,17 @@ function App() {
     };
 
     const init = () => {
-      if (triggeredRef.current) { setDocked(true); return; }
+      if (triggeredRef.current) { setDocked(true); setBtnReady(true); return; }
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
-      if (!hero) { setDocked(true); triggeredRef.current = true; return; }
-      if (window.scrollY > 0) { setDocked(true); triggeredRef.current = true; return; }
+      if (!hero) { setDocked(true); triggeredRef.current = true; setBtnReady(true); return; }
+      if (window.scrollY > 0) { setDocked(true); triggeredRef.current = true; setBtnReady(true); return; }
       const rect = hero.getBoundingClientRect();
       const top = Math.max(Math.min(Math.round(rect.bottom) - 52, window.innerHeight - 64), 60);
       initialTopRef.current = top;
       setBtnTop(top);
       setGliding(false);
       setDocked(false);
+      setBtnReady(true);
       triggeredRef.current = false;
     };
 
@@ -84,7 +86,7 @@ function App() {
     };
 
     updateOpacity();
-    const timer = setTimeout(init, 150);
+    const timer = setTimeout(init, 50);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("scroll", updateOpacity, { passive: true });
     window.addEventListener("resize", init);
@@ -96,10 +98,10 @@ function App() {
     };
   }, []);
 
-  // Opacity is NOT in btnStyle — managed via DOM ref so React re-renders never reset it
+  // Button hidden until init() fires — prevents flash at wrong position on any page
   const btnStyle = docked
-    ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50 }
-    : { position: "fixed" as const, top: btnTop, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: gliding ? "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "none" };
+    ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50, opacity: btnReady ? undefined : 0 }
+    : { position: "fixed" as const, top: btnTop, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: gliding ? "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "none", opacity: btnReady ? undefined : 0 };
 
   return (
     <QueryClientProvider client={queryClient}>
