@@ -112,7 +112,7 @@ export default function HowItWorks() {
             {t('howItWorks.title')}
           </h1>
           <p className="text-[25.2px] font-bold text-blue-600 max-w-xl mx-auto">
-            {t('howItWorks.subtitle')}
+            Easy setup, no technical skills needed.
           </p>
         </div>
       </section>
@@ -120,9 +120,6 @@ export default function HowItWorks() {
       {/* Three Simple Steps cards */}
       <section className="py-14 md:py-10 px-3 md:px-8 mb-2 md:mb-0">
         <div className="max-w-5xl mx-auto">
-          <p className="text-black text-center text-[17.3px] min-[390px]:text-[20px] md:text-[25px] font-bold max-w-lg mx-auto mb-4 md:mb-8 leading-relaxed">
-            Easy setup, no technical skills needed.
-          </p>
           <div className="grid grid-cols-3 gap-3 md:gap-10">
             {[
               {
