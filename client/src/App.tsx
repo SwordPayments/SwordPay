@@ -57,8 +57,8 @@ function App() {
   }, []);
 
   const btnStyle = pastHero
-    ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: "all 0.3s ease" }
-    : { position: "fixed" as const, top: btnTop, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: "all 0.3s ease, opacity 0.2s" };
+    ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: "top 0.8s cubic-bezier(0.25,0.46,0.45,0.94), bottom 0.8s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.3s" }
+    : { position: "fixed" as const, top: btnTop, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: "top 0.8s cubic-bezier(0.25,0.46,0.45,0.94), bottom 0.8s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.2s" };
 
   return (
     <QueryClientProvider client={queryClient}>
