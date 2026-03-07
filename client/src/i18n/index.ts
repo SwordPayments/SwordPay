@@ -70,9 +70,7 @@ i18n
     },
   });
 
-// Detect language by IP and switch
-detectLanguageByIP().then((lang) => {
-  i18n.changeLanguage(lang);
-});
+// Language detection ready — disabled until authorised for multi-language deployment
+// detectLanguageByIP().then((lang) => { i18n.changeLanguage(lang); });
 
 export default i18n;
