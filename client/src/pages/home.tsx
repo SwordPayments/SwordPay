@@ -156,7 +156,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-6 md:mb-14">
             <h2 className="text-[11.7vw] md:text-[5.5rem] font-extrabold leading-tight tracking-tight text-[#1a2340] mb-2 md:mb-4">
-              Create it. <span className="text-blue-600">Sell it forever.</span>
+              Create it once, <span className="text-blue-600">Sell it forever.</span>
             </h2>
             <p className="text-[#6B7A99] text-[6.44vw] md:text-[2.2rem] mx-auto">
               You Create. <span className="text-blue-600 font-extrabold">SWORD</span> Pays.
