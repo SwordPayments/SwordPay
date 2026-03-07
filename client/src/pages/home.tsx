@@ -144,15 +144,19 @@ export default function Home() {
                     </span>
                   ))}
                 </p>
+                {/* Start Now — below Get Paid, right-aligned (desktop only) */}
+                <div className="hidden lg:flex mt-4 justify-end">
+                  <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[198px]" />
+                </div>
 
               </div>
 
             </div>
           </div>
         </div>
-        {/* Start Now — pinned to bottom of hero */}
-        <div className="absolute bottom-4 right-4 sm:bottom-5 sm:right-6 z-10">
-          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px] lg:w-[198px]" />
+        {/* Start Now — bottom-right absolute (mobile only) */}
+        <div className="lg:hidden absolute bottom-4 right-4 sm:bottom-5 sm:right-6 z-10">
+          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px]" />
         </div>
       </section>
 
