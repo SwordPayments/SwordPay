@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "wouter";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
@@ -64,6 +65,7 @@ const patronBenefits = [
 
 export default function HowItWorks() {
   const { t } = useTranslation();
+  const [fullscreenVideo, setFullscreenVideo] = useState<string | null>(null);
   useSEO({
     title: "How Sword Creator Works | Sword Creator",
     description: "Learn how Sword Creator helps creators earn recurring income from their fans and build sustainable creative careers.",
@@ -71,6 +73,29 @@ export default function HowItWorks() {
 
   return (
     <div data-testid="page-how-it-works">
+
+      {/* Fullscreen video modal */}
+      {fullscreenVideo && (
+        <div
+          className="fixed inset-0 z-[999] bg-black flex items-center justify-center"
+          onClick={() => setFullscreenVideo(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white text-3xl font-bold z-10 w-10 h-10 flex items-center justify-center"
+            onClick={() => setFullscreenVideo(null)}
+          >✕</button>
+          <video
+            className="w-full h-full object-contain"
+            autoPlay
+            loop
+            muted
+            playsInline
+            onClick={e => e.stopPropagation()}
+          >
+            <source src={fullscreenVideo} type="video/mp4" />
+          </video>
+        </div>
+      )}
       <section className="bg-card border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-5 text-center">
           <h1 className="text-2xl md:text-5xl font-bold mb-1 md:mb-2 tracking-tight">
@@ -126,7 +151,7 @@ export default function HowItWorks() {
             {/* Step 1: Set Price with Video */}
             <div className="text-center space-y-1">
               <h3 className="text-[11px] md:text-[22px] font-semibold">{t('howItWorks.setPrice')}</h3>
-              <div data-video className="rounded-xl overflow-hidden shadow-lg max-w-[95px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.65] cursor-pointer">
+              <div data-video onClick={() => setFullscreenVideo("/set-price.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[95px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer">
                 <video className="w-full h-auto" autoPlay loop muted playsInline>
                   <source src="/set-price.mp4" type="video/mp4" />
                 </video>
@@ -136,7 +161,7 @@ export default function HowItWorks() {
             {/* Step 2: Add File with Video */}
             <div className="text-center space-y-1">
               <h3 className="text-[11px] md:text-[22px] font-semibold">{t('howItWorks.addFile')}</h3>
-              <div data-video className="rounded-xl overflow-hidden shadow-lg max-w-[95px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.65] cursor-pointer">
+              <div data-video onClick={() => setFullscreenVideo("/add-file.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[95px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer">
                 <video className="w-full h-auto" autoPlay loop muted playsInline>
                   <source src="/add-file.mp4" type="video/mp4" />
                 </video>
@@ -146,7 +171,7 @@ export default function HowItWorks() {
             {/* Step 3: Share with Video */}
             <div className="text-center space-y-1">
               <h3 className="text-[11px] md:text-[22px] font-semibold">{t('howItWorks.share')}</h3>
-              <div data-video className="rounded-xl overflow-hidden shadow-lg max-w-[95px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.65] cursor-pointer">
+              <div data-video onClick={() => setFullscreenVideo("/share.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[95px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer">
                 <video className="w-full h-auto" autoPlay loop muted playsInline>
                   <source src="/share.mp4" type="video/mp4" />
                 </video>
