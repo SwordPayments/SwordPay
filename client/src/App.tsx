@@ -103,12 +103,16 @@ function App() {
       if (rect.bottom <= initialTopRef.current + 48) {
         triggeredRef.current = true;
 
+        // iPhone glide is 2x slower (4s) for a smoother feel on iOS
+        const isIPhone = /iphone/i.test(navigator.userAgent);
+        const duration = isIPhone ? 4 : 2;
+
         // Pure DOM CSS transition on `top`:
         //   1. Set transition property
         //   2. Read layout (forces browser to process the transition)
         //   3. Change top value → transition fires
-        // Zero React state changes during the 2s animation = zero re-renders = nothing overrides el.style.top on iOS
-        el.style.transition = "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+        // Zero React state changes during animation = zero re-renders = nothing overrides el.style.top on iOS
+        el.style.transition = `top ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
         el.getBoundingClientRect(); // force layout flush — browser must process transition before next write
         el.style.top = `${window.innerHeight - 80}px`;
 
@@ -118,7 +122,7 @@ function App() {
           el.style.top = "";
           el.style.bottom = "24px";
           setDocked(true);
-        }, 2100);
+        }, duration * 1000 + 100);
       }
     };
 
