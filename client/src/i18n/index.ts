@@ -63,14 +63,16 @@ i18n
       zh: { translation: zh },
       ja: { translation: ja },
     },
-    lng: 'en',           // English only — multi-language will be enabled later
+    lng: 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
     },
   });
 
-// Language detection disabled — English only for now
-// detectLanguageByIP().then((lang) => { i18n.changeLanguage(lang); });
+// Detect language by IP and switch
+detectLanguageByIP().then((lang) => {
+  i18n.changeLanguage(lang);
+});
 
 export default i18n;
