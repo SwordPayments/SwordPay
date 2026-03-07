@@ -36,10 +36,9 @@ function App() {
   const triggeredRef = useRef(false);
 
   useEffect(() => {
-    // nearBottom: fade button out when near footer — managed via state (opacity only, never top)
     const checkBottom = () => {
-      const distFromBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
-      setNearBottom(distFromBottom < 100);
+      const d = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
+      setNearBottom(d < 100);
     };
     window.addEventListener("scroll", checkBottom, { passive: true });
     checkBottom();
@@ -52,15 +51,13 @@ function App() {
       const rect = hero.getBoundingClientRect();
       const top = Math.max(Math.min(Math.round(rect.bottom) - 52, window.innerHeight - 64), 60);
       initialTopRef.current = top;
-      // Set position directly — React style prop never touches `top` so this won't be overridden
-      el.style.transition = "none";
+      // Manage top + transform directly — React style prop never touches these
       el.style.top = `${top}px`;
-      el.style.bottom = "auto";
+      el.style.transform = "translateX(-50%)";
       setBtnVisible(true);
       triggeredRef.current = false;
     };
 
-    // All positioning via direct DOM — React state changes (nearBottom, etc.) can't interfere
     const onScroll = () => {
       if (triggeredRef.current) return;
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
@@ -69,12 +66,17 @@ function App() {
       const rect = hero.getBoundingClientRect();
       if (rect.bottom <= initialTopRef.current + 48) {
         triggeredRef.current = true;
-        el.style.transition = "none";
-        el.style.top = `${initialTopRef.current}px`;
-        void el.offsetHeight; // force reflow before transition — required on iOS Safari
-        el.style.transition = "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-        el.style.top = `${window.innerHeight - 80}px`;
-        setTimeout(() => setDocked(true), 2100);
+        // Animate via transform (GPU compositor) — top stays fixed, translateY moves the button
+        // Web Animations API is the most reliable approach on iOS Safari
+        const delta = (window.innerHeight - 80) - initialTopRef.current;
+        const anim = el.animate(
+          [
+            { transform: "translateX(-50%) translateY(0px)" },
+            { transform: `translateX(-50%) translateY(${delta}px)` },
+          ],
+          { duration: 2000, easing: "cubic-bezier(0.25, 0.46, 0.45, 0.94)", fill: "forwards" }
+        );
+        anim.onfinish = () => setDocked(true);
       }
     };
 
@@ -89,11 +91,11 @@ function App() {
     };
   }, []);
 
-  // IMPORTANT: non-docked style has NO `top` property — React must never override
-  // the `top` we set via the DOM ref (re-renders from nearBottom would kill the animation)
+  // React controls ONLY opacity/position/left/zIndex — never top or transform
+  // (re-renders from nearBottom must not override DOM-managed properties)
   const btnStyle = docked
     ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50, opacity: nearBottom ? 0 : 1, transition: "opacity 0.3s", pointerEvents: nearBottom ? "none" as const : "auto" as const }
-    : { position: "fixed" as const, left: "50%", transform: "translateX(-50%)", zIndex: 50, opacity: nearBottom ? 0 : btnVisible ? 1 : 0, transition: "opacity 0.3s", pointerEvents: nearBottom ? "none" as const : "auto" as const };
+    : { position: "fixed" as const, left: "50%", zIndex: 50, opacity: nearBottom ? 0 : btnVisible ? 1 : 0, transition: "opacity 0.3s", pointerEvents: nearBottom ? "none" as const : "auto" as const };
 
   return (
     <QueryClientProvider client={queryClient}>
