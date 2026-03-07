@@ -144,19 +144,14 @@ export default function Home() {
                     </span>
                   ))}
                 </p>
-                {/* Start Now — below Get Paid, right-aligned (desktop only) */}
-                <div className="hidden lg:flex mt-4 justify-end">
-                  <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[198px]" />
-                </div>
-
               </div>
 
             </div>
           </div>
         </div>
-        {/* Start Now — bottom-right absolute (mobile only) */}
-        <div className="lg:hidden absolute bottom-4 right-4 sm:bottom-5 sm:right-6 z-10">
-          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px]" />
+        {/* Start Now — centered, bottom-44 on laptop, bottom-4 on mobile */}
+        <div className="absolute bottom-4 lg:bottom-44 left-1/2 -translate-x-1/2 z-10">
+          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px] lg:w-[198px]" />
         </div>
       </section>
 
