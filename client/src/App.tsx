@@ -34,7 +34,8 @@ function App() {
   useEffect(() => {
     const measure = () => {
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
-      if (!hero) return;
+      // No hero on this page — always dock to bottom
+      if (!hero) { setPastHero(true); return; }
       const rect = hero.getBoundingClientRect();
       // Once hero bottom scrolls above viewport top, switch to bottom dock
       setPastHero(rect.bottom < 0);
