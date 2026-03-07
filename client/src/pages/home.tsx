@@ -189,8 +189,8 @@ export default function Home() {
               </button>
             </a>
             <a href="/how-it-works">
-              <button className="border border-[#DDE4F0] text-[#6B7A99] hover:border-blue-400 hover:text-blue-600 font-semibold px-5 py-3 md:px-10 md:py-5 rounded-full text-sm md:text-lg transition-all flex items-center gap-1.5">
-                ▶ See how it works
+              <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-5 py-3 md:px-10 md:py-5 rounded-full text-sm md:text-lg transition-all flex items-center gap-1.5">
+                <span className="text-blue-600">▶</span> See how it works
               </button>
             </a>
           </div>
