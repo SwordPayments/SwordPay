@@ -107,7 +107,7 @@ export default function HowItWorks() {
         </div>
       )}
       <section className="bg-card border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-5 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[72px] md:py-5 text-center">
           <h1 className="text-[29.4px] md:text-[58px] font-bold mb-1 md:mb-2 tracking-tight">
             {t('howItWorks.title')}
           </h1>
@@ -118,7 +118,7 @@ export default function HowItWorks() {
       </section>
 
       {/* Three Simple Steps cards */}
-      <section className="py-10 md:py-10 px-3 md:px-8 mb-2 md:mb-0">
+      <section className="py-14 md:py-10 px-3 md:px-8 mb-2 md:mb-0">
         <div className="max-w-5xl mx-auto">
           <p className="text-black text-center text-[17.3px] md:text-[25px] font-bold max-w-lg mx-auto mb-4 md:mb-8 leading-relaxed">
             Easy setup, no technical skills needed.
@@ -141,7 +141,7 @@ export default function HowItWorks() {
                 icon: <svg className="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>,
               },
             ].map(({ step, title, desc, icon }) => (
-              <div key={step} className="border border-[#E4EAF5] rounded-xl p-3 md:p-6 hover:border-blue-500 transition-all duration-300 group bg-white min-h-[130px] md:min-h-0 flex flex-col justify-center">
+              <div key={step} className="border border-[#E4EAF5] rounded-xl p-3 md:p-6 hover:border-blue-500 transition-all duration-300 group bg-white min-h-[150px] md:min-h-0 flex flex-col justify-center">
                 <p className="text-[9.5px] md:text-[12px] font-extrabold text-blue-600 tracking-widest uppercase mb-1 md:mb-3">{step}</p>
                 <div className="w-7 h-7 md:w-11 md:h-11 bg-blue-50 rounded-lg md:rounded-xl flex items-center justify-center text-blue-600 mb-1 md:mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">{icon}</div>
                 <h3 className="text-[14.7px] md:text-xl font-extrabold text-[#1a2340] mb-0.5 md:mb-1.5">{title}</h3>
@@ -152,7 +152,7 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      <section className="pt-8 md:pt-[20px] pb-20 md:pb-0" data-testid="steps-section">
+      <section className="pt-10 md:pt-[20px] pb-44 md:pb-0" data-testid="steps-section">
         <div className="max-w-7xl mx-auto px-3 md:px-8">
           <h2 className="text-[24.2px] md:text-[58px] font-bold text-center mb-3 md:mb-[32px]">
             {t('howItWorks.steps')}
