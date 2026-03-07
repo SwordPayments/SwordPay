@@ -74,23 +74,26 @@ export default function HowItWorks() {
   return (
     <div data-testid="page-how-it-works">
 
-      {/* Fullscreen video modal — stays open while pressing, closes on release */}
+      {/* 80% screen video overlay — hold to expand, release to contract */}
       {fullscreenVideo && (
         <div
-          className="fixed inset-0 z-[999] bg-black flex items-center justify-center"
+          className="fixed inset-0 z-[999] bg-black/60 flex items-center justify-center"
           onMouseUp={() => setFullscreenVideo(null)}
           onTouchEnd={() => setFullscreenVideo(null)}
           onTouchCancel={() => setFullscreenVideo(null)}
         >
-          <video
-            className="w-full h-full object-contain pointer-events-none"
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
-            <source src={fullscreenVideo} type="video/mp4" />
-          </video>
+          <div className="w-[80vw] h-[80vh] flex items-center justify-center">
+            <video
+              className="max-w-full max-h-full rounded-2xl shadow-2xl pointer-events-none"
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ objectFit: "contain" }}
+            >
+              <source src={fullscreenVideo} type="video/mp4" />
+            </video>
+          </div>
         </div>
       )}
       <section className="bg-card border-b">
