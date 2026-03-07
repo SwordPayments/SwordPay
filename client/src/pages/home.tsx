@@ -188,7 +188,7 @@ export default function Home() {
                 Start selling today
               </button>
             </a>
-            <a href="https://www.swordpay.com/#how-it-works">
+            <a href="/how-it-works">
               <button className="border border-[#DDE4F0] text-[#6B7A99] hover:border-blue-400 hover:text-blue-600 font-semibold px-5 py-3 md:px-10 md:py-5 rounded-full text-sm md:text-lg transition-all flex items-center gap-1.5">
                 ▶ See how it works
               </button>
