@@ -120,7 +120,7 @@ export default function HowItWorks() {
       {/* Three Simple Steps cards */}
       <section className="py-4 md:py-10 px-3 md:px-8">
         <div className="max-w-5xl mx-auto">
-          <p className="text-[#6B7A99] text-center text-[15px] md:text-[23px] font-bold max-w-lg mx-auto mb-4 md:mb-8 leading-relaxed">
+          <p className="text-black text-center text-[15px] md:text-[23px] font-bold max-w-lg mx-auto mb-4 md:mb-8 leading-relaxed">
             Easy setup, no technical skills needed.
           </p>
           <div className="grid grid-cols-3 gap-2 md:gap-10">
