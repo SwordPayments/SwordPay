@@ -80,14 +80,12 @@ export default function HowItWorks() {
     };
   }, []);
 
-  // Non-passive touchstart on video thumbnails — bypasses iOS 300ms delay entirely
-  // React's onTouchStart/onPointerDown cannot set passive:false; addEventListener can
+  // Non-passive touchstart on video thumbnails — fires immediately on iOS without 300ms delay
   useEffect(() => {
     const srcs = ["/set-price.mp4", "/add-file.mp4", "/share.mp4"];
     const els = Array.from(document.querySelectorAll<HTMLElement>("[data-video]"));
     const handlers = els.map((el, i) => {
-      const fn = (e: TouchEvent) => {
-        e.preventDefault(); // stops iOS 300ms delay + scroll interference
+      const fn = () => {
         setFullscreenVideo(srcs[i] ?? null);
       };
       el.addEventListener("touchstart", fn, { passive: false });
