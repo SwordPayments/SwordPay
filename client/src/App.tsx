@@ -29,23 +29,35 @@ function App() {
   const [location] = useLocation();
   const isCreatorPage = location.startsWith("/creator/");
   const [btnTop, setBtnTop] = useState(340);
+  const [pastHero, setPastHero] = useState(false);
 
   useEffect(() => {
     const measure = () => {
-      if (window.scrollY !== 0) return;
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
-      if (hero) {
-        const rect = hero.getBoundingClientRect();
-        // Pin button just inside hero bottom, but never below viewport
+      if (!hero) return;
+      const rect = hero.getBoundingClientRect();
+      // Once hero bottom scrolls above viewport top, switch to bottom dock
+      setPastHero(rect.bottom < 0);
+      // Only update top position while hero is still visible
+      if (window.scrollY === 0) {
         const heroPos = Math.round(rect.bottom) - 52;
         const maxPos = window.innerHeight - 64;
         setBtnTop(Math.min(heroPos, maxPos));
       }
     };
     const timer = setTimeout(measure, 150);
+    window.addEventListener("scroll", measure, { passive: true });
     window.addEventListener("resize", measure);
-    return () => { clearTimeout(timer); window.removeEventListener("resize", measure); };
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", measure);
+      window.removeEventListener("resize", measure);
+    };
   }, []);
+
+  const btnStyle = pastHero
+    ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: "all 0.3s ease" }
+    : { position: "fixed" as const, top: btnTop, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: "all 0.3s ease, opacity 0.2s" };
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -58,8 +70,8 @@ function App() {
           {!isCreatorPage && <Footer />}
         </div>
         <Toaster />
-        {/* Start Now — fixed at bottom of hero, measured dynamically per screen size */}
-        <div data-start-now style={{ position: "fixed", top: btnTop, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: "opacity 0.2s" }}>
+        {/* Start Now — follows hero, then docks to bottom of screen */}
+        <div data-start-now style={btnStyle}>
           <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px] lg:w-[198px]" />
         </div>
       </TooltipProvider>
