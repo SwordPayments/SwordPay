@@ -36,8 +36,10 @@ function App() {
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
       if (hero) {
         const rect = hero.getBoundingClientRect();
-        // Pin button just inside the bottom of the hero section
-        setBtnTop(Math.round(rect.bottom) - 52);
+        // Pin button just inside hero bottom, but never below viewport
+        const heroPos = Math.round(rect.bottom) - 52;
+        const maxPos = window.innerHeight - 64;
+        setBtnTop(Math.min(heroPos, maxPos));
       }
     };
     const timer = setTimeout(measure, 150);
@@ -57,7 +59,7 @@ function App() {
         </div>
         <Toaster />
         {/* Start Now — fixed at bottom of hero, measured dynamically per screen size */}
-        <div style={{ position: "fixed", top: btnTop, left: "50%", transform: "translateX(-50%)", zIndex: 50 }}>
+        <div data-start-now style={{ position: "fixed", top: btnTop, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: "opacity 0.2s" }}>
           <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px] lg:w-[198px]" />
         </div>
       </TooltipProvider>

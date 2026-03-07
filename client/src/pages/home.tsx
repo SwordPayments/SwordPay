@@ -151,34 +151,48 @@ export default function Home() {
 
       </section>
 
-      <section className="relative overflow-hidden h-[240px] md:h-[550px]" data-testid="hero2-section">
-        {hero2Images.map((img, i) => (
-          <div
-            key={i}
-            className={`absolute inset-0 transition-opacity duration-600 ${
-              i === slideIndex ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <img src={img} alt="" className="w-full h-full object-cover" />
+      {/* For Creators section */}
+      <section className="bg-[#F7F9FF] min-h-[260px] md:min-h-[600px] py-5 md:py-20 px-4 md:px-12 flex items-center" data-testid="hero2-section">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="text-center mb-4 md:mb-12">
+            <h2 className="text-xl md:text-5xl font-extrabold leading-tight tracking-tight text-[#1a2340] mb-1 md:mb-3">
+              Create it. <span className="text-blue-600">Sell it forever.</span>
+            </h2>
+            <p className="text-[#6B7A99] text-[13px] md:text-[29px] mx-auto">
+              You Create. <span className="text-blue-600 font-extrabold">SWORD</span> Pays.
+            </p>
           </div>
-        ))}
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative h-full flex items-center justify-center">
-          <div
-            className={`text-center transition-all duration-500 ${
-              textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            {(t(`home.slides.slide${slideIndex + 1}`, { returnObjects: true }) as string[]).map((line, i) => (
-              <p
-                key={i}
-                className={`font-bold text-white leading-tight tracking-tight ${
-                  i % 2 === 0 ? "text-2xl md:text-4xl text-white/70" : "text-4xl md:text-6xl"
-                }`}
-              >
-                {line}
-              </p>
+
+          <div className="grid grid-cols-4 gap-1.5 md:gap-4 mb-4 md:mb-10">
+            {[
+              { icon: "🎬", title: "Videos", bg: "bg-blue-50" },
+              { icon: "🎓", title: "Courses", bg: "bg-green-50" },
+              { icon: "🎵", title: "Music", bg: "bg-orange-50" },
+              { icon: "🎨", title: "Templates", bg: "bg-purple-50" },
+              { icon: "🖼️", title: "Digital art", bg: "bg-cyan-50" },
+              { icon: "🎙️", title: "Coaching", bg: "bg-yellow-50" },
+              { icon: "📖", title: "PDFs", bg: "bg-emerald-50" },
+              { icon: "👗", title: "Fashion", bg: "bg-pink-50" },
+            ].map(({ icon, title, bg }) => (
+              <a key={title} href="https://swordpay.me" target="_blank" rel="noopener noreferrer"
+                className="bg-white border border-[#E4EAF5] rounded-xl p-2 md:p-4 hover:border-blue-400 transition-all duration-300 group block no-underline text-center">
+                <div className={`w-6 h-6 md:w-9 md:h-9 ${bg} rounded-lg md:rounded-xl flex items-center justify-center text-xs md:text-lg mb-1 md:mb-2.5 mx-auto`}>{icon}</div>
+                <h3 className="text-[9px] md:text-[12.5px] font-bold text-[#1a2340] leading-tight">{title}</h3>
+              </a>
             ))}
+          </div>
+
+          <div className="flex items-center justify-center gap-2 md:gap-4">
+            <a href="https://swordpay.me" target="_blank" rel="noopener noreferrer">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 md:px-10 md:py-4 rounded-full text-[11px] md:text-sm transition-all shadow-md shadow-blue-200">
+                Start selling today
+              </button>
+            </a>
+            <a href="https://www.swordpay.com/#how-it-works">
+              <button className="border border-[#DDE4F0] text-[#6B7A99] hover:border-blue-400 hover:text-blue-600 font-semibold px-3 py-2 md:px-7 md:py-4 rounded-full text-[11px] md:text-sm transition-all flex items-center gap-1">
+                ▶ See how it works
+              </button>
+            </a>
           </div>
         </div>
       </section>

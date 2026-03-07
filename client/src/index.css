@@ -262,6 +262,12 @@ html, body {
  * Even without handling focused or not, this is six possible combinations that
  * need to be distinguished from eachother visually.
  */
+/* Hide Start Now button when a video is being enlarged */
+body:has([data-video]:hover) [data-start-now] {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 @layer utilities {
 
   /* Hide ugly search cancel button in Chrome until we can style it properly */
