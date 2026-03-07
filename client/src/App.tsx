@@ -36,6 +36,7 @@ function App() {
   const btnRef = useRef<HTMLDivElement>(null);
   const initialTopRef = useRef(340);
   const triggeredRef = useRef(false);
+  const rafRef = useRef<number | null>(null);
 
   // Hide before first paint on every navigation — zero flash at wrong position
   useLayoutEffect(() => {
@@ -103,26 +104,29 @@ function App() {
       if (rect.bottom <= initialTopRef.current + 48) {
         triggeredRef.current = true;
 
-        // iPhone glide is 2x slower (4s) for a smoother feel on iOS
+        // rAF animation — works on ALL browsers including iOS Safari.
+        // CSS top transitions are unreliable on iOS; rAF bypasses the CSS engine entirely.
         const isIPhone = /iphone/i.test(navigator.userAgent);
-        const duration = isIPhone ? 4 : 2;
+        const durationMs = isIPhone ? 4000 : 2000;
+        const startTop = initialTopRef.current;
+        const endTop = window.innerHeight - 80;
+        const startTime = performance.now();
 
-        // Pure DOM CSS transition on `top`:
-        //   1. Set transition property
-        //   2. Read layout (forces browser to process the transition)
-        //   3. Change top value → transition fires
-        // Zero React state changes during animation = zero re-renders = nothing overrides el.style.top on iOS
-        el.style.transition = `top ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
-        el.getBoundingClientRect(); // force layout flush — browser must process transition before next write
-        el.style.top = `${window.innerHeight - 80}px`;
-
-        setTimeout(() => {
-          // Lock in final position via DOM before React takes over with docked style
-          el.style.transition = "none";
-          el.style.top = "";
-          el.style.bottom = "24px";
-          setDocked(true);
-        }, duration * 1000 + 100);
+        const animate = (now: number) => {
+          const progress = Math.min((now - startTime) / durationMs, 1);
+          // easeOutCubic — matches cubic-bezier(0.25, 0.46, 0.45, 0.94) feel
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.style.top = `${startTop + (endTop - startTop) * eased}px`;
+          if (progress < 1) {
+            rafRef.current = requestAnimationFrame(animate);
+          } else {
+            rafRef.current = null;
+            el.style.top = "";
+            el.style.bottom = "24px";
+            setDocked(true);
+          }
+        };
+        rafRef.current = requestAnimationFrame(animate);
       }
     };
 
@@ -133,6 +137,7 @@ function App() {
     window.addEventListener("resize", init);
     return () => {
       clearTimeout(timer);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("scroll", updateOpacity);
       window.removeEventListener("resize", init);
