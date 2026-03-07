@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
     const bottomTop = () => window.innerHeight - 72;
 
-    // Set initial resting position instantly (no animation)
+    // Set initial resting position instantly (no animation) — only when at top
     const init = () => {
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
       if (!hero) {
@@ -44,8 +44,14 @@ function App() {
         triggeredRef.current = true;
         return;
       }
+      // If already scrolled past hero, keep button pinned at bottom
+      if (triggeredRef.current || window.scrollY > 0) {
+        setBtnTop(bottomTop());
+        triggeredRef.current = true;
+        return;
+      }
       const rect = hero.getBoundingClientRect();
-      const top = Math.min(Math.round(rect.bottom) - 52, window.innerHeight - 64);
+      const top = Math.max(Math.min(Math.round(rect.bottom) - 52, window.innerHeight - 64), 60);
       initialTopRef.current = top;
       setBtnTop(top);
       setGliding(false);
