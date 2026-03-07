@@ -29,21 +29,23 @@ function App() {
   const [location] = useLocation();
   const isCreatorPage = location.startsWith("/creator/");
   const [btnTop, setBtnTop] = useState(340);
-  const [pastHero, setPastHero] = useState(false);
+  const bottomDockedTop = typeof window !== "undefined" ? window.innerHeight - 72 : 700;
 
   useEffect(() => {
+    const getBottomTop = () => window.innerHeight - 72;
+
     const measure = () => {
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
       // No hero on this page — always dock to bottom
-      if (!hero) { setPastHero(true); return; }
+      if (!hero) { setBtnTop(getBottomTop()); return; }
       const rect = hero.getBoundingClientRect();
-      // Switch to bottom dock as soon as hero bottom scrolls past the button
-      setPastHero(rect.bottom < btnTop + 48);
-      // Only update top position while hero is still visible
-      if (window.scrollY === 0) {
-        const heroPos = Math.round(rect.bottom) - 52;
-        const maxPos = window.innerHeight - 64;
-        setBtnTop(Math.min(heroPos, maxPos));
+      const heroPos = Math.round(rect.bottom) - 52;
+      const initialTop = Math.min(heroPos, window.innerHeight - 64);
+      // Glide to bottom once hero bottom scrolls up past the button
+      if (rect.bottom < initialTop + 48) {
+        setBtnTop(getBottomTop());
+      } else {
+        if (window.scrollY === 0) setBtnTop(initialTop);
       }
     };
     const timer = setTimeout(measure, 150);
@@ -56,9 +58,14 @@ function App() {
     };
   }, []);
 
-  const btnStyle = pastHero
-    ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: "top 0.8s cubic-bezier(0.25,0.46,0.45,0.94), bottom 0.8s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.3s" }
-    : { position: "fixed" as const, top: btnTop, left: "50%", transform: "translateX(-50%)", zIndex: 50, transition: "top 0.8s cubic-bezier(0.25,0.46,0.45,0.94), bottom 0.8s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.2s" };
+  const btnStyle = {
+    position: "fixed" as const,
+    top: btnTop,
+    left: "50%",
+    transform: "translateX(-50%)",
+    zIndex: 50,
+    transition: "top 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.2s",
+  };
 
   return (
     <QueryClientProvider client={queryClient}>
