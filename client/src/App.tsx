@@ -37,8 +37,8 @@ function App() {
       // No hero on this page — always dock to bottom
       if (!hero) { setPastHero(true); return; }
       const rect = hero.getBoundingClientRect();
-      // Once hero bottom scrolls above viewport top, switch to bottom dock
-      setPastHero(rect.bottom < 0);
+      // Switch to bottom dock as soon as hero bottom scrolls past the button
+      setPastHero(rect.bottom < btnTop + 48);
       // Only update top position while hero is still visible
       if (window.scrollY === 0) {
         const heroPos = Math.round(rect.bottom) - 52;
