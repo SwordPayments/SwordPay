@@ -30,12 +30,13 @@ function App() {
   const isCreatorPage = location.startsWith("/creator/");
   const [docked, setDocked] = useState(false);
   const [nearBottom, setNearBottom] = useState(false);
+  const [btnVisible, setBtnVisible] = useState(false);
   const btnRef = useRef<HTMLDivElement>(null);
   const initialTopRef = useRef(340);
   const triggeredRef = useRef(false);
 
   useEffect(() => {
-    // Hide button when within 100px of page bottom (over footer)
+    // nearBottom: fade button out when near footer — managed via state (opacity only, never top)
     const checkBottom = () => {
       const distFromBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
       setNearBottom(distFromBottom < 100);
@@ -43,7 +44,6 @@ function App() {
     window.addEventListener("scroll", checkBottom, { passive: true });
     checkBottom();
 
-    // Set initial resting position instantly (no animation) — only when at top
     const init = () => {
       const el = btnRef.current;
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
@@ -52,14 +52,15 @@ function App() {
       const rect = hero.getBoundingClientRect();
       const top = Math.max(Math.min(Math.round(rect.bottom) - 52, window.innerHeight - 64), 60);
       initialTopRef.current = top;
+      // Set position directly — React style prop never touches `top` so this won't be overridden
       el.style.transition = "none";
       el.style.top = `${top}px`;
       el.style.bottom = "auto";
-      setDocked(false);
+      setBtnVisible(true);
       triggeredRef.current = false;
     };
 
-    // Direct DOM animation — bypasses React batching, works on iOS Safari
+    // All positioning via direct DOM — React state changes (nearBottom, etc.) can't interfere
     const onScroll = () => {
       if (triggeredRef.current) return;
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
@@ -70,7 +71,7 @@ function App() {
         triggeredRef.current = true;
         el.style.transition = "none";
         el.style.top = `${initialTopRef.current}px`;
-        void el.offsetHeight; // force reflow — critical for iOS Safari
+        void el.offsetHeight; // force reflow before transition — required on iOS Safari
         el.style.transition = "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
         el.style.top = `${window.innerHeight - 80}px`;
         setTimeout(() => setDocked(true), 2100);
@@ -88,10 +89,11 @@ function App() {
     };
   }, []);
 
-  // After glide: use true `bottom: 24px` so it always sits above mobile browser chrome
+  // IMPORTANT: non-docked style has NO `top` property — React must never override
+  // the `top` we set via the DOM ref (re-renders from nearBottom would kill the animation)
   const btnStyle = docked
     ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50, opacity: nearBottom ? 0 : 1, transition: "opacity 0.3s", pointerEvents: nearBottom ? "none" as const : "auto" as const }
-    : { position: "fixed" as const, top: 340, left: "50%", transform: "translateX(-50%)", zIndex: 50 };
+    : { position: "fixed" as const, left: "50%", transform: "translateX(-50%)", zIndex: 50, opacity: nearBottom ? 0 : btnVisible ? 1 : 0, transition: "opacity 0.3s", pointerEvents: nearBottom ? "none" as const : "auto" as const };
 
   return (
     <QueryClientProvider client={queryClient}>
