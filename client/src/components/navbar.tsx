@@ -14,7 +14,7 @@ export function Navbar() {
       <div className="w-full px-2 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 w-full">
           <Link href="/" data-testid="link-home" className="shrink-0">
-            <span className="text-[30px] sm:text-[2.8rem] font-black tracking-wide text-[#1e3a8a] leading-none">SWORDPAY</span>
+            <span className="text-[31.5px] sm:text-[2.8rem] font-black tracking-wide text-[#1e3a8a] leading-none">SWORDPAY</span>
           </Link>
 
           <div className="flex items-center gap-0 shrink-0">

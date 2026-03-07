@@ -31,10 +31,19 @@ function App() {
   const [btnTop, setBtnTop] = useState(340);
   const [gliding, setGliding] = useState(false);
   const [docked, setDocked] = useState(false);
+  const [nearBottom, setNearBottom] = useState(false);
   const initialTopRef = useRef(340);
   const triggeredRef = useRef(false);
 
   useEffect(() => {
+    // Hide button when within 100px of page bottom (over footer)
+    const checkBottom = () => {
+      const distFromBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
+      setNearBottom(distFromBottom < 100);
+    };
+    window.addEventListener("scroll", checkBottom, { passive: true });
+    checkBottom();
+
     // Set initial resting position instantly (no animation) — only when at top
     const init = () => {
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
@@ -83,12 +92,13 @@ function App() {
       clearTimeout(timer);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", init);
+      window.removeEventListener("scroll", checkBottom);
     };
   }, []);
 
   // After glide: use true `bottom: 24px` so it always sits above mobile browser chrome
   const btnStyle = docked
-    ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50 }
+    ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50, opacity: nearBottom ? 0 : 1, transition: "opacity 0.3s", pointerEvents: nearBottom ? "none" as const : "auto" as const }
     : {
         position: "fixed" as const,
         top: btnTop,

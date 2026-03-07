@@ -322,7 +322,7 @@ export function Footer() {
     {showPrivacy && <PrivacyModal onClose={() => setShowPrivacy(false)} />}
     {showCookie && <CookieModal onClose={() => setShowCookie(false)} />}
     {showContact && <ContactModal onClose={() => setShowContact(false)} />}
-    <footer className="bg-white border-t border-gray-100" data-testid="footer">
+    <footer className="bg-white border-t border-gray-100 pb-24 md:pb-12" data-testid="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* SWORD Header */}
         <div className="text-center mb-10">

@@ -120,12 +120,12 @@ export default function Home() {
           <div className="flex items-start">
             <div className="flex-1 min-w-0">
               <div className="mb-6">
-                <h1 className="text-[13.1vw] md:text-[5.91rem] font-bold leading-tight tracking-tight mb-4">
+                <h1 className="text-[13.76vw] md:text-[5.91rem] font-bold leading-tight tracking-tight mb-4">
                   <span className="block"><span className="text-blue-500">Turn</span><span className="text-white"> your </span><span className="text-blue-500">Content</span></span>
                   <span className="block"><span className="text-white">into </span><span className="text-blue-500">Cash</span></span>
                 </h1>
                 <p
-                  className="flex flex-nowrap items-baseline text-[9.24vw] md:text-[4.97rem] font-bold text-white leading-tight tracking-tight"
+                  className="flex flex-nowrap items-baseline text-[9.7vw] md:text-[4.97rem] font-bold text-white leading-tight tracking-tight"
                 >
                   {words.map((word, i) => (
                     <span
@@ -155,10 +155,10 @@ export default function Home() {
       <section className="bg-[#F7F9FF] min-h-[100vw] md:min-h-0 py-14 md:py-36 px-4 md:px-12 flex items-center" data-testid="hero2-section">
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-6 md:mb-14">
-            <h2 className="text-[11.7vw] md:text-[5.5rem] font-extrabold leading-tight tracking-tight text-[#1a2340] mb-2 md:mb-4">
+            <h2 className="text-[12.3vw] md:text-[5.5rem] font-extrabold leading-tight tracking-tight text-[#1a2340] mb-2 md:mb-4">
               Create it once, <span className="text-blue-600">Sell it forever.</span>
             </h2>
-            <p className="text-[#6B7A99] text-[6.44vw] md:text-[2.2rem] mx-auto">
+            <p className="text-[#6B7A99] text-[6.76vw] md:text-[2.2rem] mx-auto">
               You Create. <span className="text-blue-600 font-extrabold">SWORD</span> Pays.
             </p>
           </div>
@@ -177,7 +177,7 @@ export default function Home() {
               <a key={title} href="https://swordpay.me" target="_blank" rel="noopener noreferrer"
                 className="bg-white border border-[#E4EAF5] rounded-xl p-3 md:p-8 hover:border-blue-400 transition-all duration-300 group block no-underline text-center">
                 <div className={`w-9 h-9 md:w-20 md:h-20 ${bg} rounded-xl md:rounded-2xl flex items-center justify-center text-xl md:text-4xl mb-2 md:mb-4 mx-auto`}>{icon}</div>
-                <h3 className="text-[10px] md:text-base font-bold text-[#1a2340] leading-tight">{title}</h3>
+                <h3 className="text-[10.5px] md:text-base font-bold text-[#1a2340] leading-tight">{title}</h3>
               </a>
             ))}
           </div>
