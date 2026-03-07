@@ -64,7 +64,7 @@ function App() {
     left: "50%",
     transform: "translateX(-50%)",
     zIndex: 50,
-    transition: "top 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.2s",
+    transition: "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.2s",
   };
 
   return (
