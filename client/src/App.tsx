@@ -1,5 +1,5 @@
 import { Switch, Route, useLocation } from "wouter";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -29,32 +29,49 @@ function App() {
   const [location] = useLocation();
   const isCreatorPage = location.startsWith("/creator/");
   const [btnTop, setBtnTop] = useState(340);
-  const bottomDockedTop = typeof window !== "undefined" ? window.innerHeight - 72 : 700;
+  const [gliding, setGliding] = useState(false);
+  const initialTopRef = useRef(340);
+  const triggeredRef = useRef(false);
 
   useEffect(() => {
-    const getBottomTop = () => window.innerHeight - 72;
+    const bottomTop = () => window.innerHeight - 72;
 
-    const measure = () => {
+    // Set initial resting position instantly (no animation)
+    const init = () => {
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
-      // No hero on this page — always dock to bottom
-      if (!hero) { setBtnTop(getBottomTop()); return; }
+      if (!hero) {
+        setBtnTop(bottomTop());
+        triggeredRef.current = true;
+        return;
+      }
       const rect = hero.getBoundingClientRect();
-      const heroPos = Math.round(rect.bottom) - 52;
-      const initialTop = Math.min(heroPos, window.innerHeight - 64);
-      // Glide to bottom once hero bottom scrolls up past the button
-      if (rect.bottom < initialTop + 48) {
-        setBtnTop(getBottomTop());
-      } else {
-        if (window.scrollY === 0) setBtnTop(initialTop);
+      const top = Math.min(Math.round(rect.bottom) - 52, window.innerHeight - 64);
+      initialTopRef.current = top;
+      setBtnTop(top);
+      setGliding(false);
+      triggeredRef.current = false;
+    };
+
+    // On scroll: detect the moment the hero scrolls past the button and trigger glide
+    const onScroll = () => {
+      if (triggeredRef.current) return;
+      const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
+      if (!hero) return;
+      const rect = hero.getBoundingClientRect();
+      if (rect.bottom <= initialTopRef.current + 48) {
+        triggeredRef.current = true;
+        setGliding(true);
+        setBtnTop(bottomTop());
       }
     };
-    const timer = setTimeout(measure, 150);
-    window.addEventListener("scroll", measure, { passive: true });
-    window.addEventListener("resize", measure);
+
+    const timer = setTimeout(init, 150);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", init);
     return () => {
       clearTimeout(timer);
-      window.removeEventListener("scroll", measure);
-      window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", init);
     };
   }, []);
 
@@ -64,7 +81,7 @@ function App() {
     left: "50%",
     transform: "translateX(-50%)",
     zIndex: 50,
-    transition: "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.2s",
+    transition: gliding ? "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "opacity 0.2s",
   };
 
   return (
