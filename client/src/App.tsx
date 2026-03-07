@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { FloatingWidget } from "@/components/floating-widget";
 import Home from "@/pages/home";
 import Explore from "@/pages/explore";
 import CreatorPage from "@/pages/creator";
@@ -38,6 +39,10 @@ function App() {
           {!isCreatorPage && <Footer />}
         </div>
         <Toaster />
+        {/* Start Now — fixed center bottom, outside all transforms for true fixed on mobile */}
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px] lg:w-[198px]" />
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );
