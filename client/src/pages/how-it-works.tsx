@@ -123,58 +123,58 @@ export default function HowItWorks() {
         </div>
       )}
       <section className="bg-card border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[72px] md:py-5 text-center">
-          <h1 className="text-[29.4px] md:text-[58px] font-bold mb-1 md:mb-2 tracking-tight">
+        <div className="max-w-7xl mx-auto px-[4vw] sm:px-6 lg:px-8 py-[20vw] md:py-5 text-center">
+          <h1 className="text-[8.2vw] md:text-[58px] font-bold mb-[1vw] md:mb-2 tracking-tight">
             {t('howItWorks.title')}
           </h1>
-          <p className="text-[25.2px] font-bold text-blue-600 max-w-xl mx-auto">
+          <p className="text-[7vw] md:text-[25px] font-bold text-blue-600 max-w-xl mx-auto">
             Easy setup, no technical skills needed.
           </p>
         </div>
       </section>
 
       {/* Three Simple Steps cards */}
-      <section className="py-14 md:py-10 px-3 md:px-8 mb-2 md:mb-0">
+      <section className="py-[15.6vw] md:py-10 px-[3vw] md:px-8 mb-2 md:mb-0">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-3 gap-3 md:gap-10">
+          <div className="grid grid-cols-3 gap-[3.3vw] md:gap-10">
             {[
               {
                 step: "Step 01", title: "Add File",
                 desc: "Upload any digital file.",
-                icon: <svg className="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>,
+                icon: <svg className="w-[4.5vw] h-[4.5vw] md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>,
               },
               {
                 step: "Step 02", title: "Share Link",
                 desc: "Get a payment link instantly.",
-                icon: <svg className="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
+                icon: <svg className="w-[4.5vw] h-[4.5vw] md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
               },
               {
                 step: "Step 03", title: "Get Paid",
                 desc: "Money goes straight to you.",
-                icon: <svg className="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>,
+                icon: <svg className="w-[4.5vw] h-[4.5vw] md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>,
               },
             ].map(({ step, title, desc, icon }) => (
-              <div key={step} className="border border-[#E4EAF5] rounded-xl p-3 md:p-6 hover:border-blue-500 transition-all duration-300 group bg-white min-h-[150px] md:min-h-0 flex flex-col justify-center">
-                <p className="text-[9.5px] md:text-[12px] font-extrabold text-blue-600 tracking-widest uppercase mb-1 md:mb-3">{step}</p>
-                <div className="w-7 h-7 md:w-11 md:h-11 bg-blue-50 rounded-lg md:rounded-xl flex items-center justify-center text-blue-600 mb-1 md:mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">{icon}</div>
-                <h3 className="text-[14.7px] md:text-xl font-extrabold text-[#1a2340] mb-0.5 md:mb-1.5">{title}</h3>
-                <p className="text-[12px] md:text-[16px] font-bold text-[#6B7A99] leading-tight">{desc}</p>
+              <div key={step} className="border border-[#E4EAF5] rounded-[2.5vw] md:rounded-xl p-[3.3vw] md:p-6 hover:border-blue-500 transition-all duration-300 group bg-white min-h-[42vw] md:min-h-0 flex flex-col justify-center">
+                <p className="text-[2.6vw] md:text-[12px] font-extrabold text-blue-600 tracking-widest uppercase mb-[1vw] md:mb-3">{step}</p>
+                <div className="w-[7vw] h-[7vw] md:w-11 md:h-11 bg-blue-50 rounded-[1.5vw] md:rounded-xl flex items-center justify-center text-blue-600 mb-[1vw] md:mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">{icon}</div>
+                <h3 className="text-[4.1vw] md:text-xl font-extrabold text-[#1a2340] mb-[0.5vw] md:mb-1.5">{title}</h3>
+                <p className="text-[3.3vw] md:text-[16px] font-bold text-[#6B7A99] leading-tight">{desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="pt-10 md:pt-[20px] pb-44 md:pb-0" data-testid="steps-section">
-        <div className="max-w-7xl mx-auto px-3 md:px-8">
-          <h2 className="text-[24.2px] md:text-[58px] font-bold text-center mb-3 md:mb-[32px]">
+      <section className="pt-[9vw] md:pt-[20px] pb-[49vw] md:pb-0" data-testid="steps-section">
+        <div className="max-w-7xl mx-auto px-[3vw] md:px-8">
+          <h2 className="text-[6.7vw] md:text-[58px] font-bold text-center mb-[3vw] md:mb-[32px]">
             {t('howItWorks.steps')}
           </h2>
-          <div className="grid grid-cols-3 gap-3 md:gap-12">
+          <div className="grid grid-cols-3 gap-[3.3vw] md:gap-12">
             {/* Step 1: Set Price with Video */}
-            <div className="text-center space-y-1">
-              <h3 className="text-[13.65px] md:text-[25px] font-bold">{t('howItWorks.setPrice')}</h3>
-              <div data-video onPointerDown={() => setFullscreenVideo("/set-price.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[130px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer" style={{touchAction:"manipulation"}}>
+            <div className="text-center space-y-[2vw] md:space-y-1">
+              <h3 className="text-[3.8vw] md:text-[25px] font-bold">{t('howItWorks.setPrice')}</h3>
+              <div data-video onPointerDown={() => setFullscreenVideo("/set-price.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[36vw] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer" style={{touchAction:"manipulation"}}>
                 <video className="w-full h-auto" autoPlay loop muted playsInline>
                   <source src="/set-price.mp4" type="video/mp4" />
                 </video>
@@ -182,9 +182,9 @@ export default function HowItWorks() {
             </div>
 
             {/* Step 2: Add File with Video */}
-            <div className="text-center space-y-1">
-              <h3 className="text-[13.65px] md:text-[25px] font-bold">{t('howItWorks.addFile')}</h3>
-              <div data-video onPointerDown={() => setFullscreenVideo("/add-file.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[130px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer" style={{touchAction:"manipulation"}}>
+            <div className="text-center space-y-[2vw] md:space-y-1">
+              <h3 className="text-[3.8vw] md:text-[25px] font-bold">{t('howItWorks.addFile')}</h3>
+              <div data-video onPointerDown={() => setFullscreenVideo("/add-file.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[36vw] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer" style={{touchAction:"manipulation"}}>
                 <video className="w-full h-auto" autoPlay loop muted playsInline>
                   <source src="/add-file.mp4" type="video/mp4" />
                 </video>
@@ -192,9 +192,9 @@ export default function HowItWorks() {
             </div>
 
             {/* Step 3: Share with Video */}
-            <div className="text-center space-y-1">
-              <h3 className="text-[13.65px] md:text-[25px] font-bold">{t('howItWorks.share')}</h3>
-              <div data-video onPointerDown={() => setFullscreenVideo("/share.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[130px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer" style={{touchAction:"manipulation"}}>
+            <div className="text-center space-y-[2vw] md:space-y-1">
+              <h3 className="text-[3.8vw] md:text-[25px] font-bold">{t('howItWorks.share')}</h3>
+              <div data-video onPointerDown={() => setFullscreenVideo("/share.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[36vw] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer" style={{touchAction:"manipulation"}}>
                 <video className="w-full h-auto" autoPlay loop muted playsInline>
                   <source src="/share.mp4" type="video/mp4" />
                 </video>
