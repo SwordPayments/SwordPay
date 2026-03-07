@@ -75,13 +75,18 @@ function App() {
       const rect = hero.getBoundingClientRect();
       if (rect.bottom <= initialTopRef.current + 48) {
         triggeredRef.current = true;
+        // Step 1: enable transition on current position
         setGliding(true);
-        // Animate to near-bottom using top, then switch to true CSS bottom after animation
-        setBtnTop(window.innerHeight - 80);
-        setTimeout(() => {
-          setGliding(false);
-          setDocked(true);
-        }, 2100);
+        // Step 2: double-rAF ensures transition is committed to DOM before position changes
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setBtnTop(window.innerHeight - 80);
+            setTimeout(() => {
+              setGliding(false);
+              setDocked(true);
+            }, 2200);
+          });
+        });
       }
     };
 
