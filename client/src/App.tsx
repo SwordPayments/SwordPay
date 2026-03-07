@@ -56,11 +56,15 @@ function App() {
       el.style.pointerEvents = d < 100 ? "none" : "auto";
     };
 
-    // Non-home pages: immediately dock at bottom, never glide
+    // Non-home pages: set DOM position directly BEFORE showing — no React re-render delay
     if (location !== "/") {
       triggeredRef.current = true;
+      el.style.top = "";
+      el.style.bottom = "24px";
+      el.style.transform = "translateX(-50%)";
+      el.style.transition = "none";
       setDocked(true);
-      updateOpacity();
+      updateOpacity(); // safe now — DOM is already at correct position
       window.addEventListener("scroll", updateOpacity, { passive: true });
       return () => window.removeEventListener("scroll", updateOpacity);
     }
@@ -69,6 +73,10 @@ function App() {
     const init = () => {
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
       if (!hero || window.scrollY > 0) {
+        // Set DOM directly before showing
+        el.style.top = "";
+        el.style.bottom = "24px";
+        el.style.transform = "translateX(-50%)";
         setDocked(true);
         triggeredRef.current = true;
         updateOpacity();
@@ -77,6 +85,10 @@ function App() {
       const rect = hero.getBoundingClientRect();
       const top = Math.max(Math.min(Math.round(rect.bottom) - 52, window.innerHeight - 64), 60);
       initialTopRef.current = top;
+      // Set DOM directly before showing — button appears at exact correct position
+      el.style.bottom = "";
+      el.style.top = `${top}px`;
+      el.style.transform = "translateX(-50%)";
       setBtnTop(top);
       setDocked(false);
       updateOpacity();
