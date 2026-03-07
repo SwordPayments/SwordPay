@@ -28,10 +28,9 @@ function Router() {
 function App() {
   const [location] = useLocation();
   const isCreatorPage = location.startsWith("/creator/");
-  const [btnTop, setBtnTop] = useState(340);
-  const [gliding, setGliding] = useState(false);
   const [docked, setDocked] = useState(false);
   const [nearBottom, setNearBottom] = useState(false);
+  const btnRef = useRef<HTMLDivElement>(null);
   const initialTopRef = useRef(340);
   const triggeredRef = useRef(false);
 
@@ -46,47 +45,35 @@ function App() {
 
     // Set initial resting position instantly (no animation) — only when at top
     const init = () => {
+      const el = btnRef.current;
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
-      if (!hero) {
-        setDocked(true);
-        triggeredRef.current = true;
-        return;
-      }
-      // If already scrolled past hero, keep button docked at bottom
-      if (triggeredRef.current || window.scrollY > 0) {
-        setDocked(true);
-        triggeredRef.current = true;
-        return;
-      }
+      if (!hero || !el) { setDocked(true); triggeredRef.current = true; return; }
+      if (triggeredRef.current || window.scrollY > 0) { setDocked(true); triggeredRef.current = true; return; }
       const rect = hero.getBoundingClientRect();
       const top = Math.max(Math.min(Math.round(rect.bottom) - 52, window.innerHeight - 64), 60);
       initialTopRef.current = top;
-      setBtnTop(top);
-      setGliding(false);
+      el.style.transition = "none";
+      el.style.top = `${top}px`;
+      el.style.bottom = "auto";
       setDocked(false);
       triggeredRef.current = false;
     };
 
-    // On scroll: trigger glide when hero scrolls past the button
+    // Direct DOM animation — bypasses React batching, works on iOS Safari
     const onScroll = () => {
       if (triggeredRef.current) return;
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
-      if (!hero) return;
+      const el = btnRef.current;
+      if (!hero || !el) return;
       const rect = hero.getBoundingClientRect();
       if (rect.bottom <= initialTopRef.current + 48) {
         triggeredRef.current = true;
-        // Step 1: enable transition on current position
-        setGliding(true);
-        // Step 2: double-rAF ensures transition is committed to DOM before position changes
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            setBtnTop(window.innerHeight - 80);
-            setTimeout(() => {
-              setGliding(false);
-              setDocked(true);
-            }, 2200);
-          });
-        });
+        el.style.transition = "none";
+        el.style.top = `${initialTopRef.current}px`;
+        void el.offsetHeight; // force reflow — critical for iOS Safari
+        el.style.transition = "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+        el.style.top = `${window.innerHeight - 80}px`;
+        setTimeout(() => setDocked(true), 2100);
       }
     };
 
@@ -104,14 +91,7 @@ function App() {
   // After glide: use true `bottom: 24px` so it always sits above mobile browser chrome
   const btnStyle = docked
     ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50, opacity: nearBottom ? 0 : 1, transition: "opacity 0.3s", pointerEvents: nearBottom ? "none" as const : "auto" as const }
-    : {
-        position: "fixed" as const,
-        top: btnTop,
-        left: "50%",
-        transform: "translateX(-50%)",
-        zIndex: 50,
-        transition: gliding ? "top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)" : "opacity 0.2s",
-      };
+    : { position: "fixed" as const, top: 340, left: "50%", transform: "translateX(-50%)", zIndex: 50 };
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -125,7 +105,7 @@ function App() {
         </div>
         <Toaster />
         {/* Start Now — follows hero, then docks to bottom of screen */}
-        <div data-start-now style={btnStyle}>
+        <div ref={btnRef} data-start-now style={btnStyle}>
           <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px] lg:w-[198px]" />
         </div>
       </TooltipProvider>

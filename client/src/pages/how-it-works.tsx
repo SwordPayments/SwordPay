@@ -161,7 +161,7 @@ export default function HowItWorks() {
             {/* Step 1: Set Price with Video */}
             <div className="text-center space-y-1">
               <h3 className="text-[13.65px] md:text-[25px] font-bold">{t('howItWorks.setPrice')}</h3>
-              <div data-video onMouseDown={() => setFullscreenVideo("/set-price.mp4")} onTouchStart={() => setFullscreenVideo("/set-price.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[130px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer">
+              <div data-video onPointerDown={() => setFullscreenVideo("/set-price.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[130px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer" style={{touchAction:"manipulation"}}>
                 <video className="w-full h-auto" autoPlay loop muted playsInline>
                   <source src="/set-price.mp4" type="video/mp4" />
                 </video>
@@ -171,7 +171,7 @@ export default function HowItWorks() {
             {/* Step 2: Add File with Video */}
             <div className="text-center space-y-1">
               <h3 className="text-[13.65px] md:text-[25px] font-bold">{t('howItWorks.addFile')}</h3>
-              <div data-video onMouseDown={() => setFullscreenVideo("/add-file.mp4")} onTouchStart={() => setFullscreenVideo("/add-file.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[130px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer">
+              <div data-video onPointerDown={() => setFullscreenVideo("/add-file.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[130px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer" style={{touchAction:"manipulation"}}>
                 <video className="w-full h-auto" autoPlay loop muted playsInline>
                   <source src="/add-file.mp4" type="video/mp4" />
                 </video>
@@ -181,7 +181,7 @@ export default function HowItWorks() {
             {/* Step 3: Share with Video */}
             <div className="text-center space-y-1">
               <h3 className="text-[13.65px] md:text-[25px] font-bold">{t('howItWorks.share')}</h3>
-              <div data-video onMouseDown={() => setFullscreenVideo("/share.mp4")} onTouchStart={() => setFullscreenVideo("/share.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[130px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer">
+              <div data-video onPointerDown={() => setFullscreenVideo("/share.mp4")} className="rounded-xl overflow-hidden shadow-lg max-w-[130px] md:max-w-[202px] mx-auto transition-transform duration-300 hover:scale-[1.05] cursor-pointer" style={{touchAction:"manipulation"}}>
                 <video className="w-full h-auto" autoPlay loop muted playsInline>
                   <source src="/share.mp4" type="video/mp4" />
                 </video>
