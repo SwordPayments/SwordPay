@@ -48,11 +48,23 @@ function App() {
       el.style.pointerEvents = d < 100 ? "none" : "auto";
     };
 
+    // Non-home pages: always docked at bottom immediately, no glide
+    if (location !== "/") {
+      triggeredRef.current = true;
+      setDocked(true);
+      setGliding(false);
+      setBtnReady(true);
+      updateOpacity();
+      window.addEventListener("scroll", updateOpacity, { passive: true });
+      return () => window.removeEventListener("scroll", updateOpacity);
+    }
+
+    // Home page: reset for potential glide
+    triggeredRef.current = false;
+
     const init = () => {
-      if (triggeredRef.current) { setDocked(true); setBtnReady(true); return; }
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
-      if (!hero) { setDocked(true); triggeredRef.current = true; setBtnReady(true); return; }
-      if (window.scrollY > 0) { setDocked(true); triggeredRef.current = true; setBtnReady(true); return; }
+      if (!hero || window.scrollY > 0) { setDocked(true); triggeredRef.current = true; setBtnReady(true); return; }
       const rect = hero.getBoundingClientRect();
       const top = Math.max(Math.min(Math.round(rect.bottom) - 52, window.innerHeight - 64), 60);
       initialTopRef.current = top;
@@ -96,7 +108,7 @@ function App() {
       window.removeEventListener("scroll", updateOpacity);
       window.removeEventListener("resize", init);
     };
-  }, []);
+  }, [location]); // re-run on page navigation
 
   // Button hidden until init() fires — prevents flash at wrong position on any page
   const btnStyle = docked
