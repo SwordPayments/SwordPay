@@ -25,6 +25,10 @@ function Router() {
   );
 }
 
+const isIOS =
+  typeof navigator !== "undefined" &&
+  /iP(hone|od|ad)/i.test(navigator.userAgent);
+
 function App() {
   const [location] = useLocation();
   const isCreatorPage = location.startsWith("/creator/");
@@ -48,6 +52,10 @@ function App() {
     const el = btnRef.current;
     if (!el) return;
 
+    const isIOS =
+      typeof navigator !== "undefined" &&
+      /iP(hone|od|ad)/i.test(navigator.userAgent);
+
     triggeredRef.current = false;
 
     // Opacity managed entirely via DOM — no React state, safe from re-render overrides
@@ -56,6 +64,21 @@ function App() {
       el.style.opacity = d < 100 ? "0" : "1";
       el.style.pointerEvents = d < 100 ? "none" : "auto";
     };
+
+    // iOS: always docked at bottom, no glide animation (prevents jerky behavior)
+    if (isIOS) {
+      triggeredRef.current = true;
+      el.style.top = "";
+      el.style.bottom = "24px";
+      el.style.transform = "translateX(-50%)";
+      el.style.transition = "none";
+      setDocked(true);
+      updateOpacity();
+      window.addEventListener("scroll", updateOpacity, { passive: true });
+      return () => {
+        window.removeEventListener("scroll", updateOpacity);
+      };
+    }
 
     // Non-home pages: set DOM position directly BEFORE showing — no React re-render delay
     if (location !== "/") {
@@ -104,33 +127,55 @@ function App() {
       if (rect.bottom <= initialTopRef.current + 48) {
         triggeredRef.current = true;
 
-        // rAF animation — works on ALL browsers including iOS Safari.
-        // CSS top transitions are unreliable on iOS; rAF bypasses the CSS engine entirely.
-        // CRITICAL: startTime is set on the FIRST rAF callback, not the scroll event.
-        // On iOS, rAF is suspended during momentum scrolling — if we used performance.now()
-        // at scroll time, progress would jump to 1.0 on the first frame (instant snap).
-        const isIPhone = /iphone/i.test(navigator.userAgent);
-        const durationMs = isIPhone ? 4000 : 2000;
+        const isIPhone = /iPhone/i.test(navigator.userAgent);
+        const durationMs = isIPhone ? 700 : 2000;
         const startTop = initialTopRef.current;
         const endTop = window.innerHeight - 80;
         let startTime = -1;
 
-        const animate = (now: number) => {
-          if (startTime < 0) startTime = now; // begin timing from first actual frame
-          const progress = Math.min((now - startTime) / durationMs, 1);
-          // easeOutCubic — matches cubic-bezier(0.25, 0.46, 0.45, 0.94) feel
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.style.top = `${startTop + (endTop - startTop) * eased}px`;
-          if (progress < 1) {
-            rafRef.current = requestAnimationFrame(animate);
-          } else {
-            rafRef.current = null;
-            el.style.top = "";
-            el.style.bottom = "24px";
-            setDocked(true);
-          }
-        };
-        rafRef.current = requestAnimationFrame(animate);
+        if (isIPhone) {
+          const delta = endTop - startTop;
+
+          const animate = (now: number) => {
+            if (startTime < 0) startTime = now;
+            const progress = Math.min((now - startTime) / durationMs, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const offset = delta * eased;
+
+            // iPhone: animate only with transform (GPU), keep `top` static
+            el.style.transform = `translateX(-50%) translateY(${offset}px)`;
+
+            if (progress < 1) {
+              rafRef.current = requestAnimationFrame(animate);
+            } else {
+              rafRef.current = null;
+              el.style.top = "";
+              el.style.bottom = "24px";
+              el.style.transform = "translateX(-50%)";
+              setDocked(true);
+            }
+          };
+
+          rafRef.current = requestAnimationFrame(animate);
+        } else {
+          const animate = (now: number) => {
+            if (startTime < 0) startTime = now; // begin timing from first actual frame
+            const progress = Math.min((now - startTime) / durationMs, 1);
+            // easeOutCubic — matches cubic-bezier(0.25, 0.46, 0.45, 0.94) feel
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.style.top = `${startTop + (endTop - startTop) * eased}px`;
+            if (progress < 1) {
+              rafRef.current = requestAnimationFrame(animate);
+            } else {
+              rafRef.current = null;
+              el.style.top = "";
+              el.style.bottom = "24px";
+              setDocked(true);
+            }
+          };
+
+          rafRef.current = requestAnimationFrame(animate);
+        }
       }
     };
 
@@ -165,9 +210,9 @@ function App() {
           {!isCreatorPage && <Footer />}
         </div>
         <Toaster />
-        {/* Start Now — glides to bottom on home page, always docked on other pages */}
+        {/* Start Now — glides to bottom on home page, always docked on iOS + other pages */}
         <div ref={btnRef} data-start-now style={btnStyle}>
-          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px] lg:w-[198px]" />
+          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out w-[126px] sm:w-[165px] lg:w-[198px]" />
         </div>
       </TooltipProvider>
     </QueryClientProvider>
