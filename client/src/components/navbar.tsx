@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Search, Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+const isIOS =
+  typeof navigator !== "undefined" &&
+  /iphone|ipad|ipod/i.test(navigator.userAgent);
+
 export function Navbar() {
   const [location] = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +23,7 @@ export function Navbar() {
 
           <div className="flex items-center gap-0 shrink-0">
             <Link href="/how-it-works">
-              <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-2 sm:px-6 rounded-full text-[10px] sm:text-base">
+              <Button size="sm" className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-2 sm:px-6 rounded-full sm:text-base ${isIOS ? "text-[11px]" : "text-[10px]"}`}>
                 How it works
               </Button>
             </Link>
