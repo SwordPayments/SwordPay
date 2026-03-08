@@ -109,15 +109,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" data-testid="page-home">
-      <section className="relative min-h-[260px] md:min-h-[600px] pb-16 md:pb-20" data-testid="hero-section">
-        <div className="absolute inset-0">
-          <img
-            src="/images/hero-bg.png"
-            alt=""
-            className="w-full h-full object-cover object-center md:object-top"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
-        </div>
+      <section
+        className="relative min-h-[260px] md:min-h-[600px] pb-16 md:pb-20 bg-no-repeat bg-top bg-black bg-[length:100%_auto] md:bg-cover md:bg-[center_top]"
+        style={{ backgroundImage: "url('/images/hero-bg.png')" }}
+        data-testid="hero-section"
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-36">
           <div className="flex items-start">
             <div className="flex-1 min-w-0">
