@@ -122,11 +122,11 @@ export default function Home() {
           <div className="flex items-start">
             <div className="flex-1 min-w-0">
               <div className="mb-6">
-                <h1 className="text-[13.76vw] md:text-[5.02rem] font-bold leading-tight tracking-tight mb-4">
+                <h1 className="text-[13.76vw] md:text-[6.53rem] font-bold leading-tight tracking-tight mb-4">
                   <span className="block"><span className="text-blue-500">Turn</span><span className="text-white"> your </span><span className="text-blue-500">Content</span></span>
                   <span className="block"><span className="text-white">into </span><span className="text-blue-500">Cash</span></span>
                 </h1>
-                <p className="text-[9.7vw] md:text-[5.72rem] font-bold text-white leading-tight tracking-tight mb-4">
+                <p className="text-[9.7vw] md:text-[5.62rem] font-bold text-white leading-tight tracking-tight mb-4">
                   Post Anywhere.<br />
                   Earn Everywhere.
                 </p>
