@@ -29,7 +29,7 @@ export function Navbar() {
                 style={{ animation: 'button-flash 3s linear infinite', animationDelay: '1.5s' }}
               >
                 <span style={{ animation: 'button-text-flash 3s linear infinite', animationDelay: '1.5s', display: 'inline-block' }}>
-                  How it works
+                  {t('nav.howItWorks')}
                 </span>
               </Button>
             </Link>
