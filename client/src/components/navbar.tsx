@@ -25,7 +25,7 @@ export function Navbar() {
             <Link href="/how-it-works">
               <Button
                 size="sm"
-                className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-2 sm:px-6 rounded-full sm:text-base ${isIOS ? "text-[11px]" : "text-[10px]"}`}
+                className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-2 sm:px-6 rounded-full sm:text-base ${isIOS ? "text-[11px] min-[414px]:text-[13px]" : "text-[10px]"}`}
                 style={{ animation: 'button-flash 3s linear infinite', animationDelay: '1.5s' }}
               >
                 <span style={{ animation: 'button-text-flash 3s linear infinite', animationDelay: '1.5s', display: 'inline-block' }}>
