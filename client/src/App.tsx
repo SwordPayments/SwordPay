@@ -75,7 +75,20 @@ function App() {
       return () => window.removeEventListener("scroll", updateOpacity);
     }
 
-    // Home page: position just below hero
+    // iOS: skip hero-position logic entirely — always dock at bottom immediately
+    if (isIOS) {
+      el.style.top = "";
+      el.style.bottom = "24px";
+      el.style.transform = "translateX(-50%)";
+      el.style.transition = "none";
+      triggeredRef.current = true;
+      setDocked(true);
+      updateOpacity();
+      window.addEventListener("scroll", updateOpacity, { passive: true });
+      return () => window.removeEventListener("scroll", updateOpacity);
+    }
+
+    // Home page: position just below hero (non-iOS)
     const init = () => {
       const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
       if (!hero || window.scrollY > 0) {
