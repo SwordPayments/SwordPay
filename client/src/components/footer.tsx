@@ -233,6 +233,7 @@ Contact Us
 For any questions regarding our Cookie Policy, please contact support@swordpay.io`;
 
 function ContactModal({ onClose }: { onClose: () => void }) {
+  const { t } = useTranslation();
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
       <div
@@ -240,19 +241,19 @@ function ContactModal({ onClose }: { onClose: () => void }) {
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h2 className="text-xl font-black text-[#1e3a8a]">Contact</h2>
+          <h2 className="text-xl font-black text-[#1e3a8a]">{t('contact.title')}</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
         </div>
         <div className="px-6 py-6 space-y-2 text-gray-700">
           <p className="font-black text-[#1e3a8a] text-lg">SWORDPAY</p>
-          <p>Tampa, FL</p>
-          <p>USA</p>
-          <p>+1.888.596.9279</p>
+          <p>{t('contact.address1')}</p>
+          <p>{t('contact.address2')}</p>
+          <p>{t('contact.phone')}</p>
           <a href="mailto:Support@swordpay.io" className="block text-blue-600 hover:underline">Support@swordpay.io</a>
         </div>
         <div className="px-6 py-4 border-t border-gray-100 text-right">
           <button onClick={onClose} className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-            Close
+            {t('contact.close')}
           </button>
         </div>
       </div>

@@ -75,7 +75,11 @@
     "card2Title": "Link teilen",
     "card2Desc": "Erhalte sofort einen Zahlungslink.",
     "card3Title": "Bezahlt werden",
-    "card3Desc": "Das Geld geht direkt an dich."
+    "card3Desc": "Das Geld geht direkt an dich.",
+    "step1": "Schritt 01",
+    "step2": "Schritt 02",
+    "step3": "Schritt 03",
+    "itsThisSimple": "So einfach ist das"
   },
   "explore": {
     "title": "Creators entdecken",
@@ -116,11 +120,19 @@
     "address1": "Tampa, FL",
     "address2": "USA",
     "phone": "+1.888.596.9279",
-    "close": "Schließen"
+    "close": "Schließen",
+    "searching": "Suche läuft...",
+    "errorLoad": "Ersteller können gerade nicht geladen werden. Bitte versuche es später erneut."
   },
   "legal": {
     "terms": "Nutzungsbedingungen\nwww.swordpay.com\nGültigkeitsdatum: 8. Oktober 2024\n\nEinführung\nWillkommen auf www.swordpay.com. Diese Website wird von EXCALIBUR ASCENSION betrieben. Mit dem Besuch unserer Website stimmst du den folgenden Bedingungen zu.\n\nBITTE LESE DIE FOLGENDEN BEDINGUNGEN SORGFÄLTIG DURCH, BEVOR DU DIE DIENSTE NUTZT.\n\n1. Änderungen - Wir behalten uns das Recht vor, Dienste nach eigenem Ermessen hinzuzufügen oder einzustellen.\n2. Berechtigung - Sword Pay ist auf Parteien beschränkt, die rechtsgültige Verträge im Internet abschließen können.\n3. Registrierung - KYC erforderlich. Ein Konto pro Person. Der Anbieter kann Konten bei Verstößen sperren.\n4. Zahlung - Akzeptiert Visa und MasterCard. Nutzer zahlen Guthaben als Sword Credits ein. Der Anbieter haftet nicht für falsche Überweisungsdetails.\n5. Sword Credits - Virtuelle Artikel zum Kauf digitaler Güter. 1 Sword Credit = 1 USD. Keine Rückerstattung für digitale Güter.\n6. Erlaubte Nutzung - Nur für erlaubte Zwecke gemäß den geltenden Gesetzen.\n7. Eingeschränkte Lizenz - Kein Weiterverkauf, keine Modifikation, kein Kopieren oder Data Mining von Website-Inhalten.\n8. Konten - Nutzer sind für die Vertraulichkeit ihrer Zugangsdaten verantwortlich.\n9. Geistiges Eigentum - Keine Rechte an Urheberrechten, Marken oder anderen geistigen Eigentumsrechten.\n10. Überwachung - Sword Pay kann Inhalte nach eigenem Ermessen überprüfen und entfernen.\n11. Haftungsausschluss - Keine Gewährleistung für Marktgängigkeit oder Eignung für einen bestimmten Zweck.\n12. Haftungsbeschränkung - Keine Haftung für entgangene Gewinne, mittelbare oder Folgeschäden.\n13. Freistellung - Nutzer stellen Sword Pay von Ansprüchen Dritter frei.\n14. Streitbeilegung - Zuerst Mediation. Deutsches Recht findet keine Anwendung; es gilt das Recht Englands und Wales.\n15. Datenschutz und Cookies - Siehe Datenschutzrichtlinie und Cookie-Richtlinie.\n16. Änderungen - Bedingungen können jederzeit aktualisiert werden.\n17. Elektronische Kommunikation - Der Besuch der Website gilt als Zustimmung zur elektronischen Kommunikation.\n18. Salvatorische Klausel - Ungültige Bedingungen berühren die Gültigkeit der übrigen nicht.\n19. Verbotene Aktivitäten - Keine illegalen Aktivitäten, Betrug oder Missbrauch der Plattform.\n20. Gebühren - Nutzer stimmen einer Gebühr von 10 % + 0,50 $ pro gesendeter FileShare zu.\n21. Kontakt - support@swordpay.io",
     "privacy": "Datenschutzrichtlinie\nwww.swordpay.com\nGültigkeitsdatum: 8. Oktober 2024\n\nEXCALIBUR ASCENSION (\"Sword Pay\") respektiert deine Privatsphäre und schützt deine persönlichen Daten.\n\nDATEN, DIE WIR ERFASSEN\n- Kontaktdaten: Name, E-Mail, Adresse, Telefonnummer.\n- Registrierungsdaten: Geburtsdatum, Benutzername, Passwort.\n- Profildaten: Interessen und Präferenzen.\n- Kommunikations- und Marketingdaten.\n- Kaufdaten: Bestellverlauf.\n- Gerätedaten: Betriebssystem, Browser, IP-Adresse, Standort.\n- Online-Aktivitäten: aufgerufene Seiten, Navigationspfade.\n- Cookies und ähnliche Technologien.\n\nWIE WIR DEINE DATEN VERWENDEN\n- Dienstleistungserbringung, Kontoverwaltung, Sicherheitswarnungen.\n- Direktmarketing-Kommunikation.\n- Forschung und Serviceverbesserung.\n- Betrugsprävention und rechtliche Compliance.\n\nMIT WEM WIR DEINE DATEN TEILEN\n- Tochtergesellschaften, Dienstleister, Werbepartner.\n- Behörden gemäß gesetzlichen Anforderungen.\n- Erwerber bei Fusionen oder Übernahmen.\n\nDEINE RECHTE\n- Zugriff, Berichtigung oder Löschung deiner Daten.\n- Abmeldung von Marketing-E-Mails.\n- Cookie-Verwaltung über Browsereinstellungen.\n- DSGVO-Rechte (Art. 15-21): Auskunft, Berichtigung, Löschung, Portabilität, Widerspruch.\n- CCPA: Wir verkaufen keine persönlichen Daten.\n\nKontakt: support@swordpay.io",
     "cookies": "Cookie-Richtlinie\nwww.swordpay.com\nGültigkeitsdatum: 8. Oktober 2024\n\nWas sind Cookies?\nCookies sind kleine Textdateien, die auf deinem Gerät gespeichert werden, wenn du eine Website besuchst.\n\nWie wir Cookies verwenden\nSwordPay verwendet Cookies, um:\n- Deine Sitzung aktiv zu halten.\n- Deine Einstellungen zu speichern.\n- Die Nutzung unserer Website zu analysieren.\n- Sicherheit und Betrugsprävention zu unterstützen.\n- Werbe- und Marketingfunktionen zu aktivieren.\n\nCookie-Typen\n- Essentielle Cookies: für Login und Zahlungen erforderlich.\n- Analyse-Cookies: helfen uns, das Besucherverhalten zu verstehen.\n- Präferenz-Cookies: speichern deine Einstellungen über Besuche hinweg.\n- Marketing-Cookies: zeigen relevante Werbung an.\n\nDrittanbieter-Cookies\nEinige Cookies werden von Google Analytics und Werbepartnern gesetzt. Bitte beachte deren Datenschutzrichtlinien.\n\nCookie-Verwaltung\nDu kannst Cookies über die Browsereinstellungen verwalten. Das Deaktivieren einiger Cookies kann die Funktionalität beeinträchtigen. Mehr unter www.allaboutcookies.org\n\nÄnderungen\nWir können diese Richtlinie jederzeit aktualisieren.\n\nKontakt: support@swordpay.io"
+  },
+  "creator": {
+    "notFound": "Ersteller nicht gefunden",
+    "notFoundSub": "Diese Erstellerseite existiert nicht oder wurde entfernt.",
+    "patrons": "Unterstützer",
+    "noProducts": "Noch keine Produkte verfügbar"
   }
 }

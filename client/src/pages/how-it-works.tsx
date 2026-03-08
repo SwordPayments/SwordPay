@@ -137,15 +137,15 @@ export default function HowItWorks() {
           <div className="grid grid-cols-3 gap-[3.3vw] md:gap-10">
             {[
               {
-                step: "Step 01", titleKey: "howItWorks.card1Title", descKey: "howItWorks.card1Desc",
+                step: t('howItWorks.step1'), titleKey: "howItWorks.card1Title", descKey: "howItWorks.card1Desc",
                 icon: <svg className="w-[4.5vw] h-[4.5vw] md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>,
               },
               {
-                step: "Step 02", titleKey: "howItWorks.card2Title", descKey: "howItWorks.card2Desc",
+                step: t('howItWorks.step2'), titleKey: "howItWorks.card2Title", descKey: "howItWorks.card2Desc",
                 icon: <svg className="w-[4.5vw] h-[4.5vw] md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
               },
               {
-                step: "Step 03", titleKey: "howItWorks.card3Title", descKey: "howItWorks.card3Desc",
+                step: t('howItWorks.step3'), titleKey: "howItWorks.card3Title", descKey: "howItWorks.card3Desc",
                 icon: <svg className="w-[4.5vw] h-[4.5vw] md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>,
               },
             ].map(({ step, titleKey, descKey, icon }) => (

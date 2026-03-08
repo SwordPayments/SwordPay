@@ -75,7 +75,11 @@
     "card2Title": "Partager le lien",
     "card2Desc": "Obtenez un lien de paiement instantanément.",
     "card3Title": "Être payé",
-    "card3Desc": "L'argent va directement chez vous."
+    "card3Desc": "L'argent va directement chez vous.",
+    "step1": "Étape 01",
+    "step2": "Étape 02",
+    "step3": "Étape 03",
+    "itsThisSimple": "C'est aussi simple"
   },
   "explore": {
     "title": "Explorer les créateurs",
@@ -116,11 +120,19 @@
     "address1": "Tampa, FL",
     "address2": "États-Unis",
     "phone": "+1.888.596.9279",
-    "close": "Fermer"
+    "close": "Fermer",
+    "searching": "Recherche en cours...",
+    "errorLoad": "Impossible de charger les créateurs. Veuillez réessayer plus tard."
   },
   "legal": {
     "terms": "Conditions générales\nwww.swordpay.com\nDate d'entrée en vigueur : 8 octobre 2024\n\nIntroduction\nBienvenue sur www.swordpay.com. Ce site est la propriété d'EXCALIBUR ASCENSION. En visitant notre site, vous acceptez d'être lié par les conditions suivantes.\n\nVEUILLEZ LIRE ATTENTIVEMENT LES CONDITIONS SUIVANTES AVANT D'UTILISER LES SERVICES.\n\n1. Modifications - Nous nous réservons le droit d'ajouter ou d'interrompre tout service à notre seule discrétion.\n2. Éligibilité - Sword Pay est limité aux parties pouvant légalement conclure des contrats sur Internet.\n3. Inscription - KYC requis. Un compte par personne. Le prestataire peut bloquer les comptes en cas d'infraction.\n4. Paiement - Accepte Visa et MasterCard. Les utilisateurs déposent des fonds sous forme de Sword Credits. Le prestataire n'est pas responsable des détails de transfert incorrects.\n5. Sword Credits - Articles virtuels pour acheter des biens numériques. 1 Sword Credit = 1 USD. Pas de remboursement sur les biens numériques.\n6. Utilisation autorisée - Uniquement pour des usages permis conformément aux lois applicables.\n7. Licence limitée - Pas de revente, modification, copie ou extraction de données du site.\n8. Comptes - Les utilisateurs sont responsables de la confidentialité de leurs identifiants.\n9. Propriété intellectuelle - Aucun droit accordé sur les droits d'auteur, marques ou autre propriété intellectuelle.\n10. Surveillance - Sword Pay peut examiner et supprimer du contenu à sa seule discrétion.\n11. Avis de non-responsabilité - Aucune garantie de qualité marchande ou d'adéquation à un usage particulier.\n12. Limitation de responsabilité - Aucune responsabilité pour pertes de profits, dommages indirects ou consécutifs.\n13. Indemnisation - Les utilisateurs indemnisent Sword Pay contre les réclamations de tiers.\n14. Résolution des litiges - Médiation d'abord. Régi par les lois d'Angleterre et du Pays de Galles.\n15. Confidentialité et cookies - Se référer à la Politique de confidentialité et à la Politique de cookies.\n16. Modifications - Les conditions peuvent être mises à jour à tout moment.\n17. Communications électroniques - La visite du site constitue un consentement aux communications électroniques.\n18. Divisibilité - Les conditions invalides n'affectent pas les autres.\n19. Activités interdites - Pas d'activité illégale, de fraude ou d'abus de la plateforme.\n20. Frais - Les utilisateurs acceptent des frais de 10 % + 0,50 $ par FileShare envoyé.\n21. Nous contacter - support@swordpay.io",
     "privacy": "Politique de confidentialité\nwww.swordpay.com\nDate d'entrée en vigueur : 8 octobre 2024\n\nEXCALIBUR ASCENSION (\"Sword Pay\") respecte votre vie privée et s'engage à protéger vos informations personnelles.\n\nINFORMATIONS QUE NOUS COLLECTONS\n- Données de contact : nom, e-mail, adresse, téléphone.\n- Données d'inscription : date de naissance, nom d'utilisateur, mot de passe.\n- Données de profil : intérêts et préférences.\n- Communications et données marketing.\n- Données d'achat : historique des commandes.\n- Données de l'appareil : OS, navigateur, adresse IP, localisation.\n- Activité en ligne : pages consultées, chemins de navigation.\n- Cookies et technologies similaires.\n\nCOMMENT NOUS UTILISONS VOS INFORMATIONS\n- Prestation de services, gestion de compte, alertes de sécurité.\n- Communications marketing directes.\n- Recherche et amélioration du service.\n- Prévention de la fraude et conformité légale.\n\nCOMMENT NOUS PARTAGEONS VOS INFORMATIONS\n- Affiliés, prestataires de services, partenaires publicitaires.\n- Autorités selon les exigences légales.\n- Acquéreurs lors de fusions ou acquisitions.\n\nVOS DROITS\n- Accéder, corriger ou supprimer vos données.\n- Se désabonner des e-mails marketing.\n- Gérer les cookies via les paramètres du navigateur.\n- Droits RGPD (Art. 15-21) : accès, rectification, suppression, portabilité, opposition.\n- CCPA : nous ne vendons pas d'informations personnelles.\n\nContact : support@swordpay.io",
     "cookies": "Politique de cookies\nwww.swordpay.com\nDate d'entrée en vigueur : 8 octobre 2024\n\nQue sont les cookies ?\nLes cookies sont de petits fichiers texte stockés sur votre appareil lorsque vous visitez un site web.\n\nComment nous utilisons les cookies\nSwordPay utilise des cookies pour :\n- Maintenir votre session active.\n- Mémoriser vos préférences et paramètres.\n- Analyser l'utilisation de notre site web.\n- Assurer la sécurité et la prévention des fraudes.\n- Activer les fonctionnalités publicitaires et marketing.\n\nTypes de cookies\n- Cookies essentiels : nécessaires pour la connexion et les paiements.\n- Cookies d'analyse : nous aident à comprendre le comportement des visiteurs.\n- Cookies de préférence : mémorisent vos paramètres entre les visites.\n- Cookies marketing : affichent des publicités pertinentes.\n\nCookies tiers\nCertains cookies sont placés par Google Analytics et des partenaires publicitaires. Consultez leurs politiques de confidentialité pour plus d'informations.\n\nGestion des cookies\nVous pouvez gérer les cookies via les paramètres de votre navigateur. La désactivation de certains cookies peut affecter les fonctionnalités du site. En savoir plus sur www.allaboutcookies.org\n\nModifications\nNous pouvons mettre à jour cette politique à tout moment.\n\nContact : support@swordpay.io"
+  },
+  "creator": {
+    "notFound": "Créateur introuvable",
+    "notFoundSub": "Cette page de créateur n'existe pas ou a été supprimée.",
+    "patrons": "abonnés",
+    "noProducts": "Aucun produit disponible pour le moment"
   }
 }

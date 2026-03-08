@@ -75,7 +75,11 @@
     "card2Title": "Share Link",
     "card2Desc": "Get a payment link instantly.",
     "card3Title": "Get Paid",
-    "card3Desc": "Money goes straight to you."
+    "card3Desc": "Money goes straight to you.",
+    "step1": "Step 01",
+    "step2": "Step 02",
+    "step3": "Step 03",
+    "itsThisSimple": "It's this simple"
   },
   "explore": {
     "title": "Explore creators",
@@ -116,11 +120,19 @@
     "address1": "Tampa, FL",
     "address2": "USA",
     "phone": "+1.888.596.9279",
-    "close": "Close"
+    "close": "Close",
+    "searching": "Searching...",
+    "errorLoad": "Unable to load creators right now. Please try again later."
   },
   "legal": {
     "terms": "Terms and Conditions\nwww.swordpay.com\nEffective date: 8th October 2024\n\nIntroduction\nWelcome to www.swordpay.com. This website is owned and operated by EXCALIBUR ASCENSION. By visiting our site, you agree to be bound by the following terms and conditions.\n\nPLEASE READ THE FOLLOWING TERMS AND DISCLAIMERS CAREFULLY BEFORE USING THE SERVICES.\n\n1. Changes - We reserve the right to add/discontinue any service at our sole discretion.\n2. Eligibility - Sword Pay is limited to parties who can lawfully enter contracts on the Internet.\n3. Registration - KYC required. One account per person. Provider may lock accounts for violations.\n4. Payment - Accepts Visa, MasterCard. Users deposit funds into Sword Balance for Sword Credits. Provider not liable for incorrect transfer details.\n5. Sword Credits - Virtual items for purchasing digital goods. 1 Sword Credit = 1 USD. No refunds on digital goods.\n6. Permitted Use - Use only for permitted purposes in compliance with applicable laws.\n7. Limited License - No reselling, modifying, copying or data mining of site content.\n8. Accounts - Users responsible for maintaining confidentiality of account credentials.\n9. Intellectual Property - No rights granted to copyright, trademarks or other IP on the site.\n10. Monitoring - Sword Pay may review and remove content at sole discretion.\n11. Disclaimer - No warranties of merchantability or fitness for purpose.\n12. Limitation of Liability - No liability for lost profits, indirect or consequential damages.\n13. Indemnification - Users indemnify Sword Pay against third party claims.\n14. Dispute Resolution - Mediation first. Governed by laws of England and Wales.\n15. Privacy & Cookies - Refer to Privacy Policy and Cookie Policy.\n16. Changes - Terms may be updated at any time.\n17. Electronic Communications - Visiting site constitutes consent to electronic communications.\n18. Severability - Invalid terms do not affect remaining terms.\n19. Prohibited Activities - No illegal activity, fraud, or abuse of platform.\n20. Fees - Users agree to a 10% + $0.50 fee on each FileShare sent.\n21. Contact Us - support@swordpay.io",
     "privacy": "Privacy Policy\nwww.swordpay.com\nEffective date: 8th October 2024\n\nEXCALIBUR ASCENSION (\"Sword Pay\") respects your privacy and is committed to protecting your personal information.\n\nPERSONAL INFORMATION WE COLLECT\n- Contact data: name, email, address, phone number.\n- Registration data: date of birth, username, password.\n- Profile data: interests and preferences.\n- Communications and marketing data.\n- Purchase data: order history.\n- Device data: OS, browser, IP address, location.\n- Online activity: pages viewed, navigation paths.\n- Cookies and similar technologies.\n\nHOW WE USE YOUR INFORMATION\n- Service delivery, account management, security alerts.\n- Direct marketing communications.\n- Research and service improvement.\n- Fraud prevention and legal compliance.\n\nHOW WE SHARE YOUR INFORMATION\n- Affiliates, service providers, advertising partners.\n- Authorities as required by law.\n- Business transferees in mergers or acquisitions.\n\nYOUR RIGHTS\n- Access, correct, or delete your data.\n- Opt out of marketing emails.\n- Manage cookies through browser settings.\n- GDPR rights (Art. 15-21): access, correction, deletion, portability, objection.\n- CCPA: we do not sell personal information.\n\nContact: support@swordpay.io\nICO UK: (0044) 303 123 1113 or ico.org.uk",
     "cookies": "Cookie Policy\nwww.swordpay.com\nEffective date: 8th October 2024\n\nWhat Are Cookies\nCookies are small text files stored on your device when you visit a website.\n\nHow We Use Cookies\nSwordPay uses cookies to:\n- Keep you logged in during your session.\n- Remember your preferences and settings.\n- Analyze how our website is used.\n- Support security and fraud prevention.\n- Enable advertising and marketing features.\n\nTypes of Cookies\n- Essential Cookies: required for login and payments to work.\n- Analytics Cookies: help us understand visitor behaviour.\n- Preference Cookies: remember your settings across visits.\n- Marketing Cookies: deliver relevant advertisements.\n\nThird Party Cookies\nSome cookies are placed by Google Analytics and advertising partners. Please refer to their privacy policies for more information.\n\nManaging Cookies\nYou can control cookies through your browser settings. Disabling some cookies may affect website functionality. Learn more at www.allaboutcookies.org\n\nChanges\nWe may update this Cookie Policy at any time.\n\nContact: support@swordpay.io"
+  },
+  "creator": {
+    "notFound": "Creator not found",
+    "notFoundSub": "This creator page doesn't exist or has been removed.",
+    "patrons": "patrons",
+    "noProducts": "No products available yet"
   }
 }

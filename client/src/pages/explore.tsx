@@ -118,7 +118,7 @@ export default function Explore() {
             {showDropdown && searchTerm && (
               <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden">
                 {isLoading ? (
-                  <div className="px-4 py-3 text-sm text-gray-500">Searching...</div>
+                  <div className="px-4 py-3 text-sm text-gray-500">{t('contact.searching')}</div>
                 ) : filteredCreators && filteredCreators.length > 0 ? (
                   filteredCreators.map((creator) => (
                     <button
@@ -153,7 +153,7 @@ export default function Explore() {
         {error ? (
           <div className="text-center py-20" data-testid="error-explore">
             <AlertCircle className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
-            <p className="text-muted-foreground">Unable to load creators right now. Please try again later.</p>
+            <p className="text-muted-foreground">{t('contact.errorLoad')}</p>
           </div>
         ) : isLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

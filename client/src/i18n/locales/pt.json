@@ -75,7 +75,11 @@
     "card2Title": "Compartilhar Link",
     "card2Desc": "Obtenha um link de pagamento instantaneamente.",
     "card3Title": "Receber Pagamento",
-    "card3Desc": "O dinheiro vai direto para você."
+    "card3Desc": "O dinheiro vai direto para você.",
+    "step1": "Passo 01",
+    "step2": "Passo 02",
+    "step3": "Passo 03",
+    "itsThisSimple": "É simples assim"
   },
   "explore": {
     "title": "Explorar criadores",
@@ -116,11 +120,19 @@
     "address1": "Tampa, FL",
     "address2": "EUA",
     "phone": "+1.888.596.9279",
-    "close": "Fechar"
+    "close": "Fechar",
+    "searching": "Pesquisando...",
+    "errorLoad": "Não foi possível carregar os criadores. Tente novamente mais tarde."
   },
   "legal": {
     "terms": "Termos e condições\nwww.swordpay.com\nData de vigência: 8 de outubro de 2024\n\nIntrodução\nBem-vindo ao www.swordpay.com. Este site é de propriedade e operado pela EXCALIBUR ASCENSION. Ao visitar nosso site, você concorda em ficar vinculado aos seguintes termos e condições.\n\nLEIA ATENTAMENTE OS SEGUINTES TERMOS ANTES DE USAR OS SERVIÇOS.\n\n1. Alterações - Reservamo-nos o direito de adicionar ou descontinuar qualquer serviço a nosso critério.\n2. Elegibilidade - O Sword Pay é limitado a partes que possam celebrar contratos legalmente na Internet.\n3. Cadastro - KYC obrigatório. Uma conta por pessoa. O provedor pode bloquear contas por violações.\n4. Pagamento - Aceita Visa e MasterCard. Os usuários depositam fundos como Sword Credits. O provedor não é responsável por dados de transferência incorretos.\n5. Sword Credits - Itens virtuais para compra de bens digitais. 1 Sword Credit = 1 USD. Sem reembolso em bens digitais.\n6. Uso permitido - Apenas para fins permitidos e em conformidade com as leis aplicáveis.\n7. Licença limitada - Proibido revender, modificar, copiar ou fazer mineração de dados do site.\n8. Contas - Os usuários são responsáveis pela confidencialidade de suas credenciais.\n9. Propriedade intelectual - Nenhum direito é concedido sobre direitos autorais, marcas ou outra propriedade intelectual.\n10. Monitoramento - O Sword Pay pode revisar e remover conteúdo a seu critério.\n11. Isenção de responsabilidade - Sem garantias de comerciabilidade ou adequação a um fim específico.\n12. Limitação de responsabilidade - Sem responsabilidade por lucros cessantes, danos indiretos ou consequentes.\n13. Indenização - Os usuários indenizam o Sword Pay contra reclamações de terceiros.\n14. Resolução de disputas - Mediação primeiro. Regido pelas leis da Inglaterra e País de Gales.\n15. Privacidade e cookies - Consulte a Política de Privacidade e a Política de Cookies.\n16. Alterações - Os termos podem ser atualizados a qualquer momento.\n17. Comunicações eletrônicas - Visitar o site constitui consentimento para comunicações eletrônicas.\n18. Divisibilidade - Termos inválidos não afetam os demais.\n19. Atividades proibidas - Sem atividades ilegais, fraude ou abuso da plataforma.\n20. Taxas - Os usuários concordam com uma taxa de 10% + $0,50 por cada FileShare enviado.\n21. Fale conosco - support@swordpay.io",
     "privacy": "Política de privacidade\nwww.swordpay.com\nData de vigência: 8 de outubro de 2024\n\nA EXCALIBUR ASCENSION (\"Sword Pay\") respeita sua privacidade e está comprometida em proteger suas informações pessoais.\n\nINFORMAÇÕES QUE COLETAMOS\n- Dados de contato: nome, e-mail, endereço, telefone.\n- Dados de cadastro: data de nascimento, nome de usuário, senha.\n- Dados de perfil: interesses e preferências.\n- Comunicações e dados de marketing.\n- Dados de compra: histórico de pedidos.\n- Dados do dispositivo: SO, navegador, endereço IP, localização.\n- Atividade online: páginas visitadas, caminhos de navegação.\n- Cookies e tecnologias similares.\n\nCOMO USAMOS SUAS INFORMAÇÕES\n- Prestação de serviços, gerenciamento de conta, alertas de segurança.\n- Comunicações de marketing direto.\n- Pesquisa e melhoria do serviço.\n- Prevenção de fraudes e conformidade legal.\n\nCOMO COMPARTILHAMOS SUAS INFORMAÇÕES\n- Afiliados, prestadores de serviços, parceiros publicitários.\n- Autoridades conforme exigido por lei.\n- Compradores em fusões ou aquisições.\n\nSEUS DIREITOS\n- Acessar, corrigir ou excluir seus dados.\n- Cancelar inscrição em e-mails de marketing.\n- Gerenciar cookies pelas configurações do navegador.\n- Direitos LGPD/GDPR: acesso, correção, exclusão, portabilidade, oposição.\n- CCPA: não vendemos informações pessoais.\n\nContato: support@swordpay.io",
     "cookies": "Política de cookies\nwww.swordpay.com\nData de vigência: 8 de outubro de 2024\n\nO que são cookies?\nCookies são pequenos arquivos de texto armazenados no seu dispositivo quando você visita um site.\n\nComo usamos cookies\nO SwordPay usa cookies para:\n- Manter você conectado durante sua sessão.\n- Lembrar suas preferências e configurações.\n- Analisar como nosso site é usado.\n- Apoiar a segurança e prevenção de fraudes.\n- Ativar recursos de publicidade e marketing.\n\nTipos de cookies\n- Cookies essenciais: necessários para login e pagamentos.\n- Cookies de análise: nos ajudam a entender o comportamento dos visitantes.\n- Cookies de preferência: lembram suas configurações entre visitas.\n- Cookies de marketing: exibem anúncios relevantes.\n\nCookies de terceiros\nAlguns cookies são colocados pelo Google Analytics e parceiros publicitários. Consulte suas políticas de privacidade para mais informações.\n\nGerenciamento de cookies\nVocê pode controlar os cookies pelas configurações do seu navegador. Desativar alguns cookies pode afetar a funcionalidade do site. Saiba mais em www.allaboutcookies.org\n\nAlterações\nPodemos atualizar esta política a qualquer momento.\n\nContato: support@swordpay.io"
+  },
+  "creator": {
+    "notFound": "Criador não encontrado",
+    "notFoundSub": "Esta página de criador não existe ou foi removida.",
+    "patrons": "apoiadores",
+    "noProducts": "Nenhum produto disponível ainda"
   }
 }

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "wouter";
+import { useTranslation } from "react-i18next";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,7 @@ import type { Creator, Product } from "@shared/schema";
 
 export default function CreatorPage() {
   const params = useParams<{ slug: string }>();
+  const { t } = useTranslation();
 
   const { data: creator, isLoading: creatorLoading } = useQuery<Creator>({
     queryKey: ["/api/creators", params.slug],
@@ -41,8 +43,8 @@ export default function CreatorPage() {
     return (
       <div className="min-h-screen flex items-center justify-center" data-testid="creator-not-found">
         <div className="text-center space-y-3">
-          <h2 className="text-2xl font-bold">Creator not found</h2>
-          <p className="text-muted-foreground">This creator page doesn't exist or has been removed.</p>
+          <h2 className="text-2xl font-bold">{t('creator.notFound')}</h2>
+          <p className="text-muted-foreground">{t('creator.notFoundSub')}</p>
         </div>
       </div>
     );
@@ -71,7 +73,7 @@ export default function CreatorPage() {
           </Badge>
           <span className="flex items-center gap-1 text-xs text-muted-foreground shrink-0">
             <Users className="h-3.5 w-3.5" />
-            {creator.patronCount.toLocaleString()} patrons
+            {creator.patronCount.toLocaleString()} {t('creator.patrons')}
           </span>
           <span className="text-muted-foreground text-xs shrink-0 hidden sm:inline">·</span>
           <p className="text-muted-foreground text-xs shrink-0 hidden sm:inline truncate">{creator.tagline}</p>
@@ -123,7 +125,7 @@ export default function CreatorPage() {
         ) : (
           <div className="text-center py-20" data-testid="empty-products">
             <ShoppingBag className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
-            <p className="text-muted-foreground">No products available yet</p>
+            <p className="text-muted-foreground">{t('creator.noProducts')}</p>
           </div>
         )}
       </div>
