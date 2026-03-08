@@ -56,13 +56,13 @@ export function Navbar() {
         <div className="bg-background/98 backdrop-blur-md border-b shadow-lg" onClick={() => setMenuOpen(false)}>
           <div className="px-4 py-3 flex flex-col gap-1">
             <Link href="/">
-              <button className="w-full text-left px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Home</button>
+              <button className="w-full text-left px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">{t('nav.home')}</button>
             </Link>
             <Link href="/how-it-works">
-              <button className="w-full text-left px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">How it works</button>
+              <button className="w-full text-left px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">{t('nav.howItWorks')}</button>
             </Link>
             <Link href="/explore">
-              <button className="w-full text-left px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Explore</button>
+              <button className="w-full text-left px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">{t('nav.explore')}</button>
             </Link>
           </div>
         </div>

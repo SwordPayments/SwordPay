@@ -1,7 +1,9 @@
 {
   "nav": {
     "howItWorks": "仕組み",
-    "findCreator": "クリエイターを探す"
+    "findCreator": "クリエイターを探す",
+    "home": "ホーム",
+    "explore": "探索"
   },
   "home": {
     "hero": {
@@ -40,6 +42,24 @@
         "より速く",
         "簡単なチェックアウト"
       ]
+    },
+    "hero2": {
+      "headline1": "一度作成して、",
+      "headline2": "永遠に販売。",
+      "sub1": "あなたが作る。",
+      "sub2": "が支払う。",
+      "ctaPrimary": "今日から販売を始める",
+      "ctaSecondary": "仕組みを見る"
+    },
+    "categories": {
+      "videos": "動画",
+      "courses": "コース",
+      "music": "音楽",
+      "templates": "テンプレート",
+      "digitalArt": "デジタルアート",
+      "coaching": "コーチング",
+      "pdfs": "PDF",
+      "fashion": "ファッション"
     }
   },
   "howItWorks": {
@@ -48,7 +68,14 @@
     "steps": "3つの簡単なステップ",
     "setPrice": "価格を設定",
     "addFile": "ファイルを追加",
-    "share": "シェア"
+    "share": "シェア",
+    "easySetup": "簡単セットアップ、技術スキル不要。",
+    "card1Title": "ファイルを追加",
+    "card1Desc": "任意のデジタルファイルをアップロード。",
+    "card2Title": "リンクを共有",
+    "card2Desc": "すぐに支払いリンクを取得。",
+    "card3Title": "支払いを受け取る",
+    "card3Desc": "お金は直接あなたに届きます。"
   },
   "explore": {
     "title": "クリエイターを探索",

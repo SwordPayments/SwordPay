@@ -149,28 +149,28 @@ export default function Home() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-6 md:mb-14">
             <h2 className="text-[12.3vw] md:text-[5.5rem] font-extrabold leading-tight tracking-tight text-[#1a2340] mb-2 md:mb-4">
-              Create it once, <span className="text-blue-600">Sell it forever.</span>
+              {t('home.hero2.headline1')} <span className="text-blue-600">{t('home.hero2.headline2')}</span>
             </h2>
             <p className="text-[#6B7A99] text-[6.76vw] md:text-[2.2rem] mx-auto">
-              You Create. <span className="text-blue-600 font-extrabold">SWORD</span> Pays.
+              {t('home.hero2.sub1')} <span className="text-blue-600 font-extrabold">SWORD</span> {t('home.hero2.sub2')}
             </p>
           </div>
 
           <div className="grid grid-cols-4 gap-2 md:gap-6 mb-6 md:mb-14">
             {[
-              { icon: "🎬", title: "Videos", bg: "bg-blue-50" },
-              { icon: "🎓", title: "Courses", bg: "bg-green-50" },
-              { icon: "🎵", title: "Music", bg: "bg-orange-50" },
-              { icon: "🎨", title: "Templates", bg: "bg-purple-50" },
-              { icon: "🖼️", title: "Digital art", bg: "bg-cyan-50" },
-              { icon: "🎙️", title: "Coaching", bg: "bg-yellow-50" },
-              { icon: "📖", title: "PDFs", bg: "bg-emerald-50" },
-              { icon: "👗", title: "Fashion", bg: "bg-pink-50" },
-            ].map(({ icon, title, bg }) => (
-              <a key={title} href="https://swordpay.me" target="_blank" rel="noopener noreferrer"
+              { icon: "🎬", titleKey: "home.categories.videos", bg: "bg-blue-50" },
+              { icon: "🎓", titleKey: "home.categories.courses", bg: "bg-green-50" },
+              { icon: "🎵", titleKey: "home.categories.music", bg: "bg-orange-50" },
+              { icon: "🎨", titleKey: "home.categories.templates", bg: "bg-purple-50" },
+              { icon: "🖼️", titleKey: "home.categories.digitalArt", bg: "bg-cyan-50" },
+              { icon: "🎙️", titleKey: "home.categories.coaching", bg: "bg-yellow-50" },
+              { icon: "📖", titleKey: "home.categories.pdfs", bg: "bg-emerald-50" },
+              { icon: "👗", titleKey: "home.categories.fashion", bg: "bg-pink-50" },
+            ].map(({ icon, titleKey, bg }) => (
+              <a key={titleKey} href="https://swordpay.me" target="_blank" rel="noopener noreferrer"
                 className="bg-white border border-[#E4EAF5] rounded-xl p-3 md:p-8 hover:border-blue-400 transition-all duration-300 group block no-underline text-center">
                 <div className={`w-9 h-9 md:w-20 md:h-20 ${bg} rounded-xl md:rounded-2xl flex items-center justify-center text-xl md:text-4xl mb-2 md:mb-4 mx-auto`}>{icon}</div>
-                <h3 className="text-[10.5px] md:text-base font-bold text-[#1a2340] leading-tight">{title}</h3>
+                <h3 className="text-[10.5px] md:text-base font-bold text-[#1a2340] leading-tight">{t(titleKey)}</h3>
               </a>
             ))}
           </div>
@@ -178,12 +178,12 @@ export default function Home() {
           <div className="flex items-center justify-center gap-3 md:gap-6">
             <a href="https://swordpay.me" target="_blank" rel="noopener noreferrer">
               <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 md:px-14 md:py-5 rounded-full text-sm md:text-lg transition-all shadow-md shadow-blue-200">
-                Start selling today
+                {t('home.hero2.ctaPrimary')}
               </button>
             </a>
             <a href="/how-it-works">
               <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-5 py-3 md:px-10 md:py-5 rounded-full text-sm md:text-lg transition-all flex items-center gap-1.5">
-                <span className="text-blue-600">▶</span> See how it works
+                <span className="text-blue-600">▶</span> {t('home.hero2.ctaSecondary')}
               </button>
             </a>
           </div>

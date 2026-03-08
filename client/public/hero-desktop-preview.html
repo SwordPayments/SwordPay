@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=1440">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #000; }
+
+  /* NAVBAR */
+  .navbar {
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid #e5e7eb;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+  }
+  .navbar .logo { font-size: 26px; font-weight: 900; color: #1e3a8a; letter-spacing: -0.03em; }
+  .navbar .right { display: flex; align-items: center; gap: 20px; }
+  .navbar button {
+    background: #2563eb; color: white; border: none;
+    border-radius: 999px; font-weight: 700; font-size: 15px;
+    padding: 10px 22px; cursor: pointer;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 600px;
+    padding-bottom: 80px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('/images/hero-bg.png') center top / cover no-repeat;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+  }
+  .hero-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 144px 32px 80px;
+  }
+
+  h1 {
+    font-size: 6.53rem;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+  h1 .blue { color: #60a5fa; }
+  h1 .white { color: white; }
+
+  .tagline {
+    font-size: 5.62rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+
+  .icons {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  /* SVG-style icon placeholders */
+  .icon-ig {
+    width: 34px; height: 34px;
+    background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 20px; font-weight: 900;
+  }
+  .icon-yt { color: #ff0000; font-size: 32px; line-height:1; }
+  .icon-tt { color: white; font-size: 26px; line-height:1; }
+  .icon-x  { color: white; font-size: 22px; font-weight: 900; line-height:1; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <span class="logo">SWORDPAY</span>
+  <div class="right">
+    <button>How it works</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>
+      <span class="blue">Turn</span><span class="white"> your </span><span class="blue">Content</span><br>
+      <span class="white">into </span><span class="blue">Cash</span>
+    </h1>
+    <p class="tagline">
+      Post Anywhere.<br>
+      Earn Everywhere.
+    </p>
+    <div class="icons">
+      <span class="icon-ig">📷</span>
+      <span class="icon-yt">▶</span>
+      <span class="icon-tt">♪</span>
+      <span class="icon-x">𝕏</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

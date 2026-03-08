@@ -1,7 +1,9 @@
 {
   "nav": {
     "howItWorks": "Como funciona",
-    "findCreator": "Encontrar um criador"
+    "findCreator": "Encontrar um criador",
+    "home": "Início",
+    "explore": "Explorar"
   },
   "home": {
     "hero": {
@@ -40,6 +42,24 @@
         "CHECKOUTS MAIS",
         "RÁPIDOS E FÁCEIS"
       ]
+    },
+    "hero2": {
+      "headline1": "Crie uma vez,",
+      "headline2": "Venda para sempre.",
+      "sub1": "Você Cria.",
+      "sub2": "Paga.",
+      "ctaPrimary": "Comece a vender hoje",
+      "ctaSecondary": "Veja como funciona"
+    },
+    "categories": {
+      "videos": "Vídeos",
+      "courses": "Cursos",
+      "music": "Música",
+      "templates": "Modelos",
+      "digitalArt": "Arte digital",
+      "coaching": "Coaching",
+      "pdfs": "PDFs",
+      "fashion": "Moda"
     }
   },
   "howItWorks": {
@@ -48,7 +68,14 @@
     "steps": "Três passos simples",
     "setPrice": "DEFINIR PREÇO",
     "addFile": "ADICIONAR ARQUIVO",
-    "share": "COMPARTILHAR"
+    "share": "COMPARTILHAR",
+    "easySetup": "Configuração fácil, sem necessidade de conhecimentos técnicos.",
+    "card1Title": "Adicionar Arquivo",
+    "card1Desc": "Faça upload de qualquer arquivo digital.",
+    "card2Title": "Compartilhar Link",
+    "card2Desc": "Obtenha um link de pagamento instantaneamente.",
+    "card3Title": "Receber Pagamento",
+    "card3Desc": "O dinheiro vai direto para você."
   },
   "explore": {
     "title": "Explorar criadores",

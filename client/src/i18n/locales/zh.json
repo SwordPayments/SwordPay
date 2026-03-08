@@ -1,7 +1,9 @@
 {
   "nav": {
     "howItWorks": "如何运作",
-    "findCreator": "寻找创作者"
+    "findCreator": "寻找创作者",
+    "home": "首页",
+    "explore": "探索"
   },
   "home": {
     "hero": {
@@ -40,6 +42,24 @@
         "更快更简单的",
         "结账体验"
       ]
+    },
+    "hero2": {
+      "headline1": "创建一次，",
+      "headline2": "永久销售。",
+      "sub1": "你来创作。",
+      "sub2": "支付。",
+      "ctaPrimary": "今天开始销售",
+      "ctaSecondary": "了解如何运作"
+    },
+    "categories": {
+      "videos": "视频",
+      "courses": "课程",
+      "music": "音乐",
+      "templates": "模板",
+      "digitalArt": "数字艺术",
+      "coaching": "辅导",
+      "pdfs": "PDF文件",
+      "fashion": "时尚"
     }
   },
   "howItWorks": {
@@ -48,7 +68,14 @@
     "steps": "三个简单步骤",
     "setPrice": "设置价格",
     "addFile": "添加文件",
-    "share": "分享"
+    "share": "分享",
+    "easySetup": "设置简单，无需技术技能。",
+    "card1Title": "添加文件",
+    "card1Desc": "上传任何数字文件。",
+    "card2Title": "分享链接",
+    "card2Desc": "立即获得支付链接。",
+    "card3Title": "收款",
+    "card3Desc": "款项直接到账。"
   },
   "explore": {
     "title": "探索创作者",

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #f9fafb; }
+  .navbar { background: rgba(255,255,255,0.97); border-bottom: 1px solid #e5e7eb; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; }
+  .navbar span { font-size: 20px; font-weight: 900; color: #1e3a8a; }
+  .navbar button { background: #2563eb; color: white; border: none; border-radius: 999px; font-weight: 700; font-size: 11px; padding: 6px 10px; }
+
+  .hero { background: #f1f5fd; padding: 3vw 4vw 0; text-align: center; }
+  .hero h1 { font-size: 6vw; font-weight: 800; margin-bottom: 0.8vw; }
+  .hero p { font-size: 5vw; font-weight: 800; color: #2563eb; line-height: 1.2; }
+
+  .cards { background: #f1f5fd; border-bottom: 1px solid #e5e7eb; padding: 4px 3vw 3vw; margin-bottom: 4px; }
+  .cards-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2vw; }
+  .card { border: 1px solid #E4EAF5; border-radius: 2vw; padding: 2vw; background: white; min-height: 26vw; display: flex; flex-direction: column; justify-content: center; }
+  .card .step-label { font-size: 2vw; font-weight: 800; color: #2563eb; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6vw; }
+  .card .icon-box { width: 5vw; height: 5vw; background: #eff6ff; border-radius: 1vw; display: flex; align-items: center; justify-content: center; color: #2563eb; margin-bottom: 0.6vw; font-size: 3vw; }
+  .card h3 { font-size: 3.4vw; font-weight: 800; color: #1a2340; margin-bottom: 0.4vw; }
+  .card p { font-size: 2.6vw; font-weight: 700; color: #6B7A99; line-height: 1.3; }
+
+  .steps-section { padding: 3vw 3vw 5vw; }
+  .steps-section h2 { font-size: 5vw; font-weight: 800; text-align: center; margin-bottom: 1.8vw; }
+  .videos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2vw; }
+  .video-col { text-align: center; }
+  .video-col h3 { font-size: 2.8vw; font-weight: 700; margin-bottom: 1vw; }
+  .video-wrap { max-width: 24vw; margin: 0 auto; }
+  .video-placeholder { width: 100%; background: #1a2340; border-radius: 8px; aspect-ratio: 9/19.5; display: flex; align-items: center; justify-content: center; color: #60a5fa; font-size: 4vw; }
+</style>
+</head>
+<body>
+<div class="navbar"><span>SWORDPAY</span><button>How it works</button></div>
+<section class="hero"><h1>How it Works</h1><p>Easy setup, no technical skills needed.</p></section>
+<section class="cards">
+  <div class="cards-grid">
+    <div class="card"><div class="step-label">Step 01</div><div class="icon-box">↑</div><h3>Add File</h3><p>Upload any digital file.</p></div>
+    <div class="card"><div class="step-label">Step 02</div><div class="icon-box">🔗</div><h3>Share Link</h3><p>Get a payment link instantly.</p></div>
+    <div class="card"><div class="step-label">Step 03</div><div class="icon-box">💳</div><h3>Get Paid</h3><p>Money goes straight to you.</p></div>
+  </div>
+</section>
+<section class="steps-section">
+  <h2>It's this simple</h2>
+  <div class="videos-grid">
+    <div class="video-col"><h3>Set Price</h3><div class="video-wrap"><div class="video-placeholder">▶</div></div></div>
+    <div class="video-col"><h3>Add File</h3><div class="video-wrap"><div class="video-placeholder">▶</div></div></div>
+    <div class="video-col"><h3>Share</h3><div class="video-wrap"><div class="video-placeholder">▶</div></div></div>
+  </div>
+</section>
+</body>
+</html>

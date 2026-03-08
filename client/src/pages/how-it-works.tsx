@@ -126,7 +126,7 @@ export default function HowItWorks() {
             {t('howItWorks.title')}
           </h1>
           <p className="text-[7vw] md:text-[25px] font-bold text-blue-600 max-w-xl mx-auto">
-            Easy setup, no technical skills needed.
+            {t('howItWorks.easySetup')}
           </p>
         </div>
       </section>
@@ -137,26 +137,23 @@ export default function HowItWorks() {
           <div className="grid grid-cols-3 gap-[3.3vw] md:gap-10">
             {[
               {
-                step: "Step 01", title: "Add File",
-                desc: "Upload any digital file.",
+                step: "Step 01", titleKey: "howItWorks.card1Title", descKey: "howItWorks.card1Desc",
                 icon: <svg className="w-[4.5vw] h-[4.5vw] md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>,
               },
               {
-                step: "Step 02", title: "Share Link",
-                desc: "Get a payment link instantly.",
+                step: "Step 02", titleKey: "howItWorks.card2Title", descKey: "howItWorks.card2Desc",
                 icon: <svg className="w-[4.5vw] h-[4.5vw] md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
               },
               {
-                step: "Step 03", title: "Get Paid",
-                desc: "Money goes straight to you.",
+                step: "Step 03", titleKey: "howItWorks.card3Title", descKey: "howItWorks.card3Desc",
                 icon: <svg className="w-[4.5vw] h-[4.5vw] md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>,
               },
-            ].map(({ step, title, desc, icon }) => (
+            ].map(({ step, titleKey, descKey, icon }) => (
               <div key={step} className="border border-[#E4EAF5] rounded-[2.5vw] md:rounded-xl p-[3.3vw] md:p-6 hover:border-blue-500 transition-all duration-300 group bg-white min-h-[42vw] md:min-h-0 flex flex-col justify-center">
                 <p className="text-[2.6vw] md:text-[12px] font-extrabold text-blue-600 tracking-widest uppercase mb-[1vw] md:mb-3">{step}</p>
                 <div className="w-[7vw] h-[7vw] md:w-11 md:h-11 bg-blue-50 rounded-[1.5vw] md:rounded-xl flex items-center justify-center text-blue-600 mb-[1vw] md:mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">{icon}</div>
-                <h3 className="text-[4.1vw] md:text-xl font-extrabold text-[#1a2340] mb-[0.5vw] md:mb-1.5">{title}</h3>
-                <p className="text-[3.3vw] md:text-[16px] font-bold text-[#6B7A99] leading-tight">{desc}</p>
+                <h3 className="text-[4.1vw] md:text-xl font-extrabold text-[#1a2340] mb-[0.5vw] md:mb-1.5">{t(titleKey)}</h3>
+                <p className="text-[3.3vw] md:text-[16px] font-bold text-[#6B7A99] leading-tight">{t(descKey)}</p>
               </div>
             ))}
           </div>

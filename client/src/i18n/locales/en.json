@@ -1,7 +1,9 @@
 {
   "nav": {
     "howItWorks": "How it works",
-    "findCreator": "Find a creator"
+    "findCreator": "Find a creator",
+    "home": "Home",
+    "explore": "Explore"
   },
   "home": {
     "hero": {
@@ -40,6 +42,24 @@
         "FASTER EASIER",
         "CHECKOUTS"
       ]
+    },
+    "hero2": {
+      "headline1": "Create it once,",
+      "headline2": "Sell it forever.",
+      "sub1": "You Create.",
+      "sub2": "Pays.",
+      "ctaPrimary": "Start selling today",
+      "ctaSecondary": "See how it works"
+    },
+    "categories": {
+      "videos": "Videos",
+      "courses": "Courses",
+      "music": "Music",
+      "templates": "Templates",
+      "digitalArt": "Digital art",
+      "coaching": "Coaching",
+      "pdfs": "PDFs",
+      "fashion": "Fashion"
     }
   },
   "howItWorks": {
@@ -48,7 +68,14 @@
     "steps": "Three Simple Steps",
     "setPrice": "SET PRICE",
     "addFile": "ADD FILE",
-    "share": "SHARE"
+    "share": "SHARE",
+    "easySetup": "Easy setup, no technical skills needed.",
+    "card1Title": "Add File",
+    "card1Desc": "Upload any digital file.",
+    "card2Title": "Share Link",
+    "card2Desc": "Get a payment link instantly.",
+    "card3Title": "Get Paid",
+    "card3Desc": "Money goes straight to you."
   },
   "explore": {
     "title": "Explore creators",

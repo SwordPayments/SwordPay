@@ -1,7 +1,9 @@
 {
   "nav": {
     "howItWorks": "كيف يعمل",
-    "findCreator": "ابحث عن منشئ"
+    "findCreator": "ابحث عن منشئ",
+    "home": "الرئيسية",
+    "explore": "استكشاف"
   },
   "home": {
     "hero": {
@@ -40,6 +42,24 @@
         "دفع أسرع",
         "وأسهل"
       ]
+    },
+    "hero2": {
+      "headline1": "أنشئ مرة واحدة،",
+      "headline2": "بع إلى الأبد.",
+      "sub1": "أنت تبدع.",
+      "sub2": "يدفع.",
+      "ctaPrimary": "ابدأ البيع اليوم",
+      "ctaSecondary": "شاهد كيف يعمل"
+    },
+    "categories": {
+      "videos": "مقاطع فيديو",
+      "courses": "دورات",
+      "music": "موسيقى",
+      "templates": "قوالب",
+      "digitalArt": "فن رقمي",
+      "coaching": "تدريب",
+      "pdfs": "ملفات PDF",
+      "fashion": "موضة"
     }
   },
   "howItWorks": {
@@ -48,7 +68,14 @@
     "steps": "ثلاث خطوات بسيطة",
     "setPrice": "تحديد السعر",
     "addFile": "إضافة ملف",
-    "share": "مشاركة"
+    "share": "مشاركة",
+    "easySetup": "إعداد سهل، لا حاجة لمهارات تقنية.",
+    "card1Title": "إضافة ملف",
+    "card1Desc": "رفع أي ملف رقمي.",
+    "card2Title": "مشاركة الرابط",
+    "card2Desc": "احصل على رابط دفع فوري.",
+    "card3Title": "استلام الدفع",
+    "card3Desc": "الأموال تذهب مباشرة إليك."
   },
   "explore": {
     "title": "استكشف المنشئين",

@@ -1,7 +1,9 @@
 {
   "nav": {
     "howItWorks": "Wie es funktioniert",
-    "findCreator": "Einen Creator finden"
+    "findCreator": "Einen Creator finden",
+    "home": "Startseite",
+    "explore": "Entdecken"
   },
   "home": {
     "hero": {
@@ -40,6 +42,24 @@
         "SCHNELLERE",
         "CHECKOUTS"
       ]
+    },
+    "hero2": {
+      "headline1": "Einmal erstellen,",
+      "headline2": "für immer verkaufen.",
+      "sub1": "Du erstellst.",
+      "sub2": "zahlt.",
+      "ctaPrimary": "Heute mit dem Verkauf beginnen",
+      "ctaSecondary": "So funktioniert es"
+    },
+    "categories": {
+      "videos": "Videos",
+      "courses": "Kurse",
+      "music": "Musik",
+      "templates": "Vorlagen",
+      "digitalArt": "Digitale Kunst",
+      "coaching": "Coaching",
+      "pdfs": "PDFs",
+      "fashion": "Mode"
     }
   },
   "howItWorks": {
@@ -48,7 +68,14 @@
     "steps": "Drei einfache Schritte",
     "setPrice": "PREIS FESTLEGEN",
     "addFile": "DATEI HINZUFÜGEN",
-    "share": "TEILEN"
+    "share": "TEILEN",
+    "easySetup": "Einfache Einrichtung, keine technischen Kenntnisse erforderlich.",
+    "card1Title": "Datei hinzufügen",
+    "card1Desc": "Lade eine beliebige digitale Datei hoch.",
+    "card2Title": "Link teilen",
+    "card2Desc": "Erhalte sofort einen Zahlungslink.",
+    "card3Title": "Bezahlt werden",
+    "card3Desc": "Das Geld geht direkt an dich."
   },
   "explore": {
     "title": "Creators entdecken",
