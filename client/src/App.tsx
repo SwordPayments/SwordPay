@@ -25,6 +25,10 @@ function Router() {
   );
 }
 
+const isIOS =
+  typeof navigator !== "undefined" &&
+  /iphone|ipad|ipod/i.test(navigator.userAgent);
+
 function App() {
   const [location] = useLocation();
   const isCreatorPage = location.startsWith("/creator/");
@@ -32,7 +36,8 @@ function App() {
   // btnTop = hero-bottom position (static, only changes on init/resize)
   const [btnTop, setBtnTop] = useState(340);
   // docked = switch to bottom:24px after glide
-  const [docked, setDocked] = useState(false);
+  // iOS starts docked so the very first render is already at bottom:24px (no flash)
+  const [docked, setDocked] = useState(isIOS);
   const btnRef = useRef<HTMLDivElement>(null);
   const initialTopRef = useRef(340);
   const triggeredRef = useRef(false);
