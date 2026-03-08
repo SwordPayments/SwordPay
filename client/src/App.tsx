@@ -171,7 +171,7 @@ function App() {
         <Toaster />
         {/* Start Now — glides to bottom on home page, always docked on other pages */}
         <div ref={btnRef} data-start-now style={btnStyle}>
-          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform w-[126px] sm:w-[165px] lg:w-[198px]" />
+          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform min-w-[126px] sm:min-w-[165px] lg:min-w-[198px]" />
         </div>
       </TooltipProvider>
     </QueryClientProvider>
