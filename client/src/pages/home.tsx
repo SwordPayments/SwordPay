@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "wouter";
+import { FaInstagram, FaYoutube } from "react-icons/fa";
+import { SiTiktok, SiX } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 
 import { Card } from "@/components/ui/card";
@@ -112,7 +114,7 @@ export default function Home() {
           <img
             src="/images/hero-bg.png"
             alt=""
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover object-center md:object-top"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         </div>
@@ -120,29 +122,20 @@ export default function Home() {
           <div className="flex items-start">
             <div className="flex-1 min-w-0">
               <div className="mb-6">
-                <h1 className="text-[13.76vw] md:text-[5.91rem] font-bold leading-tight tracking-tight mb-4">
+                <h1 className="text-[13.76vw] md:text-[5.02rem] font-bold leading-tight tracking-tight mb-4">
                   <span className="block"><span className="text-blue-500">Turn</span><span className="text-white"> your </span><span className="text-blue-500">Content</span></span>
                   <span className="block"><span className="text-white">into </span><span className="text-blue-500">Cash</span></span>
                 </h1>
-                <p
-                  className="flex flex-nowrap items-baseline text-[9.7vw] md:text-[4.97rem] font-bold text-white leading-tight tracking-tight"
-                >
-                  {words.map((word, i) => (
-                    <span
-                      key={word}
-                      className="animate-word-fade"
-                      style={{
-                        display: 'inline',
-                        marginRight: '0.5em',
-                        whiteSpace: 'nowrap',
-                        animationDelay: i === 0 ? '0s' : i === 1 ? '1.5s' : '3.0s',
-                        animationFillMode: 'backwards',
-                      }}
-                    >
-                      {word}
-                    </span>
-                  ))}
+                <p className="text-[9.7vw] md:text-[5.72rem] font-bold text-white leading-tight tracking-tight mb-4">
+                  Post Anywhere.<br />
+                  Earn Everywhere.
                 </p>
+                <div className="flex gap-3 items-center">
+                  <FaInstagram size={34} className="text-pink-500" />
+                  <FaYoutube size={34} className="text-red-500" />
+                  <SiTiktok size={30} className="text-white" />
+                  <SiX size={28} className="text-white" />
+                </div>
               </div>
 
             </div>
