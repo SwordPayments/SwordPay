@@ -121,7 +121,7 @@ export default function HowItWorks() {
         </div>
       )}
       <section className="bg-card border-b">
-        <div className="max-w-7xl mx-auto px-[4vw] sm:px-6 lg:px-8 pt-[20vw] pb-[10vw] md:py-5 text-center">
+        <div className="max-w-7xl mx-auto px-[4vw] sm:px-6 lg:px-8 pt-[20vw] pb-0 md:py-5 text-center">
           <h1 className="text-[8.2vw] md:text-[58px] font-bold mb-[1vw] md:mb-2 tracking-tight">
             {t('howItWorks.title')}
           </h1>
@@ -132,7 +132,7 @@ export default function HowItWorks() {
       </section>
 
       {/* Three Simple Steps cards */}
-      <section className="pt-[7.8vw] pb-[15.6vw] md:py-10 px-[3vw] md:px-8 mb-2 md:mb-0">
+      <section className="pt-0 pb-[15.6vw] md:py-10 px-[3vw] md:px-8 mb-2 md:mb-0">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-3 gap-[3.3vw] md:gap-10">
             {[
