@@ -23,8 +23,14 @@ export function Navbar() {
 
           <div className="flex items-center gap-0 shrink-0">
             <Link href="/how-it-works">
-              <Button size="sm" className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-2 sm:px-6 rounded-full sm:text-base ${isIOS ? "text-[11px]" : "text-[10px]"}`}>
-                How it works
+              <Button
+                size="sm"
+                className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-2 sm:px-6 rounded-full sm:text-base ${isIOS ? "text-[11px]" : "text-[10px]"}`}
+                style={{ animation: 'button-flash 3s linear infinite', animationDelay: '1.5s' }}
+              >
+                <span style={{ animation: 'button-text-flash 3s linear infinite', animationDelay: '1.5s', display: 'inline-block' }}>
+                  How it works
+                </span>
               </Button>
             </Link>
             <Link href="/explore">
