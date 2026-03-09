@@ -151,6 +151,37 @@ async function getMetaForPath(url: string): Promise<MetaTags> {
         "isPartOf": { "@type": "WebSite", "url": BASE_URL, "name": "SwordPay" },
       },
     },
+    "/onlyfans-alternative": {
+      title: "Best OnlyFans Alternative for Creators | SwordPay",
+      description: "Looking for an OnlyFans alternative? SwordPay lets you sell any content — videos, photos, courses & more — with lower fees (10% vs 20%), no restrictions, and global payments. Start free.",
+      ogTitle: "Best OnlyFans Alternative for Creators | SwordPay",
+      ogDescription: "Sell your content with lower fees, no restrictions, and global payments. The top OnlyFans alternative for creators.",
+      ogImage: DEFAULT_IMAGE,
+      ogUrl: `${BASE_URL}/onlyfans-alternative`,
+      ogType: "website",
+      twitterCard: "summary_large_image",
+      canonical: `${BASE_URL}/onlyfans-alternative`,
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "Is SwordPay the best OnlyFans alternative?", "acceptedAnswer": { "@type": "Answer", "text": "SwordPay is one of the top OnlyFans alternatives for creators who want to sell content directly without platform restrictions. With a 10% fee (vs OnlyFans 20%), support for any file type, and the ability to share your link anywhere, it's built for the modern creator economy." } },
+            { "@type": "Question", "name": "Can I use SwordPay instead of OnlyFans?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. SwordPay works as a direct alternative to OnlyFans. You can sell photos, videos, courses, audio files and more. Unlike OnlyFans, your link works on any platform — Instagram, WhatsApp, TikTok, X." } },
+            { "@type": "Question", "name": "How much does SwordPay take compared to OnlyFans?", "acceptedAnswer": { "@type": "Answer", "text": "OnlyFans takes 20% of every transaction. SwordPay charges 10% + $0.50 per sale." } },
+            { "@type": "Question", "name": "Is SwordPay free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Creating a SwordPay account is free. You only pay 10% + $0.50 when you make a sale. No monthly subscriptions or upfront costs." } },
+          ],
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Best OnlyFans Alternative | SwordPay",
+          "description": "SwordPay is the best OnlyFans alternative. Lower fees, no content restrictions, sell anywhere.",
+          "url": `${BASE_URL}/onlyfans-alternative`,
+          "isPartOf": { "@type": "WebSite", "url": BASE_URL, "name": "SwordPay" },
+        },
+      ],
+    },
     "/how-it-works": {
       title: "How It Works | SwordPay",
       description: "Add your file, share your link, get paid. SwordPay makes it simple for creators to sell digital content anywhere in the world.",

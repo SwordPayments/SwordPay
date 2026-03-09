@@ -11,6 +11,7 @@ import Home from "@/pages/home";
 import Explore from "@/pages/explore";
 import CreatorPage from "@/pages/creator";
 import HowItWorks from "@/pages/how-it-works";
+import OnlyFansAlternative from "@/pages/onlyfans-alternative";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/explore" component={Explore} />
       <Route path="/creator/:slug" component={CreatorPage} />
       <Route path="/how-it-works" component={HowItWorks} />
+      <Route path="/onlyfans-alternative" component={OnlyFansAlternative} />
       <Route component={NotFound} />
     </Switch>
   );

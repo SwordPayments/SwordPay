@@ -110,6 +110,7 @@ export async function registerRoutes(
         { loc: "/", priority: "1.0", changefreq: "daily" },
         { loc: "/explore", priority: "0.9", changefreq: "daily" },
         { loc: "/how-it-works", priority: "0.7", changefreq: "monthly" },
+        { loc: "/onlyfans-alternative", priority: "0.9", changefreq: "weekly" },
       ];
 
       const creators = await storage.getAllCreators();
