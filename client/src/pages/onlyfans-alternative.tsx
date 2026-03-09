@@ -18,7 +18,7 @@ export default function OnlyFansAlternative() {
             The Best <span className="text-blue-500">OnlyFans Alternative</span> for Creators
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-            Sell your content on your terms. No 20% cut. No restrictions on what you post or where you share. Post anywhere — Instagram, WhatsApp, TikTok, X — and get paid globally.
+            Sell any file, any legal content — on your terms. No 20% cut. No restrictions. Post anywhere — Instagram, WhatsApp, TikTok, X — and get paid globally.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://swordpay.me" target="_blank" rel="noopener noreferrer"
@@ -46,7 +46,7 @@ export default function OnlyFansAlternative() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               { icon: "💸", title: "OnlyFans takes 20%", desc: "Every sale you make, OnlyFans keeps 20 cents of every dollar. On $10,000/month that's $2,000 gone before you see a penny." },
-              { icon: "🚫", title: "Content restrictions", desc: "OnlyFans has banned and re-banned content categories. Creators never know when the rules will change or their account will be flagged." },
+              { icon: "🚫", title: "File & content restrictions", desc: "OnlyFans has banned and re-banned file and content categories. Creators never know when the rules will change or their account will be flagged." },
               { icon: "🌍", title: "Limited reach", desc: "OnlyFans lives on OnlyFans.com. You can't easily share content across Instagram, WhatsApp, TikTok, or anywhere else your fans already are." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
@@ -78,14 +78,14 @@ export default function OnlyFansAlternative() {
               <tbody>
                 {[
                   ["Platform fee", "10% + $0.50", "20%"],
-                  ["Content types", "Any file — video, photo, PDF, audio, courses", "Limited categories"],
+                  ["File types supported", "Any file type — video, photo, PDF, audio, courses & more", "Limited categories"],
                   ["Share anywhere", "✅ Post to any platform", "❌ Only on OnlyFans.com"],
                   ["Global payments", "✅ 180+ countries", "⚠️ Limited regions"],
                   ["Instant payments", "✅ Yes", "⚠️ Up to 30 day delays"],
                   ["No monthly subscription needed", "✅ Free to start", "✅ Free to start"],
                   ["Sell single files", "✅ Yes", "❌ Subscription model only"],
                   ["WhatsApp / DM selling", "✅ Share link anywhere", "❌ Not supported"],
-                  ["Content restrictions", "✅ Your content, your rules", "⚠️ Frequent policy changes"],
+                  ["Content restrictions", "✅ All legal content & files allowed", "⚠️ Frequent bans & policy changes"],
                 ].map(([feature, sword, only], i) => (
                   <tr key={feature} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                     <td className="py-4 px-6 font-medium text-gray-700">{feature}</td>
@@ -103,10 +103,10 @@ export default function OnlyFansAlternative() {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-4">
-            Sell Any Type of Content
+            Sell Any File. Any Legal Content.
           </h2>
           <p className="text-center text-gray-500 mb-12 max-w-2xl mx-auto">
-            Unlike OnlyFans which is built around subscriptions, SwordPay lets you sell individual files — one-off or recurring, your choice.
+            Unlike OnlyFans, SwordPay places no restrictions on legal content or file types. Sell individual files one-off or recurring — your content, your rules.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
@@ -136,7 +136,7 @@ export default function OnlyFansAlternative() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {[
-              { step: "1", title: "Add your file", desc: "Upload any file — video, photo set, PDF, course. Set your price. Takes 60 seconds." },
+              { step: "1", title: "Add your file", desc: "Upload any file — video, photo set, PDF, course, audio. Any legal content accepted. Set your price in 60 seconds." },
               { step: "2", title: "Share your link", desc: "Post your SwordPay link anywhere — Instagram bio, WhatsApp, TikTok, X, or direct message." },
               { step: "3", title: "Get paid", desc: "Fans pay, you earn. 90% of every sale goes straight to you. Withdraw to your bank or card instantly." },
             ].map((item) => (
@@ -160,11 +160,11 @@ export default function OnlyFansAlternative() {
             {[
               {
                 q: "Is SwordPay the best OnlyFans alternative?",
-                a: "SwordPay is one of the top OnlyFans alternatives for creators who want to sell content directly without platform restrictions. With a 10% fee (vs OnlyFans' 20%), support for any file type, and the ability to share your link anywhere, it's built for the modern creator economy."
+                a: "SwordPay is one of the top OnlyFans alternatives for creators who want to sell files and content without restrictions. SwordPay allows all legal content and file types with a lower 10% fee (vs OnlyFans' 20%), and lets you share your link anywhere — making it ideal for the modern creator."
               },
               {
                 q: "Can I use SwordPay instead of OnlyFans?",
-                a: "Yes. SwordPay works as a direct alternative to OnlyFans. You can sell photos, videos, courses, audio files and more. Unlike OnlyFans, your link works on any platform — Instagram, WhatsApp, TikTok, X — so you keep selling wherever your audience is."
+                a: "Yes. SwordPay is a direct OnlyFans alternative. You can sell any legal file — photos, videos, courses, audio, PDFs and more — with no content restrictions. Unlike OnlyFans, your link works on any platform — Instagram, WhatsApp, TikTok, X — so you keep selling wherever your audience is."
               },
               {
                 q: "What platforms are like OnlyFans but better?",
