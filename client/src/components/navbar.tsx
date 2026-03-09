@@ -26,9 +26,9 @@ export function Navbar() {
               <Button
                 size="sm"
                 className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-[1.8vw] sm:px-6 rounded-full text-[2.2vw] min-[480px]:text-[13px] sm:text-base whitespace-nowrap"
-                style={{ animation: 'button-flash 3s linear infinite', animationDelay: '1.5s' }}
+                style={{ animation: 'button-flash 2s linear infinite', animationDelay: '0.5s' }}
               >
-                <span style={{ animation: 'button-text-flash 3s linear infinite', animationDelay: '1.5s', display: 'inline-block' }}>
+                <span style={{ animation: 'button-text-flash 2s linear infinite', animationDelay: '0.5s', display: 'inline-block' }}>
                   {t('nav.howItWorks')}
                 </span>
               </Button>

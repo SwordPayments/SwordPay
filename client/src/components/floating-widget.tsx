@@ -16,9 +16,9 @@ export function FloatingWidget({ className }: { className?: string }) {
     >
       <Button
         className="w-auto whitespace-nowrap bg-blue-600 hover:bg-blue-700 rounded-full font-semibold py-1 px-4 text-[18.4px] min-[414px]:text-[23px] sm:text-[19.8px] lg:text-[24px]"
-        style={{ animation: 'button-flash 6s linear infinite', animationDelay: '3.0s' }}
+        style={{ animation: 'button-flash 2s linear infinite', animationDelay: '1.0s' }}
       >
-        <span style={{ animation: 'button-text-flash 6s linear infinite', animationDelay: '3.0s', display: 'inline-block' }}>
+        <span style={{ animation: 'button-text-flash 2s linear infinite', animationDelay: '1.0s', display: 'inline-block' }}>
           {t('widget.cta')}
         </span>
       </Button>
