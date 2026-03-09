@@ -100,58 +100,5 @@ export async function registerRoutes(
     }
   });
 
-  // Sitemap — dynamically includes all creator pages
-  app.get("/sitemap.xml", async (_req, res) => {
-    try {
-      const BASE_URL = "https://swordpay.com";
-      const today = new Date().toISOString().split("T")[0];
-
-      const staticPages = [
-        { loc: "/", priority: "1.0", changefreq: "daily" },
-        { loc: "/explore", priority: "0.9", changefreq: "daily" },
-        { loc: "/how-it-works", priority: "0.7", changefreq: "monthly" },
-      ];
-
-      const creators = await storage.getAllCreators();
-      const creatorPages = creators.map((c: { slug: string }) => ({
-        loc: `/creator/${c.slug}`,
-        priority: "0.8",
-        changefreq: "weekly",
-      }));
-
-      const allPages = [...staticPages, ...creatorPages];
-
-      const urlEntries = allPages
-        .map(
-          (p) => `  <url>
-    <loc>${BASE_URL}${p.loc}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>${p.changefreq}</changefreq>
-    <priority>${p.priority}</priority>
-  </url>`
-        )
-        .join("\n");
-
-      const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urlEntries}
-</urlset>`;
-
-      res.header("Content-Type", "application/xml");
-      res.send(xml);
-    } catch (error) {
-      res.status(500).send("Failed to generate sitemap");
-    }
-  });
-
-  // Robots.txt
-  app.get("/robots.txt", (_req, res) => {
-    res.header("Content-Type", "text/plain");
-    res.send(`User-agent: *
-Allow: /
-
-Sitemap: https://swordpay.com/sitemap.xml`);
-  });
-
   return httpServer;
 }
