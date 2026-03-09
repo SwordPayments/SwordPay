@@ -123,11 +123,13 @@ export default function Home() {
             <div className="flex-1 min-w-0">
               <div className="mb-6">
                 <h1 className="text-[13.76vw] md:text-[6.53rem] font-bold leading-tight tracking-tight mb-4">
-                  <span className="block text-blue-500">{t('home.hero.line1')}</span>
-                  <span className="block"><span className="text-white">{t('home.hero.line2')}</span></span>
+                  <span className="block">
+                    <span className="text-white">{t('home.hero.line1_white')}</span><span className="text-blue-500">{t('home.hero.line1_blue')}</span>
+                  </span>
+                  <span className="block text-blue-500">{t('home.hero.line2')}</span>
                 </h1>
-                <p className="text-[9.7vw] md:text-[5.62rem] font-bold text-white leading-tight tracking-tight mb-4">
-                  {t('home.hero.tagline1')}<br />
+                <p className="text-[9.7vw] md:text-[4.73rem] font-bold text-white leading-tight tracking-tight mb-4">
+                  {t('home.hero.tagline1')}<br className="md:hidden" />
                   {t('home.hero.tagline2')}
                 </p>
                 <div className="flex gap-3 items-center">
