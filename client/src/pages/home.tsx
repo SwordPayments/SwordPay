@@ -112,9 +112,11 @@ export default function Home() {
       <section className="relative min-h-[260px] md:min-h-[600px] pb-16 md:pb-20" data-testid="hero-section">
         <div className="absolute inset-0">
           <img
-            src="/images/hero-bg.png"
+            src="/images/hero-bg.jpg"
             alt=""
             className="w-full h-full object-cover object-center md:object-top"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         </div>
@@ -230,14 +232,14 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <div className="rounded-xl overflow-hidden mb-1 aspect-[4/3]">
-                <img src="/images/card-marketing.webp" alt="Marketing" className="w-full h-full object-cover" />
+                <img src="/images/card-marketing.webp" alt="Marketing" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">{t('home.features.marketing')}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{t('home.features.marketingDesc')}</p>
             </div>
             <div>
               <div className="rounded-xl overflow-hidden mb-1 aspect-[4/3]">
-                <img src="/images/card-payments.jpeg" alt="Global Payments" className="w-full h-full object-cover" />
+                <img src="/images/card-payments.jpeg" alt="Global Payments" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <h3 className="text-xl font-extrabold uppercase tracking-wide text-blue-600 mb-0">{t('home.features.payments')}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{t('home.features.paymentsDesc')}</p>

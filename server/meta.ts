@@ -1,7 +1,7 @@
 import { storage } from "./storage";
 
 const BASE_URL = "https://swordpay.com";
-const DEFAULT_IMAGE = `${BASE_URL}/images/hero-bg.png`;
+const DEFAULT_IMAGE = `${BASE_URL}/images/hero-bg.jpg`;
 
 interface MetaTags {
   title: string;
