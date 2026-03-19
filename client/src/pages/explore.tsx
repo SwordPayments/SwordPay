@@ -1,39 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSearch } from "wouter";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { CreatorCardSkeleton } from "@/components/creator-card";
+import { CreatorCard, CreatorCardSkeleton } from "@/components/creator-card";
 import { useSEO } from "@/hooks/use-seo";
-import { Search, AlertCircle, X, CheckCircle, ExternalLink, ArrowLeft } from "lucide-react";
+import { Search, AlertCircle, X, CheckCircle, Users } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
-
-const API = "https://web-api.swordpay.me/v1";
-
-const CATEGORIES = ["Art", "Music", "Podcasts", "Gaming", "Writing", "Video", "Education", "Photography"];
-
-function deriveCategory(id: string): string {
-  return CATEGORIES[id.charCodeAt(0) % CATEGORIES.length];
-}
-
-interface ApiCreator {
-  id: string;
-  firstName: string;
-  lastName: string;
-  imageUrl: string;
-}
-
-interface ApiFileshare {
-  id: string;
-  link: string;
-}
-
-interface PaginatedResponse<T> {
-  data: T[];
-  meta: { skip: number; take: number; total: number };
-}
+import type { Creator } from "@shared/schema";
 
 const categoryKeys = ["all", "art", "music", "podcasts", "gaming", "writing", "video", "education", "photography"];
 
@@ -50,99 +26,53 @@ export default function Explore() {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
-
-  // Creators state
-  const [creators, setCreators] = useState<ApiCreator[]>([]);
-  const [creatorsTotal, setCreatorsTotal] = useState(0);
-  const [creatorsSkip, setCreatorsSkip] = useState(0);
-  const [isLoadingCreators, setIsLoadingCreators] = useState(true);
-  const [creatorsError, setCreatorsError] = useState(false);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
-
-  // Selected creator + fileshares
-  const [selectedCreator, setSelectedCreator] = useState<ApiCreator | null>(null);
-  const [fileshares, setFileshares] = useState<ApiFileshare[]>([]);
-  const [filesharesTotal, setFilesharesTotal] = useState(0);
-  const [isLoadingFileshares, setIsLoadingFileshares] = useState(false);
-  const [filesharesError, setFilesharesError] = useState(false);
-
+  const [selectedCreator, setSelectedCreator] = useState<Creator | null>(null);
+  const [showDropdown, setShowDropdown] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
 
-  // Load creators on mount
+  const { data: creators, isLoading, error } = useQuery<Creator[]>({
+    queryKey: ["/api/creators"],
+  });
+
+  const filteredCreators = creators?.filter((creator) => {
+    if (!searchTerm) return false;
+    return (
+      creator.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      creator.tagline.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      creator.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
+
+  // Close dropdown when clicking outside
   useEffect(() => {
-    setIsLoadingCreators(true);
-    setCreatorsError(false);
-    fetch(`${API}/creators?take=50&skip=0`)
-      .then((r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      })
-      .then((res: PaginatedResponse<ApiCreator>) => {
-        setCreators(Array.isArray(res.data) ? res.data : []);
-        setCreatorsTotal(res.meta?.total ?? 0);
-        setCreatorsSkip(0);
-      })
-      .catch(() => setCreatorsError(true))
-      .finally(() => setIsLoadingCreators(false));
+    function handleClickOutside(e: MouseEvent) {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setShowDropdown(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Load more creators
-  const handleLoadMore = () => {
-    const nextSkip = creatorsSkip + 50;
-    setIsLoadingMore(true);
-    fetch(`${API}/creators?take=50&skip=${nextSkip}`)
-      .then((r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      })
-      .then((res: PaginatedResponse<ApiCreator>) => {
-        setCreators((prev) => [...prev, ...(Array.isArray(res.data) ? res.data : [])]);
-        setCreatorsSkip(nextSkip);
-      })
-      .catch(() => {})
-      .finally(() => setIsLoadingMore(false));
-  };
-
-  // Select creator and load fileshares
-  const handleSelectCreator = (creator: ApiCreator) => {
+  const handleSelect = (creator: Creator) => {
     setSelectedCreator(creator);
-    setFileshares([]);
-    setFilesharesTotal(0);
-    setFilesharesError(false);
-    setIsLoadingFileshares(true);
-    fetch(`${API}/creators/${creator.id}/fileshares?take=50&skip=0`)
-      .then((r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      })
-      .then((res: PaginatedResponse<ApiFileshare>) => {
-        setFileshares(Array.isArray(res.data) ? res.data : []);
-        setFilesharesTotal(res.meta?.total ?? 0);
-      })
-      .catch(() => setFilesharesError(true))
-      .finally(() => setIsLoadingFileshares(false));
+    setSearchTerm(creator.name);
+    setShowDropdown(false);
   };
 
-  const handleBack = () => {
+  const handleClear = () => {
     setSelectedCreator(null);
-    setFileshares([]);
     setSearchTerm("");
+    setShowDropdown(false);
   };
-
-  // Filtered creators for grid
-  const filteredCreators = creators.filter((c) =>
-    searchTerm
-      ? `${c.firstName} ${c.lastName}`.toLowerCase().includes(searchTerm.toLowerCase())
-      : true
-  );
 
   return (
     <div className="min-h-screen" data-testid="page-explore">
       <div className="bg-card border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-3">{t("explore.title")}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-3">{t('explore.title')}</h1>
           <p className="text-muted-foreground text-xl mb-8 max-w-lg">
-            {t("explore.subtitle")}
+            {t('explore.subtitle')}
           </p>
           <div className="flex items-center gap-2 mb-4 overflow-x-auto pb-2 flex-wrap" data-testid="category-filters">
             {categoryKeys.map((key) => (
@@ -159,163 +89,90 @@ export default function Explore() {
             ))}
           </div>
 
-          {/* Search */}
+          {/* Search with dropdown */}
           <div className="relative max-w-2xl" ref={searchRef}>
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground z-10" />
             <Input
               type="search"
-              placeholder={t("explore.searchPlaceholder")}
+              placeholder={t('explore.searchPlaceholder')}
               className="pl-12 py-6 text-lg pr-10"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setSelectedCreator(null);
+                setShowDropdown(true);
+              }}
+              onFocus={() => searchTerm && setShowDropdown(true)}
               data-testid="input-search-creators"
             />
             {searchTerm && (
               <button
-                onClick={() => setSearchTerm("")}
+                onClick={handleClear}
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
                 <X className="h-4 w-4" />
               </button>
+            )}
+
+            {/* Dropdown */}
+            {showDropdown && searchTerm && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden">
+                {isLoading ? (
+                  <div className="px-4 py-3 text-sm text-gray-500">{t('contact.searching')}</div>
+                ) : filteredCreators && filteredCreators.length > 0 ? (
+                  filteredCreators.map((creator) => (
+                    <button
+                      key={creator.id}
+                      className="w-full flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors text-left border-b last:border-0"
+                      onClick={() => handleSelect(creator)}
+                    >
+                      <Avatar className="h-10 w-10 flex-shrink-0">
+                        <AvatarImage src={creator.avatarUrl} alt={creator.name} />
+                        <AvatarFallback>{creator.name.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-1">
+                          <span className="font-semibold text-gray-900 truncate">{creator.name}</span>
+                          {creator.isVerified && <CheckCircle className="h-3.5 w-3.5 text-blue-600 flex-shrink-0" />}
+                        </div>
+                        <p className="text-sm text-gray-500 truncate">{creator.tagline}</p>
+                      </div>
+                      <Badge variant="secondary" className="text-xs flex-shrink-0">{creator.category}</Badge>
+                    </button>
+                  ))
+                ) : (
+                  <div className="px-4 py-3 text-sm text-gray-500">{t('explore.noResults')} "{searchTerm}"</div>
+                )}
+              </div>
             )}
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Error */}
-        {creatorsError && !selectedCreator && (
+        {error ? (
           <div className="text-center py-20" data-testid="error-explore">
             <AlertCircle className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
-            <p className="text-muted-foreground">{t("contact.errorLoad")}</p>
+            <p className="text-muted-foreground">{t('contact.errorLoad')}</p>
           </div>
-        )}
-
-        {/* Fileshares view */}
-        {selectedCreator && (
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <button
-                onClick={handleBack}
-                className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                Back
+        ) : isLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <CreatorCardSkeleton key={i} />
+            ))}
+          </div>
+        ) : selectedCreator ? (
+          <div className="max-w-2xl mx-auto">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-gray-900">{t('explore.searchResult')}</h2>
+              <button onClick={handleClear} className="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1">
+                <X className="h-4 w-4" /> {t('explore.clear')}
               </button>
-              <h2 className="text-xl font-bold">
-                Files by {selectedCreator.firstName} {selectedCreator.lastName}
-              </h2>
-              {filesharesTotal > 0 && (
-                <Badge variant="secondary">{filesharesTotal} files</Badge>
-              )}
             </div>
-
-            {isLoadingFileshares ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <Card key={i} className="p-4 animate-pulse">
-                    <div className="h-4 bg-muted rounded w-3/4 mb-2" />
-                    <div className="h-4 bg-muted rounded w-1/2" />
-                  </Card>
-                ))}
-              </div>
-            ) : filesharesError ? (
-              <div className="text-center py-20">
-                <AlertCircle className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
-                <p className="text-muted-foreground">Failed to load files.</p>
-              </div>
-            ) : fileshares.length === 0 ? (
-              <div className="text-center py-20">
-                <p className="text-muted-foreground">No files available for this creator.</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {fileshares.map((fs) => (
-                  <Card key={fs.id} className="p-4 hover:shadow-md transition-shadow">
-                    <button
-                      className="w-full flex items-center gap-3 text-left"
-                      onClick={() => window.open(fs.link, "_blank")}
-                    >
-                      <ExternalLink className="h-4 w-4 text-primary flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground truncate">{fs.link}</span>
-                    </button>
-                  </Card>
-                ))}
-              </div>
-            )}
+            <CreatorCard creator={selectedCreator} />
           </div>
-        )}
-
-        {/* Creator grid */}
-        {!selectedCreator && !creatorsError && (
-          <>
-            {isLoadingCreators ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <CreatorCardSkeleton key={i} />
-                ))}
-              </div>
-            ) : filteredCreators.length === 0 ? (
-              <div className="text-center py-20">
-                <p className="text-muted-foreground">
-                  {searchTerm ? `${t("explore.noResults")} "${searchTerm}"` : "No creators found."}
-                </p>
-              </div>
-            ) : (
-              <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredCreators.map((creator) => (
-                    <Card
-                      key={creator.id}
-                      className="group cursor-pointer hover:shadow-md transition-all duration-200 border-card-border"
-                      onClick={() => handleSelectCreator(creator)}
-                    >
-                      <div className="relative h-32 rounded-t-md overflow-hidden">
-                        <div className="w-full h-full bg-gradient-to-br from-primary/30 to-primary/10" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                      </div>
-                      <div className="relative px-4 pb-4">
-                        <div className="-mt-8 mb-3 flex items-end gap-3">
-                          <Avatar className="h-14 w-14 border-2 border-background">
-                            <AvatarImage src={creator.imageUrl} alt={`${creator.firstName} ${creator.lastName}`} />
-                            <AvatarFallback className="text-lg font-semibold bg-primary text-primary-foreground">
-                              {creator.firstName.charAt(0)}
-                            </AvatarFallback>
-                          </Avatar>
-                        </div>
-                        <div className="space-y-2">
-                          <div className="flex items-center gap-1.5">
-                            <h3 className="font-semibold text-base truncate">
-                              {creator.firstName} {creator.lastName}
-                            </h3>
-                            <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                          </div>
-                          <div className="flex items-center gap-3 pt-1">
-                            <Badge variant="secondary" className="text-xs no-default-active-elevate">
-                              {deriveCategory(creator.id)}
-                            </Badge>
-                          </div>
-                        </div>
-                      </div>
-                    </Card>
-                  ))}
-                </div>
-
-                {/* Load more */}
-                {creators.length < creatorsTotal && (
-                  <div className="flex justify-center mt-8">
-                    <Button
-                      variant="outline"
-                      onClick={handleLoadMore}
-                      disabled={isLoadingMore}
-                    >
-                      {isLoadingMore ? "Loading..." : "Load more"}
-                    </Button>
-                  </div>
-                )}
-              </>
-            )}
-          </>
+        ) : (
+          <div className="py-20" />
         )}
       </div>
     </div>
