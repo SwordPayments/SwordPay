@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Creators | SwordPay</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f9fb; color: #111; }
+
+  /* NAV */
+  nav { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0 40px; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-weight: 900; font-size: 18px; display: flex; align-items: center; gap: 6px; }
+  .nav-logo .blue { color: #2563eb; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: #6b7280; }
+  .nav-links a { text-decoration: none; color: inherit; }
+  .nav-links a.active { color: #111; font-weight: 600; }
+  .nav-btn { background: #111; color: #fff; border: none; border-radius: 8px; padding: 8px 18px; font-size: 13px; font-weight: 600; cursor: pointer; }
+
+  /* HEADER */
+  .header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 44px 40px 30px; }
+  .header-inner { max-width: 1120px; margin: 0 auto; }
+  h1 { font-size: 42px; font-weight: 800; letter-spacing: -.8px; margin-bottom: 8px; }
+  .subtitle { color: #6b7280; font-size: 17px; margin-bottom: 24px; max-width: 480px; line-height: 1.5; }
+
+  /* CATEGORY PILLS */
+  .pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .pill { border: 1px solid #e5e7eb; border-radius: 9999px; padding: 7px 18px; font-size: 13px; font-weight: 500; background: #fff; color: #374151; cursor: pointer; white-space: nowrap; transition: all .15s; }
+  .pill.active { background: #111; color: #fff; border-color: #111; }
+  .pill:hover:not(.active) { border-color: #9ca3af; }
+
+  /* SEARCH */
+  .search-wrap { position: relative; max-width: 560px; }
+  .search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #9ca3af; pointer-events: none; }
+  .search-input { width: 100%; padding: 14px 14px 14px 46px; font-size: 15px; border: 1px solid #e5e7eb; border-radius: 12px; outline: none; background: #f9fafb; }
+  .search-input::placeholder { color: #9ca3af; }
+
+  /* GRID */
+  .grid-wrap { max-width: 1120px; margin: 36px auto; padding: 0 40px; }
+  .grid-label { font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 20px; }
+  .creator-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+  /* CREATOR CARD */
+  .creator-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; cursor: pointer; transition: box-shadow .18s, transform .18s; }
+  .creator-card:hover { box-shadow: 0 10px 32px rgba(0,0,0,.1); transform: translateY(-3px); }
+
+  .card-cover { height: 100px; position: relative; overflow: hidden; }
+  .card-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-cover .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.4), transparent); }
+
+  .card-body { padding: 0 16px 16px; }
+  .card-avatar-wrap { margin-top: -24px; margin-bottom: 10px; }
+  .card-avatar { width: 50px; height: 50px; border-radius: 50%; border: 2.5px solid #fff; object-fit: cover; display: block; box-shadow: 0 2px 6px rgba(0,0,0,.12); }
+
+  .card-name-row { display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
+  .card-name { font-weight: 700; font-size: 15px; }
+  .verified { color: #2563eb; font-size: 13px; }
+
+  .card-tagline { font-size: 13px; color: #6b7280; line-height: 1.45; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  .card-meta { display: flex; align-items: center; gap: 10px; }
+  .badge { background: #f3f4f6; color: #374151; font-size: 11px; font-weight: 600; border-radius: 9999px; padding: 3px 10px; }
+  .patrons { font-size: 12px; color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">⚔️ Sword<span class="blue">Pay</span></div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#" class="active">Explore</a>
+    <a href="#">How it Works</a>
+    <a href="#">Pricing</a>
+  </div>
+  <button class="nav-btn">Get Started</button>
+</nav>
+
+<div class="header">
+  <div class="header-inner">
+    <h1>Explore Creators</h1>
+    <p class="subtitle">Discover and support amazing creators across art, music, podcasts, gaming, writing, and more.</p>
+
+    <div class="pills">
+      <div class="pill active">All</div>
+      <div class="pill">🎨 Art</div>
+      <div class="pill">🎵 Music</div>
+      <div class="pill">🎙️ Podcasts</div>
+      <div class="pill">🎮 Gaming</div>
+      <div class="pill">✍️ Writing</div>
+      <div class="pill">📹 Video</div>
+      <div class="pill">📚 Education</div>
+      <div class="pill">📷 Photography</div>
+    </div>
+
+    <div class="search-wrap">
+      <svg class="search-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input class="search-input" placeholder="Search creators by name, category…" />
+    </div>
+  </div>
+</div>
+
+<div class="grid-wrap">
+  <div class="grid-label">All Creators</div>
+  <div class="creator-grid">
+
+    <!-- Luna Artistry -->
+    <div class="creator-card">
+      <div class="card-cover">
+        <img src="/images/cover-1.jpg" alt="Luna Artistry cover">
+        <div class="overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-avatar-wrap">
+          <img class="card-avatar" src="/images/creator-1.jpg" alt="Luna Artistry">
+        </div>
+        <div class="card-name-row">
+          <span class="card-name">Luna Artistry</span>
+          <span class="verified">✔</span>
+        </div>
+        <p class="card-tagline">Digital illustrator creating vibrant fantasy worlds and character designs</p>
+        <div class="card-meta">
+          <span class="badge">Art &amp; Illustration</span>
+          <span class="patrons">👥 2,847 patrons</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Echo Sound Studio -->
+    <div class="creator-card">
+      <div class="card-cover">
+        <img src="/images/cover-2.jpg" alt="Echo Sound Studio cover">
+        <div class="overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-avatar-wrap">
+          <img class="card-avatar" src="/images/creator-2.jpg" alt="Echo Sound Studio">
+        </div>
+        <div class="card-name-row">
+          <span class="card-name">Echo Sound Studio</span>
+          <span class="verified">✔</span>
+        </div>
+        <p class="card-tagline">Independent musician crafting ambient and electronic soundscapes</p>
+        <div class="card-meta">
+          <span class="badge">Music</span>
+          <span class="patrons">👥 1,523 patrons</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Daily Curious -->
+    <div class="creator-card">
+      <div class="card-cover">
+        <img src="/images/cover-3.jpg" alt="The Daily Curious cover">
+        <div class="overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-avatar-wrap">
+          <img class="card-avatar" src="/images/creator-3.jpg" alt="The Daily Curious">
+        </div>
+        <div class="card-name-row">
+          <span class="card-name">The Daily Curious</span>
+          <span class="verified">✔</span>
+        </div>
+        <p class="card-tagline">Weekly podcast exploring fascinating stories from science, history, and culture</p>
+        <div class="card-meta">
+          <span class="badge">Podcasts</span>
+          <span class="patrons">👥 4,192 patrons</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PixelForge Games -->
+    <div class="creator-card">
+      <div class="card-cover">
+        <img src="/images/cover-1.jpg" alt="PixelForge Games cover">
+        <div class="overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-avatar-wrap">
+          <img class="card-avatar" src="/images/creator-4.jpg" alt="PixelForge Games">
+        </div>
+        <div class="card-name-row">
+          <span class="card-name">PixelForge Games</span>
+          <span class="verified">✔</span>
+        </div>
+        <p class="card-tagline">Indie game developer building retro-inspired pixel art adventures</p>
+        <div class="card-meta">
+          <span class="badge">Gaming</span>
+          <span class="patrons">👥 892 patrons</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wordcraft Weekly -->
+    <div class="creator-card">
+      <div class="card-cover">
+        <img src="/images/cover-2.jpg" alt="Wordcraft Weekly cover">
+        <div class="overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-avatar-wrap">
+          <img class="card-avatar" src="/images/creator-5.jpg" alt="Wordcraft Weekly">
+        </div>
+        <div class="card-name-row">
+          <span class="card-name">Wordcraft Weekly</span>
+          <span class="verified">✔</span>
+        </div>
+        <p class="card-tagline">Fiction writer and writing coach sharing stories, craft essays, and workshops</p>
+        <div class="card-meta">
+          <span class="badge">Writing</span>
+          <span class="patrons">👥 1,205 patrons</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Creative Spark Academy -->
+    <div class="creator-card">
+      <div class="card-cover">
+        <img src="/images/cover-3.jpg" alt="Creative Spark Academy cover">
+        <div class="overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-avatar-wrap">
+          <img class="card-avatar" src="/images/creator-6.jpg" alt="Creative Spark Academy">
+        </div>
+        <div class="card-name-row">
+          <span class="card-name">Creative Spark Academy</span>
+        </div>
+        <p class="card-tagline">Art education platform with tutorials, courses, and creative challenges</p>
+        <div class="card-meta">
+          <span class="badge">Education</span>
+          <span class="patrons">👥 3,456 patrons</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
