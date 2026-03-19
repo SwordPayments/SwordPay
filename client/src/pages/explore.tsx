@@ -73,10 +73,13 @@ export default function Explore() {
     setIsLoadingCreators(true);
     setCreatorsError(false);
     fetch(`${API}/creators?take=50&skip=0`)
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then((res: PaginatedResponse<ApiCreator>) => {
-        setCreators(res.data);
-        setCreatorsTotal(res.meta.total);
+        setCreators(Array.isArray(res.data) ? res.data : []);
+        setCreatorsTotal(res.meta?.total ?? 0);
         setCreatorsSkip(0);
       })
       .catch(() => setCreatorsError(true))
@@ -88,9 +91,12 @@ export default function Explore() {
     const nextSkip = creatorsSkip + 50;
     setIsLoadingMore(true);
     fetch(`${API}/creators?take=50&skip=${nextSkip}`)
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then((res: PaginatedResponse<ApiCreator>) => {
-        setCreators((prev) => [...prev, ...res.data]);
+        setCreators((prev) => [...prev, ...(Array.isArray(res.data) ? res.data : [])]);
         setCreatorsSkip(nextSkip);
       })
       .catch(() => {})
@@ -105,10 +111,13 @@ export default function Explore() {
     setFilesharesError(false);
     setIsLoadingFileshares(true);
     fetch(`${API}/creators/${creator.id}/fileshares?take=50&skip=0`)
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then((res: PaginatedResponse<ApiFileshare>) => {
-        setFileshares(res.data);
-        setFilesharesTotal(res.meta.total);
+        setFileshares(Array.isArray(res.data) ? res.data : []);
+        setFilesharesTotal(res.meta?.total ?? 0);
       })
       .catch(() => setFilesharesError(true))
       .finally(() => setIsLoadingFileshares(false));
