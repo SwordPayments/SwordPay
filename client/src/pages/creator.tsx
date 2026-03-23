@@ -191,9 +191,16 @@ export default function CreatorPage() {
                     alt=""
                     className="w-full h-full object-cover"
                     style={{ filter: "blur(8px)", transform: "scale(1.15)" }}
+                    onError={(e) => {
+                      const el = e.currentTarget;
+                      el.style.display = "none";
+                      if (el.parentElement) {
+                        el.parentElement.style.background = "linear-gradient(135deg, #c8b8d8 0%, #b8c8d8 100%)";
+                      }
+                    }}
                   />
                 ) : (
-                  <div className="w-full h-full bg-gray-100" />
+                  <div className="w-full h-full" style={{ background: "linear-gradient(135deg, #c8b8d8 0%, #b8c8d8 100%)" }} />
                 )}
                 {/* Sword icon overlay */}
                 <div className="absolute inset-0 flex items-center justify-center">
