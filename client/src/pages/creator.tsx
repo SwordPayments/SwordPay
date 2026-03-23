@@ -216,12 +216,14 @@ export default function CreatorPage() {
                 ) : (
                   <div className="w-full h-full" style={{ background: "linear-gradient(135deg, #c8b8d8 0%, #b8c8d8 100%)" }} />
                 )}
-                {/* Sword icon overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
-                    <img src="/images/sword-icon.png" alt="sword" className="w-7 h-7 object-contain" />
+                {/* Sword icon overlay — only show when no thumbnail */}
+                {!fs.thumb && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
+                      <img src="/images/sword-icon.png" alt="sword" className="w-7 h-7 object-contain" />
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
               {/* Info below image */}
               <div className="px-2 py-2">
