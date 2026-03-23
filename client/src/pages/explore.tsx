@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/use-seo";
 import { Search, CheckCircle, X, AlertCircle } from "lucide-react";
 
+
 const CATEGORY_KEYS = ["all", "art", "music", "podcasts", "gaming", "writing", "video", "education", "photography"];
 const AVATAR_COLORS = ["#7c3aed","#2563eb","#059669","#dc2626","#d97706","#0891b2","#9333ea","#be185d"];
 
@@ -123,15 +124,7 @@ export default function Explore() {
           </div>
         ) : !searchTerm ? (
           /* Empty state */
-          <div className="flex flex-col items-center py-20 text-center text-muted-foreground">
-            <Search className="h-12 w-12 mb-4 text-gray-300" />
-            <h3 className="text-lg font-semibold text-gray-600 mb-1">Search for a creator</h3>
-            <p className="text-sm">
-              {loading
-                ? "Loading creators…"
-                : <>Type a name to find from <strong>{total.toLocaleString()}</strong> creators</>}
-            </p>
-          </div>
+          <div className="py-20" />
         ) : filtered.length === 0 ? (
           <div className="text-center py-20 text-muted-foreground text-sm">
             No creators found for &ldquo;<strong>{searchTerm}</strong>&rdquo;
