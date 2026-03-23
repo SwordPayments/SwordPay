@@ -63,20 +63,15 @@ export default function CreatorPage() {
         const found = creatorsData.data?.find((c: ExternalCreator) => c.id === params.id) || null;
         setCreator(found);
 
-        // For each fileshare, if the thumb URL fails (wrong bucket), fetch real thumb from the fileshare page
+        // Fetch real thumbUrl from /v1/fileshares/{id} for each fileshare (correct S3 bucket)
         const fileshareList: Fileshare[] = fsData.data || [];
         const enriched = await Promise.all(
           fileshareList.map(async (fs: Fileshare) => {
-            if (!fs.thumb) return fs;
-            // Test if thumb loads — if 403/404, scrape real URL from the fileshare page
             try {
-              const testRes = await fetch(fs.thumb, { method: "HEAD", signal });
-              if (testRes.ok) return fs;
-              // Thumb failed — fetch the fileshare page and extract the real image URL
-              const pageRes = await fetch(`/api/proxy-fileshare?url=${encodeURIComponent(fs.link)}`, { signal });
-              if (pageRes.ok) {
-                const { imageUrl } = await pageRes.json();
-                if (imageUrl) return { ...fs, thumb: imageUrl };
+              const detailRes = await fetch(`https://web-api.swordpay.me/v1/fileshares/${fs.id}`, { signal });
+              if (detailRes.ok) {
+                const detail = await detailRes.json();
+                if (detail.thumbUrl) return { ...fs, thumb: detail.thumbUrl };
               }
             } catch { /* ignore */ }
             return fs;
