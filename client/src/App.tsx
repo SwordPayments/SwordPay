@@ -19,7 +19,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/explore" component={Explore} />
-      <Route path="/creator/:slug" component={CreatorPage} />
+      <Route path="/creator/:id" component={CreatorPage} />
       <Route path="/how-it-works" component={HowItWorks} />
       <Route path="/onlyfans-alternative" component={OnlyFansAlternative} />
       <Route component={NotFound} />
@@ -184,10 +184,12 @@ function App() {
           {!isCreatorPage && <Footer />}
         </div>
         <Toaster />
-        {/* Start Now — glides to bottom on home page, always docked on other pages */}
-        <div ref={btnRef} data-start-now style={btnStyle}>
-          <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform min-w-[126px] sm:min-w-[165px] lg:min-w-[198px]" />
-        </div>
+        {/* Start Now — glides to bottom on home page, always docked on other pages. Hidden on creator pages (creator.tsx has its own sticky button) */}
+        {!isCreatorPage && (
+          <div ref={btnRef} data-start-now style={btnStyle}>
+            <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform min-w-[126px] sm:min-w-[165px] lg:min-w-[198px]" />
+          </div>
+        )}
       </TooltipProvider>
     </QueryClientProvider>
   );
