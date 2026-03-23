@@ -62,7 +62,27 @@ export default function CreatorPage() {
 
         const found = creatorsData.data?.find((c: ExternalCreator) => c.id === params.id) || null;
         setCreator(found);
-        setFileshares(fsData.data || []);
+
+        // For each fileshare, if the thumb URL fails (wrong bucket), fetch real thumb from the fileshare page
+        const fileshareList: Fileshare[] = fsData.data || [];
+        const enriched = await Promise.all(
+          fileshareList.map(async (fs: Fileshare) => {
+            if (!fs.thumb) return fs;
+            // Test if thumb loads — if 403/404, scrape real URL from the fileshare page
+            try {
+              const testRes = await fetch(fs.thumb, { method: "HEAD", signal });
+              if (testRes.ok) return fs;
+              // Thumb failed — fetch the fileshare page and extract the real image URL
+              const pageRes = await fetch(`/api/proxy-fileshare?url=${encodeURIComponent(fs.link)}`, { signal });
+              if (pageRes.ok) {
+                const { imageUrl } = await pageRes.json();
+                if (imageUrl) return { ...fs, thumb: imageUrl };
+              }
+            } catch { /* ignore */ }
+            return fs;
+          })
+        );
+        setFileshares(enriched);
       } catch (err: unknown) {
         if (err instanceof Error && err.name !== "AbortError") setError(true);
       } finally {

@@ -31,6 +31,28 @@ export async function registerRoutes(
     }
   });
 
+  // Proxy to scrape real thumbnail URL from fileshare page (bypasses CORS)
+  app.get("/api/proxy-fileshare", async (req: Request, res) => {
+    const url = req.query.url as string;
+    if (!url || !url.startsWith("https://swordpay.me/fileshares/")) {
+      return res.status(400).json({ error: "Invalid URL" });
+    }
+    try {
+      const response = await fetch(url, {
+        headers: { "User-Agent": "Mozilla/5.0" },
+      });
+      const html = await response.text();
+      // Extract image src from the fileshare page
+      const match = html.match(/src="(https:\/\/prod-swordweb-api-thumb\.s3[^"]+)"/);
+      if (match) {
+        return res.json({ imageUrl: match[1] });
+      }
+      return res.json({ imageUrl: null });
+    } catch {
+      return res.json({ imageUrl: null });
+    }
+  });
+
   app.get("/api/creators", async (_req, res) => {
     try {
       const creators = await storage.getAllCreators();
