@@ -210,7 +210,6 @@ export default function CreatorPage() {
                     src={fs.thumb}
                     alt=""
                     className="w-full h-full object-cover"
-                    style={{ filter: "blur(8px)", transform: "scale(1.15)" }}
                     onError={(e) => {
                       const el = e.currentTarget;
                       el.style.display = "none";
