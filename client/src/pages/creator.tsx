@@ -47,20 +47,23 @@ export default function CreatorPage() {
       setLoading(true);
       setError(false);
       try {
-        const [creatorsRes, fsRes] = await Promise.all([
-          fetch("https://web-api.swordpay.me/v1/creators?take=50", { signal }),
-          fetch(`https://web-api.swordpay.me/v1/creators/${params.id}/fileshares?take=50`, { signal }),
-        ]);
-
-        if (!creatorsRes.ok) throw new Error(`Creators API ${creatorsRes.status}`);
+        // Fetch fileshares immediately
+        const fsRes = await fetch(`https://web-api.swordpay.me/v1/creators/${params.id}/fileshares?take=50`, { signal });
         if (!fsRes.ok) throw new Error(`Fileshares API ${fsRes.status}`);
+        const fsData = await fsRes.json();
 
-        const [creatorsData, fsData] = await Promise.all([
-          creatorsRes.json(),
-          fsRes.json(),
-        ]);
-
-        const found = creatorsData.data?.find((c: ExternalCreator) => c.id === params.id) || null;
+        // Find creator by scanning all pages
+        let found: ExternalCreator | null = null;
+        let page = 1;
+        while (!found) {
+          const r = await fetch(`https://web-api.swordpay.me/v1/creators?take=50&page=${page}`, { signal });
+          if (!r.ok) break;
+          const data = await r.json();
+          const batch: ExternalCreator[] = data.data || [];
+          found = batch.find((c) => c.id === params.id) || null;
+          if (found || batch.length < 50) break;
+          page++;
+        }
         setCreator(found);
 
         // Fetch real thumbUrl from /v1/fileshares/{id} for each fileshare (correct S3 bucket)
