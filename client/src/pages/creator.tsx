@@ -31,6 +31,7 @@ export default function CreatorPage() {
   const [fileshares, setFileshares] = useState<Fileshare[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [avatarOpen, setAvatarOpen] = useState(false);
 
   useSEO({
     title: creator ? `${creator.firstName} ${creator.lastName} | Sword Creator` : "Creator | Sword Creator",
@@ -151,9 +152,10 @@ export default function CreatorPage() {
     <div className="min-h-screen bg-white max-w-lg mx-auto" data-testid={`page-creator-${params.id}`}>
       {/* Creator bar */}
       <div className="border-b px-4 py-3 flex items-center gap-3">
-        <div
-          className="w-12 h-12 rounded-full flex-shrink-0 overflow-hidden flex items-center justify-center text-white font-bold text-base"
+        <button
+          className="w-12 h-12 rounded-full flex-shrink-0 overflow-hidden flex items-center justify-center text-white font-bold text-base focus:outline-none"
           style={{ background: creator.imageUrl ? undefined : avatarColor }}
+          onClick={() => creator.imageUrl && setAvatarOpen(true)}
         >
           {creator.imageUrl ? (
             <img
@@ -170,7 +172,22 @@ export default function CreatorPage() {
               }}
             />
           ) : initials}
-        </div>
+        </button>
+
+        {/* Avatar lightbox */}
+        {avatarOpen && creator.imageUrl && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+            onClick={() => setAvatarOpen(false)}
+          >
+            <img
+              src={creator.imageUrl}
+              alt={creator.firstName}
+              className="max-w-[90vw] max-h-[90vh] rounded-full object-cover shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        )}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1">
             <span className="font-bold text-base truncate">
