@@ -207,7 +207,7 @@ export default function CreatorPage() {
                   <img
                     src={fs.thumb}
                     alt=""
-                    className="w-full h-full object-cover blur-md scale-110"
+                    className="w-full h-full object-cover"
                     onError={(e) => {
                       const el = e.currentTarget;
                       el.style.display = "none";
