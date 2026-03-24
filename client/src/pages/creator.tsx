@@ -28,23 +28,21 @@ function getInitials(first: string, last: string) {
 // Fetches fresh thumbUrl from detail endpoint on mount to avoid S3 signed URL expiry
 function FileshareCard({ fs }: { fs: Fileshare }) {
   const [thumbUrl, setThumbUrl] = useState<string | null>(null);
-  const [paymentRequired, setPaymentRequired] = useState(false);
+  const [isBlurred, setIsBlurred] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
     fetch(`https://web-api.swordpay.me/v1/fileshares/${fs.id}`)
       .then((r) => r.ok ? r.json() : null)
       .then((data) => {
-        if (!cancelled) {
-          if (data?.thumbUrl) setThumbUrl(data.thumbUrl);
-          if (data?.paymentRequired) setPaymentRequired(true);
-        }
+        if (!cancelled && data?.thumbUrl) setThumbUrl(data.thumbUrl);
       })
       .catch(() => {});
     return () => { cancelled = true; };
   }, [fs.id]);
 
-  const showLogo = paymentRequired;
+  // Show logo if no thumb loaded, or if loaded image is tiny/blurred (< 100px wide = low-res paywall preview)
+  const showLogo = !thumbUrl || isBlurred;
 
   return (
     <a
@@ -60,6 +58,10 @@ function FileshareCard({ fs }: { fs: Fileshare }) {
             src={thumbUrl}
             alt=""
             className="w-full h-full object-cover"
+            onLoad={(e) => {
+              // If naturalWidth is tiny (≤100px), it's a blurred paywall preview
+              if (e.currentTarget.naturalWidth <= 100) setIsBlurred(true);
+            }}
             onError={(e) => {
               const el = e.currentTarget;
               el.style.display = "none";
