@@ -207,7 +207,7 @@ export default function CreatorPage() {
                   <img
                     src={fs.thumb}
                     alt=""
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover blur-md scale-110"
                     onError={(e) => {
                       const el = e.currentTarget;
                       el.style.display = "none";
@@ -219,14 +219,12 @@ export default function CreatorPage() {
                 ) : (
                   <div className="w-full h-full" style={{ background: "linear-gradient(135deg, #c8b8d8 0%, #b8c8d8 100%)" }} />
                 )}
-                {/* Sword icon overlay — only show when no thumbnail */}
-                {!fs.thumb && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
-                      <img src="/images/sword-icon.png" alt="sword" className="w-7 h-7 object-contain" />
-                    </div>
+                {/* Sword icon overlay — always shown */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
+                    <img src="/images/sword-icon.png" alt="sword" className="w-7 h-7 object-contain" />
                   </div>
-                )}
+                </div>
               </div>
               {/* Info below image */}
               <div className="px-2 py-2">
