@@ -44,7 +44,7 @@ function FileshareCard({ fs }: { fs: Fileshare }) {
     return () => { cancelled = true; };
   }, [fs.id]);
 
-  const showLogo = paymentRequired || !thumbUrl;
+  const showLogo = true;
 
   return (
     <a
