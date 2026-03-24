@@ -40,20 +40,35 @@ export default function Explore() {
     setLoading(true);
     setFetchError(false);
 
-    fetch("https://web-api.swordpay.me/v1/creators?take=50", { signal: controller.signal })
-      .then((r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      })
-      .then((data) => {
-        setCreators(data.data || []);
-        if (data.meta?.total) setTotal(data.meta.total);
-      })
-      .catch((err) => {
-        if (err.name !== "AbortError") setFetchError(true);
-      })
-      .finally(() => setLoading(false));
+    const fetchAllCreators = async () => {
+      const allCreators: ExternalCreator[] = [];
+      let page = 1;
+      let totalFromApi = 673;
 
+      try {
+        while (true) {
+          const r = await fetch(
+            `https://web-api.swordpay.me/v1/creators?take=50&page=${page}`,
+            { signal: controller.signal }
+          );
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          const data = await r.json();
+          const batch: ExternalCreator[] = data.data || [];
+          if (data.meta?.total) totalFromApi = data.meta.total;
+          allCreators.push(...batch);
+          if (batch.length < 50) break; // last page
+          page++;
+        }
+        setCreators(allCreators);
+        setTotal(totalFromApi);
+      } catch (err: any) {
+        if (err.name !== "AbortError") setFetchError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAllCreators();
     return () => controller.abort();
   }, []);
 
