@@ -25,6 +25,61 @@ function getInitials(first: string, last: string) {
   return ((first?.[0] || "") + (last?.[0] || "")).toUpperCase();
 }
 
+// Fetches fresh thumbUrl from detail endpoint on mount to avoid S3 signed URL expiry
+function FileshareCard({ fs }: { fs: Fileshare }) {
+  const [thumbUrl, setThumbUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`https://web-api.swordpay.me/v1/fileshares/${fs.id}`)
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => {
+        if (!cancelled && data?.thumbUrl) setThumbUrl(data.thumbUrl);
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [fs.id]);
+
+  return (
+    <a
+      href={fs.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-white block"
+      data-testid={`fileshare-${fs.id}`}
+    >
+      <div className="relative w-full aspect-square overflow-hidden">
+        {thumbUrl ? (
+          <img
+            src={thumbUrl}
+            alt=""
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              const el = e.currentTarget;
+              el.style.display = "none";
+              if (el.parentElement) {
+                el.parentElement.style.background = "linear-gradient(135deg, #c8b8d8 0%, #b8c8d8 100%)";
+              }
+            }}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center" style={{ background: "linear-gradient(135deg, #c8b8d8 0%, #b8c8d8 100%)" }}>
+            <div className="w-[4.5rem] h-[4.5rem] bg-white/90 rounded-full flex items-center justify-center">
+              <img src="/images/sword-icon.png" alt="sword" className="w-[2.625rem] h-[2.625rem] object-contain" />
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="px-2 py-2">
+        <div className="text-sm font-bold text-gray-900">${fs.price}</div>
+        {fs.message && (
+          <div className="text-xs text-gray-500 mt-0.5 truncate">{fs.message}</div>
+        )}
+      </div>
+    </a>
+  );
+}
+
 export default function CreatorPage() {
   const params = useParams<{ id: string }>();
   const [creator, setCreator] = useState<ExternalCreator | null>(null);
@@ -67,21 +122,8 @@ export default function CreatorPage() {
         }
         setCreator(found);
 
-        // Fetch real thumbUrl from /v1/fileshares/{id} for each fileshare (correct S3 bucket)
-        const fileshareList: Fileshare[] = fsData.data || [];
-        const enriched = await Promise.all(
-          fileshareList.map(async (fs: Fileshare) => {
-            try {
-              const detailRes = await fetch(`https://web-api.swordpay.me/v1/fileshares/${fs.id}`, { signal });
-              if (detailRes.ok) {
-                const detail = await detailRes.json();
-                if (detail.thumbUrl) return { ...fs, thumb: detail.thumbUrl };
-              }
-            } catch { /* ignore */ }
-            return fs;
-          })
-        );
-        setFileshares(enriched);
+        // Store fileshare list — each FileshareCard fetches its own fresh thumbUrl
+        setFileshares(fsData.data || []);
       } catch (err: unknown) {
         if (err instanceof Error && err.name !== "AbortError") setError(true);
       } finally {
@@ -210,49 +252,7 @@ export default function CreatorPage() {
       ) : (
         <div className="grid grid-cols-3 gap-0.5 bg-gray-200 p-0.5 pb-24">
           {fileshares.map((fs) => (
-            <a
-              key={fs.id}
-              href={fs.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white block"
-              data-testid={`fileshare-${fs.id}`}
-            >
-              {/* Blurred thumb */}
-              <div className="relative w-full aspect-square overflow-hidden">
-                {fs.thumb ? (
-                  <img
-                    src={fs.thumb}
-                    alt=""
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      const el = e.currentTarget;
-                      el.style.display = "none";
-                      if (el.parentElement) {
-                        el.parentElement.style.background = "linear-gradient(135deg, #c8b8d8 0%, #b8c8d8 100%)";
-                      }
-                    }}
-                  />
-                ) : (
-                  <div className="w-full h-full" style={{ background: "linear-gradient(135deg, #c8b8d8 0%, #b8c8d8 100%)" }} />
-                )}
-                {/* Sword icon overlay — only when no thumbnail */}
-                {!fs.thumb && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-[4.5rem] h-[4.5rem] bg-white/90 rounded-full flex items-center justify-center">
-                      <img src="/images/sword-icon.png" alt="sword" className="w-[2.625rem] h-[2.625rem] object-contain" />
-                    </div>
-                  </div>
-                )}
-              </div>
-              {/* Info below image */}
-              <div className="px-2 py-2">
-                <div className="text-sm font-bold text-gray-900">${fs.price}</div>
-                {fs.message && (
-                  <div className="text-xs text-gray-500 mt-0.5 truncate">{fs.message}</div>
-                )}
-              </div>
-            </a>
+            <FileshareCard key={fs.id} fs={fs} />
           ))}
         </div>
       )}
