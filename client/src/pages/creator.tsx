@@ -221,8 +221,8 @@ export default function CreatorPage() {
                 )}
                 {/* Sword icon overlay — always shown */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
-                    <img src="/images/sword-icon.png" alt="sword" className="w-7 h-7 object-contain" />
+                  <div className="w-[4.5rem] h-[4.5rem] bg-white/90 rounded-full flex items-center justify-center">
+                    <img src="/images/sword-icon.png" alt="sword" className="w-[2.625rem] h-[2.625rem] object-contain" />
                   </div>
                 </div>
               </div>
