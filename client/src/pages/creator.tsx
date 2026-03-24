@@ -28,17 +28,23 @@ function getInitials(first: string, last: string) {
 // Fetches fresh thumbUrl from detail endpoint on mount to avoid S3 signed URL expiry
 function FileshareCard({ fs }: { fs: Fileshare }) {
   const [thumbUrl, setThumbUrl] = useState<string | null>(null);
+  const [paymentRequired, setPaymentRequired] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
     fetch(`https://web-api.swordpay.me/v1/fileshares/${fs.id}`)
       .then((r) => r.ok ? r.json() : null)
       .then((data) => {
-        if (!cancelled && data?.thumbUrl) setThumbUrl(data.thumbUrl);
+        if (!cancelled) {
+          if (data?.thumbUrl) setThumbUrl(data.thumbUrl);
+          if (data?.paymentRequired) setPaymentRequired(true);
+        }
       })
       .catch(() => {});
     return () => { cancelled = true; };
   }, [fs.id]);
+
+  const showLogo = paymentRequired || !thumbUrl;
 
   return (
     <a
@@ -63,7 +69,10 @@ function FileshareCard({ fs }: { fs: Fileshare }) {
             }}
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center" style={{ background: "linear-gradient(135deg, #c8b8d8 0%, #b8c8d8 100%)" }}>
+          <div className="w-full h-full" style={{ background: "linear-gradient(135deg, #c8b8d8 0%, #b8c8d8 100%)" }} />
+        )}
+        {showLogo && (
+          <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-[4.5rem] h-[4.5rem] bg-white/90 rounded-full flex items-center justify-center">
               <img src="/images/sword-icon.png" alt="sword" className="w-[2.625rem] h-[2.625rem] object-contain" />
             </div>
