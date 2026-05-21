@@ -35,6 +35,22 @@ function App() {
   const [location] = useLocation();
   const isCreatorPage = location.startsWith("/creator/");
 
+  // SPA route-change tracking — fires both GA4 page_view and Meta Pixel PageView
+  // on every navigation. The script tags in index.html only fire on initial load;
+  // wouter doesn't trigger a full page load, so we need this for analytics parity.
+  useEffect(() => {
+    const w = window as unknown as {
+      gtag?: (...args: unknown[]) => void;
+      fbq?: (...args: unknown[]) => void;
+    };
+    if (typeof w.gtag === "function") {
+      w.gtag("event", "page_view", { page_path: location });
+    }
+    if (typeof w.fbq === "function") {
+      w.fbq("track", "PageView");
+    }
+  }, [location]);
+
   // btnTop = hero-bottom position (static, only changes on init/resize)
   const [btnTop, setBtnTop] = useState(340);
   // docked = switch to bottom:24px after glide
