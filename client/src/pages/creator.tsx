@@ -92,7 +92,10 @@ function FileshareCard({ fs }: { fs: Fileshare }) {
 }
 
 export default function CreatorPage() {
-  const params = useParams<{ id: string }>();
+  // The page is mounted by two routes — `/creator/:id` (legacy UUID) and
+  // `/:slug` (friendly URL). Wouter populates whichever param matched.
+  const params = useParams<{ id?: string; slug?: string }>();
+  const identifier = params.id || params.slug || "";
   const [creator, setCreator] = useState<ExternalCreator | null>(null);
   const [fileshares, setFileshares] = useState<Fileshare[]>([]);
   const [loading, setLoading] = useState(true);
@@ -105,7 +108,7 @@ export default function CreatorPage() {
   });
 
   useEffect(() => {
-    if (!params.id) return;
+    if (!identifier) return;
 
     const controller = new AbortController();
     const { signal } = controller;
@@ -114,20 +117,21 @@ export default function CreatorPage() {
       setLoading(true);
       setError(false);
       try {
-        // Fetch fileshares immediately
-        const fsRes = await fetch(`https://web-api.swordpay.me/v1/creators/${params.id}/fileshares?take=50`, { signal });
+        // Fileshares endpoint accepts UUID OR slug (backend PR #546).
+        const fsRes = await fetch(`https://web-api.swordpay.me/v1/creators/${identifier}/fileshares?take=50`, { signal });
         if (!fsRes.ok) throw new Error(`Fileshares API ${fsRes.status}`);
         const fsData = await fsRes.json();
 
-        // Find creator by scanning all pages
+        // Find creator. UUID match if identifier is a uuid, otherwise slug match.
+        const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(identifier);
         let found: ExternalCreator | null = null;
         let page = 1;
         while (!found) {
           const r = await fetch(`https://web-api.swordpay.me/v1/creators?take=50&page=${page}`, { signal });
           if (!r.ok) break;
           const data = await r.json();
-          const batch: ExternalCreator[] = data.data || [];
-          found = batch.find((c) => c.id === params.id) || null;
+          const batch: (ExternalCreator & { slug?: string })[] = data.data || [];
+          found = batch.find((c) => isUuid ? c.id === identifier : c.slug === identifier) || null;
           if (found || batch.length < 50) break;
           page++;
         }
@@ -144,11 +148,11 @@ export default function CreatorPage() {
 
     fetchData();
     return () => controller.abort();
-  }, [params.id]);
+  }, [identifier]);
 
-  // Derive avatar color from id for consistency per creator
-  const avatarColorIndex = params.id
-    ? params.id.charCodeAt(0) % AVATAR_COLORS.length
+  // Derive avatar color from identifier for consistency per creator
+  const avatarColorIndex = identifier
+    ? identifier.charCodeAt(0) % AVATAR_COLORS.length
     : 0;
   const avatarColor = AVATAR_COLORS[avatarColorIndex];
   const initials = creator ? getInitials(creator.firstName, creator.lastName) : "?";
@@ -202,7 +206,7 @@ export default function CreatorPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white max-w-lg mx-auto" data-testid={`page-creator-${params.id}`}>
+    <div className="min-h-screen bg-white max-w-lg mx-auto" data-testid={`page-creator-${identifier}`}>
       {/* Creator bar */}
       <div className="border-b px-4 py-3 flex items-center gap-3">
         <button
