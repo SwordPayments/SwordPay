@@ -16,10 +16,23 @@ interface ExternalCreator {
 interface Fileshare {
   id: string;
   price: string;
+  currency?: string;
   link: string;
   message: string | null;
   thumb: string | null;
 }
+
+// Currency symbol map. Default to "$" when no/unknown currency.
+const CURRENCY_SYMBOL: Record<string, string> = {
+  USD: "$",
+  BRL: "R$",
+  MXN: "MX$",
+  COP: "COL$",
+  CLP: "CL$",
+  PEN: "S/",
+};
+const symbolFor = (currency?: string): string =>
+  (currency && CURRENCY_SYMBOL[currency.toUpperCase()]) || "$";
 
 function getInitials(first: string, last: string) {
   return ((first?.[0] || "") + (last?.[0] || "")).toUpperCase();
@@ -82,7 +95,7 @@ function FileshareCard({ fs }: { fs: Fileshare }) {
         )}
       </div>
       <div className="px-2 py-2">
-        <div className="text-sm font-bold text-gray-900">${fs.price}</div>
+        <div className="text-sm font-bold text-gray-900">{symbolFor(fs.currency)}{fs.price}</div>
         {fs.message && (
           <div className="text-xs text-gray-500 mt-0.5 truncate">{fs.message}</div>
         )}
