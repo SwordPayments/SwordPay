@@ -19,9 +19,16 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/explore" component={Explore} />
-      <Route path="/creator/:id" component={CreatorPage} />
       <Route path="/how-it-works" component={HowItWorks} />
       <Route path="/onlyfans-alternative" component={OnlyFansAlternative} />
+      {/* Legacy UUID-style creator URL — kept for back-compat with shared links */}
+      <Route path="/creator/:id" component={CreatorPage} />
+      {/* Friendly root-level slug URL: swordpay.com/jenneferfonseca. Must be
+          the last named route so the static paths above still match first.
+          Reserved-words guard (so a creator named "About" can't shadow a
+          real page) is deferred to a follow-up PR; for now an unknown slug
+          lands on the existing "Creator not found" branch. */}
+      <Route path="/:slug" component={CreatorPage} />
       <Route component={NotFound} />
     </Switch>
   );
