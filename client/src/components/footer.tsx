@@ -2,176 +2,491 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { useTranslation } from "react-i18next";
 
-const TERMS_CONTENT = `Terms and Conditions
-www.swordpay.com
-Effective date: 8th October 2024
+const TERMS_CONTENT = `Terms of Service
+SwordPay | swordpay.com | Effective: 28 May 2026
 
-Introduction
-Welcome to www.swordpay.com ("Site" or "Website"). This website is owned and operated by EXCALIBUR ASCENSION. Throughout the Site, the terms "we", "us", "platform", "Provider", "SwordPay" and "our" refer to EXCALIBUR ASCENSION. We offer this website, including all information, tools, and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies, and notices stated here. By visiting our site, you ("User") engage in our "Service" and agree to be bound by the following terms and conditions ("Terms"), including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms and Conditions apply to all users of the site, including without limitation users who are browsers, users, customers and/ or contributors of content.
+BY USING SWORDPAY YOU AGREE TO THESE TERMS – PLEASE READ THEM CAREFULLY
 
-PLEASE READ THE FOLLOWING TERMS AND DISCLAIMERS CAREFULLY BEFORE USING THE SERVICES. IF YOU DO NOT AGREE WITH THESE TERMS, OUR PRIVACY POLICY, OR ANY OTHER OF OUR POLICIES, YOU SHOULD NOT USE THE SERVICES.
+1. Introduction
 
-1. Changes
-We reserve the right to add/discontinue any service anytime at our sole discretion.
+These Terms form your binding agreement with SwordPay. The Terms govern:
+• Your access to and use of swordpay.com and all related features
+• Each Creator Interaction you participate in
+• Your dealings with us about your account, content, payments, and disputes
 
-2. Eligibility
-Sword Pay is strictly limited to parties who can lawfully enter into and form contracts on the Internet. By using or engaging with the website, you also acknowledge and agree that you are permitted by your jurisdiction's applicable law to use and/or engage with the website.
+We may change these Terms at any time. Where the change is material we will give Notice. Continued use after the change becomes effective is acceptance.
 
-3. Registration
-4.1 A new Client is required to provide the required know-your-client ("KYC") and identification documentation as part of the signup and onboarding process.
-4.2 The Client is solely responsible for the content and accuracy of any data, information, and/or documentation provided to the Provider and/or submitted via any of the Platforms.
-4.3 The Client is solely responsible for ensuring that all of its details on all Platforms are accurate, correct, and up to date.
-4.4 The Provider implements and maintains the KYC procedures as part of the Provider's commitment to combating fraud, combating corruption, the prevention of money laundering and the prevention of terrorist financing.
-4.5 The User agrees not to:
-  4.5.1 Register more than 1 (one) account in their own name on the Platform
-  4.5.2 Register an account in the name of any other person
-4.6 In the event that the User registers more than 1 (one) account, it shall constitute a breach of these Terms and the Provider may, without derogating from its other rights in law:
-  4.6.1 Lock, suspend and/or cancel 1 (one) or all of the Users accounts; or
-  4.6.2 In the event that the Provider elects to cancel all of the Users accounts, the User hereby agrees that the Provider may transfer any and all funds from the additional accounts to the Users original account; and
-  4.6.3 In either event, the Provider may charge an administrative fee in addition to the transaction fees applicable to the transfers.
+Your rights may vary depending on where you live. Nothing in these Terms removes any mandatory consumer right that applies to you under local law.
 
-4. Payment
-5.1 Our Site accepts all major payment methods which include: Visa (credit and debit cards), MasterCard (credit and debit cards), and any other payment method displayed on our Site. We reserve the right to add or change our payment methods at sole discretion anytime.
-5.2 The user may deposit funds into their Sword Balance and will be allocated Sword Credits to the value of the funds deposited.
-5.3 The User is solely responsible for ensuring that the details provided for any transfer, deposit and/or moving of credits from the wallet are correct, accurate, up-to-date, and complete.
-5.4 The User acknowledges that:
-  5.4.1 The Provider is not liable for any loss, damage and/or harm suffered by the user and/or any third party in the event that the user and/or third party provides the incorrect wallet reference number, beneficiary details, account number and/or amount; and
-  5.4.2 The Provider is under no obligation to reverse or amend any deposit, transfer and/or withdrawal in the event of the user providing the incorrect wallet reference number, beneficiary details, account number and/or amount; and
-  5.4.3 The Provider may charge a fee for each refund requested and processed.
-  5.4.4 The User agrees and acknowledges that the user shall have the responsibility for all activity that occurs in or through the uses Sword Wallet or Saved Card, and accepts all risks of any authorized or authorized access hereto.
+2. Definitions
 
-5. Sword Credits
-Sword Credits are virtual items that allow users to purchase digital goods and services within the Sword Pay App and serve to create a seamless global interaction between users. In addition to Channels and Private Chats, Users can make transactions with their Sword Credits. The transaction of Sword Credits will give access to the exchanged goods or services. Sword Credits can be acquired via in-app Top Up through our payment providers. We do not process these transactions, therefore, any issues or concerns regarding Credit Top Up should be addressed to the respective payment processor.
+• "SwordPay" — the platform operated at swordpay.com
+• "We", "Us", "Our" — SwordPay, operator of swordpay.com
+• "Creator" — a User whose account is set up to upload and monetise Content
+• "Fan" — a User whose account is set up to purchase access to Creator Content
+• "User" — any person with a SwordPay account, whether Creator, Fan, or both
+• "Content" — any image, video, audio, text, metadata, message, livestream material, or other material uploaded to SwordPay by any User
+• "Creator Interaction" — any transaction granting a Fan access to a Creator's Content
+• "Fan Payment" — any payment made by a Fan in connection with a Creator Interaction
+• "Platform Fee" — 10% of the Fan Payment plus US$0.50 per transaction, plus any currency-conversion and bank-transfer fees we incur on your behalf
+• "Creator Earnings" — the Fan Payment minus the Platform Fee and any applicable taxes
+• "Consumer" — a User acting outside the course of a trade, business, craft, or profession
+• "Business User" — a User who uses SwordPay for commercial reasons
+• "Co-Authored Content" — Content that features a person other than the uploading Creator
 
-6.1 Sword Credits Refund and Withdrawal Policy
-Users can refund their Sword Credits through Withdrawing their Available Sword Balance through our provided Payment-Out Methods. All refunds and withdrawals are independently processed by the user. 1 Sword Credit holds an equivalent value to 1 USD.
+3. Who We Are
 
-Digital Goods Refund Policy
-No refunds are to be provided by Sword Pay for Digital Goods. If the content of the FileShare is not what the Downloader expected, the Uploader is solely responsible for the FileShare and decides independently on the terms of refund. Sword Pay holds no responsibility to settle any dispute over shared Files between the Uploader and Downloader.
+General enquiries: support@swordpay.io
 
-6. Permitted Use
-You agree to use the Site and the Services only for purposes that are permitted by these Terms and in compliance with all applicable laws, regulations, and generally accepted practices or guidelines in the relevant jurisdictions.
+4. Eligibility
 
-7. Limited License and Site Access; Acceptable Use
-You may not: (a) resell or make any commercial use of this Site or any of the contents of this Site; (b) modify, adapt, translate, reverse engineer, decompile, disassemble or convert any of the contents of this Site not intended to be so read; (c) copy, imitate, mirror, reproduce, distribute, publish, download, display, perform, post or transmit any of the contents of this Site in any form or by any means; or (d) use any data mining, bots, spiders, automated tools or similar data gathering and extraction methods on the contents of the Site or to collect any information from the Site or any other user of the Site.
+To use SwordPay you must:
+• Be at least 18 years old
+• Be legally able to enter a binding contract with us
+• Not have been convicted of a serious crime
+• Provide accurate, current registration information
+• Be lawfully permitted to view and post the Content you intend to view or post
 
-8. Accounts, Registrations, and Passwords
-If you use this Site and such use requires setting up an account and/or password(s), you are solely responsible for maintaining the confidentiality of your account and password(s) and for restricting access to your computer.
+We may reject any account application at our discretion.
 
-9. Intellectual Property Rights
-Your use of the Site and its contents grants no rights to you concerning any copyright, designs, and trademarks and all other intellectual property and material rights mentioned, displayed, or relating to the Content on the Site.
+5. Account Setup
 
-10. Monitoring Activity
-Sword Pay has no obligation to monitor this Site or any portion thereof. However, we reserve the right to review any posted content and remove, delete, redact or otherwise modify such content, in our sole discretion, at any time and from time to time, without notice or further obligation to you.
+Fan accounts: A Fan must provide a valid email address, a username, a password, and a valid payment method.
 
-11. Disclaimer
-TO THE FULLEST EXTENT PERMISSIBLE UNDER APPLICABLE LAW, SWORD PAY EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES AND REPRESENTATIONS, EXPRESS OR IMPLIED, INCLUDING ANY (A) WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE OR USE AS TO THE SITE AND ITS CONTENT, INCLUDING THE INFORMATION, DATA, SOFTWARE, OR PRODUCTS CONTAINED THEREIN, OR THE RESULTS OBTAINED BY THEIR USE OR AS TO THE PERFORMANCE THEREOF, (B) WARRANTIES OR CONDITIONS ARISING THROUGH COURSE OF DEALING, AND (C) WARRANTIES OR CONDITIONS OF UNINTERRUPTED OR ERROR-FREE ACCESS OR USE.
+Creator accounts must additionally:
+• Upload a valid government-issued photo ID
+• Provide a biometric selfie matched to that ID
+• Complete identity verification via our verification provider (currently Didit)
+• Add a bank account or other approved payout method
+• Provide tax identification information where required by law
+• Set the price(s) at which their Content will be sold
 
-12. Limitation of Liability
-You agree that in no event shall Sword Pay be liable to you, or any third party, for any lost profits, incidental, consequential, punitive, special, or indirect damages arising out of or in connection with the Site or the Terms and Conditions.
+We may re-verify identity at any time. Failure to complete re-verification may result in suspension of payouts or the account.
 
-13. Indemnification
-You agree to indemnify and hold Sword Pay and its subsidiaries, affiliates, officers, directors, agents, and employees, harmless from and against any suit, action, claim, demand, penalty or loss, including reasonable attorneys' fees, made by or resulting from any third party due to or arising out of your use of the Site.
+6. Content
 
-14. Dispute Resolution & Governing Laws
-In the event of a dispute arising out of or in connection with these terms or any contract between you and us, then you agree to attempt to settle the dispute by engaging in good faith with us in a process of mediation only. These Terms and Conditions shall be governed by and construed in accordance with the laws of England and Wales.
+Ownership: You retain ownership of Content you upload. By uploading, you grant SwordPay a perpetual, worldwide, royalty-free, non-exclusive, sublicensable, transferable licence to host, display, distribute, reproduce, create derivative works of, and otherwise use your Content as necessary to operate and improve SwordPay.
 
-15. Privacy & Cookies
-For more information on how we collect your information and cookies, please refer to our Privacy Policy and Cookie Policy.
+Responsibility: You are solely responsible for Content uploaded under your account. You warrant for each item of Content that:
+• You own it, or have all rights needed to upload and monetise it
+• It does not infringe any third-party right
+• It complies with our Acceptable Use Policy and all applicable laws
+• For Co-Authored Content, you have obtained written consent from every person featured and confirmed they are at least 18
 
-16. Changes
-We reserve the right to update and revise these Terms and Conditions at any time.
+Moderation: We may pre-screen, monitor, scan, or reuse Content to enforce our Terms. We may remove Content that breaches our Terms without notice.
 
-17. Electronic Communications
-When you visit the Site or send us emails, you are communicating with us electronically. In doing so, you consent to receive communications from us electronically.
+7. Fan Payments and Purchases
 
-18. Severability
-If any of these Terms and Conditions shall be deemed invalid, void, or for any reason unenforceable, that term shall be deemed severable and shall not affect the validity and enforceability of any remaining terms or conditions.
+• Creator Interactions are governed by the Contract between Fan and Creator
+• Creators set their own prices. All prices are charged in US dollars
+• Fan Payments exclude indirect sales taxes, which are added at checkout
+• You agree not to request a refund or initiate a chargeback unless in good faith
 
-19. Prohibited Activities
-The User shall not and hereby agrees not to utilize the Platforms to violate any legislation, regulations, statutes, and/or applicable law; violate any other person's rights; undertake, facilitate or support criminal activity of any kind; or engage in any form of abusive or fraudulent activity.
+8. Creator Payouts
 
-20. Fees
-Users agree to a 10% + $0.50 fee on each FileShare sent.
+• The Platform Fee (10% plus US$0.50 per transaction, plus currency-conversion and transfer fees) is deducted from each Fan Payment
+• Creator Earnings appear in your SwordPay balance once cleared
+• If a Fan succeeds in obtaining a refund or chargeback, we may deduct the corresponding Creator Earnings from your balance
 
-21. Contact Us
-For any questions, complaints, and queries or to report any violations, kindly send an email to support@swordpay.io`;
+9. Tax Compliance
+
+You are solely responsible for your tax affairs. SwordPay does not provide tax advice. You warrant that you report all SwordPay-derived earnings to the relevant tax authorities.
+
+10. Our Rights
+
+• We may suspend, remove, or restrict Content that may breach our Terms
+• We use automated tools, AI classifiers, and hash-matching technology to identify violations
+• We may disclose information about your use of SwordPay to third parties in line with our Privacy Policy
+• We own all rights in SwordPay and its features, except Content owned by Creators
+
+11. What We Are Not Responsible For
+
+• Content posted by Users
+• Whether a Creator will generate earnings
+• Bank, e-wallet, currency, or payment-provider charges
+• Lost, stolen, or compromised accounts
+• Technical problems with your device, network, or software
+
+12. Account Suspension, Closure, and Earnings Forfeiture
+
+We may suspend or close your account:
+• With 30 days' Notice, at any time, for any reason
+• At any time without Notice where we reasonably believe you have breached the Terms
+
+If you do not dispute a forfeiture or closure decision within six months of Notification, you waive the right to dispute it.
+
+13. Account Deletion by the User
+
+You may delete your account from the account-settings area of SwordPay. Fan accounts are deleted within a reasonable time. Creator accounts remain open until all active Fan access expires, then we pay outstanding Creator Earnings and delete the account.
+
+14. Intellectual Property
+
+• You confirm that your Content does not infringe any third-party intellectual property right
+• The licence you grant us is perpetual, worldwide, non-exclusive, royalty-free, sublicensable, and transferable
+• We will never sell your Content to another platform
+
+15. Co-Authored Content
+
+For Content featuring anyone other than the uploading Creator, the additional person must either be a tagged verified Creator on SwordPay or have provided a signed release form confirming they are at least 18 and consent to appear.
+
+16. AI-Generated Content and Sponsored Content
+
+AI-Generated Content must not depict any real person without consent and must be labelled with #AI or #AIGenerated.
+
+Sponsored Content must be labelled with #ad, #sponsored, or #paidpromotion and identify the brand paying for it.
+
+17. Sharing and Linking
+
+Do not link to SwordPay in a way that implies endorsement where none exists. Do not promote a SwordPay account through Google Ads, Bing Ads, or any paid search advertising platform.
+
+18. Domain Names
+
+You may only register a domain containing the SwordPay trademark if you are a verified Creator, the domain redirects to your SwordPay account, and we have given written permission.
+
+19. Indemnification
+
+You will indemnify and hold harmless SwordPay from any loss arising from your Content, your breach of these Terms, or your tax obligations.
+
+20. Limitation of Liability
+
+Consumers (US): our total liability for any claim is limited to US$250 per claim.
+Business Users: our total liability is limited to the greater of 100% of Platform Fees paid in the 12 months before the claim, or US$5,000.
+
+21. Limitation Period
+
+Any claim must be commenced within one year after the cause of action arose.
+
+22. Disputes and Mediation
+
+Before commencing any legal proceeding you must contact support@swordpay.io and attempt good-faith resolution.
+
+Choice of law: These Terms are governed by the laws of England and Wales.
+
+23. General
+
+If any provision is unenforceable, the remainder continues in effect. These Terms are the entire agreement between you and us regarding SwordPay.
+
+24. Changes
+
+We may update these Terms at any time. Material changes will be notified by email or in-platform Notice.
+
+Last updated: 28 May 2026`;
 
 const PRIVACY_CONTENT = `Privacy Policy
-www.swordpay.com
-Effective date: 8th October 2024
+SwordPay | swordpay.com | Effective: 28 May 2026
 
-EXCALIBUR ASCENSION ("Sword Pay", "we", "us" and "our") respects your privacy and is committed to taking reasonable steps towards protecting your privacy online and managing your information responsibly.
+By using SwordPay you confirm that you have read this Policy.
 
-PERSONAL INFORMATION WE COLLECT
+1. Introduction
 
-Personal information you provide to us:
-- Contact data: first and last name, email and mailing addresses, phone number and professional title.
-- Your Contacts: if you choose to sync your contacts, we collect names, phone numbers, and email addresses.
-- Registration data: information provided to register for an account including your date of birth.
-- Profile data: your username, password, interests and preferences.
-- Communications: information you provide when you contact us with questions or feedback.
-- Marketing data: email or contact details used to send marketing communications.
-- Purchase data: order history and information needed to process and fulfill your order.
+SwordPay ("we", "us", "our") respects your privacy and is committed to protecting the personal data we process about you. We are the data controller for the personal data we process in connection with SwordPay.
 
-Data from other sources:
-- Business partners, data providers, and public sources such as blogs, forums or social media platforms.
+2. What Counts as Personal Data
 
-Automatic Collection:
-- Device data: operating system, browser type, screen resolution, IP address, general location.
-- Online activity data: pages viewed, time spent, navigation paths, access times.
-- Cookies and similar technologies.
+"Personal data" means information that identifies you, or that can reasonably be linked to you. It does not include deidentified, aggregated, or anonymised data.
 
-HOW WE USE YOUR PERSONAL INFORMATION
+3. Age Restriction (18+)
 
-- Service delivery: provide, operate and improve the Service; establish and maintain your account; send announcements, updates, security alerts; provide customer support.
-- Direct Marketing: send Sword Pay-related marketing communications as permitted by law.
-- Research and development: analyze and improve the Service and our business.
-- Anonymous data: create aggregated, de-identified data for lawful business purposes.
-- Interest-based advertising: display ads via third-party advertising companies.
-- Legal compliance: comply with applicable laws, lawful requests, and legal process.
-- Fraud prevention and safety: protect rights, privacy, safety or property.
+SwordPay is intended only for individuals aged 18 or older. We do not knowingly collect data from anyone younger.
 
-HOW WE SHARE YOUR PERSONAL INFORMATION
+4. Applicability and Updates
 
-- Affiliates: our subsidiaries and affiliates.
-- Service providers: companies that provide services on our behalf.
-- Advertising partners: third party advertising companies.
-- Third party platforms: social media platforms you connect to the Service.
-- Professional advisors: lawyers, bankers, auditors and insurers.
-- Authorities: law enforcement and government authorities as required by law.
-- Business transferees: in connection with any merger, financing, or acquisition.
+This Policy supplements but does not form part of our Terms of Service. We may update this Policy at any time. Material changes will be communicated by notification or email.
 
-YOUR CHOICES
+5. Third-Party Links
 
-- Access or update your account information by logging into your account.
-- Opt out of marketing emails by following the unsubscribe instructions.
-- Manage cookies through your browser settings.
-- Opt-out of interest-based advertising.
-- Disable location access in your mobile device settings.
+SwordPay may contain links to third-party sites. We are not responsible for the privacy practices of those third parties.
 
-SECURITY PRACTICES
-We employ organizational, technical and physical safeguards to protect your personal information. However, we cannot guarantee absolute security.
+6. Categories of Personal Data
 
-INTERNATIONAL DATA TRANSFERS
-Sword Pay is headquartered in the UK and may have service providers in other countries.
+Fans: Email address, phone number, username and password, avatar, subscriptions, direct messages, comments, support enquiries.
 
-DATA PROTECTION RIGHTS UNDER THE GDPR
-- Right to information (Art. 15 GDPR)
-- Right to correction (Art. 16 GDPR)
-- Right to deletion / "Right to be forgotten" (Art. 17 GDPR)
-- Right to limit processing (Art. 18 GDPR)
-- Right to data transmissibility (Art. 20 GDPR)
-- Right to object (Art. 21 GDPR)
+Creators (all of the above, plus): Full legal name, residential address, date of birth, country of residence, government-issued photo ID, selfie image, bank account and payout details, tax identification number.
 
-CCPA (California Residents)
-We do not sell personal information. California residents have the right to request information, access, and deletion of their personal data. To exercise your rights, email support@swordpay.io.
+Financial data: Tokenised payment-card details (we do not receive the full card number), billing address, wallet funds, transaction history.
 
-FOR UK RESIDENTS – ICO UK
-Contact the Information Commissioner's Office on (0044) 303 123 1113 or visit ico.org.uk.
+Technical data: IP address, user agent, log data.
 
-CONTACT US
-For any questions or complaints regarding this privacy policy, please contact support@swordpay.io`;
+Face Recognition Data: Used only by our third-party verification provider. We do not collect, receive, possess, or have access to Face Recognition Data.
+
+7. Onboarding Process
+
+Creators: We collect User Data and Financial Data, confirm country of residence, conduct third-party age and identity verification (currently Didit), and confirm you have not been banned.
+
+Fans: We collect User Data and Financial Data, confirm country of residence, and where required by law, require additional age assurance.
+
+8. How We Use Personal Data
+
+• Creating and operating your account (Contract performance)
+• Identity and age verification (Consent)
+• Processing payments and payouts (Contract performance)
+• Moderating Content (Contract performance)
+• Reporting illegal activity to law enforcement (Legal obligation)
+• Detecting fraud and money laundering (Legal obligation / Legitimate interests)
+
+We do not make solely automated decisions with legal or significant effects on you.
+
+9. Who We Share Data With
+
+• Payment processors
+• Identity-verification provider (Didit)
+• Content-moderation providers
+• Law enforcement and regulators
+• Tax authorities
+• Professional advisers
+
+We do not sell personal data. We do not share personal data for cross-context behavioural advertising.
+
+10. International Data Transfers
+
+Some recipients are outside the UK, EEA, and Switzerland. We transfer data to countries with adequate protection or under appropriate safeguards.
+
+11. Data Retention
+
+• Active-account data: Lifetime of account
+• Closed-account data: 1 year after closure
+• Identity-verification records: 5 years after closure
+• Transaction records: 7 years
+• Banned-user records: Retained indefinitely
+
+12. Your Rights
+
+You have the right to: withdraw consent, access your data, correct inaccurate data, delete your data, restrict processing, port your data, and object to processing.
+
+Contact: compliance@swordpay.io
+
+13. Lodging a Complaint
+
+UK: Information Commissioner's Office (ICO) — ico.org.uk — 0303 123 1113
+EEA: Your country's data-protection regulator
+
+14. United States Disclosures
+
+We do not sell personal data. California residents have rights under CCPA. Nevada residents may submit opt-out requests via compliance@swordpay.io.
+
+15. Contact
+
+General privacy enquiries: compliance@swordpay.io
+
+Last updated: 28 May 2026`;
+
+const COOKIE_CONTENT = `Cookie Notice
+SwordPay | swordpay.com | Effective: 28 May 2026
+
+1. What Cookies Are
+
+Cookies are small pieces of data stored on your device that allow us to remember information about your browser or device.
+
+Session cookies are removed when you close the browser. Persistent cookies stay for a set period (typically 30 days to 2 years).
+
+2. The Cookies We Use
+
+Essential cookies (you cannot disable these without breaking core functionality):
+• sp_sess — Maintains your logged-in session
+• sp_auth — Authenticates your user ID per request
+• sp_auth_2fa_{userid} — Remembers trusted device for 2FA (30 days)
+• sp_csrf — Prevents cross-site request forgery
+• sp_fp — Browser fingerprint for fraud prevention (90 days)
+• sp_lang — Stores language preference (1 year)
+• sp_cookie_choice — Records your cookie-banner choice (1 year)
+• cf_* — Cloudflare bot-protection cookies
+• cdn_policy, cdn_sig, cdn_kpid — CDN signed-URL access
+• sp_stream — Enables livestream playback
+• sp_profile_promo — Enables promotions
+
+Analytics cookies (consent-based): Set only after you choose "Accept all". They tell us which pages are visited in aggregate.
+
+Third-party cookies: Set by our payment processor, identity-verification provider, and fraud-prevention provider.
+
+3. The Cookie Banner
+
+On your first visit you will see a banner asking whether to accept all cookies or only essential cookies. You can change your choice in account settings.
+
+4. Managing Cookies in Your Browser
+
+You can block or delete cookies through browser settings:
+• Chrome: Settings → Privacy and security → Cookies
+• Safari: Preferences → Privacy
+• Firefox: Settings → Privacy & Security
+• Edge: Settings → Cookies and site permissions
+
+Blocking essential cookies will prevent SwordPay from working correctly.
+
+5. Do Not Track
+
+We do not respond to "Do Not Track" browser signals. We do not use cross-site tracking and we do not sell personal data for targeted advertising.
+
+6. Contact
+
+Questions: compliance@swordpay.io
+
+Last updated: 28 May 2026`;
+
+const ACCEPTABLE_USE_CONTENT = `Acceptable Use Policy
+SwordPay | swordpay.com | Effective: 28 May 2026
+
+BY USING SWORDPAY YOU AGREE TO THIS POLICY – PLEASE READ IT CAREFULLY
+
+This Policy forms part of your agreement with us. Breaching it may result in removal of Content, suspension, or termination of your account.
+
+Do not use SwordPay for, or to facilitate, any of the following:
+
+MINORS
+• Anyone under 18
+• Any explicit Content featuring a person 18+ who has not completed Creator onboarding or supplied a release form
+
+ILLEGAL ACTIVITY
+• Exploitation, abuse, or harm of minors
+• Incest, bestiality, necrophilia
+• Rape or sexual assault — whether actual, claimed, or role-played
+• Content promoting terrorism or violent extremism
+• Human trafficking, forced labour, or modern slavery
+• Escort services, sex trafficking, or prostitution
+
+PROHIBITED ITEMS
+• Weapons or controlled substances depicted in a way that threatens or causes harm
+
+HATEFUL CONDUCT
+Content attacking any individual or group based on: race, ethnicity, national origin, caste, sexual orientation, gender identity, religious affiliation, age, disability, serious disease, immigration status, veteran status, or any other protected characteristic.
+
+ABUSE AND HARASSMENT
+• Stalking
+• Doxxing (publishing private information without consent)
+• Defamation
+• Sharing non-consensual, fake, or manipulated intimate images, including AI-generated images
+• Any explicit image of another person without consent
+
+VIOLENCE AND HARM
+• Prohibited role-play, extreme impact, extreme bondage
+• Use of objects likely to cause physical or mental harm
+• Lack of express consent
+• Content promoting or glorifying suicide or self-harm
+
+PROHIBITED BODILY FLUIDS
+• Urine, excrement, or other bodily-fluid content prohibited by major payment networks (Mastercard/Visa requirement)
+
+INACCURATE INFORMATION
+• Misleading descriptions of Content
+• Misleading account information
+
+PUBLIC NUDITY
+• Explicit conduct where the general public is present or reasonably likely to see, including in avatars or headers
+
+PROHIBITED CYBER ACTIVITY
+• Spamming
+• Sharing personal data of another person without consent
+• Linking to external media-storage sites
+• Interfering with SwordPay's software, hardware, or network
+
+COPYING OR SCRAPING
+• Scraping, downloading, sharing, or gathering data from SwordPay or any Creator
+
+OFF-PLATFORM TRANSACTIONS
+• Arranging transactions other than Creator Interactions through SwordPay
+• Facilitating in-person meetings
+
+PROHIBITED COMMERCIAL ACTIVITY
+• Selling controlled or regulated items
+• Claiming SwordPay endorsement when none given
+• Infringing third-party intellectual property
+• Promoting illegal gambling
+
+AI-GENERATED CONTENT
+• Must not depict any real person without consent
+• Must be labelled with #AI or #AIGenerated
+• Fully AI-generated Creator accounts require the operator to complete onboarding
+
+SPONSORED CONTENT
+• Must be labelled with #ad, #sponsored, or #paidpromotion
+• Must not advertise tobacco, e-cigarettes, illegal drugs, prescription medicines, or weapons
+• Must not promote illegal gambling
+• Must not target alcohol advertising at minors
+
+ENFORCEMENT
+We may: remove Content, issue warnings, suspend the account, terminate and forfeit Creator Earnings, or report to law enforcement.
+
+Last updated: 28 May 2026`;
+
+const SAFETY_CONTENT = `Safety and Transparency Center
+SwordPay | swordpay.com | Effective: 28 May 2026
+
+SwordPay exists to give Creators control of their work and Fans confidence in what they pay for. We are committed to a safe platform that goes beyond the legal minimum.
+
+AGE AND IDENTITY VERIFICATION
+
+We require every Creator to verify identity before earning, through automated checks and human review with our verification partner (Didit). We collect: full legal name, verified email and phone, postal address, date of birth, government-issued photo ID, standalone selfie and selfie holding ID, bank account and payout details, and tax identification where required.
+
+We re-check identity on a rolling 30-day selfie cycle with additional checks for high-risk jurisdictions. Fans must be at least 18; where required by law we apply email-address and/or facial age estimation.
+
+CONTENT MODERATION
+
+We moderate Content using: hash-list scanning against NCMEC, IWF, CyberTip Canada, PhotoDNA, Thorn, StopNCII.org; automated classifiers; stop-word filters; and human review within 24 hours.
+
+We do not use end-to-end encryption. Every piece of Content — including direct messages — is visible to trained moderators. No hidden posts, secret areas, or disappearing messages.
+
+COMBATTING CSAM
+
+Zero tolerance for CSAM. All Content is scanned against known CSAM hash databases before appearing on feeds. When we identify suspected CSAM we: remove it, place the account in 90-day secure-hold, file a CyberTipline report with NCMEC, contribute new hashes, and cooperate with law enforcement. We participate in NCMEC's TakeItDown programme.
+
+ENSURING CONSENT FOR INTIMATE IMAGES
+
+Sharing non-consensual intimate images (NCII) is prohibited. Creators must obtain informed consent from everyone in explicit Content. We participate in StopNCII.org. To withdraw consent: support@swordpay.io
+
+TACKLING HATE SPEECH AND HARASSMENT
+
+Hate speech, discrimination, and targeted harassment are prohibited. Because no user is anonymous and we don't use E2EE, we can identify, remove, and report offenders.
+
+SAFEGUARDING AGAINST MONEY LAUNDERING AND FRAUD
+
+What is money laundering? Taking money from criminal activity and passing it through legitimate transactions to appear lawful.
+
+What is fraud? Obtaining money by deceiving or tricking someone.
+
+Our zero-tolerance approach: We monitor for red flags including multiple card attempts with different names, rapid purchase bursts, flagged IP addresses, matching IPs for Fan and Creator, suspicious email domains, and off-platform settlement suggestions.
+
+We comply with OFAC, OFSI, EU, and UN sanctions lists, screening at onboarding and on a recurring basis. Suspicious activity results in account suspension, transaction freeze, and law enforcement reporting.
+
+Training: Our compliance team is trained continually on industry best practices.
+
+ASSISTING LAW ENFORCEMENT
+
+We respond to lawful requests within 24-48 hours (14 days maximum). We may disclose: legal name, username, profile URL, email, IP address, phone number, billing address, transaction information, tokenised card data, and content/message logs.
+
+HELPING CREATORS PROTECT COPYRIGHT
+
+Creators own their Content. We provide: free watermarking, outbound DMCA takedowns, and counter-notification handling.
+
+PRIVACY
+
+See our Privacy Policy. Users may exercise rights of access, correction, deletion, restriction, portability, objection, and consent withdrawal.
+
+APPEALS AND COMPLAINTS
+
+Appeal moderation decisions under our Appeals Policy within six months. File complaints under our Complaints Policy — handled within 24-48 hours.
+
+MODERN SLAVERY
+
+Not permitted. See our Anti-Slavery and Anti-Trafficking Statement.
+
+TAX COMPLIANCE
+
+See our Tax Policy.
+
+OUR PARTNERS IN SAFETY
+• Didit — identity verification
+• Sightengine — content classification
+• Internet Watch Foundation — CSAM hash lists
+• NCMEC — CyberTipline reporting
+• StopNCII.org — NCII hash-and-block
+• NCMEC TakeItDown — self-generated CSAM hash-and-block
+
+TRANSPARENCY REPORTS
+
+We will publish quarterly Transparency Reports covering: account applications, user reports, Content moderation, CSAM detections, law-enforcement requests, and DMCA notices.
+
+Contact: compliance@swordpay.io | support@swordpay.io
+
+Last updated: 28 May 2026`;
 
 function TermsModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
@@ -186,7 +501,7 @@ function TermsModal({ onClose }: { onClose: () => void }) {
           <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
         </div>
         <div className="overflow-y-auto px-6 py-4 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
-          {t('legal.terms', TERMS_CONTENT)}
+          {TERMS_CONTENT}
         </div>
         <div className="px-6 py-4 border-t border-gray-100 text-right">
           <button onClick={onClose} className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
@@ -198,39 +513,105 @@ function TermsModal({ onClose }: { onClose: () => void }) {
   );
 }
 
-const COOKIE_CONTENT = `Cookie Policy
-www.swordpay.com
-Effective date: 8th October 2024
+function PrivacyModal({ onClose }: { onClose: () => void }) {
+  const { t } = useTranslation();
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
+      <div
+        className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-4 max-h-[85vh] flex flex-col"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+          <h2 className="text-xl font-black text-[#1e3a8a]">{t('footer.privacy')}</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
+        </div>
+        <div className="overflow-y-auto px-6 py-4 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
+          {PRIVACY_CONTENT}
+        </div>
+        <div className="px-6 py-4 border-t border-gray-100 text-right">
+          <button onClick={onClose} className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+            {t('contact.close')}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-What Are Cookies
-Cookies are small text files stored on your device when you visit a website. They help the website remember your preferences and improve your experience.
+function CookieModal({ onClose }: { onClose: () => void }) {
+  const { t } = useTranslation();
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
+      <div
+        className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-4 max-h-[85vh] flex flex-col"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+          <h2 className="text-xl font-black text-[#1e3a8a]">{t('footer.cookies')}</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
+        </div>
+        <div className="overflow-y-auto px-6 py-4 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
+          {COOKIE_CONTENT}
+        </div>
+        <div className="px-6 py-4 border-t border-gray-100 text-right">
+          <button onClick={onClose} className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+            {t('contact.close')}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-How We Use Cookies
-SwordPay uses cookies to:
-- Keep you logged in during your session
-- Remember your preferences and settings
-- Analyze how our website is used so we can improve it
-- Support security features and fraud prevention
-- Enable advertising and marketing features
+function AcceptableUseModal({ onClose }: { onClose: () => void }) {
+  const { t } = useTranslation();
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
+      <div
+        className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-4 max-h-[85vh] flex flex-col"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+          <h2 className="text-xl font-black text-[#1e3a8a]">Acceptable Use & Content Policy</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
+        </div>
+        <div className="overflow-y-auto px-6 py-4 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
+          {ACCEPTABLE_USE_CONTENT}
+        </div>
+        <div className="px-6 py-4 border-t border-gray-100 text-right">
+          <button onClick={onClose} className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+            {t('contact.close')}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-Types of Cookies We Use
-
-Essential Cookies — Required for the website to function. Without these, services like login and payments cannot work.
-Analytics Cookies — Help us understand how visitors interact with the site (e.g. Google Analytics).
-Preference Cookies — Remember your settings and preferences across visits.
-Marketing Cookies — Used to deliver relevant advertisements and track campaign performance.
-
-Third Party Cookies
-Some cookies are placed by third party services we use, including Google Analytics and advertising partners. We do not control these cookies directly. Please refer to the respective third party's privacy policy for more information.
-
-Managing Cookies
-You can control and manage cookies through your browser settings. Please note that disabling certain cookies may affect the functionality of the website. To learn more about managing cookies visit: www.allaboutcookies.org
-
-Changes to This Policy
-We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated effective date.
-
-Contact Us
-For any questions regarding our Cookie Policy, please contact support@swordpay.io`;
+function SafetyModal({ onClose }: { onClose: () => void }) {
+  const { t } = useTranslation();
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
+      <div
+        className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-4 max-h-[85vh] flex flex-col"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+          <h2 className="text-xl font-black text-[#1e3a8a]">Safety & Transparency Center</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
+        </div>
+        <div className="overflow-y-auto px-6 py-4 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
+          {SAFETY_CONTENT}
+        </div>
+        <div className="px-6 py-4 border-t border-gray-100 text-right">
+          <button onClick={onClose} className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+            {t('contact.close')}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function ContactModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
@@ -261,67 +642,21 @@ function ContactModal({ onClose }: { onClose: () => void }) {
   );
 }
 
-function PrivacyModal({ onClose }: { onClose: () => void }) {
-  const { t } = useTranslation();
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
-      <div
-        className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-4 max-h-[85vh] flex flex-col"
-        onClick={e => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h2 className="text-xl font-black text-[#1e3a8a]">{t('footer.privacy')}</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
-        </div>
-        <div className="overflow-y-auto px-6 py-4 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
-          {t('legal.privacy', PRIVACY_CONTENT)}
-        </div>
-        <div className="px-6 py-4 border-t border-gray-100 text-right">
-          <button onClick={onClose} className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-            {t('contact.close')}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function CookieModal({ onClose }: { onClose: () => void }) {
-  const { t } = useTranslation();
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
-      <div
-        className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full mx-4 max-h-[85vh] flex flex-col"
-        onClick={e => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h2 className="text-xl font-black text-[#1e3a8a]">{t('footer.cookies')}</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none">&times;</button>
-        </div>
-        <div className="overflow-y-auto px-6 py-4 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
-          {t('legal.cookies', COOKIE_CONTENT)}
-        </div>
-        <div className="px-6 py-4 border-t border-gray-100 text-right">
-          <button onClick={onClose} className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
-            {t('contact.close')}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function Footer() {
   const { t } = useTranslation();
   const [showTerms, setShowTerms] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showCookie, setShowCookie] = useState(false);
+  const [showAcceptableUse, setShowAcceptableUse] = useState(false);
+  const [showSafety, setShowSafety] = useState(false);
   const [showContact, setShowContact] = useState(false);
   return (
     <>
     {showTerms && <TermsModal onClose={() => setShowTerms(false)} />}
     {showPrivacy && <PrivacyModal onClose={() => setShowPrivacy(false)} />}
     {showCookie && <CookieModal onClose={() => setShowCookie(false)} />}
+    {showAcceptableUse && <AcceptableUseModal onClose={() => setShowAcceptableUse(false)} />}
+    {showSafety && <SafetyModal onClose={() => setShowSafety(false)} />}
     {showContact && <ContactModal onClose={() => setShowContact(false)} />}
     <footer className="bg-white border-t border-gray-100 pb-24 md:pb-12" data-testid="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -359,6 +694,16 @@ export function Footer() {
               <li>
                 <button onClick={() => setShowCookie(true)} className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left">
                   {t('footer.cookies')}
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setShowAcceptableUse(true)} className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left">
+                  Acceptable Use & Content Policy
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setShowSafety(true)} className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left">
+                  Safety & Transparency Center
                 </button>
               </li>
             </ul>
