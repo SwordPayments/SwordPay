@@ -1,18 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-
-const SUPPORTED_LOCALES = new Set(["en", "es", "fr", "de", "pt", "ja", "zh", "ar"]);
-
-function resolveLocale(lang: string | undefined): string {
-  const base = (lang || "en").split("-")[0];
-  return SUPPORTED_LOCALES.has(base) ? base : "en";
-}
-
-function localePath(locale: string, slug: string): string {
-  return locale === "en"
-    ? `/legal/${slug}.pdf`
-    : `/legal/${locale}/${slug}.pdf`;
-}
+import { localePath, resolveLocale } from "../lib/localePath";
 
 function ContactModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
