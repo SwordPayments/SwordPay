@@ -119,6 +119,8 @@
     "viewEnglish": "查看英文版本",
     "loadError": "无法显示文档。",
     "download": "下载",
+    "openDocument": "查看文档",
+    "opensInReader": "将在您的 PDF 阅读器中打开",
     "rights": "版权所有。",
     "company": "公司",
     "legal": "法律"

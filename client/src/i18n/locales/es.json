@@ -119,6 +119,8 @@
     "viewEnglish": "Ver versión en inglés",
     "loadError": "No se puede mostrar el documento.",
     "download": "Descargar",
+    "openDocument": "Ver Documento",
+    "opensInReader": "Se abre en su lector de PDF",
     "rights": "Todos los derechos reservados.",
     "company": "Empresa",
     "legal": "Legal"
