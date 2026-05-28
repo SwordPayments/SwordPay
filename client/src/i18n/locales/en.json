@@ -115,6 +115,10 @@
     "cookies": "Cookie Policy",
     "aup": "Acceptable Use & Content Policy",
     "safety": "Safety & Transparency Center",
+    "translationNotice": "This is a translation for your convenience. The English version is the controlling legal document.",
+    "viewEnglish": "View English version",
+    "loadError": "Unable to display the document.",
+    "download": "Download",
     "rights": "All rights reserved.",
     "company": "Company",
     "legal": "Legal"

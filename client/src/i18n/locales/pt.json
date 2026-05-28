@@ -115,6 +115,10 @@
     "cookies": "Política de cookies",
     "aup": "Política de uso aceitável e conteúdo",
     "safety": "Centro de Segurança e Transparência",
+    "translationNotice": "Esta é uma tradução por conveniência. A versão em inglês é o documento legal vinculante.",
+    "viewEnglish": "Ver versão em inglês",
+    "loadError": "Não é possível exibir o documento.",
+    "download": "Baixar",
     "rights": "Todos os direitos reservados.",
     "company": "Empresa",
     "legal": "Jurídico"

@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const SUPPORTED_LOCALES = new Set(["en", "es", "fr", "de", "pt", "ja", "zh", "ar"]);
 
-function localePath(lang: string | undefined, slug: string) {
+function resolveLocale(lang: string | undefined): string {
   const base = (lang || "en").split("-")[0];
-  const locale = SUPPORTED_LOCALES.has(base) ? base : "en";
+  return SUPPORTED_LOCALES.has(base) ? base : "en";
+}
+
+function localePath(locale: string, slug: string): string {
   return locale === "en"
     ? `/legal/${slug}.pdf`
     : `/legal/${locale}/${slug}.pdf`;
@@ -40,30 +43,107 @@ function ContactModal({ onClose }: { onClose: () => void }) {
   );
 }
 
-function PdfModal({ title, src, onClose }: { title: string; src: string; onClose: () => void }) {
+function PdfModal({ title, src, slug, locale, onClose }:
+    { title: string; src: string; slug: string; locale: string; onClose: () => void }) {
+  const { t } = useTranslation();
+  const modalRef = useRef<HTMLDivElement>(null);
+  const [loadFailed, setLoadFailed] = useState(false);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose]);
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const prevFocused = document.activeElement as HTMLElement | null;
+    modalRef.current?.focus();
+
+    const ctrl = new AbortController();
+    fetch(src, { method: 'HEAD', signal: ctrl.signal })
+      .then(r => { if (!r.ok) setLoadFailed(true); })
+      .catch((e: unknown) => { if ((e as { name?: string })?.name !== 'AbortError') setLoadFailed(true); });
+
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+      ctrl.abort();
+      prevFocused?.focus?.();
+    };
+  }, [onClose, src]);
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key !== 'Tab') return;
+    const focusable = modalRef.current?.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    if (!focusable || focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+    else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+  };
+
+  const showDisclaimer = locale !== 'en';
+  const englishHref = `/legal/${slug}.pdf`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
+      onKeyDown={onKeyDown}
+    >
       <div
-        className="w-[90vw] max-w-4xl h-[90vh] shadow-2xl rounded-lg overflow-hidden bg-white"
+        ref={modalRef}
+        tabIndex={-1}
+        className="w-[90vw] max-w-4xl h-[90vh] shadow-2xl rounded-lg overflow-hidden bg-white flex flex-col outline-none"
         onClick={e => e.stopPropagation()}
       >
-        <iframe
-          src={`${src}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-          title={title}
-          className="block border-0"
-          style={{
-            width: 'calc(100% + 36px)',
-            height: 'calc(100% + 18px)',
-            marginLeft: '-18px',
-            marginTop: '-9px',
-          }}
-        />
+        {showDisclaimer && (
+          <div
+            className="px-4 py-2 bg-gray-50 border-b border-gray-200 text-xs text-gray-600 flex items-center justify-between gap-3"
+            role="note"
+          >
+            <span className="leading-snug">{t('footer.translationNotice')}</span>
+            <a
+              href={englishHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#1e3a8a] hover:underline whitespace-nowrap font-medium"
+            >
+              {t('footer.viewEnglish')} →
+            </a>
+          </div>
+        )}
+        <div className="flex-1 overflow-hidden relative">
+          {loadFailed ? (
+            <div className="flex flex-col items-center justify-center h-full p-8 text-center">
+              <p className="text-gray-700 mb-4">{t('footer.loadError')}</p>
+              <a
+                href={src}
+                download
+                className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
+              >
+                {t('footer.download')} — {title}
+              </a>
+            </div>
+          ) : (
+            <iframe
+              src={`${src}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+              title={title}
+              className="block border-0"
+              style={{
+                width: 'calc(100% + 36px)',
+                height: 'calc(100% + 18px)',
+                marginLeft: '-18px',
+                marginTop: '-9px',
+              }}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
@@ -80,16 +160,17 @@ const POLICIES = [
 export function Footer() {
   const { t, i18n } = useTranslation();
   const [showContact, setShowContact] = useState(false);
-  const [pdf, setPdf] = useState<{ title: string; src: string } | null>(null);
+  const [pdf, setPdf] = useState<{ title: string; src: string; slug: string; locale: string } | null>(null);
 
   const openPolicy = (titleKey: string, slug: string) => {
-    setPdf({ title: t(titleKey), src: localePath(i18n.language, slug) });
+    const locale = resolveLocale(i18n.language);
+    setPdf({ title: t(titleKey), src: localePath(locale, slug), slug, locale });
   };
 
   return (
     <>
     {showContact && <ContactModal onClose={() => setShowContact(false)} />}
-    {pdf && <PdfModal title={pdf.title} src={pdf.src} onClose={() => setPdf(null)} />}
+    {pdf && <PdfModal title={pdf.title} src={pdf.src} slug={pdf.slug} locale={pdf.locale} onClose={() => setPdf(null)} />}
     <footer className="bg-white border-t border-gray-100 pb-24 md:pb-12" data-testid="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-10">
