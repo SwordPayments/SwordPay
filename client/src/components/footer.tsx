@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 function ContactModal({ onClose }: { onClose: () => void }) {
@@ -30,13 +30,46 @@ function ContactModal({ onClose }: { onClose: () => void }) {
   );
 }
 
+function PdfModal({ title, src, onClose }: { title: string; src: string; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={onClose}>
+      <div
+        className="w-[90vw] max-w-4xl h-[90vh] shadow-2xl rounded-lg overflow-hidden bg-white"
+        onClick={e => e.stopPropagation()}
+      >
+        <iframe
+          src={`${src}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+          title={title}
+          className="block border-0"
+          style={{
+            width: 'calc(100% + 36px)',
+            height: 'calc(100% + 18px)',
+            marginLeft: '-18px',
+            marginTop: '-9px',
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
 export function Footer() {
   const { t } = useTranslation();
   const [showContact, setShowContact] = useState(false);
-  
+  const [pdf, setPdf] = useState<{ title: string; src: string } | null>(null);
+
+  const open = (title: string, src: string) => setPdf({ title, src });
+
   return (
     <>
     {showContact && <ContactModal onClose={() => setShowContact(false)} />}
+    {pdf && <PdfModal title={pdf.title} src={pdf.src} onClose={() => setPdf(null)} />}
     <footer className="bg-white border-t border-gray-100 pb-24 md:pb-12" data-testid="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* SWORD Header */}
@@ -61,54 +94,44 @@ export function Footer() {
             <h3 className="font-semibold text-[#1e3a8a] text-sm mb-1">{t('footer.company')}</h3>
             <ul className="space-y-2">
               <li>
-                <a 
-                  href="/legal/01-Terms-of-Service.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors"
+                <button
+                  onClick={() => open(t('footer.terms'), "/legal/01-Terms-of-Service.pdf")}
+                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left"
                 >
                   {t('footer.terms')}
-                </a>
+                </button>
               </li>
               <li>
-                <a 
-                  href="/legal/02-Privacy-Policy.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors"
+                <button
+                  onClick={() => open(t('footer.privacy'), "/legal/02-Privacy-Policy.pdf")}
+                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left"
                 >
                   {t('footer.privacy')}
-                </a>
+                </button>
               </li>
               <li>
-                <a 
-                  href="/legal/03-Cookie-Notice.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors"
+                <button
+                  onClick={() => open(t('footer.cookies'), "/legal/03-Cookie-Notice.pdf")}
+                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left"
                 >
                   {t('footer.cookies')}
-                </a>
+                </button>
               </li>
               <li>
-                <a 
-                  href="/legal/04-Acceptable-Use-Policy.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors"
+                <button
+                  onClick={() => open(t('footer.aup'), "/legal/04-Acceptable-Use-Policy.pdf")}
+                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left"
                 >
-                  Acceptable Use & Content Policy
-                </a>
+                  {t('footer.aup')}
+                </button>
               </li>
               <li>
-                <a 
-                  href="/legal/10-Safety-Transparency-Center.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors"
+                <button
+                  onClick={() => open(t('footer.safety'), "/legal/10-Safety-Transparency-Center.pdf")}
+                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left"
                 >
-                  Safety & Transparency Center
-                </a>
+                  {t('footer.safety')}
+                </button>
               </li>
             </ul>
           </div>
