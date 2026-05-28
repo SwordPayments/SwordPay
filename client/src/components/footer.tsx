@@ -1,6 +1,16 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+const SUPPORTED_LOCALES = new Set(["en", "es", "fr", "de", "pt", "ja", "zh", "ar"]);
+
+function localePath(lang: string | undefined, slug: string) {
+  const base = (lang || "en").split("-")[0];
+  const locale = SUPPORTED_LOCALES.has(base) ? base : "en";
+  return locale === "en"
+    ? `/legal/${slug}.pdf`
+    : `/legal/${locale}/${slug}.pdf`;
+}
+
 function ContactModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
   return (
@@ -59,12 +69,22 @@ function PdfModal({ title, src, onClose }: { title: string; src: string; onClose
   );
 }
 
+const POLICIES = [
+  { titleKey: 'footer.terms',   slug: '01-Terms-of-Service' },
+  { titleKey: 'footer.privacy', slug: '02-Privacy-Policy' },
+  { titleKey: 'footer.cookies', slug: '03-Cookie-Notice' },
+  { titleKey: 'footer.aup',     slug: '04-Acceptable-Use-Policy' },
+  { titleKey: 'footer.safety',  slug: '10-Safety-Transparency-Center' },
+] as const;
+
 export function Footer() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [showContact, setShowContact] = useState(false);
   const [pdf, setPdf] = useState<{ title: string; src: string } | null>(null);
 
-  const open = (title: string, src: string) => setPdf({ title, src });
+  const openPolicy = (titleKey: string, slug: string) => {
+    setPdf({ title: t(titleKey), src: localePath(i18n.language, slug) });
+  };
 
   return (
     <>
@@ -72,14 +92,11 @@ export function Footer() {
     {pdf && <PdfModal title={pdf.title} src={pdf.src} onClose={() => setPdf(null)} />}
     <footer className="bg-white border-t border-gray-100 pb-24 md:pb-12" data-testid="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* SWORD Header */}
         <div className="text-center mb-10">
           <h2 className="text-3xl font-black text-[#1e3a8a] tracking-wide">SWORDPAY</h2>
         </div>
 
-        {/* Two Column Layout */}
         <div className="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {/* About & Contact */}
           <div>
             <a href="https://www.swordpay.com/how-it-works" className="font-semibold text-[#1e3a8a] text-sm mb-1 hover:underline">{t('footer.about')}</a>
             <div className="mt-4">
@@ -89,50 +106,19 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Company */}
           <div>
             <h3 className="font-semibold text-[#1e3a8a] text-sm mb-1">{t('footer.company')}</h3>
             <ul className="space-y-2">
-              <li>
-                <button
-                  onClick={() => open(t('footer.terms'), "/legal/01-Terms-of-Service.pdf")}
-                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left"
-                >
-                  {t('footer.terms')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => open(t('footer.privacy'), "/legal/02-Privacy-Policy.pdf")}
-                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left"
-                >
-                  {t('footer.privacy')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => open(t('footer.cookies'), "/legal/03-Cookie-Notice.pdf")}
-                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left"
-                >
-                  {t('footer.cookies')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => open(t('footer.aup'), "/legal/04-Acceptable-Use-Policy.pdf")}
-                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left"
-                >
-                  {t('footer.aup')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => open(t('footer.safety'), "/legal/10-Safety-Transparency-Center.pdf")}
-                  className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left"
-                >
-                  {t('footer.safety')}
-                </button>
-              </li>
+              {POLICIES.map(({ titleKey, slug }) => (
+                <li key={slug}>
+                  <button
+                    onClick={() => openPolicy(titleKey, slug)}
+                    className="text-gray-600 text-sm hover:text-[#1e3a8a] transition-colors text-left"
+                  >
+                    {t(titleKey)}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
