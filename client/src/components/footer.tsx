@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { localePath, resolveLocale } from "../lib/localePath";
-import { MobilePdfViewer } from "./MobilePdfViewer";
 
 function useIsMobile(): boolean {
   const [isMobile, setIsMobile] = useState(() =>
@@ -104,9 +103,16 @@ function PdfModal({ title, src, slug, locale, onClose }:
       <div
         ref={modalRef}
         tabIndex={-1}
-        className="w-[90vw] max-w-4xl h-[90vh] shadow-2xl rounded-lg overflow-hidden bg-white flex flex-col outline-none"
+        className="relative w-[90vw] max-w-4xl h-[90vh] shadow-2xl rounded-lg overflow-hidden bg-white flex flex-col outline-none"
         onClick={e => e.stopPropagation()}
       >
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute top-2 right-2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 hover:bg-white text-gray-600 hover:text-gray-900 text-xl font-bold leading-none shadow-md transition-colors"
+        >
+          &times;
+        </button>
         <div className="flex-1 overflow-hidden relative">
           {loadFailed ? (
             <div className="flex flex-col items-center justify-center h-full p-8 text-center">
@@ -120,7 +126,31 @@ function PdfModal({ title, src, slug, locale, onClose }:
               </a>
             </div>
           ) : isMobile ? (
-            <MobilePdfViewer src={src} title={title} />
+            <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-gray-50">
+              <div className="w-20 h-20 rounded-2xl bg-[#1e3a8a]/10 flex items-center justify-center mb-6">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" strokeWidth="1.6" className="w-10 h-10">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="9" y1="13" x2="15" y2="13" />
+                  <line x1="9" y1="17" x2="15" y2="17" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-black text-[#1e3a8a] mb-1">{title}</h3>
+              <p className="text-xs text-gray-500 mb-6">PDF · {locale.toUpperCase()}</p>
+              <a
+                href={src}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#1e3a8a] text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-800 transition-colors inline-flex items-center gap-2 shadow-md"
+              >
+                {t('footer.openDocument')}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+                  <path d="M7 17 17 7" />
+                  <path d="M7 7h10v10" />
+                </svg>
+              </a>
+              <p className="text-xs text-gray-400 mt-4">{t('footer.opensInReader')}</p>
+            </div>
           ) : (
             <iframe
               src={`${src}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
