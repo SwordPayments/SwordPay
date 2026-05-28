@@ -70,7 +70,20 @@ i18n
     },
   });
 
-// Language detection — auto-detect by IP/country on load
-detectLanguageByIP().then((lang) => { i18n.changeLanguage(lang); });
+// Language detection — URL param ?lang=xx overrides; otherwise auto-detect by IP
+const urlLang = typeof window !== 'undefined'
+  ? new URLSearchParams(window.location.search).get('lang')
+  : null;
+
+if (urlLang && ['en','es','fr','de','pt','ja','zh','ar'].includes(urlLang)) {
+  i18n.changeLanguage(urlLang);
+} else {
+  detectLanguageByIP().then((lang) => { i18n.changeLanguage(lang); });
+}
+
+// Expose for dev console testing
+if (typeof window !== 'undefined') {
+  (window as unknown as { __i18n: typeof i18n }).__i18n = i18n;
+}
 
 export default i18n;

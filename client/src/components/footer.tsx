@@ -90,22 +90,6 @@ function PdfModal({ title, src, slug, locale, onClose }:
         className="w-[90vw] max-w-4xl h-[90vh] shadow-2xl rounded-lg overflow-hidden bg-white flex flex-col outline-none"
         onClick={e => e.stopPropagation()}
       >
-        {showDisclaimer && (
-          <div
-            className="px-4 py-2 bg-gray-50 border-b border-gray-200 text-xs text-gray-600 flex items-center justify-between gap-3"
-            role="note"
-          >
-            <span className="leading-snug">{t('footer.translationNotice')}</span>
-            <a
-              href={englishHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#1e3a8a] hover:underline whitespace-nowrap font-medium"
-            >
-              {t('footer.viewEnglish')} →
-            </a>
-          </div>
-        )}
         <div className="flex-1 overflow-hidden relative">
           {loadFailed ? (
             <div className="flex flex-col items-center justify-center h-full p-8 text-center">
@@ -132,6 +116,22 @@ function PdfModal({ title, src, slug, locale, onClose }:
             />
           )}
         </div>
+        {showDisclaimer && (
+          <div
+            className="px-4 py-2 bg-gray-50 border-t border-gray-200 text-xs text-gray-600 flex items-center justify-between gap-3"
+            role="note"
+          >
+            <span className="leading-snug">{t('footer.translationNotice')}</span>
+            <a
+              href={englishHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#1e3a8a] hover:underline whitespace-nowrap font-medium"
+            >
+              {t('footer.viewEnglish')} →
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
