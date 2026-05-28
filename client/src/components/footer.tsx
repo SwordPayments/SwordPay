@@ -1,6 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { localePath, resolveLocale } from "../lib/localePath";
+import { MobilePdfViewer } from "./MobilePdfViewer";
+
+function useIsMobile(): boolean {
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(max-width: 768px)").matches
+      : false,
+  );
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  return isMobile;
+}
 
 function ContactModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
@@ -36,6 +52,7 @@ function PdfModal({ title, src, slug, locale, onClose }:
   const { t } = useTranslation();
   const modalRef = useRef<HTMLDivElement>(null);
   const [loadFailed, setLoadFailed] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
@@ -102,6 +119,8 @@ function PdfModal({ title, src, slug, locale, onClose }:
                 {t('footer.download')} — {title}
               </a>
             </div>
+          ) : isMobile ? (
+            <MobilePdfViewer src={src} title={title} />
           ) : (
             <iframe
               src={`${src}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
