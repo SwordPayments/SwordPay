@@ -53,7 +53,7 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      className={`reveal in ${className}`}
+      className={`reveal ${shown ? 'in' : ''} ${className}`}
       style={{ transitionDelay: shown ? `${delay}s` : '0s' }}
     >
       {children}

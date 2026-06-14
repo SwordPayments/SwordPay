@@ -194,8 +194,8 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
 
         <div className="flex w-full flex-col items-center gap-4 px-6 pb-8 pt-6 text-center text-ink">
           <h1 className="font-display text-[clamp(1.6rem,4.4vw,3.6rem)] font-extrabold leading-[1] tracking-tight">
-            <span className="block sm:whitespace-nowrap">{copy.titleLine1}</span>
-            <span className="block sm:whitespace-nowrap">
+            <span className="block whitespace-nowrap">{copy.titleLine1}</span>
+            <span className="block whitespace-nowrap">
               {copy.titleLine2Prefix}
               <span className="text-[#FFD230]">{copy.titleLine2Highlight}</span>
               {copy.titleLine2Suffix}
