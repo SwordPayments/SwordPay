@@ -32,7 +32,14 @@ export function serveStatic(app: Express) {
       const meta = await getMetaForPath(req.path);
       const metaHtml = buildMetaTags(meta);
       html = html.replace("</head>", `${metaHtml}\n  </head>`);
-      res.status(200).set({ "Content-Type": "text/html" }).send(html);
+      res
+        .status(200)
+        .set({
+          "Content-Type": "text/html",
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+        })
+        .send(html);
     } catch {
       res.sendFile(path.resolve(distPath, "index.html"));
     }
