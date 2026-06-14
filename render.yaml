@@ -1,0 +1,27 @@
+# Render Blueprint — SwordPay marketing site (www.swordpay.com)
+#
+# ONE-TIME DASHBOARD STEP (Sword): Link this repo as a Blueprint and sync with the
+# existing production web service that serves www.swordpay.com (do NOT use the
+# suspended swordpay.onrender.com default hostname — that is a separate old service).
+#
+# After sync, PR previews deploy automatically for open pull requests.
+
+previews:
+  generation: automatic
+
+services:
+  - type: web
+    name: swordpay
+    runtime: node
+    plan: starter
+    region: virginia
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    previews:
+      generation: automatic
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
