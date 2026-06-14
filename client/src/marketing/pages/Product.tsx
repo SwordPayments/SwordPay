@@ -37,14 +37,14 @@ function Hero() {
     <section className="relative overflow-hidden pt-28 pb-14 md:pt-32 md:pb-20">
       <div className="grid-paper pointer-events-none absolute inset-0 -z-10" />
       <div className="shell">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid min-w-0 items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <Reveal>
               <h1 className="font-display text-[clamp(2.52rem,5.82vw,4.46rem)] font-extrabold leading-[0.95] tracking-tight">
                 {h.titlePrefix}
                 <br />
                 {h.titleInto ? <>{h.titleInto}{' '}</> : null}
-                <span className="relative whitespace-nowrap text-cobalt">
+                <span className="relative text-cobalt sm:whitespace-nowrap">
                   {h.titleHighlight}
                   <svg
                     className="absolute -bottom-2 left-0 w-full"
@@ -199,7 +199,7 @@ function Problem() {
           <h2 className="text-[clamp(2.3rem,4.6vw,3.57rem)] font-bold">
             {p.headingLine1}
             <br />
-            <span className="whitespace-nowrap">{p.headingLine2}</span>
+            <span className="sm:whitespace-nowrap">{p.headingLine2}</span>
           </h2>
         </div>
       </Reveal>
@@ -400,19 +400,25 @@ function Audience() {
           {a.rows.map((r, i) => (
             <div
               key={r.who}
-              className={`grid gap-1 px-4 py-2 md:grid md:h-[3.375rem] md:grid-cols-[1.05fr_1.45fr_1.35fr] md:gap-0 md:px-0 md:py-0 ${
+              className={`grid gap-1 px-4 py-4 md:grid md:h-[3.375rem] md:grid-cols-[1.05fr_1.45fr_1.35fr] md:gap-0 md:px-0 md:py-0 ${
                 i !== 0 ? 'border-t border-white/[0.08]' : ''
               }`}
             >
-              <div className="flex h-full items-center gap-2.5 px-5 font-display font-bold leading-none text-white">
+              <div className="flex h-full items-center gap-2.5 px-1 font-display font-bold leading-none text-white md:px-5">
                 <span className="text-[26px] leading-none">{AUDIENCE_EMOJIS[i]}</span>
                 <span className="text-[21px] leading-none">{r.who}</span>
               </div>
-              <div className="flex h-full items-center px-5 text-[19.5px] leading-[1.22] text-white/64">
-                {r.sell}
+              <div className="flex h-full flex-col justify-center px-1 md:px-5">
+                <span className="mb-1 text-[12px] font-semibold uppercase tracking-wide text-[#FFD230]/70 md:hidden">
+                  {a.whatTheySell}
+                </span>
+                <span className="text-[19.5px] leading-[1.22] text-white/64">{r.sell}</span>
               </div>
-              <div className="flex h-full items-center px-5 text-[19.5px] leading-[1.22] text-white/64">
-                {r.why}
+              <div className="flex h-full flex-col justify-center px-1 md:px-5">
+                <span className="mb-1 text-[12px] font-semibold uppercase tracking-wide text-[#FFD230]/70 md:hidden">
+                  {a.whyItWorks}
+                </span>
+                <span className="text-[19.5px] leading-[1.22] text-white/64">{r.why}</span>
               </div>
             </div>
           ))}

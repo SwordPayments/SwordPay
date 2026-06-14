@@ -233,8 +233,18 @@ export default function StoryFlow({
 
   const wrapRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
+  const [scrollTrack, setScrollTrack] = useState(false)
 
   useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const sync = () => setScrollTrack(mq.matches)
+    sync()
+    mq.addEventListener('change', sync)
+    return () => mq.removeEventListener('change', sync)
+  }, [])
+
+  useEffect(() => {
+    if (!scrollTrack) return
     const onScroll = () => {
       const el = wrapRef.current
       if (!el) return
@@ -251,77 +261,58 @@ export default function StoryFlow({
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
     }
-  }, [resolvedSteps.length])
+  }, [resolvedSteps.length, scrollTrack])
 
   return (
     <section>
       {/* tall track — each viewport-height advances one step */}
-      <div ref={wrapRef} style={{ height: `${resolvedSteps.length * 100}vh` }}>
-        <div className="sticky top-0 h-screen overflow-hidden">
-          {/* progress rail across the very top */}
-          <div className="absolute inset-x-0 top-0 z-10 h-0.5 bg-line">
-            <div
-              className="h-full bg-cobalt transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-              style={{ width: `${((active + 1) / resolvedSteps.length) * 100}%` }}
-            />
-          </div>
-
-          {/* ---------- MOBILE: full-screen stacked ---------- */}
-          <div className="flex h-full flex-col px-6 pb-9 pt-24 lg:hidden">
-            <div className="shrink-0">
-              <h2 className="font-display text-[clamp(1.9rem,8vw,2.6rem)] font-bold leading-[0.98]">
-                {resolvedTitle}
-              </h2>
+      <div
+        ref={wrapRef}
+        style={scrollTrack ? { height: `${resolvedSteps.length * 100}vh` } : undefined}
+      >
+        <div className={`relative ${scrollTrack ? 'sticky top-0 h-screen overflow-hidden' : ''}`}>
+          {scrollTrack && (
+            <div className="absolute inset-x-0 top-0 z-10 h-0.5 bg-line">
+              <div
+                className="h-full bg-cobalt transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                style={{ width: `${((active + 1) / resolvedSteps.length) * 100}%` }}
+              />
             </div>
+          )}
 
-            <div className="relative flex flex-1 items-center justify-center py-5">
-              <div className="grid-paper pointer-events-none absolute inset-0 opacity-50" />
-              <motion.div
-                key={resolvedSteps[active].key}
-                initial={swap.initial}
-                animate={swap.animate}
-                transition={swap.transition}
-                className="relative w-full max-w-sm"
-              >
-                <Mock stepKey={resolvedSteps[active].key} mocks={mocks} />
-              </motion.div>
-            </div>
-
-            <div className="shrink-0">
-              <div className="flex gap-[6.9px]">
-                {resolvedSteps.map((s, i) => (
-                  <span
-                    key={s.key}
-                    className={`h-[4.6px] flex-1 rounded-full transition-colors duration-500 ${
-                      i <= active ? 'bg-cobalt' : 'bg-line'
-                    }`}
-                  />
-                ))}
-              </div>
-              <div className="mt-[18.4px] flex items-center justify-between gap-[13.8px]">
-                <div className="flex items-center gap-[11.5px]">
-                  <span className="grid size-[32.2px] shrink-0 place-items-center rounded-full bg-cobalt text-[16.5px] font-bold text-paper">
-                    {resolvedSteps[active].noNumber ? (
-                      <LockKeyOpen weight="bold" className="size-[16.5px]" />
-                    ) : (
-                      active + 1
-                    )}
-                  </span>
-                  <span className="font-display text-[25.3px] font-bold">
-                    {resolvedSteps[active].label}
-                  </span>
+          {/* ---------- MOBILE / TABLET: vertical stack (no scroll-jacking) ---------- */}
+          <div className="px-6 py-16 lg:hidden">
+            <h2 className="font-display text-[clamp(1.9rem,8vw,2.6rem)] font-bold leading-[0.98]">
+              {resolvedTitle}
+            </h2>
+            <div className="mt-10 space-y-12">
+              {resolvedSteps.map((s, i) => (
+                <div key={s.key} className="space-y-5">
+                  <div className="flex items-start gap-3">
+                    <span className="grid size-8 shrink-0 place-items-center rounded-full bg-cobalt text-[14px] font-bold text-paper">
+                      {s.noNumber ? (
+                        <LockKeyOpen weight="bold" className="size-4" />
+                      ) : (
+                        i + 1
+                      )}
+                    </span>
+                    <div>
+                      <div className="font-display text-[22px] font-bold">{s.label}</div>
+                      <p className="mt-2 text-[17px] leading-relaxed text-ink-soft">{s.desc}</p>
+                    </div>
+                  </div>
+                  <div className="relative flex justify-center">
+                    <div className="grid-paper pointer-events-none absolute inset-0 opacity-40" />
+                    <div className="relative w-full max-w-sm">
+                      <Mock stepKey={s.key} mocks={mocks} />
+                    </div>
+                  </div>
                 </div>
-                <span className="shrink-0 text-[16.5px] font-semibold text-ink-mute">
-                  {active + 1} / {resolvedSteps.length}
-                </span>
-              </div>
-              <p className="mt-[9.2px] text-[18.3px] leading-relaxed text-ink-soft">
-                {resolvedSteps[active].desc}
-              </p>
+              ))}
             </div>
           </div>
 
-          {/* ---------- DESKTOP: two columns ---------- */}
+          {/* ---------- DESKTOP: scroll-track + two columns ---------- */}
           <div className="hidden h-full items-center lg:flex">
           <div className="shell grid w-full items-center gap-12 lg:grid-cols-2">
             {/* left — narrative + accumulating checklist */}

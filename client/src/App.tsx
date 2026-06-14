@@ -59,7 +59,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
 
   if (isMarketingRoute) {
     return (
-      <div className="marketing-page min-h-screen flex flex-col bg-paper text-ink">
+      <div className="marketing-page flex min-h-screen w-full max-w-[100vw] flex-col overflow-x-clip bg-paper text-ink">
         <MarketingNavbar />
         <main className="flex-1 pt-14">{children}</main>
         <MarketingFooter />
