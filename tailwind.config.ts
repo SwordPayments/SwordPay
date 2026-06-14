@@ -11,6 +11,27 @@ export default {
         sm: ".1875rem", /* 3px */
       },
       colors: {
+        paper: {
+          DEFAULT: "#faf9f6",
+          deep: "#f3f1ea",
+        },
+        ink: {
+          DEFAULT: "#0b0b0c",
+          soft: "#3a3a3e",
+          mute: "#74747b",
+          bg: "#0b0b0c",
+          line: "#26262a",
+        },
+        line: {
+          DEFAULT: "#e6e3da",
+          strong: "#d8d4c8",
+        },
+        cobalt: {
+          DEFAULT: "#2d5bff",
+          deep: "#1e3fcc",
+          wash: "#eef1ff",
+        },
+        brand: "#27328f",
         // Flat / base colors (regular buttons)
         background: "hsl(var(--background) / <alpha-value>)",
         foreground: "hsl(var(--foreground) / <alpha-value>)",
@@ -83,6 +104,7 @@ export default {
         },
       },
       fontFamily: {
+        display: ["'Bricolage Grotesque'", "ui-sans-serif", "system-ui", "sans-serif"],
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],

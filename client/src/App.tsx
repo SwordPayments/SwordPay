@@ -1,5 +1,5 @@
-import { Switch, Route, useLocation } from "wouter";
-import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { Switch, Route, useLocation, useParams } from "wouter";
+import { useEffect } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -7,44 +7,85 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { FloatingWidget } from "@/components/floating-widget";
-import Home from "@/pages/home";
+import { LocaleProvider } from "@/marketing/context/LocaleContext";
+import MarketingNavbar from "@/marketing/components/Navbar";
+import MarketingFooter from "@/marketing/components/MarketingFooter";
+import Product from "@/marketing/pages/Product";
+import Creators from "@/marketing/pages/Creators";
 import Explore from "@/pages/explore";
 import CreatorPage from "@/pages/creator";
 import HowItWorks from "@/pages/how-it-works";
 import OnlyFansAlternative from "@/pages/onlyfans-alternative";
 import NotFound from "@/pages/not-found";
+import { isReservedSlug, RESERVED_SLUGS } from "@/lib/reservedSlugs";
+
+const LEGACY_PATHS = new Set(["/explore", "/how-it-works", "/onlyfans-alternative"]);
+
+function SlugCreatorPage() {
+  const params = useParams<{ slug: string }>();
+  if (!params.slug || isReservedSlug(params.slug)) {
+    return <NotFound />;
+  }
+  return <CreatorPage />;
+}
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={Product} />
+      <Route path="/creators" component={Creators} />
       <Route path="/explore" component={Explore} />
       <Route path="/how-it-works" component={HowItWorks} />
       <Route path="/onlyfans-alternative" component={OnlyFansAlternative} />
-      {/* Legacy UUID-style creator URL — kept for back-compat with shared links */}
       <Route path="/creator/:id" component={CreatorPage} />
-      {/* Friendly root-level slug URL: swordpay.com/jenneferfonseca. Must be
-          the last named route so the static paths above still match first.
-          Reserved-words guard (so a creator named "About" can't shadow a
-          real page) is deferred to a follow-up PR; for now an unknown slug
-          lands on the existing "Creator not found" branch. */}
-      <Route path="/:slug" component={CreatorPage} />
+      <Route path="/:slug" component={SlugCreatorPage} />
       <Route component={NotFound} />
     </Switch>
   );
 }
 
-const isIOS =
-  typeof navigator !== "undefined" &&
-  /iphone|ipad|ipod/i.test(navigator.userAgent);
+function AppLayout({ children }: { children: React.ReactNode }) {
+  const [location] = useLocation();
+  const isMarketingRoute = location === "/" || location === "/creators";
+  const slug = location.startsWith("/") ? location.slice(1).split("/")[0] : "";
+  const isCreatorPage =
+    location.startsWith("/creator/") ||
+    (slug.length > 0 &&
+      !LEGACY_PATHS.has(location) &&
+      location !== "/" &&
+      location !== "/creators" &&
+      !RESERVED_SLUGS.has(slug.toLowerCase()) &&
+      !location.includes("/", 1));
+
+  if (isMarketingRoute) {
+    return (
+      <div className="marketing-page min-h-screen flex flex-col bg-paper text-ink">
+        <MarketingNavbar />
+        <main className="flex-1 pt-14">{children}</main>
+        <MarketingFooter />
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-1 pt-14">{children}</main>
+        {!isCreatorPage && <Footer />}
+      </div>
+      {!isCreatorPage && (
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2" data-start-now>
+          <FloatingWidget className="cursor-pointer transition-transform hover:scale-105 min-w-[126px] sm:min-w-[165px] lg:min-w-[198px]" />
+        </div>
+      )}
+    </>
+  );
+}
 
 function App() {
   const [location] = useLocation();
-  const isCreatorPage = location.startsWith("/creator/");
 
-  // SPA route-change tracking — fires both GA4 page_view and Meta Pixel PageView
-  // on every navigation. The script tags in index.html only fire on initial load;
-  // wouter doesn't trigger a full page load, so we need this for analytics parity.
   useEffect(() => {
     const w = window as unknown as {
       gtag?: (...args: unknown[]) => void;
@@ -58,163 +99,17 @@ function App() {
     }
   }, [location]);
 
-  // btnTop = hero-bottom position (static, only changes on init/resize)
-  const [btnTop, setBtnTop] = useState(340);
-  // docked = switch to bottom:24px after glide
-  // iOS starts docked so the very first render is already at bottom:24px (no flash)
-  const [docked, setDocked] = useState(isIOS);
-  const btnRef = useRef<HTMLDivElement>(null);
-  const initialTopRef = useRef(340);
-  const triggeredRef = useRef(false);
-  const rafRef = useRef<number | null>(null);
-
-  // Hide before first paint on every navigation — zero flash at wrong position
-  useLayoutEffect(() => {
-    const el = btnRef.current;
-    if (el) el.style.opacity = "0";
-  }, [location]);
-
-  useEffect(() => {
-    const el = btnRef.current;
-    if (!el) return;
-
-    triggeredRef.current = false;
-
-    // Opacity managed entirely via DOM — no React state, safe from re-render overrides
-    const updateOpacity = () => {
-      const d = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
-      el.style.opacity = d < 100 ? "0" : "1";
-      el.style.pointerEvents = d < 100 ? "none" : "auto";
-    };
-
-    // Non-home pages: set DOM position directly BEFORE showing — no React re-render delay
-    if (location !== "/") {
-      triggeredRef.current = true;
-      el.style.top = "";
-      el.style.bottom = "24px";
-      el.style.transform = "translateX(-50%)";
-      el.style.transition = "none";
-      setDocked(true);
-      updateOpacity(); // safe now — DOM is already at correct position
-      window.addEventListener("scroll", updateOpacity, { passive: true });
-      return () => window.removeEventListener("scroll", updateOpacity);
-    }
-
-    // iOS: skip hero-position logic entirely — always dock at bottom immediately
-    if (isIOS) {
-      el.style.top = "";
-      el.style.bottom = "24px";
-      el.style.transform = "translateX(-50%)";
-      el.style.transition = "none";
-      triggeredRef.current = true;
-      setDocked(true);
-      updateOpacity();
-      window.addEventListener("scroll", updateOpacity, { passive: true });
-      return () => window.removeEventListener("scroll", updateOpacity);
-    }
-
-    // Home page: position just below hero (non-iOS)
-    const init = () => {
-      const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
-      if (!hero || window.scrollY > 0) {
-        // Set DOM directly before showing
-        el.style.top = "";
-        el.style.bottom = "24px";
-        el.style.transform = "translateX(-50%)";
-        setDocked(true);
-        triggeredRef.current = true;
-        updateOpacity();
-        return;
-      }
-      const rect = hero.getBoundingClientRect();
-      const top = Math.max(Math.min(Math.round(rect.bottom) - 52, window.innerHeight - 64), 60);
-      initialTopRef.current = top;
-      // Set DOM directly before showing — button appears at exact correct position
-      el.style.bottom = "";
-      el.style.top = `${top}px`;
-      el.style.transform = "translateX(-50%)";
-      setBtnTop(top);
-      setDocked(false);
-      updateOpacity();
-    };
-
-    const onScroll = () => {
-      updateOpacity();
-      if (triggeredRef.current) return;
-      const hero = document.querySelector('[data-testid="hero-section"]') as HTMLElement;
-      if (!hero) return;
-      const rect = hero.getBoundingClientRect();
-      if (rect.bottom <= initialTopRef.current + 48) {
-        triggeredRef.current = true;
-
-        // rAF animation — works on ALL browsers including iOS Safari.
-        // CSS top transitions are unreliable on iOS; rAF bypasses the CSS engine entirely.
-        // CRITICAL: startTime is set on the FIRST rAF callback, not the scroll event.
-        // On iOS, rAF is suspended during momentum scrolling — if we used performance.now()
-        // at scroll time, progress would jump to 1.0 on the first frame (instant snap).
-        const durationMs = /iphone|ipad|ipod/i.test(navigator.userAgent) ? 3000 : 2000;
-        const startTop = initialTopRef.current;
-        const endTop = window.innerHeight - 80;
-        let startTime = -1;
-
-        const animate = (now: number) => {
-          if (startTime < 0) startTime = now; // begin timing from first actual frame
-          const progress = Math.min((now - startTime) / durationMs, 1);
-          // easeOutCubic — matches cubic-bezier(0.25, 0.46, 0.45, 0.94) feel
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.style.top = `${startTop + (endTop - startTop) * eased}px`;
-          if (progress < 1) {
-            rafRef.current = requestAnimationFrame(animate);
-          } else {
-            rafRef.current = null;
-            el.style.top = "";
-            el.style.bottom = "24px";
-            setDocked(true);
-          }
-        };
-        rafRef.current = requestAnimationFrame(animate);
-      }
-    };
-
-    updateOpacity();
-    const timer = setTimeout(init, 100);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("scroll", updateOpacity, { passive: true });
-    window.addEventListener("resize", init);
-    return () => {
-      clearTimeout(timer);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("scroll", updateOpacity);
-      window.removeEventListener("resize", init);
-    };
-  }, [location]);
-
-  // React owns: position, left, zIndex, transform, top (static) or bottom (docked)
-  // React does NOT own: opacity (DOM ref), transition (DOM ref during animation)
-  const btnStyle = docked
-    ? { position: "fixed" as const, bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 50 }
-    : { position: "fixed" as const, top: btnTop, left: "50%", transform: "translateX(-50%)", zIndex: 50 };
-
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-1 pt-14">
+    <LocaleProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <AppLayout>
             <Router />
-          </main>
-          {!isCreatorPage && <Footer />}
-        </div>
-        <Toaster />
-        {/* Start Now — glides to bottom on home page, always docked on other pages. Hidden on creator pages (creator.tsx has its own sticky button) */}
-        {!isCreatorPage && (
-          <div ref={btnRef} data-start-now style={btnStyle}>
-            <FloatingWidget className="cursor-pointer hover:scale-105 transition-transform min-w-[126px] sm:min-w-[165px] lg:min-w-[198px]" />
-          </div>
-        )}
-      </TooltipProvider>
-    </QueryClientProvider>
+          </AppLayout>
+          <Toaster />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </LocaleProvider>
   );
 }
 

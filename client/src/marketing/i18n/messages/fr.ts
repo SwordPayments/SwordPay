@@ -1,0 +1,406 @@
+import type { LandingMessages } from '../types'
+
+const fr: LandingMessages = {
+  meta: {
+    title: 'SwordPay — Monétisez votre contenu avec précision.',
+  },
+  nav: {
+    product: 'Produit',
+    forCreators: 'Pour les créateurs',
+    pricing: 'Tarifs',
+    startEarning: 'Commencer à gagner',
+    language: 'Langue',
+    menu: 'Menu',
+    detected: 'Détecté',
+  },
+  footer: {
+    tagline:
+      'La façon la plus directe de transformer une audience en revenus. Abonnements, produits et paiements — tout en un seul endroit.',
+    operational: 'Tous les systèmes opérationnels',
+    company: 'Entreprise',
+    about: 'À propos',
+    contact: 'Contact',
+    terms: 'Conditions générales',
+    privacy: 'Politique de confidentialité',
+    cookies: 'Politique de cookies',
+    acceptableUse: "Politique d'utilisation acceptable et de contenu",
+    safety: 'Centre de sécurité et de transparence',
+    copyright: '© 2026 SwordPay, Inc. Conçu pour ceux qui créent.',
+    motto: 'Créé avec précision. Payé rapidement.',
+  },
+  storyFlow: {
+    titleLine1: 'Du lien à l\'argent,',
+    titleIn: 'en',
+    titleHighlight: 'secondes',
+    titleLine2: '.',
+    steps: [
+      {
+        key: 'upload',
+        label: 'Téléversez tout fichier numérique',
+        desc: 'Fichiers, vidéos, cours, rapports ou accès à une communauté. SwordPay héberge et livre automatiquement.',
+      },
+      {
+        key: 'share',
+        label: 'Partagez un lien',
+        desc: 'Envoyez votre PayLink privé sur WhatsApp, Instagram, Telegram ou là où se trouvent déjà vos acheteurs.',
+      },
+      {
+        key: 'paid',
+        label: 'Encaissez',
+        desc: 'L\'acheteur paie. La vente est confirmée automatiquement — sans vérifications manuelles ni allers-retours.',
+      },
+      {
+        key: 'access',
+        label: 'Accès débloqué',
+        desc: 'Le client obtient l\'accès instantanément, dès que le paiement arrive. Vous n\'avez rien à faire.',
+        noNumber: true,
+      },
+    ],
+    mocks: {
+      uploading: 'Téléversement',
+      lockedPreview: 'Aperçu verrouillé',
+      uploaded: 'téléversé',
+      yourPayLink: 'Votre PayLink',
+      linkCopied: 'Lien copié',
+      notification: 'Notification',
+      paymentReceived: 'Paiement reçu · 29,00 $',
+      paymentBody: 'Un nouvel acheteur vient de payer. L\'accès a été accordé automatiquement.',
+      saleConfirmed: 'Vente confirmée automatiquement',
+      accessUnlocked: 'Accès débloqué',
+      availableToBuyer: 'Disponible pour l\'acheteur',
+      done: 'Terminé',
+      notificationNow: 'maintenant',
+      uploadImageAlt: 'Image premium en cours d\'envoi',
+      unlockedImageAlt: 'L\'image premium débloquée',
+      uploadFileMeta: '3,8 Mo · JPG',
+      uploadPercent: '100%',
+      demoFileName: 'golden-hour-01.jpg',
+      shareChannels: ['WhatsApp', 'Instagram', 'Telegram'],
+    },
+  },
+  product: {
+    hero: {
+      titlePrefix: 'Transformez tout',
+      titleHighlight: 'valeur',
+      titleSuffix: '.',
+      tagline1: 'Un PayLink.',
+      tagline2: 'Plusieurs paiements.',
+      tagline3: 'Accès instantané.',
+      body: 'Téléversez tout — fichiers, contenu, savoir, communautés, accès — partagez un lien et encaissez instantanément. Le client obtient l\'accès automatiquement.',
+      ctaPrimary: 'Créez votre premier PayLink',
+      ctaSecondary: '▶ Voir comment ça marche',
+      chips: [
+        'Accès instantané après paiement',
+        'Pas d\'abonnement mensuel',
+        'Partage de valeur avec les collaborateurs',
+        'Conçu pour les créateurs du monde entier',
+      ],
+      creatorAlt: 'Un créateur au travail',
+      yourPayLink: 'Votre PayLink',
+      instantAccess: 'Accès instantané',
+      paymentReceived: 'Paiement reçu',
+      titleInto: 'en',
+      demoPaymentAmount: '29,00 $',
+    },
+    problem: {
+      headingLine1: 'La plupart des créateurs',
+      headingLine2: 'font trop d\'étapes pour un seul travail.',
+      chain: [
+        { app: 'Réseaux sociaux', job: 'Marketing' },
+        { app: 'Site web', job: 'Encaisser le paiement' },
+        { app: 'Banque', job: 'Vérifier le paiement' },
+        { app: 'Drive', job: 'Envoyer les fichiers' },
+        { app: 'Accès', job: 'Donner l\'accès' },
+        { app: 'Support', job: 'Résoudre les problèmes' },
+      ],
+      socialMedia: 'Réseaux sociaux',
+      marketing: 'Marketing',
+      replaces: 'remplace tout cela.',
+      friction: 'Moins de friction. Plus d\'accès. Plus de paiements',
+      paymentSeconds: 'Paiement en secondes',
+    },
+    how: {
+      headingLine1: 'Du téléversement au paiement',
+      headingIn: 'en',
+      headingHighlight: '5 secondes',
+      headingSuffix: '.',
+      subheading:
+        'Téléversez une fois, partagez un lien — puis regardez les paiements arriver tout seuls, 24 h/24.',
+      upload: 'Téléverser',
+      oneLink: 'Un lien à partager',
+      paymentReceived: 'Paiement reçu',
+      contentAlt: 'Contenu à vendre',
+      demoFileName: 'golden-hour-01.jpg',
+      pays: [
+        { amount: '29 $', label: 'Série de photos' },
+        { amount: '99 $', label: 'Accès au cours complet' },
+        { amount: '19 $', label: 'Pack de samples' },
+        { amount: '59 $', label: 'Analyse de match' },
+        { amount: '15 $', label: 'Invitation groupe privé' },
+        { amount: '45 $', label: 'Appel de coaching' },
+        { amount: '120 $', label: 'Rapport stratégique' },
+        { amount: '12 $', label: 'Morceau exclusif' },
+      ],
+    },
+    pricing: {
+      heading: 'Méthode traditionnelle vs',
+      subheading: 'Arrêtez de jongler entre les apps. Un PayLink remplace tout le flux.',
+      traditionalFlow: 'Flux traditionnel',
+      swordpay: 'SwordPay',
+      rows: [
+        ['Plusieurs outils', 'Un PayLink'],
+        ['Vérification manuelle du paiement', 'Automatique'],
+        ['Livraison manuelle', 'Livraison instantanée'],
+        ['Accès retardé', 'Accès instantané'],
+        ['Forte friction', 'Sans friction'],
+        ['Ventes perdues', 'Meilleure conversion'],
+        ['Plusieurs abonnements', 'Pas de frais mensuels'],
+      ],
+      noMonthly: 'Pas de frais mensuels.',
+      feeMain: '10 %',
+      feeSub: '+ 0,50 $',
+      feeNote: 'uniquement lorsque vous vendez avec succès',
+      bullets: [
+        'Pas de frais de configuration.',
+        'Pas d\'abonnements mensuels.',
+        'Pas de coûts cachés.',
+        'Vous ne payez que lorsque vous gagnez.',
+        'Moyens de paiement locaux inclus.',
+      ],
+      cta: 'Commencer à vendre',
+    },
+    audience: {
+      heading: 'Qui utilise SwordPay ?',
+      category: 'Catégorie',
+      whatTheySell: 'Ce qu\'ils vendent',
+      whyItWorks: 'Pourquoi ça marche',
+      rows: [
+        {
+          who: 'Créateurs',
+          sell: 'Vidéos premium, photos, contenu coulisses',
+          why: 'Les fans paient une fois et débloquent instantanément.',
+        },
+        {
+          who: 'Astrologues',
+          sell: 'Horoscopes, thèmes natals, rapports de compatibilité',
+          why: 'L\'accès numérique personnalisé est facile à tarifer et à livrer.',
+        },
+        {
+          who: 'Nutritionnistes',
+          sell: 'Plans alimentaires, guides minceur, protocoles de suppléments',
+          why: 'Les plans peuvent être vendus directement avant la livraison.',
+        },
+        {
+          who: 'Coachs fitness',
+          sell: 'Programmes d\'entraînement, plans de transformation, coaching vidéo',
+          why: 'Les programmes deviennent des produits numériques payants.',
+        },
+        {
+          who: 'Musiciens',
+          sell: 'Chansons, beats, sample packs, sorties exclusives',
+          why: 'Fans et clients reçoivent les fichiers immédiatement après paiement.',
+        },
+        {
+          who: 'Tipsters sportifs',
+          sell: 'Prédictions, analyses de matchs, groupes VIP de picks',
+          why: 'L\'information sensible au temps se débloque au moment exact du paiement.',
+        },
+        {
+          who: 'Analystes',
+          sell: 'Rapports crypto, études de marché, insights payants',
+          why: 'Le savoir premium devient une transaction, pas une conversation.',
+        },
+        {
+          who: 'Propriétaires de communautés',
+          sell: 'Groupes Telegram, accès Discord, abonnements',
+          why: 'L\'accès peut être facturé et contrôlé via un seul PayLink.',
+        },
+      ],
+    },
+    features: {
+      heading: 'Conçu pour monétiser votre présence sociale',
+      subheading: 'Tout ce dont vous avez besoin pour être payé, et rien de superflu.',
+      items: [
+        'Accès instantané',
+        'Partage de valeur',
+        'Paiements mondiaux',
+        'Protection contre la fraude',
+        'Tableau de bord créateur',
+        'Pas d\'abonnement',
+      ],
+    },
+    localPayments: {
+      badge: 'Conçu pour les paiements locaux',
+      heading: 'Portée mondiale.',
+      headingHighlight: 'Comportement de paiement local.',
+      body: 'SwordPay est conçu pour les marchés où les créateurs vendent déjà via DM, WhatsApp et communautés privées — notamment le Brésil et l\'Amérique latine.',
+      methods: [
+        { name: 'PIX', place: 'Brésil' },
+        { name: 'SPEI', place: 'Mexique' },
+        { name: 'PSE', place: 'Colombie' },
+        { name: 'Cartes', place: 'Monde entier' },
+      ],
+    },
+    dazn: {
+      partner: 'Partenaire de paiement de DAZN',
+      heading: 'Profits au-delà des frontières.',
+      leagueLogosAlt: 'Logos des ligues',
+      cards: [
+        {
+          title: 'Marketing',
+          body: 'Rejoignez DAZN et d\'autres marques leaders sur SWORD et accédez à une audience mondiale.',
+        },
+        {
+          title: 'Paiements mondiaux',
+          body: 'Acceptez des paiements illimités depuis n\'importe où dans le monde.',
+        },
+      ],
+    },
+    whyNot: {
+      headingLine1: 'Pourquoi SwordPay plutôt',
+      headingLine2: 'qu\'un autre outil ?',
+      subheading:
+        'SwordPay n\'est pas un autre profil créateur, vitrine ou bouton de paiement. C\'est une infrastructure d\'accès payant instantané.',
+      whyNot: 'Pourquoi pas',
+      cards: [
+        {
+          tool: 'Patreon',
+          their: 'Patreon a été conçu pour les abonnements.',
+          ours: 'SwordPay a été conçu pour les transactions instantanées. Les acheteurs paient une fois et obtiennent l\'accès immédiatement. Pas d\'abonnement requis.',
+        },
+        {
+          tool: 'Gumroad',
+          their: 'Gumroad vous aide à vendre des produits.',
+          ours: 'SwordPay vous aide à monétiser l\'accès. Paiement, livraison et accès se font automatiquement via un seul PayLink.',
+        },
+        {
+          tool: 'Stripe Payment Links',
+          their: 'Stripe encaisse le paiement.',
+          ours: 'SwordPay encaisse le paiement et débloque l\'accès automatiquement. Pas de livraison manuelle. Pas d\'outils supplémentaires. Pas de lacunes dans le flux.',
+        },
+      ],
+    },
+    cta: {
+      headingLine1: 'Arrêtez de courir après les paiements.',
+      headingLine2Prefix: 'Soyez payé ',
+      headingLine2Highlight: 'automatiquement',
+      headingLine2Suffix: '.',
+      body: 'Transformez accès, contenu, fichiers, savoir et communautés en accès payant instantané. Créez votre premier PayLink en moins de 60 secondes.',
+      primary: 'Créez votre premier PayLink',
+      secondary: 'Voir comment ça marche',
+    },
+  },
+  creators: {
+    hero: {
+      titleLine1: 'Vous avez construit l\'audience.',
+      titleLine2Prefix: 'Maintenant ',
+      titleLine2Highlight: 'gagnez votre vie',
+      titleLine2Suffix: '.',
+      bodyLine1: 'Podcast, art, enseignement ou musique — SwordPay vous offre',
+      bodyLine2: 'toutes les façons de monétiser votre travail et vous paie dès qu\'un fan dit oui.',
+      ctaPrimary: 'Créez votre premier PayLink',
+      ctaSecondary: 'Découvrez les façons de gagner',
+      stats: [
+        { value: '12 847', label: 'créateurs payés' },
+        { value: '23 M$', label: 'traités' },
+        { value: '190+', label: 'pays' },
+      ],
+      videoTitle: 'SwordPay pour les créateurs',
+      playLabel: 'Lire la vidéo avec le son',
+      replayLabel: 'Revoir la vidéo',
+      pauseLabel: 'Mettre la vidéo en pause',
+    },
+    steps: {
+      heading: 'Trois étapes simples',
+      items: [
+        { label: 'Fixer le prix', alt: 'Prix fixé' },
+        { label: 'Ajouter le fichier', alt: 'Fichier ajouté' },
+        { label: 'Partager', alt: 'Partage terminé' },
+      ],
+    },
+    streams: {
+      heading: 'Toutes les sources de revenus, une solution.',
+      subheading: 'Combinez comme votre métier le demande. Activez l\'une ou l\'autre en un clic.',
+      items: [
+        {
+          title: 'Abonnements',
+          body: 'Soutien mensuel avec niveaux et avantages que vos vrais fans veulent.',
+        },
+        {
+          title: 'Produits numériques',
+          body: 'Cours, presets, modèles, packs — vendez une fois, livrez instantanément.',
+        },
+        {
+          title: 'Pourboires et DM payants',
+          body: 'Laissez les fans remercier ou payer pour une réponse, une mention ou une demande personnelle.',
+        },
+        {
+          title: 'Live et événements',
+          body: 'Streams, ateliers et listening parties avec accès payant.',
+        },
+      ],
+    },
+    testimonials: {
+      heading: 'Des personnes réelles, des revenus réels.',
+      rating: 'de plus de 2 000 créateurs',
+      items: [
+        {
+          name: 'Maya Okonkwo',
+          role: 'Podcasteuse · The Long Cut',
+          quote:
+            'J\'ai regroupé trois outils dans SwordPay et doublé ce que je garde. Les paiements instantanés semblent presque injustes.',
+          stat: '+112 % de revenu net',
+        },
+        {
+          name: 'Helena März',
+          role: 'Éducatrice · Design Foundations',
+          quote:
+            'Mon cours se vend pendant que je dors et l\'argent est là le matin. Pas d\'attente de 30 jours, pas de relances.',
+          stat: '4 800 étudiants',
+        },
+        {
+          name: 'Kai Render',
+          role: 'Musicien · sample packs',
+          quote:
+            'Ça ressemble à quelque chose auquel je veux vraiment associer mon nom. Les fans ont une page propre, je suis payé dès qu\'ils achètent.',
+          stat: '31 k$ en 6 mois',
+        },
+      ],
+    },
+    faq: {
+      heading: 'Tout ce que vous voudriez demander.',
+      subheading: 'Encore curieux ? Notre équipe répond à chaque message — généralement en quelques heures.',
+      items: [
+        {
+          q: 'Combien coûte SwordPay ?',
+          a: 'La configuration et la publication sont gratuites. Nous prenons 10 % + 0,50 $ par vente réussie, couvrant traitement, livraison et accès instantané. Pas de frais de setup, pas d\'abonnement mensuel ni de commissions cachées.',
+        },
+        {
+          q: 'À quelle vitesse l\'acheteur obtient-il l\'accès ?',
+          a: 'Instantanément. Dès que le paiement est confirmé, l\'accès est débloqué automatiquement — sans livraison manuelle ni allers-retours.',
+        },
+        {
+          q: 'Est-ce que je possède mon audience ?',
+          a: 'Toujours. Vos données membres et clients vous appartiennent pour consultation, export et transfert à tout moment. Nous n\'enfermons jamais votre audience.',
+        },
+        {
+          q: 'Puis-je migrer depuis une autre plateforme ?',
+          a: 'Oui. Vous pouvez importer membres et produits depuis la plupart des grandes plateformes, et notre équipe vous aide à migrer sans perdre un seul abonné.',
+        },
+        {
+          q: 'Que puis-je vendre ?',
+          a: 'Abonnements, produits numériques, pourboires, messages payants et événements live — en toute combinaison. Si vous le créez, vous pouvez le vendre.',
+        },
+      ],
+    },
+    cta: {
+      headingLine1: 'Votre art est prêt.',
+      headingLine2: 'Vos revenus aussi.',
+      body: 'La façon la plus directe de transformer une audience en revenus. Abonnements, produits et paiements — tout en un seul endroit.',
+      primary: 'Créez votre premier PayLink',
+      secondary: 'Explorer le produit',
+    },
+  },
+}
+
+export default fr

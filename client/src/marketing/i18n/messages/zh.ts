@@ -1,0 +1,406 @@
+import type { LandingMessages } from '../types'
+
+const zh: LandingMessages = {
+  meta: {
+    title: 'SwordPay — 精准变现你的内容。',
+  },
+  nav: {
+    product: '产品',
+    forCreators: '创作者专区',
+    pricing: '定价',
+    startEarning: '开始赚钱',
+    language: '语言',
+    menu: '菜单',
+    detected: '已检测',
+  },
+  footer: {
+    tagline:
+      '创作者将受众转化为收入的最直接方式。会员、产品与收款——一站搞定。',
+    operational: '所有系统运行正常',
+    company: '公司',
+    about: '关于我们',
+    contact: '联系我们',
+    terms: '条款与条件',
+    privacy: '隐私政策',
+    cookies: 'Cookie 政策',
+    acceptableUse: '可接受使用与内容政策',
+    safety: '安全与透明中心',
+    copyright: '© 2026 SwordPay, Inc. 为创作者而生。',
+    motto: '精心打造。快速收款。',
+  },
+  storyFlow: {
+    titleLine1: '从链接到收款，',
+    titleIn: '',
+    titleHighlight: '秒级',
+    titleLine2: '完成。',
+    steps: [
+      {
+        key: 'upload',
+        label: '上传任意数字文件',
+        desc: '文件、视频、课程、报告或社群访问权限。SwordPay 托管并自动交付。',
+      },
+      {
+        key: 'share',
+        label: '分享一个链接',
+        desc: '通过 WhatsApp、Instagram、Telegram 或买家已在的任何渠道发送你的私密 PayLink。',
+      },
+      {
+        key: 'paid',
+        label: '收到付款',
+        desc: '买家付款。销售自动确认——无需人工核对，无需来回沟通。',
+      },
+      {
+        key: 'access',
+        label: '访问已解锁',
+        desc: '付款到账的瞬间，客户立即获得访问权限。你无需做任何事。',
+        noNumber: true,
+      },
+    ],
+    mocks: {
+      uploading: '上传中',
+      lockedPreview: '锁定预览',
+      uploaded: '已上传',
+      yourPayLink: '你的 PayLink',
+      linkCopied: '链接已复制',
+      notification: '通知',
+      paymentReceived: '已收到付款 · $29.00',
+      paymentBody: '有新买家刚刚付款。访问权限已自动授予。',
+      saleConfirmed: '销售已自动确认',
+      accessUnlocked: '访问已解锁',
+      availableToBuyer: '买家可访问',
+      done: '完成',
+      notificationNow: '刚刚',
+      uploadImageAlt: '正在上传的高级图片',
+      unlockedImageAlt: '已解锁的高级图片',
+      uploadFileMeta: '3.8 MB · JPG',
+      uploadPercent: '100%',
+      demoFileName: 'golden-hour-01.jpg',
+      shareChannels: ['WhatsApp', 'Instagram', 'Telegram'],
+    },
+  },
+  product: {
+    hero: {
+      titlePrefix: '将一切',
+      titleHighlight: '变现',
+      titleSuffix: '。',
+      tagline1: '一个 PayLink。',
+      tagline2: '多次收款。',
+      tagline3: '即时访问。',
+      body: '上传任何内容——文件、内容、知识、社群、访问权限——分享一个链接，即时收款。客户自动获得访问权限。',
+      ctaPrimary: '创建你的第一个 PayLink',
+      ctaSecondary: '▶ 了解如何运作',
+      chips: [
+        '付款后即时访问',
+        '无月费订阅',
+        '与协作者分成',
+        '为全球创作者打造',
+      ],
+      creatorAlt: '创作者在工作',
+      yourPayLink: '你的 PayLink',
+      instantAccess: '即时访问',
+      paymentReceived: '已收到付款',
+      titleInto: '',
+      demoPaymentAmount: '$29.00',
+    },
+    problem: {
+      headingLine1: '大多数创作者',
+      headingLine2: '完成一件事却要太多步骤。',
+      chain: [
+        { app: '社交媒体', job: '营销推广' },
+        { app: '网站', job: '收款' },
+        { app: '银行', job: '核实付款' },
+        { app: '网盘', job: '发送文件' },
+        { app: '访问', job: '授予权限' },
+        { app: '客服', job: '解决问题' },
+      ],
+      socialMedia: '社交媒体',
+      marketing: '营销推广',
+      replaces: '替代以上全部。',
+      friction: '更少摩擦。更多访问。更多收款',
+      paymentSeconds: '秒级收款',
+    },
+    how: {
+      headingLine1: '从上传到收款',
+      headingIn: '',
+      headingHighlight: '5 秒',
+      headingSuffix: '。',
+      subheading:
+        '上传一次，分享一个链接——然后看着付款自动涌入，全天候不间断。',
+      upload: '上传',
+      oneLink: '一个链接即可分享',
+      paymentReceived: '已收到付款',
+      contentAlt: '待售内容',
+      demoFileName: 'golden-hour-01.jpg',
+      pays: [
+        { amount: '$29', label: '照片集' },
+        { amount: '$99', label: '完整课程访问' },
+        { amount: '$19', label: '采样包' },
+        { amount: '$59', label: '赛事分析' },
+        { amount: '$15', label: '私密群组邀请' },
+        { amount: '$45', label: '教练通话' },
+        { amount: '$120', label: '策略报告' },
+        { amount: '$12', label: '独家音轨' },
+      ],
+    },
+    pricing: {
+      heading: '传统方式 vs',
+      subheading: '别再在多个应用间切换。一个 PayLink 替代整个流程。',
+      traditionalFlow: '传统流程',
+      swordpay: 'SwordPay',
+      rows: [
+        ['多种工具', '一个 PayLink'],
+        ['人工核实付款', '自动处理'],
+        ['人工交付', '即时交付'],
+        ['延迟访问', '即时访问'],
+        ['高摩擦', '零摩擦'],
+        ['流失销售', '更高转化'],
+        ['多项订阅', '无月费'],
+      ],
+      noMonthly: '无月费。',
+      feeMain: '10%',
+      feeSub: '+ $0.50',
+      feeNote: '仅在成功销售时收取',
+      bullets: [
+        '无设置费。',
+        '无月费订阅。',
+        '无隐藏费用。',
+        '仅在盈利时付费。',
+        '包含本地支付方式。',
+      ],
+      cta: '开始销售',
+    },
+    audience: {
+      heading: '谁在使用 SwordPay？',
+      category: '类别',
+      whatTheySell: '销售内容',
+      whyItWorks: '为何有效',
+      rows: [
+        {
+          who: '创作者',
+          sell: '优质视频、照片、幕后内容',
+          why: '粉丝一次付款，即时解锁。',
+        },
+        {
+          who: '占星师',
+          sell: '运势、星盘、合盘报告',
+          why: '个性化数字访问易于定价和交付。',
+        },
+        {
+          who: '营养师',
+          sell: '膳食计划、减重指南、补剂方案',
+          why: '计划可在交付前直接销售。',
+        },
+        {
+          who: '健身教练',
+          sell: '训练计划、蜕变方案、视频指导',
+          why: '训练计划变成付费数字产品。',
+        },
+        {
+          who: '音乐人',
+          sell: '歌曲、节拍、采样包、独家发行',
+          why: '粉丝和客户付款后立即获得文件。',
+        },
+        {
+          who: '体育分析师',
+          sell: '预测、赛事分析、VIP 推荐群',
+          why: '时效信息在付款瞬间解锁。',
+        },
+        {
+          who: '分析师',
+          sell: '加密报告、市场研究、付费洞察',
+          why: '优质知识变成交易，而非对话。',
+        },
+        {
+          who: '社群主',
+          sell: 'Telegram 群、Discord 访问、会员资格',
+          why: '通过一个 PayLink 收费并控制访问。',
+        },
+      ],
+    },
+    features: {
+      heading: '为社交变现而生',
+      subheading: '收款所需的一切，没有多余功能。',
+      items: [
+        '即时访问',
+        '价值分成',
+        '全球收款',
+        '欺诈防护',
+        '创作者面板',
+        '无订阅费',
+      ],
+    },
+    localPayments: {
+      badge: '为本地支付打造',
+      heading: '全球触达。',
+      headingHighlight: '本地支付习惯。',
+      body: 'SwordPay 专为创作者通过私信、WhatsApp 和私密社群销售的市场设计——尤其是巴西和拉美。',
+      methods: [
+        { name: 'PIX', place: '巴西' },
+        { name: 'SPEI', place: '墨西哥' },
+        { name: 'PSE', place: '哥伦比亚' },
+        { name: '银行卡', place: '全球' },
+      ],
+    },
+    dazn: {
+      partner: 'DAZN 支付合作伙伴',
+      heading: '利润无国界。',
+      leagueLogosAlt: '联赛标志',
+      cards: [
+        {
+          title: '营销',
+          body: '加入 DAZN 及 SWORD 上的其他领先品牌，触达全球受众。',
+        },
+        {
+          title: '全球收款',
+          body: '接受来自世界各地的无限制付款。',
+        },
+      ],
+    },
+    whyNot: {
+      headingLine1: '为什么选择 SwordPay',
+      headingLine2: '而非其他工具？',
+      subheading:
+        'SwordPay 不是又一个创作者主页、店铺或支付按钮。它是即时付费访问基础设施。',
+      whyNot: '为什么不选',
+      cards: [
+        {
+          tool: 'Patreon',
+          their: 'Patreon 为订阅而生。',
+          ours: 'SwordPay 为即时交易而生。买家一次付款，立即获得访问。无需会员。',
+        },
+        {
+          tool: 'Gumroad',
+          their: 'Gumroad 帮你销售产品。',
+          ours: 'SwordPay 帮你将访问变现。付款、交付和访问通过单个 PayLink 自动完成。',
+        },
+        {
+          tool: 'Stripe Payment Links',
+          their: 'Stripe 负责收款。',
+          ours: 'SwordPay 收款并自动解锁访问。无需人工交付。无需额外工具。流程无缝衔接。',
+        },
+      ],
+    },
+    cta: {
+      headingLine1: '别再追着收款跑。',
+      headingLine2Prefix: '',
+      headingLine2Highlight: '自动收款',
+      headingLine2Suffix: '。',
+      body: '将访问、内容、文件、知识和社群转化为即时付费访问。60 秒内创建你的第一个 PayLink。',
+      primary: '创建你的第一个 PayLink',
+      secondary: '了解如何运作',
+    },
+  },
+  creators: {
+    hero: {
+      titleLine1: '你建立了受众。',
+      titleLine2Prefix: '现在 ',
+      titleLine2Highlight: '以此为生',
+      titleLine2Suffix: '。',
+      bodyLine1: '无论你是播客、绘画、教学还是演奏——SwordPay 为你提供',
+      bodyLine2: '将作品变现的每一种方式，并在粉丝说「好」的瞬间付款给你。',
+      ctaPrimary: '创建你的第一个 PayLink',
+      ctaSecondary: '探索赚钱方式',
+      stats: [
+        { value: '12,847', label: '创作者已收款' },
+        { value: '$2300万', label: '已处理' },
+        { value: '190+', label: '个国家' },
+      ],
+      videoTitle: 'SwordPay 创作者专区',
+      playLabel: '播放视频（含声音）',
+      replayLabel: '重新播放',
+      pauseLabel: '暂停视频',
+    },
+    steps: {
+      heading: '三个简单步骤',
+      items: [
+        { label: '设定价格', alt: '价格已设定' },
+        { label: '添加文件', alt: '文件已添加' },
+        { label: '分享', alt: '分享完成' },
+      ],
+    },
+    streams: {
+      heading: '所有收入来源，一个解决方案。',
+      subheading: '按你的创作方式自由组合。一键开启任意收入流。',
+      items: [
+        {
+          title: '会员订阅',
+          body: '月度支持，分级权益，满足真爱粉的需求。',
+        },
+        {
+          title: '数字产品',
+          body: '课程、预设、模板、素材包——卖一次，即时交付。',
+        },
+        {
+          title: '打赏与付费私信',
+          body: '让粉丝表达感谢，或为个人回复、点名或定制请求付费。',
+        },
+        {
+          title: '直播与活动',
+          body: '付费访问的直播、工作坊和听歌派对。',
+        },
+      ],
+    },
+    testimonials: {
+      heading: '真实的人，真实的收入。',
+      rating: '来自 2,000+ 创作者',
+      items: [
+        {
+          name: 'Maya Okonkwo',
+          role: '播客主 · The Long Cut',
+          quote:
+            '我把三个工具合并到 SwordPay，到手的收入翻了一倍。即时到账简直不可思议。',
+          stat: '到手收入 +112%',
+        },
+        {
+          name: 'Helena März',
+          role: '教育者 · Design Foundations',
+          quote:
+            '我的课程在我睡觉时也在卖，早上钱就在账上。不用等 30 天，不用催款。',
+          stat: '4,800 名学员',
+        },
+        {
+          name: 'Kai Render',
+          role: '音乐人 · 采样包',
+          quote:
+            '看起来是我愿意挂上自己名字的东西。粉丝有干净的页面，我在他们购买的那一秒就收到钱。',
+          stat: '6 个月 $3.1 万',
+        },
+      ],
+    },
+    faq: {
+      heading: '你想问的一切。',
+      subheading: '还有疑问？我们的创作者团队回复每一条消息——通常几小时内。',
+      items: [
+        {
+          q: 'SwordPay 收费多少？',
+          a: '设置和发布免费。每笔成功销售收取 10% + $0.50，涵盖支付处理、交付和即时访问。无设置费、无月费、无隐藏抽成。',
+        },
+        {
+          q: '买家多快能获得访问？',
+          a: '即时。付款确认的瞬间，访问自动解锁——无需人工交付，无需来回沟通。',
+        },
+        {
+          q: '受众归我吗？',
+          a: '永远归你。你的会员和客户数据可随时查看、导出和带走。我们绝不会把受众锁在平台内。',
+        },
+        {
+          q: '能从其他平台迁移吗？',
+          a: '可以。你可以从大多数主流平台导入会员和产品，我们的团队会帮你迁移，不丢失任何订阅者。',
+        },
+        {
+          q: '我能卖什么？',
+          a: '会员、数字产品、打赏、付费消息和付费直播活动——任意组合。你创作的内容，都可以上架。',
+        },
+      ],
+    },
+    cta: {
+      headingLine1: '你的技艺已就绪。',
+      headingLine2: '你的收入也是。',
+      body: '创作者将受众转化为收入的最直接方式。会员、产品与收款——一站搞定。',
+      primary: '创建你的第一个 PayLink',
+      secondary: '探索产品',
+    },
+  },
+}
+
+export default zh
