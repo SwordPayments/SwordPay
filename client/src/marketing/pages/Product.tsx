@@ -100,7 +100,7 @@ function Hero() {
                   onClick={handleHowItWorks}
                   variant="outline"
                   icon={false}
-                  className="!whitespace-nowrap w-full justify-center !px-4 !py-[13px] !text-[15.5px] sm:!px-[22px] sm:!text-[18.2px] sm:w-auto sm:!py-[11px]"
+                  className="!whitespace-nowrap w-full justify-center !px-4 !py-[13px] !text-[15.5px] sm:!px-[22px] sm:!text-[18.2px] sm:w-auto sm:!py-[11px] !bg-cobalt !text-paper !border-cobalt hover:!bg-cobalt/90"
                 >
                   {h.ctaSecondary}
                 </Button>
@@ -769,7 +769,7 @@ function CTA() {
             </p>
             <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:items-center">
               <Button href="https://swordpay.me" className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg !whitespace-nowrap w-full justify-center sm:w-auto">{c.primary}</Button>
-              <Button href="/creators#how-it-works" onClick={handleHowItWorks} variant="outline" icon={false} className="!whitespace-nowrap w-full justify-center sm:w-auto">
+              <Button href="/creators#how-it-works" onClick={handleHowItWorks} variant="outline" icon={false} className="!whitespace-nowrap w-full justify-center sm:w-auto !bg-cobalt !text-paper !border-cobalt hover:!bg-cobalt/90">
                 {c.secondary}
               </Button>
             </div>

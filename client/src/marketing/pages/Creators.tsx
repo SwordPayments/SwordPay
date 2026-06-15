@@ -222,7 +222,7 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
                 e.preventDefault()
                 document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
               }}
-              className="w-full justify-center !border-line-strong !text-ink hover:!border-ink sm:w-auto"
+              className="w-full justify-center sm:w-auto !bg-cobalt !text-paper !border-cobalt hover:!bg-cobalt/90"
             >
               {copy.ctaSecondary}
             </Button>
