@@ -79,10 +79,10 @@ function Hero() {
             </Reveal>
 
             <Reveal delay={0.22}>
-              <div className="mt-6 flex flex-wrap items-center gap-[13.2px]">
+              <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-[13.2px]">
                 <Button
                   href="https://swordpay.me"
-                  className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg !px-[22px] !py-[11px] !text-[18.2px] [&_svg]:!size-[17.6px]"
+                  className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg !whitespace-nowrap w-full justify-center !px-[22px] !py-[13px] !text-[18.2px] [&_svg]:!size-[17.6px] sm:w-auto sm:!py-[11px]"
                 >
                   {h.ctaPrimary}
                 </Button>
@@ -90,7 +90,7 @@ function Hero() {
                   href="#flow"
                   variant="outline"
                   icon={false}
-                  className="!px-[22px] !py-[11px] !text-[18.2px]"
+                  className="!whitespace-nowrap w-full justify-center !px-[22px] !py-[13px] !text-[18.2px] sm:w-auto sm:!py-[11px]"
                 >
                   {h.ctaSecondary}
                 </Button>
