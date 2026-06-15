@@ -196,7 +196,7 @@ function Problem() {
     <Section className="border-y border-line bg-paper-deep !pt-12 !pb-6 md:!pt-16 md:!pb-8">
       <Reveal>
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-[clamp(2.3rem,4.6vw,3.57rem)] font-bold">
+          <h2 className="text-[clamp(1.5rem,4.6vw,3.57rem)] font-bold">
             {p.headingLine1}
             <br />
             <span className="md:whitespace-nowrap">{p.headingLine2}</span>
@@ -211,15 +211,15 @@ function Problem() {
             return (
             <div key={c.app} className="flex items-center gap-3">
               <div
-                className={`flex flex-col items-center rounded-[var(--radius-md)] border border-line bg-paper px-3 py-5 text-center ${
-                  'icons' in c && c.icons && c.icons.length > 2 ? 'w-40' : 'w-32'
+                className={`flex flex-col items-center rounded-[var(--radius-md)] border border-line bg-paper px-2.5 py-3.5 text-center ${
+                  'icons' in c && c.icons && c.icons.length > 2 ? 'w-32 sm:w-40' : 'w-24 sm:w-32'
                 }`}
               >
                 <span
                   className={
                     'icons' in c && c.icons
-                      ? 'flex h-12 items-center justify-center gap-1.5'
-                      : 'grid size-12 place-items-center rounded-[var(--radius-sm)] bg-cobalt text-paper shadow-lg shadow-cobalt/30 ring-1 ring-cobalt/20'
+                      ? 'flex h-9 items-center justify-center gap-1'
+                      : 'grid size-9 place-items-center rounded-[var(--radius-sm)] bg-cobalt text-paper shadow-lg shadow-cobalt/30 ring-1 ring-cobalt/20'
                   }
                 >
                   {'icons' in c && c.icons
@@ -227,13 +227,13 @@ function Problem() {
                         <Ic
                           key={idx}
                           weight="fill"
-                          className={`size-9 ${className}`}
+                          className={`size-6 ${className}`}
                         />
                       ))
-                    : Single && <Single weight="bold" className="size-6" />}
+                    : Single && <Single weight="bold" className="size-5" />}
                 </span>
-                <div className="mt-3 text-[15.4px] font-bold">{c.app}</div>
-                <div className="mt-0.5 text-[13.8px] text-ink-mute">{c.job}</div>
+                <div className="mt-2 text-[13px] font-bold sm:text-[15.4px]">{c.app}</div>
+                <div className="mt-0.5 text-[11px] text-ink-mute sm:text-[13.8px]">{c.job}</div>
               </div>
               {i < chain.length - 1 && (
                 <ArrowRight
