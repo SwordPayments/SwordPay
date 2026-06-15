@@ -26,6 +26,8 @@ import StoryFlow from '../components/StoryFlow'
 import { SwordMark } from '../components/Logo'
 import { px, img } from '../lib/images'
 import { useMessages } from '../i18n'
+import { useLocation } from 'wouter'
+import { scrollToHowItWorks } from '../lib/scroll'
 
 /* ============================================================
    HERO
@@ -33,6 +35,13 @@ import { useMessages } from '../i18n'
 function Hero() {
   const t = useMessages()
   const h = t.product.hero
+  const [location, setLocation] = useLocation()
+
+  function handleHowItWorks(e: React.MouseEvent) {
+    e.preventDefault()
+    if (location !== '/creators') setLocation('/creators')
+    scrollToHowItWorks()
+  }
   return (
     <section className="relative overflow-hidden pt-28 pb-14 md:pt-32 md:pb-20">
       <div className="grid-paper pointer-events-none absolute inset-0 -z-10" />
@@ -87,7 +96,8 @@ function Hero() {
                   {h.ctaPrimary}
                 </Button>
                 <Button
-                  href="#flow"
+                  href="/creators#how-it-works"
+                  onClick={handleHowItWorks}
                   variant="outline"
                   icon={false}
                   className="!whitespace-nowrap w-full justify-center !px-4 !py-[13px] !text-[15.5px] sm:!px-[22px] sm:!text-[18.2px] sm:w-auto sm:!py-[11px]"
@@ -733,6 +743,14 @@ function Pricing() {
 function CTA() {
   const t = useMessages()
   const c = t.product.cta
+  const [location, setLocation] = useLocation()
+
+  function handleHowItWorks(e: React.MouseEvent) {
+    e.preventDefault()
+    if (location !== '/creators') setLocation('/creators')
+    scrollToHowItWorks()
+  }
+
   return (
     <Section>
       <Reveal>
@@ -751,7 +769,7 @@ function CTA() {
             </p>
             <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:items-center">
               <Button href="https://swordpay.me" className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg !whitespace-nowrap w-full justify-center sm:w-auto">{c.primary}</Button>
-              <Button href="#how" variant="outline" icon={false} className="!whitespace-nowrap w-full justify-center sm:w-auto">
+              <Button href="/creators#how-it-works" onClick={handleHowItWorks} variant="outline" icon={false} className="!whitespace-nowrap w-full justify-center sm:w-auto">
                 {c.secondary}
               </Button>
             </div>

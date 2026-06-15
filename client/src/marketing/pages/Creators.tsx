@@ -215,9 +215,13 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
               {copy.ctaPrimary}
             </Button>
             <Button
-              href="#streams"
+              href="#how-it-works"
               variant="outline"
               icon={false}
+              onClick={(e: React.MouseEvent) => {
+                e.preventDefault()
+                document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }}
               className="w-full justify-center !border-line-strong !text-ink hover:!border-ink sm:w-auto"
             >
               {copy.ctaSecondary}

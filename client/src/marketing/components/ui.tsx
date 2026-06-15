@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { Link } from 'wouter'
 import { ArrowRight } from '@phosphor-icons/react'
@@ -71,6 +71,7 @@ type BtnProps = {
   variant?: 'solid' | 'outline' | 'ghost'
   icon?: boolean
   className?: string
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void
 }
 
 export function Button({
@@ -80,6 +81,7 @@ export function Button({
   variant = 'solid',
   icon = true,
   className = '',
+  onClick,
 }: BtnProps) {
   const base =
     'group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[16.5px] font-semibold transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]'
@@ -105,8 +107,8 @@ export function Button({
 
   const cls = `${base} ${styles} ${className}`
   if (to) return <Link href={to} className={cls}>{inner}</Link>
-  if (href) return <a href={href} className={cls}>{inner}</a>
-  return <button className={cls}>{inner}</button>
+  if (href) return <a href={href} onClick={onClick} className={cls}>{inner}</a>
+  return <button onClick={onClick} className={cls}>{inner}</button>
 }
 
 /* ----------------------------------------------------------------

@@ -49,6 +49,24 @@ export function scrollToPricing() {
   return true
 }
 
+/** Smooth-scroll to #how-it-works, polling until the element is mounted. */
+export function scrollToHowItWorks() {
+  const attempt = () => {
+    const el = document.getElementById('how-it-works')
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      return true
+    }
+    return false
+  }
+  if (!attempt()) {
+    let tries = 0
+    const timer = setInterval(() => {
+      if (attempt() || ++tries > 25) clearInterval(timer)
+    }, 80)
+  }
+}
+
 export function scrollToHash(hash: string, instant = hash === PRICING_HASH) {
   if (instant && hash === PRICING_HASH) {
     return scrollToPricing()
