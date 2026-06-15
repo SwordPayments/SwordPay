@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { SCROLL_INTENT_KEY } from '../components/Navbar'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Heart,
@@ -511,6 +512,22 @@ function ThreeSteps({ copy }: { copy: CreatorsCopy['steps'] }) {
 
 export default function Creators() {
   const t = useMessages()
+
+  useEffect(() => {
+    const anchor = sessionStorage.getItem(SCROLL_INTENT_KEY)
+    if (!anchor) return
+    sessionStorage.removeItem(SCROLL_INTENT_KEY)
+    // Wait for layout to settle, then scroll
+    const doScroll = () => {
+      const el = document.getElementById(anchor)
+      if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return true }
+      return false
+    }
+    if (!doScroll()) {
+      let n = 0
+      const t = setInterval(() => { if (doScroll() || ++n > 30) clearInterval(t) }, 100)
+    }
+  }, [])
 
   return (
     <>

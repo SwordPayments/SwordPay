@@ -26,42 +26,24 @@ function navigateToPricing(
   window.dispatchEvent(new HashChangeEvent('hashchange'))
 }
 
+export const SCROLL_INTENT_KEY = 'sp_scroll_intent'
+
 function navigateToSection(
   e: React.MouseEvent,
-  to: string,
   anchor: string,
   location: string,
   setLocation: (to: string) => void,
 ) {
   e.preventDefault()
-
-  const doScroll = () => {
-    const el = document.getElementById(anchor)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      return true
-    }
-    return false
+  // If the section already exists on this page, scroll to it directly
+  const el = document.getElementById(anchor)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    return
   }
-
-  const pagePath = to.split('#')[0]
-  if (location !== pagePath) {
-    // Navigate to the target page, then poll until the anchor element mounts
-    setLocation(pagePath)
-    let attempts = 0
-    const poll = setInterval(() => {
-      if (doScroll() || ++attempts > 40) clearInterval(poll)
-    }, 50)
-  } else {
-    // Already on the right page — scroll immediately
-    if (!doScroll()) {
-      // Element not yet in DOM (e.g. lazy mount) — retry briefly
-      let attempts = 0
-      const poll = setInterval(() => {
-        if (doScroll() || ++attempts > 20) clearInterval(poll)
-      }, 50)
-    }
-  }
+  // Element not on current page — navigate to /creators (which has StoryFlow) and scroll on mount
+  sessionStorage.setItem(SCROLL_INTENT_KEY, anchor)
+  setLocation('/creators')
 }
 
 function navLinkClass(isActive: boolean, isHash: boolean) {
@@ -117,7 +99,7 @@ export default function MarketingNavbar() {
                 onClick={(e) =>
                   l.anchor === 'pricing'
                     ? navigateToPricing(e, location, setLocation)
-                    : navigateToSection(e, l.to, l.anchor, location, setLocation)
+                    : navigateToSection(e, l.anchor, location, setLocation)
                 }
                 className={navLinkClass(false, true)}
               >
@@ -192,7 +174,7 @@ export default function MarketingNavbar() {
                       if (l.anchor === 'pricing') {
                         navigateToPricing(e, location, setLocation)
                       } else {
-                        navigateToSection(e, l.to, l.anchor, location, setLocation)
+                        navigateToSection(e, l.anchor, location, setLocation)
                       }
                       setOpen(false)
                     }}

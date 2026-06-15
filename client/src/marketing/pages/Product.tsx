@@ -26,8 +26,6 @@ import StoryFlow from '../components/StoryFlow'
 import { SwordMark } from '../components/Logo'
 import { px, img } from '../lib/images'
 import { useMessages } from '../i18n'
-import { useLocation } from 'wouter'
-import { scrollToHowItWorks } from '../lib/scroll'
 
 /* ============================================================
    HERO
@@ -35,12 +33,10 @@ import { scrollToHowItWorks } from '../lib/scroll'
 function Hero() {
   const t = useMessages()
   const h = t.product.hero
-  const [location, setLocation] = useLocation()
 
   function handleHowItWorks(e: React.MouseEvent) {
     e.preventDefault()
-    if (location !== '/creators') setLocation('/creators')
-    scrollToHowItWorks()
+    document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
   return (
     <section className="relative overflow-hidden pt-28 pb-14 md:pt-32 md:pb-20">
@@ -743,12 +739,10 @@ function Pricing() {
 function CTA() {
   const t = useMessages()
   const c = t.product.cta
-  const [location, setLocation] = useLocation()
 
   function handleHowItWorks(e: React.MouseEvent) {
     e.preventDefault()
-    if (location !== '/creators') setLocation('/creators')
-    scrollToHowItWorks()
+    document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (
@@ -784,7 +778,7 @@ export default function Product() {
   return (
     <>
       <Hero />
-      <div id="flow">
+      <div id="how-it-works">
         <StoryFlow />
       </div>
       <Problem />
