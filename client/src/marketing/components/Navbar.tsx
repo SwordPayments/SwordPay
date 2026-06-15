@@ -137,9 +137,9 @@ export default function MarketingNavbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="glass-nav absolute inset-x-4 top-20 rounded-3xl p-4 md:hidden"
+            className="glass-nav absolute inset-x-4 top-20 rounded-3xl p-5 md:hidden"
           >
-            <div className="flex flex-col divide-y divide-line">
+            <div className="flex flex-col gap-1">
               {links.map((l) =>
                 l.hash ? (
                   <a
@@ -149,7 +149,7 @@ export default function MarketingNavbar() {
                       navigateToPricing(e, location, setLocation)
                       setOpen(false)
                     }}
-                    className="px-4 py-4 text-[17.6px] font-semibold text-ink transition-colors hover:text-cobalt"
+                    className="rounded-xl px-4 py-3.5 text-[18px] font-semibold text-ink transition-colors hover:bg-paper-deep hover:text-cobalt"
                   >
                     {l.label}
                   </a>
@@ -159,14 +159,14 @@ export default function MarketingNavbar() {
                       onClick={() => {
                         if (l.scrollTop) scrollPageToTop()
                       }}
-                      className="px-4 py-4 text-[17.6px] font-semibold text-ink transition-colors hover:text-cobalt"
+                      className="block rounded-xl px-4 py-3.5 text-[18px] font-semibold text-ink transition-colors hover:bg-paper-deep hover:text-cobalt"
                     >
                       {l.label}
                     </a>
                   </Link>
                 ),
               )}
-              <div className="pt-4 px-1">
+              <div className="mt-3 border-t border-line pt-3 px-1">
                 <label className="mb-2 block px-1 text-[13px] font-semibold uppercase tracking-wide text-ink-mute">
                   {t.nav.language}
                   {country ? ` · ${country}` : ''}
