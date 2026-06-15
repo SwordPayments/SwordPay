@@ -44,7 +44,7 @@ function Hero() {
                 {h.titlePrefix}
                 <br />
                 {h.titleInto ? <>{h.titleInto}{' '}</> : null}
-                <span className="relative whitespace-nowrap text-cobalt">
+                <span className="relative text-cobalt md:whitespace-nowrap">
                   {h.titleHighlight}
                   <svg
                     className="absolute -bottom-2 left-0 w-full"
@@ -199,13 +199,13 @@ function Problem() {
           <h2 className="text-[clamp(2.3rem,4.6vw,3.57rem)] font-bold">
             {p.headingLine1}
             <br />
-            <span className="whitespace-nowrap">{p.headingLine2}</span>
+            <span className="md:whitespace-nowrap">{p.headingLine2}</span>
           </h2>
         </div>
       </Reveal>
 
       <Reveal delay={0.1}>
-        <div className="mt-8 flex flex-wrap items-stretch justify-center gap-3 lg:flex-nowrap">
+        <div className="mt-8 flex min-w-0 flex-wrap items-stretch justify-center gap-3 lg:flex-nowrap">
           {chain.map((c, i) => {
             const Single = 'icon' in c ? c.icon : undefined
             return (
@@ -642,27 +642,28 @@ function Pricing() {
 
   return (
     <Section id="pricing" className="scroll-mt-28 border-y border-line bg-paper-deep !py-10 md:!py-14">
-      <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
-        <div className="scroll-mt-28">
+      <div className="grid min-w-0 items-start gap-10 lg:grid-cols-2 lg:gap-12">
+        <div className="min-w-0 scroll-mt-28">
           <Reveal>
-            <h2 className="text-left text-[clamp(1.7rem,3.2vw,2.5rem)] font-bold">
+            <h2 className="text-left text-[clamp(1.7rem,3.2vw,2.5rem)] font-bold leading-tight">
               {p.heading} <span className="text-cobalt">{p.swordpay}</span>
             </h2>
-            <p className="mt-2 text-left text-[16px] text-ink-soft">
+            <p className="mt-2 text-left text-[15px] leading-relaxed text-ink-soft sm:text-[16px]">
               {p.subheading}
             </p>
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="mt-4 overflow-hidden rounded-[var(--radius-lg)] border border-line bg-paper shadow-sm">
+            <div className="mt-4 overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch]">
+              <div className="min-w-[300px] overflow-hidden rounded-[var(--radius-lg)] border border-line bg-paper shadow-sm sm:min-w-0">
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="border-b border-line">
-                    <th className="px-5 py-2 text-left text-[15px] font-semibold text-ink-mute" />
-                    <th className="bg-paper-deep px-5 py-2 text-center text-[15px] font-semibold text-ink-mute">
+                    <th className="px-2 py-2 text-left text-[12px] font-semibold text-ink-mute sm:px-5 sm:text-[15px]" />
+                    <th className="bg-paper-deep px-2 py-2 text-center text-[11px] font-semibold leading-tight text-ink-mute sm:px-5 sm:text-[15px]">
                       {p.traditionalFlow}
                     </th>
-                    <th className="bg-cobalt-wash px-5 py-2 text-center text-[15px] font-semibold text-cobalt">
+                    <th className="bg-cobalt-wash px-2 py-2 text-center text-[11px] font-semibold leading-tight text-cobalt sm:px-5 sm:text-[15px]">
                       {p.swordpay}
                     </th>
                   </tr>
@@ -676,15 +677,15 @@ function Pricing() {
                         className={`border-t border-line ${last ? 'border-t-2 border-t-cobalt' : ''}`}
                       >
                         <td
-                          className={`px-5 py-2 text-left text-[15px] text-ink-soft ${last ? 'font-bold text-ink' : 'font-medium'}`}
+                          className={`px-2 py-2 text-left text-[12px] leading-snug text-ink-soft sm:px-5 sm:text-[15px] ${last ? 'font-bold text-ink' : 'font-medium'}`}
                         >
                           {row[0]}
                         </td>
-                        <td className="bg-paper-deep px-5 py-2 text-center text-[15px]">
+                        <td className="bg-paper-deep px-2 py-2 text-center text-[12px] sm:px-5 sm:text-[15px]">
                           <X weight="bold" className="mx-auto size-4 text-red-600" />
                         </td>
                         <td
-                          className={`bg-cobalt-wash px-5 py-2 text-center text-[15px] font-semibold text-ink ${last ? 'text-cobalt' : ''}`}
+                          className={`bg-cobalt-wash px-2 py-2 text-center text-[11px] font-semibold leading-snug text-ink sm:px-5 sm:text-[15px] ${last ? 'text-cobalt' : ''}`}
                         >
                           {row[1]}
                         </td>
@@ -693,6 +694,7 @@ function Pricing() {
                   })}
                 </tbody>
               </table>
+              </div>
             </div>
           </Reveal>
         </div>

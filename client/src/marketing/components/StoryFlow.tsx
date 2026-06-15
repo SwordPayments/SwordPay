@@ -32,7 +32,7 @@ const swap = {
 
 function CardShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="glass w-full max-w-md rounded-[var(--radius-xl)] p-6 md:p-7">
+    <div className="glass w-full min-w-0 max-w-md rounded-[var(--radius-xl)] p-4 sm:p-6 md:p-7">
       {children}
     </div>
   )
@@ -271,9 +271,9 @@ export default function StoryFlow({
   }, [resolvedSteps.length])
 
   return (
-    <section>
+    <section className="overflow-x-clip">
       {/* tall track — each viewport-height advances one step */}
-      <div ref={wrapRef} style={{ height: `${resolvedSteps.length * 100}dvh` }}>
+      <div ref={wrapRef} className="max-w-full" style={{ height: `${resolvedSteps.length * 100}dvh` }}>
         <div className="sticky top-0 h-dvh overflow-hidden">
           {/* progress rail across the very top */}
           <div className="absolute inset-x-0 top-0 z-10 h-0.5 bg-line">
@@ -284,27 +284,27 @@ export default function StoryFlow({
           </div>
 
           {/* ---------- MOBILE: full-screen stacked ---------- */}
-          <div className="flex h-full flex-col px-6 pb-9 pt-24 lg:hidden">
-            <div className="shrink-0">
-              <h2 className="font-display text-[clamp(1.9rem,8vw,2.6rem)] font-bold leading-[0.98]">
+          <div className="flex h-full min-w-0 flex-col items-center px-4 pb-9 pt-24 sm:px-6 lg:hidden">
+            <div className="w-full max-w-sm shrink-0 min-w-0">
+              <h2 className="font-display text-[clamp(1.75rem,7vw,2.6rem)] font-bold leading-[1.02]">
                 {resolvedTitle}
               </h2>
             </div>
 
-            <div className="relative flex flex-1 items-center justify-center py-5">
+            <div className="relative flex w-full min-w-0 flex-1 items-center justify-center py-4 sm:py-5">
               <div className="grid-paper pointer-events-none absolute inset-0 opacity-50" />
               <motion.div
                 key={resolvedSteps[active].key}
                 initial={swap.initial}
                 animate={swap.animate}
                 transition={swap.transition}
-                className="relative w-full max-w-sm"
+                className="relative w-full min-w-0 max-w-sm"
               >
                 <Mock stepKey={resolvedSteps[active].key} mocks={mocks} />
               </motion.div>
             </div>
 
-            <div className="shrink-0">
+            <div className="w-full max-w-sm shrink-0 min-w-0">
               <div className="flex gap-[6.9px]">
                 {resolvedSteps.map((s, i) => (
                   <span
@@ -315,8 +315,8 @@ export default function StoryFlow({
                   />
                 ))}
               </div>
-              <div className="mt-[18.4px] flex items-center justify-between gap-[13.8px]">
-                <div className="flex items-center gap-[11.5px]">
+              <div className="mt-[18.4px] flex items-start justify-between gap-3">
+                <div className="flex min-w-0 flex-1 items-start gap-3">
                   <span className="grid size-[32.2px] shrink-0 place-items-center rounded-full bg-cobalt text-[16.5px] font-bold text-paper">
                     {resolvedSteps[active].noNumber ? (
                       <LockKeyOpen weight="bold" className="size-[16.5px]" />
@@ -324,7 +324,7 @@ export default function StoryFlow({
                       active + 1
                     )}
                   </span>
-                  <span className="font-display text-[27.83px] font-bold text-cobalt">
+                  <span className="min-w-0 font-display text-[clamp(1.15rem,4.8vw,1.74rem)] font-bold leading-tight text-cobalt">
                     {resolvedSteps[active].label}
                   </span>
                 </div>
@@ -332,7 +332,7 @@ export default function StoryFlow({
                   {active + 1} / {resolvedSteps.length}
                 </span>
               </div>
-              <p className="mt-[9.2px] text-[18.3px] leading-relaxed text-ink-soft">
+              <p className="mt-[9.2px] text-[16px] leading-relaxed text-ink-soft sm:text-[18.3px]">
                 {resolvedSteps[active].desc}
               </p>
             </div>

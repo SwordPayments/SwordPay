@@ -128,11 +128,11 @@ export function Section({
 }) {
   const inset = edgeToEdge ? 'w-full' : 'w-full px-5 sm:px-8 lg:px-12'
   return (
-    <section id={id} className={`py-14 md:py-20 ${className}`}>
+    <section id={id} className={`min-w-0 max-w-full py-14 md:py-20 ${className}`}>
       {fullWidth ? (
-        <div className={inset}>{children}</div>
+        <div className={`${inset} min-w-0`}>{children}</div>
       ) : (
-        <div className="shell">{children}</div>
+        <div className="shell min-w-0">{children}</div>
       )}
     </section>
   )

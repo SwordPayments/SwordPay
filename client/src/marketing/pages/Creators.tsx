@@ -223,11 +223,11 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
             </Button>
           </div>
 
-          <div className="mt-1 w-full max-w-md rounded-full border border-line bg-paper-deep px-4 py-2.5 sm:px-6 md:max-w-none">
-            <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 md:flex-nowrap md:gap-x-3 md:overflow-x-auto">
+          <div className="mt-1 w-full max-w-md rounded-2xl border border-line bg-paper-deep px-4 py-3 sm:rounded-full sm:px-6 sm:py-2.5 md:max-w-none">
+            <div className="grid grid-cols-1 gap-2 text-center sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-2 sm:gap-y-1 md:flex-nowrap md:gap-x-3">
               {copy.stats.map((stat, i) => (
-                <span key={stat.label} className="flex shrink-0 items-baseline gap-1 whitespace-nowrap md:gap-1.5">
-                  {i > 0 && <span className="text-ink-mute">·</span>}
+                <span key={stat.label} className="flex items-baseline justify-center gap-1 sm:shrink-0 sm:whitespace-nowrap md:gap-1.5">
+                  {i > 0 && <span className="hidden text-ink-mute sm:inline">·</span>}
                   <strong className="text-[19px] font-bold text-[#FFD230] md:text-[24.7px]">
                     {stat.value}
                   </strong>
@@ -462,12 +462,11 @@ function ThreeSteps({ copy }: { copy: CreatorsCopy['steps'] }) {
         </h2>
       </Reveal>
 
-      <div className="mt-10 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mt-12 md:overflow-visible">
-        <div className="mx-auto flex w-max snap-x snap-mandatory gap-8 px-4 md:grid md:w-full md:max-w-4xl md:grid-cols-3 md:gap-10 md:px-0">
+      <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-10 sm:grid-cols-3 md:mt-12">
         {copy.items.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08}>
-            <div className="flex w-[230px] shrink-0 snap-center flex-col items-center md:w-auto">
-              <h3 className="mb-5 text-[18px] font-bold uppercase tracking-[0.14em] text-ink md:text-[21.6px]">
+            <div className="flex flex-col items-center">
+              <h3 className="mb-5 text-[18px] font-bold uppercase tracking-[0.14em] text-ink sm:text-[21.6px]">
                 {s.label}
               </h3>
               <div className="relative w-full max-w-[230px] rounded-[2.4rem] border-[7px] border-ink bg-ink shadow-[0_20px_50px_-20px_rgba(0,0,0,0.45)]">
@@ -481,7 +480,6 @@ function ThreeSteps({ copy }: { copy: CreatorsCopy['steps'] }) {
             </div>
           </Reveal>
         ))}
-        </div>
       </div>
     </Section>
   )

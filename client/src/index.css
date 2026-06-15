@@ -369,6 +369,13 @@ body:has([data-video]:hover) [data-start-now] {
     font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
     font-feature-settings: 'ss01', 'cv01';
     max-width: 100%;
+    overflow-x: clip;
+  }
+
+  html.marketing-site main {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: clip;
   }
 
   html.marketing-site h1,
@@ -504,7 +511,14 @@ body:has([data-video]:hover) [data-start-now] {
     width: 100%;
     max-width: 1200px;
     margin-inline: auto;
-    padding-inline: 24px;
+    padding-inline: 16px;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .shell {
+      padding-inline: 24px;
+    }
   }
 
   /* Eyebrow / kicker label */
