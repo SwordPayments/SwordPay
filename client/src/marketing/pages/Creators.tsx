@@ -234,7 +234,7 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
               {copy.stats.map((stat, i) => (
                 <span key={stat.label} className="flex shrink-0 items-baseline gap-1 sm:gap-1.5">
                   {i > 0 && <span className="mx-1 text-ink-mute sm:mx-1.5">·</span>}
-                  <strong className="text-[22px] font-bold text-[#FFD230] sm:text-[28px] md:text-[28.4px]">
+                  <strong className="text-[22px] font-bold text-cobalt sm:text-[28px] md:text-[28.4px]">
                     {stat.value}
                   </strong>
                   <span className="text-[16px] text-ink-soft sm:text-[24px] md:text-[23.9px]">{stat.label}</span>
