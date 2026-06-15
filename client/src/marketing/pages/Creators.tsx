@@ -186,29 +186,29 @@ function HeroVideo() {
    ============================================================ */
 function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
   return (
-    <section className="relative overflow-hidden bg-paper pt-24 md:pt-28">
+    <section className="relative bg-paper pt-24 md:pt-28">
       <div className="w-full">
         <div className="relative mx-auto aspect-[9/16] w-full max-w-sm overflow-hidden bg-paper">
           <HeroVideo />
         </div>
 
-        <div className="flex w-full flex-col items-center gap-4 px-6 pb-8 pt-6 text-center text-ink">
-          <h1 className="font-display text-[clamp(1.6rem,4.4vw,3.6rem)] font-extrabold leading-[1] tracking-tight">
-            <span className="block whitespace-nowrap">{copy.titleLine1}</span>
-            <span className="block whitespace-nowrap">
+        <div className="flex w-full flex-col items-center gap-4 px-5 pb-8 pt-6 text-center text-ink sm:px-6">
+          <h1 className="max-w-full font-display text-[clamp(1.55rem,6.5vw,3.6rem)] font-extrabold leading-[1.05] tracking-tight">
+            <span className="block">{copy.titleLine1}</span>
+            <span className="block">
               {copy.titleLine2Prefix}
               <span className="text-[#FFD230]">{copy.titleLine2Highlight}</span>
               {copy.titleLine2Suffix}
             </span>
           </h1>
-          <p className="text-[clamp(0.95rem,1.8vw,1.2rem)] leading-relaxed text-ink-soft">
-            <span className="block md:whitespace-nowrap">{copy.bodyLine1}</span>
-            <span className="block md:whitespace-nowrap">{copy.bodyLine2}</span>
+          <p className="max-w-md text-[clamp(0.95rem,3.8vw,1.2rem)] leading-relaxed text-ink-soft">
+            <span className="block">{copy.bodyLine1}</span>
+            <span className="block">{copy.bodyLine2}</span>
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex w-full max-w-md flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
             <Button
               href="https://swordpay.me"
-              className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg"
+              className="w-full justify-center !bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg sm:w-auto"
             >
               {copy.ctaPrimary}
             </Button>
@@ -216,20 +216,24 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
               href="#streams"
               variant="outline"
               icon={false}
-              className="!border-line-strong !text-ink hover:!border-ink"
+              className="w-full justify-center !border-line-strong !text-ink hover:!border-ink sm:w-auto"
             >
               {copy.ctaSecondary}
             </Button>
           </div>
 
-          <div className="mt-1 flex flex-nowrap items-center justify-center gap-x-3 overflow-x-auto rounded-full border border-line bg-paper-deep px-6 py-2.5">
-            {copy.stats.map((stat, i) => (
-              <span key={stat.label} className="flex shrink-0 items-baseline gap-1.5 whitespace-nowrap">
-                {i > 0 && <span className="text-ink-mute">·</span>}
-                <strong className="text-[24.7px] font-bold text-[#FFD230]">{stat.value}</strong>
-                <span className="text-[20.8px] text-ink-soft">{stat.label}</span>
-              </span>
-            ))}
+          <div className="mt-1 w-full max-w-md rounded-full border border-line bg-paper-deep px-4 py-2.5 sm:px-6">
+            <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:flex-nowrap sm:gap-x-3">
+              {copy.stats.map((stat, i) => (
+                <span key={stat.label} className="flex shrink-0 items-baseline gap-1 whitespace-nowrap">
+                  {i > 0 && <span className="text-ink-mute">·</span>}
+                  <strong className="text-[19px] font-bold text-[#FFD230] sm:text-[24.7px]">
+                    {stat.value}
+                  </strong>
+                  <span className="text-[14px] text-ink-soft sm:text-[20.8px]">{stat.label}</span>
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -249,7 +253,7 @@ function Streams({ copy }: { copy: CreatorsCopy['streams'] }) {
           <h2 className="text-[clamp(2rem,4vw,3.1rem)] font-bold">
             {copy.heading}
           </h2>
-          <p className="mt-5 text-[18.7px] text-ink-soft whitespace-nowrap">
+          <p className="mt-5 text-[16px] leading-relaxed text-ink-soft sm:text-[18.7px] md:whitespace-nowrap">
             {copy.subheading}
           </p>
         </div>
@@ -457,11 +461,12 @@ function ThreeSteps({ copy }: { copy: CreatorsCopy['steps'] }) {
         </h2>
       </Reveal>
 
-      <div className="mx-auto mt-12 grid max-w-4xl gap-10 sm:grid-cols-3">
+      <div className="mt-10 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mt-12 sm:overflow-visible">
+        <div className="mx-auto flex w-max snap-x snap-mandatory gap-8 px-4 sm:grid sm:w-full sm:max-w-4xl sm:grid-cols-3 sm:gap-10 sm:px-0">
         {copy.items.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08}>
-            <div className="flex flex-col items-center">
-              <h3 className="mb-5 text-[21.6px] font-bold uppercase tracking-[0.14em] text-ink">
+            <div className="flex w-[230px] shrink-0 snap-center flex-col items-center sm:w-auto">
+              <h3 className="mb-5 text-[18px] font-bold uppercase tracking-[0.14em] text-ink sm:text-[21.6px]">
                 {s.label}
               </h3>
               <div className="relative w-full max-w-[230px] rounded-[2.4rem] border-[7px] border-ink bg-ink shadow-[0_20px_50px_-20px_rgba(0,0,0,0.45)]">
@@ -475,6 +480,7 @@ function ThreeSteps({ copy }: { copy: CreatorsCopy['steps'] }) {
             </div>
           </Reveal>
         ))}
+        </div>
       </div>
     </Section>
   )
