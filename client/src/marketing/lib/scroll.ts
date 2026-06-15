@@ -6,7 +6,7 @@ function pricingScrollMargin(el: HTMLElement) {
 }
 
 /** Bypass CSS scroll-behavior:smooth — assign scrollTop directly for a true instant jump. */
-function scrollToYInstant(y: number) {
+export function scrollToYInstant(y: number) {
   const target = Math.max(0, Math.round(y))
   const html = document.documentElement
   const prev = html.style.scrollBehavior
@@ -30,6 +30,8 @@ function pricingInView(el: HTMLElement) {
 /** Instant jump to #pricing — retries until StoryFlow layout height is settled. */
 export function scrollToPricing() {
   const attempt = () => {
+    // Abort if user navigated away from #pricing (e.g. clicked another nav tab)
+    if (window.location.hash !== PRICING_HASH) return true
     const el = document.getElementById('pricing')
     if (!el) return false
     scrollToYInstant(pricingTargetY(el))
