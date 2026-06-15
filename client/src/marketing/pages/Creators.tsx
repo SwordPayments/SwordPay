@@ -220,8 +220,10 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
               icon={false}
               onClick={(e: React.MouseEvent) => {
                 e.preventDefault()
+                const el = document.getElementById('how-it-works')
+                if (!el) return
                 window.history.replaceState(null, '', '/creators#how-it-works')
-                window.dispatchEvent(new HashChangeEvent('hashchange'))
+                window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - 84), behavior: 'smooth' })
               }}
               className="w-full justify-center sm:w-auto !bg-cobalt !text-paper !border-cobalt hover:!bg-cobalt/90"
             >

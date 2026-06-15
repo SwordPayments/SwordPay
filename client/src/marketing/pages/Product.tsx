@@ -36,8 +36,10 @@ function Hero() {
 
   function handleHowItWorks(e: React.MouseEvent) {
     e.preventDefault()
+    const el = document.getElementById('how-it-works')
+    if (!el) return
     window.history.replaceState(null, '', '/#how-it-works')
-    window.dispatchEvent(new HashChangeEvent('hashchange'))
+    window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - 84), behavior: 'smooth' })
   }
   return (
     <section className="relative overflow-hidden pt-28 pb-14 md:pt-32 md:pb-20">
@@ -743,8 +745,10 @@ function CTA() {
 
   function handleHowItWorks(e: React.MouseEvent) {
     e.preventDefault()
+    const el = document.getElementById('how-it-works')
+    if (!el) return
     window.history.replaceState(null, '', '/#how-it-works')
-    window.dispatchEvent(new HashChangeEvent('hashchange'))
+    window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - 84), behavior: 'smooth' })
   }
 
   return (

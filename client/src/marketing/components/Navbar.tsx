@@ -37,11 +37,16 @@ function navigateToSection(
   e.preventDefault()
   const el = document.getElementById(anchor)
   if (el) {
-    // Same page — set hash so MarketingScrollManager won't reset scroll to top
+    // Same page — update hash to block scroll-to-top, then scroll once smoothly.
+    // Do NOT dispatch hashchange: that would start MarketingScrollManager's retry
+    // cycle which stutters by restarting smooth scroll every 250 / 500 / 850 ms.
     window.history.replaceState(null, '', `${window.location.pathname}#${anchor}`)
-    window.dispatchEvent(new HashChangeEvent('hashchange'))
+    const navOffset = 84
+    const top = el.getBoundingClientRect().top + window.scrollY - navOffset
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
   } else {
-    // Cross-page — embed hash in navigation so MarketingScrollManager scrolls on mount
+    // Cross-page — embed hash so MarketingScrollManager handles scroll after mount.
+    // scrollToHash uses instant mode for #how-it-works so retries don't stutter.
     setLocation(`/creators#${anchor}`)
   }
 }

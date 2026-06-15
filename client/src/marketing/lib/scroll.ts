@@ -67,13 +67,18 @@ export function scrollToHowItWorks() {
   }
 }
 
-export function scrollToHash(hash: string, instant = hash === PRICING_HASH) {
+export function scrollToHash(hash: string, instant = hash === PRICING_HASH || hash === '#how-it-works') {
   if (instant && hash === PRICING_HASH) {
     return scrollToPricing()
   }
 
   const el = document.querySelector(hash)
   if (!el) return false
-  el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  if (instant) {
+    // Instant scroll avoids stutter when called multiple times via retry timers
+    scrollToYInstant(Math.max(0, (el as HTMLElement).getBoundingClientRect().top + window.scrollY - 84))
+  } else {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
   return true
 }
