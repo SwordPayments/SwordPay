@@ -283,7 +283,7 @@ export default function StoryFlow({
       <section className="overflow-x-clip border-y border-line bg-paper-deep py-6 px-4 sm:px-6">
         <div className="mx-auto max-w-sm">
           {/* Title */}
-          <h2 className="font-display text-[clamp(1.4rem,6vw,2rem)] font-bold leading-[1.05]">
+          <h2 className="font-display text-[clamp(1.47rem,6.3vw,2.1rem)] font-bold leading-[1.05]">
             {resolvedTitle}
           </h2>
 
