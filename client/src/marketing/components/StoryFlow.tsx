@@ -423,9 +423,6 @@ export default function StoryFlow({
                   {active + 1} / {resolvedSteps.length}
                 </span>
               </div>
-              <p className="mt-[9.2px] hidden text-[16px] leading-relaxed text-ink-soft sm:text-[18.3px]">
-                {resolvedSteps[active].desc}
-              </p>
             </div>
           </div>
 
