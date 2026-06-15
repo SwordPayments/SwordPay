@@ -194,7 +194,7 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
           <HeroVideo />
         </div>
 
-        <div className="flex w-full flex-col items-center gap-4 px-5 pb-8 pt-6 text-center text-ink sm:px-6">
+        <div className="flex w-full flex-col items-center gap-3 px-5 pb-4 pt-5 text-center text-ink sm:gap-4 sm:pb-8 sm:pt-6 sm:px-6">
           <h1 className="max-w-full font-display text-[clamp(1.55rem,6.5vw,3.6rem)] font-extrabold leading-[1.05] tracking-tight md:leading-[1]">
             <span className="block md:whitespace-nowrap">{copy.titleLine1}</span>
             <span className="block md:whitespace-nowrap">
@@ -224,15 +224,15 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
             </Button>
           </div>
 
-          <div className="mt-1 mx-auto w-fit max-w-full overflow-x-auto rounded-full border border-line bg-paper-deep px-5 py-3 sm:px-7 sm:py-3.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <div className="flex min-w-max items-baseline justify-center gap-x-2 sm:gap-x-3">
+          <div className="mt-1 w-full overflow-x-auto rounded-full border border-line bg-paper-deep px-4 py-2.5 sm:w-fit sm:mx-auto sm:px-7 sm:py-3.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex min-w-max items-baseline justify-center gap-x-1.5 sm:gap-x-3">
               {copy.stats.map((stat, i) => (
                 <span key={stat.label} className="flex shrink-0 items-baseline gap-1 sm:gap-1.5">
-                  {i > 0 && <span className="mx-1 text-ink-mute sm:mx-1.5">·</span>}
-                  <strong className="text-[22px] font-bold text-cobalt sm:text-[28px] md:text-[28.4px]">
+                  {i > 0 && <span className="mx-0.5 text-ink-mute sm:mx-1.5">·</span>}
+                  <strong className="text-[15px] font-bold text-cobalt sm:text-[28px] md:text-[28.4px]">
                     {stat.value}
                   </strong>
-                  <span className="text-[16px] text-ink-soft sm:text-[24px] md:text-[23.9px]">{stat.label}</span>
+                  <span className="text-[11px] text-ink-soft sm:text-[24px] md:text-[23.9px]">{stat.label}</span>
                 </span>
               ))}
             </div>
@@ -456,14 +456,14 @@ function CTA({ copy }: { copy: CreatorsCopy['cta'] }) {
 function ThreeSteps({ copy }: { copy: CreatorsCopy['steps'] }) {
   const images = ['/steps/set-price.png', '/steps/add-file.png', '/steps/share.png']
   return (
-    <Section>
+    <Section className="py-8 md:py-16">
       <Reveal>
         <h2 className="text-center font-display text-[clamp(2rem,4.5vw,3.2rem)] font-bold">
           {copy.heading}
         </h2>
       </Reveal>
 
-      <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-10 sm:grid-cols-3 md:mt-12">
+      <div className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-8 sm:grid-cols-3 md:mt-12 md:gap-10">
         {copy.items.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08}>
             <div className="flex flex-col items-center">
