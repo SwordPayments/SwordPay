@@ -160,15 +160,10 @@ function HeroVideo() {
           <iframe
             ref={iframeRef}
             src={DEFAULT_VIMEO_SRC}
-            className="absolute inset-0 h-full w-full rounded-[inherit]"
+            className="absolute left-0 right-0 top-0 w-full rounded-[inherit]"
+            style={{ height: 'calc(100% + 40px)' }}
             allow="autoplay; picture-in-picture"
             title={t.creators.hero.videoTitle}
-          />
-          {/* Cover Vimeo badge (bottom-right of controls bar) — fallback for non-Pro accounts */}
-          <div
-            className="pointer-events-none absolute bottom-0 right-0 z-20 h-9 w-[4.5rem] rounded-br-[inherit]"
-            style={{ background: 'rgba(14,14,14,0.97)' }}
-            aria-hidden
           />
           {!isPlaying && (
             <button
