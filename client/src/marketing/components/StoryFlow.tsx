@@ -309,7 +309,7 @@ export default function StoryFlow({
                   active + 1
                 )}
               </span>
-              <span className="min-w-0 font-display text-[clamp(1rem,4.2vw,1.4rem)] font-bold leading-tight text-cobalt">
+              <span className="min-w-0 font-display text-[clamp(1.05rem,4.41vw,1.47rem)] font-bold leading-tight text-cobalt">
                 {resolvedSteps[active].label}
               </span>
             </div>
