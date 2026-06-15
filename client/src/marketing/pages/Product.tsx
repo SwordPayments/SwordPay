@@ -338,8 +338,9 @@ function How() {
               <div className="rounded-full border border-line bg-paper px-[19.2px] py-[9.6px] font-mono text-[17.16px] font-medium">
                 swordpay.me/pay/abc123
               </div>
-              <div className="text-[24.67px] font-bold uppercase tracking-wide text-[#FFD230]">
+              <div className="inline-flex items-center gap-2 rounded-full bg-[#FFD230] px-[22px] py-[11px] text-[24.67px] font-semibold uppercase tracking-wide text-ink shadow-lg">
                 {h.oneLink}
+                <ArrowRight weight="bold" className="size-[17.6px] shrink-0" />
               </div>
             </div>
             <ArrowRight
