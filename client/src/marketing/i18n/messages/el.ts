@@ -7,6 +7,7 @@ const el: LandingMessages = {
   nav: {
     product: 'Προϊόν',
     forCreators: 'Για δημιουργούς',
+    howTo: 'How to',
     pricing: 'Τιμολόγηση',
     startEarning: 'Ξεκινήστε να κερδίζετε',
     language: 'Γλώσσα',
