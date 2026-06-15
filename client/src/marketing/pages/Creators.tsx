@@ -232,7 +232,7 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
                   <strong className="text-[15px] font-bold text-cobalt sm:text-[28px] md:text-[28.4px]">
                     {stat.value}
                   </strong>
-                  <span className="text-[11px] text-ink-soft sm:text-[24px] md:text-[23.9px]">{stat.label}</span>
+                  <span className="text-[11px] font-bold text-ink sm:text-[24px] md:text-[23.9px]">{stat.label}</span>
                 </span>
               ))}
             </div>
