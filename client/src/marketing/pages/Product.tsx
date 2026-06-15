@@ -255,7 +255,7 @@ function Problem() {
           <h3 className="mt-2 font-display text-[clamp(1.1rem,3vw,2rem)] font-bold sm:mt-2.5">
             <span className="text-cobalt">SwordPay</span> {p.replaces}
           </h3>
-          <p className="mx-auto mt-2 max-w-xl text-[18px] font-semibold leading-tight text-ink-soft sm:text-[31px] sm:leading-snug">
+          <p className="mx-auto mt-2 max-w-xl text-[26px] font-bold leading-snug text-ink sm:text-[31px] sm:leading-snug sm:text-ink-soft sm:font-semibold">
             {p.friction.split('. ').map((phrase, i, arr) => (
               <span key={i} className="block">{phrase}{i < arr.length - 1 ? '.' : ''}</span>
             ))}
@@ -439,7 +439,7 @@ function Features() {
     <Section fullWidth className="!py-6 md:!py-12">
       <Reveal>
         <div className="text-center">
-          <h2 className="text-[clamp(1.7rem,3.2vw,2.5rem)] font-bold">
+          <h2 className="text-[clamp(1.85rem,3.2vw,2.5rem)] font-bold">
             {f.heading}
           </h2>
           <p className="mt-2 text-[16px] text-cobalt md:text-[18.4px]">
