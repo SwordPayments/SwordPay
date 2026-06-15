@@ -249,7 +249,7 @@ function Streams({ copy }: { copy: CreatorsCopy['streams'] }) {
           <h2 className="text-[clamp(2rem,4vw,3.1rem)] font-bold">
             {copy.heading}
           </h2>
-          <p className="mt-5 text-[18.7px] text-ink-soft">
+          <p className="mt-5 text-[18.7px] text-ink-soft whitespace-nowrap">
             {copy.subheading}
           </p>
         </div>

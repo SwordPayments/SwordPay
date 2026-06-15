@@ -196,10 +196,8 @@ function Problem() {
     <Section className="border-y border-line bg-paper-deep !pt-12 !pb-6 md:!pt-16 md:!pb-8">
       <Reveal>
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-[clamp(2.3rem,4.6vw,3.57rem)] font-bold">
-            {p.headingLine1}
-            <br />
-            <span className="whitespace-nowrap">{p.headingLine2}</span>
+          <h2 className="text-[clamp(2.3rem,4.6vw,3.57rem)] font-bold whitespace-nowrap">
+            {p.headingLine1} {p.headingLine2}
           </h2>
         </div>
       </Reveal>
@@ -638,7 +636,7 @@ function Pricing() {
   const p = t.product.pricing
 
   return (
-    <Section className="border-y border-line bg-paper-deep !py-10 md:!py-14">
+    <Section id="pricing" className="scroll-mt-28 border-y border-line bg-paper-deep !py-10 md:!py-14">
       <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
         <div className="scroll-mt-28">
           <Reveal>
@@ -695,7 +693,7 @@ function Pricing() {
         </div>
 
         <Reveal delay={0.1}>
-          <div id="pricing" className="scroll-mt-28 rounded-[var(--radius-lg)] border-2 border-[#ffd230] bg-paper px-7 py-7 text-center shadow-[0_8px_32px_rgba(255,210,48,0.15)]">
+          <div className="rounded-[var(--radius-lg)] border-2 border-[#ffd230] bg-paper px-7 py-7 text-center shadow-[0_8px_32px_rgba(255,210,48,0.15)]">
             <h3 className="font-display text-[20px] font-bold text-ink">{p.noMonthly}</h3>
             <div className="mt-3 font-display font-extrabold leading-none text-cobalt">
               <span className="text-[52.8px]">{p.feeMain}</span>{' '}

@@ -44,6 +44,33 @@ function Router() {
   );
 }
 
+function MarketingScrollManager() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    const align = () => {
+      const hash = window.location.hash;
+      if (!hash) {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        return;
+      }
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    };
+
+    align();
+    const timers = [250, 500, 850, 1300].map((d) => window.setTimeout(align, d));
+    window.addEventListener("hashchange", align);
+
+    return () => {
+      timers.forEach(clearTimeout);
+      window.removeEventListener("hashchange", align);
+    };
+  }, [location]);
+
+  return null;
+}
+
 function AppLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const isMarketingRoute = location === "/" || location === "/creators";
@@ -109,6 +136,7 @@ function App() {
     <LocaleProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
+          <MarketingScrollManager />
           <AppLayout>
             <Router />
           </AppLayout>
