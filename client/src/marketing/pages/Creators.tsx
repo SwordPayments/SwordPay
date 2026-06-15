@@ -229,7 +229,7 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
             </Button>
           </div>
 
-          <div className="mt-1 w-full max-w-none overflow-x-auto rounded-full border border-line bg-paper-deep px-5 py-3 sm:px-7 sm:py-3.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mt-1 mx-auto w-fit max-w-full overflow-x-auto rounded-full border border-line bg-paper-deep px-5 py-3 sm:px-7 sm:py-3.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <div className="flex min-w-max items-baseline justify-center gap-x-2 sm:gap-x-3">
               {copy.stats.map((stat, i) => (
                 <span key={stat.label} className="flex shrink-0 items-baseline gap-1 sm:gap-1.5">
