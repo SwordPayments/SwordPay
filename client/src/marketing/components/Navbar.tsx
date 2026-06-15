@@ -137,7 +137,7 @@ export default function MarketingNavbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="glass-nav absolute inset-x-4 top-20 rounded-3xl p-5 md:hidden"
+            className="absolute inset-x-4 top-20 rounded-3xl p-5 md:hidden border border-line-strong bg-paper shadow-xl"
           >
             <div className="flex flex-col gap-1">
               {links.map((l) =>
