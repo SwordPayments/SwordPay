@@ -255,8 +255,10 @@ function Problem() {
           <h3 className="mt-2 font-display text-[clamp(1.1rem,3vw,2rem)] font-bold sm:mt-2.5">
             <span className="text-cobalt">SwordPay</span> {p.replaces}
           </h3>
-          <p className="mx-auto mt-1 max-w-xl text-[15px] font-semibold leading-snug text-ink-soft sm:text-[25.8px] sm:leading-relaxed">
-            {p.friction}
+          <p className="mx-auto mt-1 max-w-xl text-[15px] font-semibold leading-relaxed text-ink-soft sm:text-[25.8px]">
+            {p.friction.split('. ').map((phrase, i, arr) => (
+              <span key={i} className="block">{phrase}{i < arr.length - 1 ? '.' : ''}</span>
+            ))}
           </p>
           <p className="mt-1 font-display text-[clamp(1rem,3vw,2rem)] font-bold text-cobalt">
             {p.paymentSeconds}
