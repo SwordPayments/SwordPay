@@ -652,9 +652,9 @@ function Pricing() {
   const p = t.product.pricing
 
   return (
-    <Section id="pricing" className="scroll-mt-28 border-y border-line bg-paper-deep !py-10 md:!py-14">
+    <Section className="border-y border-line bg-paper-deep !py-10 md:!py-14">
       <div className="grid min-w-0 items-start gap-10 lg:grid-cols-2 lg:gap-12">
-        <div className="min-w-0 scroll-mt-28">
+        <div className="min-w-0">
           <Reveal>
             <h2 className="text-left text-[clamp(1.7rem,3.2vw,2.5rem)] font-bold leading-tight">
               {p.heading} <span className="text-cobalt">{p.swordpay}</span>
@@ -711,7 +711,7 @@ function Pricing() {
         </div>
 
         <Reveal delay={0.1}>
-          <div className="rounded-[var(--radius-lg)] border-2 border-[#ffd230] bg-paper px-7 py-7 text-center shadow-[0_8px_32px_rgba(255,210,48,0.15)]">
+          <div id="pricing" className="scroll-mt-28 rounded-[var(--radius-lg)] border-2 border-[#ffd230] bg-paper px-7 py-7 text-center shadow-[0_8px_32px_rgba(255,210,48,0.15)]">
             <h3 className="font-display text-[20px] font-bold text-ink">{p.noMonthly}</h3>
             <div className="mt-3 font-display font-extrabold leading-none text-cobalt">
               <span className="text-[52.8px]">{p.feeMain}</span>{' '}
