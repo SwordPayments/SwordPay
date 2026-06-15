@@ -255,7 +255,7 @@ function Problem() {
           <h3 className="mt-2 font-display text-[clamp(1.1rem,3vw,2rem)] font-bold sm:mt-2.5">
             <span className="text-cobalt">SwordPay</span> {p.replaces}
           </h3>
-          <p className="mx-auto mt-2 max-w-xl text-[26px] font-bold leading-snug text-ink sm:text-[31px] sm:leading-snug sm:text-ink-soft sm:font-semibold">
+          <p className="mx-auto mt-2 max-w-xl text-[26px] font-bold leading-snug text-ink sm:text-[31px] sm:leading-snug">
             {p.friction.split('. ').map((phrase, i, arr) => (
               <span key={i} className="block">{phrase}{i < arr.length - 1 ? '.' : ''}</span>
             ))}
