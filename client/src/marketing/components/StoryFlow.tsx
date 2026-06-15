@@ -315,19 +315,34 @@ export default function StoryFlow({
                   />
                 ))}
               </div>
-              <div className="mt-[18.4px] flex items-center justify-between gap-[13.8px]">
-                <div className="flex items-center gap-[11.5px]">
-                  <span className="grid size-[32.2px] shrink-0 place-items-center rounded-full bg-cobalt text-[16.5px] font-bold text-paper">
-                    {resolvedSteps[active].noNumber ? (
-                      <LockKeyOpen weight="bold" className="size-[16.5px]" />
-                    ) : (
-                      active + 1
-                    )}
-                  </span>
-                  <span className="font-display text-[27.83px] font-bold text-cobalt">
-                    {resolvedSteps[active].label}
-                  </span>
-                </div>
+              <ol className="mt-[18.4px] space-y-1">
+                {resolvedSteps.map((s, i) => {
+                  const done = i < active
+                  const current = i === active
+                  return (
+                    <li
+                      key={s.key}
+                      className={`font-display text-[18px] leading-snug transition-all duration-300 ${
+                        current
+                          ? 'font-bold text-cobalt'
+                          : done
+                            ? 'font-bold text-ink'
+                            : 'font-normal text-ink-mute'
+                      }`}
+                    >
+                      {s.label}
+                    </li>
+                  )
+                })}
+              </ol>
+              <div className="mt-[13.8px] flex items-center justify-between gap-[13.8px]">
+                <span className="grid size-[32.2px] shrink-0 place-items-center rounded-full bg-cobalt text-[16.5px] font-bold text-paper">
+                  {resolvedSteps[active].noNumber ? (
+                    <LockKeyOpen weight="bold" className="size-[16.5px]" />
+                  ) : (
+                    active + 1
+                  )}
+                </span>
                 <span className="shrink-0 text-[16.5px] font-semibold text-ink-mute">
                   {active + 1} / {resolvedSteps.length}
                 </span>
@@ -378,8 +393,12 @@ export default function StoryFlow({
                       {/* label + expanding description */}
                       <div className="pb-[27.6px]">
                         <div
-                          className={`font-display text-[26.4px] font-bold transition-colors duration-300 ${
-                            current ? 'text-cobalt' : done ? 'text-ink' : 'text-ink-mute'
+                          className={`font-display text-[26.4px] transition-all duration-300 ${
+                            current
+                              ? 'font-bold text-cobalt'
+                              : done
+                                ? 'font-bold text-ink'
+                                : 'font-normal text-ink-mute'
                           }`}
                         >
                           {s.label}

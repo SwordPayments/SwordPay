@@ -11,6 +11,7 @@ import {
   Play,
 } from '@phosphor-icons/react'
 import { Reveal, Button, Section } from '../components/ui'
+import StoryFlow from '../components/StoryFlow'
 import { px, faces } from '../lib/images'
 import { useLocale } from '../context/LocaleContext'
 import { useMessages } from '../i18n'
@@ -493,6 +494,7 @@ export default function Creators() {
     <>
       <Hero copy={t.creators.hero} />
       <ThreeSteps copy={t.creators.steps} />
+      <StoryFlow />
       <Streams copy={t.creators.streams} />
       <Testimonials copy={t.creators.testimonials} />
       <FAQ copy={t.creators.faq} />
