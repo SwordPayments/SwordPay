@@ -11,6 +11,7 @@ import { LocaleProvider, useLocale } from "@/marketing/context/LocaleContext";
 import { useMessages } from "@/marketing/i18n";
 import MarketingNavbar from "@/marketing/components/Navbar";
 import MarketingFooter from "@/marketing/components/MarketingFooter";
+import { scrollToHash } from "@/marketing/lib/scroll";
 import Product from "@/marketing/pages/Product";
 import Creators from "@/marketing/pages/Creators";
 import Explore from "@/pages/explore";
@@ -69,7 +70,9 @@ function MarketingScrollManager() {
         return;
       }
       const el = document.querySelector(currentHash);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      if (el) {
+        scrollToHash(currentHash);
+      }
     };
 
     align();

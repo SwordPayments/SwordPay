@@ -6,14 +6,10 @@ import { Button } from './ui'
 import { Logo } from './Logo'
 import { LOCALE_LABELS, SUPPORTED_LOCALES, useLocale } from '../context/LocaleContext'
 import { useMessages } from '../i18n'
+import { scrollToPricing } from '../lib/scroll'
 
 function scrollPageToTop() {
   window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-}
-
-function scrollToPricing() {
-  const el = document.getElementById('pricing')
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
 }
 
 function navigateToPricing(
