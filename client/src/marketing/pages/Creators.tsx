@@ -21,7 +21,7 @@ type CreatorsCopy = LandingMessages['creators']
 
 const PT_HERO_VIDEO = '/videos/creators-pt.mp4'
 const DEFAULT_VIMEO_SRC =
-  'https://player.vimeo.com/video/1201130712?muted=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&dnt=1'
+  'https://player.vimeo.com/video/1201130712?muted=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&badge=0&dnt=1'
 
 /* ============================================================
    HERO VIDEO — Vimeo (default) or local MP4 when locale is PT (Brazil/Portugal)
@@ -163,6 +163,12 @@ function HeroVideo() {
             className="absolute inset-0 h-full w-full rounded-[inherit]"
             allow="autoplay; picture-in-picture"
             title={t.creators.hero.videoTitle}
+          />
+          {/* Cover Vimeo badge (bottom-right of controls bar) — fallback for non-Pro accounts */}
+          <div
+            className="pointer-events-none absolute bottom-0 right-0 z-20 h-9 w-[4.5rem] rounded-br-[inherit]"
+            style={{ background: 'rgba(14,14,14,0.97)' }}
+            aria-hidden
           />
           {!isPlaying && (
             <button
