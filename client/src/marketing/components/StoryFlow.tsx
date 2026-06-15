@@ -235,29 +235,46 @@ export default function StoryFlow({
   const [active, setActive] = useState(0)
 
   useEffect(() => {
-    const onScroll = () => {
+    let raf = 0
+
+    const update = () => {
+      raf = 0
       const el = wrapRef.current
       if (!el) return
-      const total = el.offsetHeight - window.innerHeight
-      const scrolled = Math.min(Math.max(-el.getBoundingClientRect().top, 0), total)
-      const p = total > 0 ? scrolled / total : 0
-      const step = Math.min(resolvedSteps.length - 1, Math.floor(p * resolvedSteps.length))
-      setActive(step)
+
+      const range = el.offsetHeight - window.innerHeight
+      if (range <= 0) {
+        setActive(0)
+        return
+      }
+
+      const progress = Math.min(Math.max(-el.getBoundingClientRect().top / range, 0), 1)
+      const step = Math.min(
+        resolvedSteps.length - 1,
+        Math.floor(progress * resolvedSteps.length),
+      )
+      setActive((prev) => (prev === step ? prev : step))
     }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+
+    schedule()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
     return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
     }
   }, [resolvedSteps.length])
 
   return (
     <section>
       {/* tall track — each viewport-height advances one step */}
-      <div ref={wrapRef} style={{ height: `${resolvedSteps.length * 100}vh` }}>
-        <div className="sticky top-0 h-screen overflow-hidden">
+      <div ref={wrapRef} style={{ height: `${resolvedSteps.length * 100}dvh` }}>
+        <div className="sticky top-0 h-dvh overflow-hidden">
           {/* progress rail across the very top */}
           <div className="absolute inset-x-0 top-0 z-10 h-0.5 bg-line">
             <div
