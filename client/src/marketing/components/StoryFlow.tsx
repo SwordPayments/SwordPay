@@ -32,7 +32,7 @@ const swap = {
 
 function CardShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="glass w-full min-w-0 max-w-md rounded-[var(--radius-xl)] p-4 sm:p-6 md:p-7">
+    <div className="glass w-full min-w-0 max-w-md rounded-[var(--radius-xl)] p-3 sm:p-5 md:p-7">
       {children}
     </div>
   )
@@ -50,7 +50,7 @@ function UploadMock({ mocks }: { mocks: StoryFlowMocks }) {
           <img
             src={CONTENT_IMG}
             alt={mocks.uploadImageAlt}
-            className="aspect-[4/3] w-full scale-110 object-cover blur-md"
+            className="aspect-[16/9] w-full scale-110 object-cover blur-md"
           />
           <div className="absolute inset-0 grid place-items-center bg-ink/10">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-ink/70 px-3 py-1 text-[13.2px] font-semibold text-paper backdrop-blur-sm">
@@ -156,11 +156,11 @@ function AccessMock({ mocks }: { mocks: StoryFlowMocks }) {
         <CheckCircle weight="fill" className="size-5 text-cobalt" />
       </div>
       {/* the same image, now revealed to the buyer — sharp, unblurred */}
-      <div className="relative mt-4 overflow-hidden rounded-[var(--radius-md)] border border-line">
+      <div className="relative mt-3 overflow-hidden rounded-[var(--radius-md)] border border-line">
         <img
           src={CONTENT_IMG}
           alt={mocks.unlockedImageAlt}
-          className="aspect-[4/3] w-full object-cover"
+          className="aspect-[16/9] w-full object-cover"
         />
       </div>
       <div className="mt-3 flex items-center gap-3 px-1">
@@ -280,19 +280,19 @@ export default function StoryFlow({
   // ---- MOBILE tap-driven layout (not sticky/scrolljacking) ----
   if (isMobile) {
     return (
-      <section className="overflow-x-clip border-y border-line bg-paper-deep py-12 px-4 sm:px-6">
+      <section className="overflow-x-clip border-y border-line bg-paper-deep py-6 px-4 sm:px-6">
         <div className="mx-auto max-w-sm">
           {/* Title */}
-          <h2 className="font-display text-[clamp(1.75rem,7vw,2.6rem)] font-bold leading-[1.02]">
+          <h2 className="font-display text-[clamp(1.4rem,6vw,2rem)] font-bold leading-[1.05]">
             {resolvedTitle}
           </h2>
 
           {/* Progress dots */}
-          <div className="mt-5 flex gap-[6.9px]">
+          <div className="mt-3 flex gap-[6px]">
             {resolvedSteps.map((s, i) => (
               <span
                 key={s.key}
-                className={`h-[4.6px] flex-1 rounded-full transition-colors duration-500 ${
+                className={`h-[4px] flex-1 rounded-full transition-colors duration-500 ${
                   i <= active ? 'bg-cobalt' : 'bg-line'
                 }`}
               />
@@ -300,31 +300,26 @@ export default function StoryFlow({
           </div>
 
           {/* Step label + counter */}
-          <div className="mt-4 flex items-start justify-between gap-3">
-            <div className="flex min-w-0 flex-1 items-start gap-3">
-              <span className="grid size-[32.2px] shrink-0 place-items-center rounded-full bg-cobalt text-[16.5px] font-bold text-paper">
+          <div className="mt-2.5 flex items-center justify-between gap-3">
+            <div className="flex min-w-0 flex-1 items-center gap-2.5">
+              <span className="grid size-[28px] shrink-0 place-items-center rounded-full bg-cobalt text-[14px] font-bold text-paper">
                 {resolvedSteps[active].noNumber ? (
-                  <LockKeyOpen weight="bold" className="size-[16.5px]" />
+                  <LockKeyOpen weight="bold" className="size-[14px]" />
                 ) : (
                   active + 1
                 )}
               </span>
-              <span className="min-w-0 font-display text-[clamp(1.15rem,4.8vw,1.74rem)] font-bold leading-tight text-cobalt">
+              <span className="min-w-0 font-display text-[clamp(1rem,4.2vw,1.4rem)] font-bold leading-tight text-cobalt">
                 {resolvedSteps[active].label}
               </span>
             </div>
-            <span className="shrink-0 text-[16.5px] font-semibold text-ink-mute">
+            <span className="shrink-0 text-[14px] font-semibold text-ink-mute">
               {active + 1} / {resolvedSteps.length}
             </span>
           </div>
 
-          <p className="mt-3 text-[16px] leading-relaxed text-ink-soft">
-            {resolvedSteps[active].desc}
-          </p>
-
           {/* Mock card */}
-          <div className="relative mt-6 flex w-full min-w-0 items-center justify-center">
-            <div className="grid-paper pointer-events-none absolute inset-0 opacity-40 rounded-[var(--radius-lg)]" />
+          <div className="relative mt-3 flex w-full min-w-0 items-center justify-center">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={resolvedSteps[active].key}
@@ -340,12 +335,12 @@ export default function StoryFlow({
           </div>
 
           {/* Tap nav buttons */}
-          <div className="mt-6 flex gap-3">
+          <div className="mt-3 flex gap-3">
             <button
               type="button"
               onClick={tapPrev}
               disabled={active === 0}
-              className="flex h-12 flex-1 items-center justify-center rounded-full border border-line text-[16px] font-semibold text-ink-mute transition-all disabled:opacity-30 active:scale-95"
+              className="flex h-11 flex-1 items-center justify-center rounded-full border border-line text-[15px] font-semibold text-ink-mute transition-all disabled:opacity-30 active:scale-95"
               aria-label="Previous step"
             >
               ← Back
@@ -354,7 +349,7 @@ export default function StoryFlow({
               type="button"
               onClick={tapNext}
               disabled={active === resolvedSteps.length - 1}
-              className="flex h-12 flex-1 items-center justify-center rounded-full bg-cobalt text-[16px] font-semibold text-paper shadow-md transition-all disabled:opacity-30 active:scale-95"
+              className="flex h-11 flex-1 items-center justify-center rounded-full bg-cobalt text-[15px] font-semibold text-paper shadow-md transition-all disabled:opacity-30 active:scale-95"
               aria-label="Next step"
             >
               Next →
@@ -428,7 +423,7 @@ export default function StoryFlow({
                   {active + 1} / {resolvedSteps.length}
                 </span>
               </div>
-              <p className="mt-[9.2px] text-[16px] leading-relaxed text-ink-soft sm:text-[18.3px]">
+              <p className="mt-[9.2px] hidden text-[16px] leading-relaxed text-ink-soft sm:text-[18.3px]">
                 {resolvedSteps[active].desc}
               </p>
             </div>
