@@ -127,7 +127,7 @@ const en: LandingMessages = {
       subheading:
         'Upload once, share one link — then watch the payments roll in, on their own, around the clock.',
       upload: 'Upload',
-      oneLink: 'ONE LINK TO SHARE',
+      oneLink: 'Create your First PayLink',
       paymentReceived: 'Payment received',
       contentAlt: 'Content to sell',
       demoFileName: 'golden-hour-01.jpg',

@@ -342,10 +342,12 @@ function How() {
               <div className="rounded-full border border-line bg-paper px-[19.2px] py-[9.6px] font-mono text-[17.16px] font-medium">
                 swordpay.me/pay/abc123
               </div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-[#FFD230] px-[22px] py-[11px] text-[24.67px] font-semibold uppercase tracking-wide text-ink shadow-lg">
-                {h.oneLink}
-                <ArrowRight weight="bold" className="size-[17.6px] shrink-0" />
-              </div>
+              <Button
+                href="https://swordpay.me"
+                className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg !px-[22px] !py-[11px] !text-[18.2px] [&_svg]:!size-[17.6px]"
+              >
+                {t.product.hero.ctaPrimary}
+              </Button>
             </div>
             <ArrowRight
               weight="bold"
