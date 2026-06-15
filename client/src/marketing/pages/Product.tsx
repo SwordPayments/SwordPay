@@ -434,28 +434,28 @@ function Features() {
   const t = useMessages()
   const f = t.product.features
   return (
-    <Section fullWidth className="!py-10 md:!py-12">
+    <Section fullWidth className="!py-6 md:!py-12">
       <Reveal>
         <div className="text-center">
           <h2 className="text-[clamp(1.7rem,3.2vw,2.5rem)] font-bold">
             {f.heading}
           </h2>
-          <p className="mt-3 text-[18.4px] text-cobalt">
+          <p className="mt-2 text-[16px] text-cobalt md:text-[18.4px]">
             {f.subheading}
           </p>
         </div>
       </Reveal>
 
-      <div className="mt-8 grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <div className="mt-4 grid w-full grid-cols-2 gap-2 sm:mt-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-6">
         {f.items.map((title, i) => {
           const Icon = FEATURE_ICONS[i]
           return (
           <Reveal key={title} delay={i * 0.06}>
-            <div className="group flex h-full flex-col rounded-[var(--radius-lg)] border border-line bg-paper p-5 transition-all duration-300 hover:-translate-y-1 hover:border-ink">
-              <span className="grid size-10 place-items-center rounded-[var(--radius-sm)] bg-cobalt-wash text-cobalt transition-colors duration-300 group-hover:bg-cobalt group-hover:text-paper">
-                <Icon weight="bold" className="size-5" />
+            <div className="group flex h-full flex-row items-center gap-2.5 rounded-[var(--radius-lg)] border border-line bg-paper px-3 py-3 transition-all duration-300 hover:-translate-y-1 hover:border-ink sm:flex-col sm:items-start sm:p-5">
+              <span className="grid size-8 shrink-0 place-items-center rounded-[var(--radius-sm)] bg-cobalt-wash text-cobalt transition-colors duration-300 group-hover:bg-cobalt group-hover:text-paper sm:size-10">
+                <Icon weight="bold" className="size-4 sm:size-5" />
               </span>
-              <h3 className="mt-3 text-[18px] font-bold">{title}</h3>
+              <h3 className="text-[13px] font-bold leading-tight sm:mt-3 sm:text-[18px]">{title}</h3>
             </div>
           </Reveal>
           )
