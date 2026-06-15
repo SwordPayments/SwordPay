@@ -248,17 +248,17 @@ function Problem() {
       </Reveal>
 
       <Reveal delay={0.16}>
-        <div className="mx-auto mt-8 max-w-2xl rounded-[var(--radius-lg)] border border-cobalt/30 bg-cobalt-wash px-6 py-4 text-center">
-          <span className="grid mx-auto size-11 place-items-center rounded-full bg-cobalt text-paper">
-            <SwordMark className="h-6 w-auto" />
+        <div className="mx-auto mt-6 max-w-2xl rounded-[var(--radius-lg)] border border-cobalt/30 bg-cobalt-wash px-4 py-4 text-center sm:px-6 sm:py-5">
+          <span className="grid mx-auto size-9 place-items-center rounded-full bg-cobalt text-paper sm:size-11">
+            <SwordMark className="h-5 w-auto sm:h-6" />
           </span>
-          <h3 className="mt-2.5 font-display text-[clamp(1.5rem,3vw,2rem)] font-bold">
+          <h3 className="mt-2 font-display text-[clamp(1.1rem,3vw,2rem)] font-bold sm:mt-2.5">
             <span className="text-cobalt">SwordPay</span> {p.replaces}
           </h3>
-          <p className="mx-auto mt-1.5 max-w-xl text-[25.8px] font-bold leading-relaxed text-ink-soft">
+          <p className="mx-auto mt-1 max-w-xl text-[15px] font-semibold leading-snug text-ink-soft sm:text-[25.8px] sm:leading-relaxed">
             {p.friction}
           </p>
-          <p className="mt-1 font-display text-[clamp(1.5rem,3vw,2rem)] font-bold text-cobalt">
+          <p className="mt-1 font-display text-[clamp(1rem,3vw,2rem)] font-bold text-cobalt">
             {p.paymentSeconds}
           </p>
         </div>
