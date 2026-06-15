@@ -22,8 +22,13 @@ export function serveStatic(app: Express) {
     maxAge: "7d",
   }));
 
-  // Short cache for everything else (favicon, etc.)
-  app.use(express.static(distPath, { maxAge: "1h" }));
+  // Short cache for static files except index.html (SPA shell handled below)
+  app.use(
+    express.static(distPath, {
+      maxAge: "1h",
+      index: false,
+    }),
+  );
 
   // Inject server-side meta tags then fall through to index.html
   app.use("/{*path}", async (req, res) => {
@@ -32,7 +37,14 @@ export function serveStatic(app: Express) {
       const meta = await getMetaForPath(req.path);
       const metaHtml = buildMetaTags(meta);
       html = html.replace("</head>", `${metaHtml}\n  </head>`);
-      res.status(200).set({ "Content-Type": "text/html" }).send(html);
+      res
+        .status(200)
+        .set({
+          "Content-Type": "text/html",
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+        })
+        .send(html);
     } catch {
       res.sendFile(path.resolve(distPath, "index.html"));
     }

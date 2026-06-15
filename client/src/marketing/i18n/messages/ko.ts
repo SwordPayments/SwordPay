@@ -1,0 +1,407 @@
+import type { LandingMessages } from '../types'
+
+const ko: LandingMessages = {
+  meta: {
+    title: 'SwordPay — 콘텐츠를 날카롭게 수익화하세요.',
+  },
+  nav: {
+    product: '제품',
+    forCreators: '크리에이터',
+    howTo: 'How to',
+    pricing: '요금',
+    startEarning: '수익 시작',
+    language: '언어',
+    menu: '메뉴',
+    detected: '감지됨',
+  },
+  footer: {
+    tagline:
+      '크리에이터가 오디언스를 수입으로 바꾸는 가장 직접적인 방법. 멤버십, 상품, 정산 — 하나로.',
+    operational: '모든 시스템 정상 작동',
+    company: '회사',
+    about: '소개',
+    contact: '문의',
+    terms: '이용약관',
+    privacy: '개인정보 처리방침',
+    cookies: '쿠키 정책',
+    acceptableUse: '이용 및 콘텐츠 정책',
+    safety: '안전 및 투명성 센터',
+    copyright: '© 2026 SwordPay, Inc. 만드는 사람들을 위해.',
+    motto: '날카롭게. 빠르게 정산.',
+  },
+  storyFlow: {
+    titleLine1: '링크에서 수익까지,',
+    titleIn: '',
+    titleHighlight: '몇 초',
+    titleLine2: '.',
+    steps: [
+      {
+        key: 'upload',
+        label: '디지털 파일 업로드',
+        desc: '파일, 영상, 강의, 리포트, 커뮤니티 접근 권한. SwordPay가 호스팅하고 자동으로 전달합니다.',
+      },
+      {
+        key: 'share',
+        label: '링크 하나 공유',
+        desc: 'WhatsApp, Instagram, Telegram 또는 구매자가 있는 곳 어디든 비공개 PayLink를 보내세요.',
+      },
+      {
+        key: 'paid',
+        label: '결제 받기',
+        desc: '구매자가 결제합니다. 판매는 자동 확인 — 수동 확인이나 왕복 없음.',
+      },
+      {
+        key: 'access',
+        label: '접근 권한 해제',
+        desc: '결제가 완료되는 순간 고객은 즉시 접근합니다. 당신은 아무것도 하지 않아도 됩니다.',
+        noNumber: true,
+      },
+    ],
+    mocks: {
+      uploading: '업로드 중',
+      lockedPreview: '잠긴 미리보기',
+      uploaded: '업로드 완료',
+      yourPayLink: '내 PayLink',
+      linkCopied: '링크 복사됨',
+      notification: '알림',
+      paymentReceived: '결제 수신 · $29.00',
+      paymentBody: '새 구매자가 결제했습니다. 접근 권한이 자동으로 부여되었습니다.',
+      saleConfirmed: '판매 자동 확인',
+      accessUnlocked: '접근 권한 해제',
+      availableToBuyer: '구매자 이용 가능',
+      done: '완료',
+      notificationNow: '지금',
+      uploadImageAlt: '프리미엄 이미지 업로드 중',
+      unlockedImageAlt: '잠금 해제된 프리미엄 이미지',
+      uploadFileMeta: '3.8MB · JPG',
+      uploadPercent: '100%',
+      demoFileName: 'golden-hour-01.jpg',
+      shareChannels: ['WhatsApp', 'Instagram', 'Telegram'],
+    },
+  },
+  product: {
+    hero: {
+      titlePrefix: '무엇이든',
+      titleHighlight: '가치',
+      titleSuffix: '로.',
+      tagline1: 'PayLink 하나.',
+      tagline2: '여러 결제.',
+      tagline3: '즉시 접근.',
+      body: '파일, 콘텐츠, 지식, 커뮤니티, 접근 권한 — 무엇이든 업로드하고 링크 하나로 공유해 즉시 수익화하세요. 고객은 자동으로 접근합니다.',
+      ctaPrimary: '첫 PayLink 만들기',
+      ctaSecondary: '▶ 작동 방식 보기',
+      chips: [
+        '결제 후 즉시 접근',
+        '월 구독료 없음',
+        '협업자와 가치 공유',
+        '전 세계 크리에이터를 위해',
+      ],
+      creatorAlt: '작업 중인 크리에이터',
+      yourPayLink: '내 PayLink',
+      instantAccess: '즉시 접근',
+      paymentReceived: '결제 수신',
+      titleInto: '',
+      demoPaymentAmount: '$29.00',
+    },
+    problem: {
+      headingLine1: '대부분의 크리에이터는',
+      headingLine2: '한 가지 일에 너무 많은 단계가 필요합니다.',
+      chain: [
+        { app: '소셜 미디어', job: '마케팅' },
+        { app: '웹사이트', job: '결제 수집' },
+        { app: '은행', job: '결제 확인' },
+        { app: 'Drive', job: '파일 전송' },
+        { app: '접근', job: '접근 권한 부여' },
+        { app: '지원', job: '문제 해결' },
+      ],
+      socialMedia: '소셜 미디어',
+      marketing: '마케팅',
+      replaces: '이 모든 것을 대체합니다.',
+      friction: '마찰은 줄이고, 접근과 결제는 늘리세요',
+      paymentSeconds: '몇 초 만에 결제',
+    },
+    how: {
+      headingLine1: '업로드부터 결제까지',
+      headingIn: '',
+      headingHighlight: '5초',
+      headingSuffix: '.',
+      subheading:
+        '한 번 업로드하고 링크 하나를 공유 — 결제가 24시간 자동으로 들어오는 것을 지켜보세요.',
+      upload: '업로드',
+      oneLink: '공유할 링크 하나',
+      paymentReceived: '결제 수신',
+      contentAlt: '판매할 콘텐츠',
+      demoFileName: 'golden-hour-01.jpg',
+      pays: [
+        { amount: '$29', label: '사진 세트' },
+        { amount: '$99', label: '전체 강의 접근' },
+        { amount: '$19', label: '샘플 팩' },
+        { amount: '$59', label: '경기 분석' },
+        { amount: '$15', label: '비공개 그룹 초대' },
+        { amount: '$45', label: '코칭 통화' },
+        { amount: '$120', label: '전략 리포트' },
+        { amount: '$12', label: '독점 트랙' },
+      ],
+    },
+    pricing: {
+      heading: '기존 방식 vs',
+      subheading: '앱을 오가지 마세요. PayLink 하나로 전체 워크플로를 대체합니다.',
+      traditionalFlow: '기존 방식',
+      swordpay: 'SwordPay',
+      rows: [
+        ['여러 도구', 'PayLink 하나'],
+        ['수동 결제 확인', '자동'],
+        ['수동 전달', '즉시 전달'],
+        ['지연된 접근', '즉시 접근'],
+        ['높은 마찰', '마찰 없음'],
+        ['놓친 판매', '더 높은 전환'],
+        ['여러 구독', '월 구독료 없음'],
+      ],
+      noMonthly: '월 구독료 없음.',
+      feeMain: '10%',
+      feeSub: '+ $0.50',
+      feeNote: '성공한 판매 시에만',
+      bullets: [
+        '설정 비용 없음.',
+        '월 구독 없음.',
+        '숨겨진 비용 없음.',
+        '수익이 날 때만 지불.',
+        '현지 결제 수단 포함.',
+      ],
+      cta: '판매 시작',
+    },
+    audience: {
+      heading: '누가 SwordPay를 사용하나요?',
+      category: '카테고리',
+      whatTheySell: '판매 내용',
+      whyItWorks: '효과적인 이유',
+      rows: [
+        {
+          who: '크리에이터',
+          sell: '프리미엄 영상, 사진, 비하인드 콘텐츠',
+          why: '팬은 한 번 결제하고 즉시 잠금 해제.',
+        },
+        {
+          who: '점성술사',
+          sell: '운세, 출생 차트, 궁합 리포트',
+          why: '맞춤형 디지털 접근은 가격 책정과 전달이 쉽습니다.',
+        },
+        {
+          who: '영양사',
+          sell: '식단, 체중 감량 가이드, 보충제 프로토콜',
+          why: '플랜은 전달 전에 직접 판매할 수 있습니다.',
+        },
+        {
+          who: '피트니스 코치',
+          sell: '운동 프로그램, 변화 플랜, 영상 코칭',
+          why: '트레이닝 프로그램이 유료 디지털 상품이 됩니다.',
+        },
+        {
+          who: '뮤지션',
+          sell: '곡, 비트, 샘플 팩, 독점 릴리스',
+          why: '팬과 클라이언트는 결제 직후 파일을 받습니다.',
+        },
+        {
+          who: '스포츠 전문가',
+          sell: '예측, 경기 분석, VIP 픽 그룹',
+          why: '시간에 민감한 정보는 결제 순간에 잠금 해제.',
+        },
+        {
+          who: '애널리스트',
+          sell: '암호화폐 리포트, 시장 조사, 유료 인사이트',
+          why: '프리미엄 지식이 대화가 아닌 거래가 됩니다.',
+        },
+        {
+          who: '커뮤니티 운영자',
+          sell: 'Telegram 그룹, Discord 접근, 멤버십',
+          why: 'PayLink 하나로 접근을 과금하고 관리.',
+        },
+      ],
+    },
+    features: {
+      heading: '소셜 활동 수익화를 위해',
+      subheading: '결제에 필요한 모든 것. 불필요한 것은 없습니다.',
+      items: [
+        '즉시 접근',
+        '가치 공유',
+        '글로벌 결제',
+        '사기 방지',
+        '크리에이터 대시보드',
+        '구독료 없음',
+      ],
+    },
+    localPayments: {
+      badge: '현지 결제 지원',
+      heading: '글로벌 리치.',
+      headingHighlight: '현지 결제 방식.',
+      body: 'SwordPay는 DM, WhatsApp, 비공개 커뮤니티로 이미 판매하는 시장을 위해 설계되었습니다 — 특히 브라질과 LATAM.',
+      methods: [
+        { name: 'PIX', place: '브라질' },
+        { name: 'SPEI', place: '멕시코' },
+        { name: 'PSE', place: '콜롬비아' },
+        { name: '카드', place: '전 세계' },
+      ],
+    },
+    dazn: {
+      partner: 'DAZN 결제 파트너',
+      heading: '국경을 넘는 수익.',
+      leagueLogosAlt: '리그 로고',
+      cards: [
+        {
+          title: '마케팅',
+          body: 'DAZN 및 SWORD의 다른 주요 브랜드에 참여하고 글로벌 오디언스에 도달하세요.',
+        },
+        {
+          title: '글로벌 결제',
+          body: '전 세계 어디서든 무제한 결제를 받으세요.',
+        },
+      ],
+    },
+    whyNot: {
+      headingLine1: '왜 다른 도구가 아닌',
+      headingLine2: 'SwordPay인가?',
+      subheading:
+        'SwordPay는 또 다른 크리에이터 프로필, 스토어프론트, 결제 버튼이 아닙니다. 즉시 유료 접근 인프라입니다.',
+      whyNot: '왜',
+      cards: [
+        {
+          tool: 'Patreon',
+          their: 'Patreon은 구독을 위해 만들어졌습니다.',
+          ours: 'SwordPay는 즉시 거래를 위해 만들어졌습니다. 구매자는 한 번 결제하고 즉시 접근. 멤버십 불필요.',
+        },
+        {
+          tool: 'Gumroad',
+          their: 'Gumroad는 상품 판매를 돕습니다.',
+          ours: 'SwordPay는 접근 수익화를 돕습니다. 결제, 전달, 접근이 PayLink 하나로 자동화됩니다.',
+        },
+        {
+          tool: 'Stripe Payment Links',
+          their: 'Stripe는 결제를 수집합니다.',
+          ours: 'SwordPay는 결제를 수집하고 접근을 자동 해제합니다. 수동 전달 없음. 추가 도구 없음. 워크플로 공백 없음.',
+        },
+      ],
+    },
+    cta: {
+      headingLine1: '결제를 쫓지 마세요.',
+      headingLine2Prefix: '',
+      headingLine2Highlight: '자동으로 결제받기',
+      headingLine2Suffix: '.',
+      body: '접근, 콘텐츠, 파일, 지식, 커뮤니티를 즉시 유료 접근으로 전환하세요. 60초 안에 첫 PayLink를 만드세요.',
+      primary: '첫 PayLink 만들기',
+      secondary: '작동 방식 보기',
+    },
+  },
+  creators: {
+    hero: {
+      titleLine1: '오디언스는 당신이 만들었습니다.',
+      titleLine2Prefix: '이제 ',
+      titleLine2Highlight: '수입을 만드세요',
+      titleLine2Suffix: '.',
+      bodyLine1: '팟캐스트, 그림, 강의, 연주 — SwordPay가',
+      bodyLine2: '작품으로 수익을 내는 모든 방법을 제공하고, 팬이 "예"라고 하는 순간 지급합니다.',
+      ctaPrimary: '첫 PayLink 만들기',
+      ctaSecondary: '수익 방법 보기',
+      stats: [
+        { value: '12,847', label: '지급된 크리에이터' },
+        { value: '$2,300만', label: '처리됨' },
+        { value: '190+', label: '개국' },
+      ],
+      videoTitle: '크리에이터를 위한 SwordPay',
+      playLabel: '소리와 함께 재생',
+      replayLabel: '다시 재생',
+      pauseLabel: '동영상 일시정지',
+    },
+    steps: {
+      heading: '세 가지 간단한 단계',
+      items: [
+        { label: '가격 설정', alt: '가격 설정 완료' },
+        { label: '파일 추가', alt: '파일 추가 완료' },
+        { label: '공유', alt: '공유 완료' },
+      ],
+    },
+    streams: {
+      heading: '모든 수입원, 하나의 솔루션.',
+      subheading: '작업 방식에 맞게 조합하세요. 스위치 하나로 켜세요.',
+      items: [
+        {
+          title: '멤버십',
+          body: '진성 팬이 원하는 등급과 혜택이 있는 월간 후원.',
+        },
+        {
+          title: '디지털 상품',
+          body: '강의, 프리셋, 템플릿, 팩 — 한 번 팔고 즉시 전달.',
+        },
+        {
+          title: '팁 & 유료 DM',
+          body: '팬이 감사를 표현하거나, 개인 답장, 멘션, 요청에 대해 결제.',
+        },
+        {
+          title: '라이브 & 이벤트',
+          body: '유료 접근 티켓 방송, 워크숍, 리스닝 파티.',
+        },
+      ],
+    },
+    testimonials: {
+      heading: '진짜 사람, 진짜 수입.',
+      rating: '2,000명 이상의 크리에이터',
+      items: [
+        {
+          name: 'Maya Okonkwo',
+          role: '팟캐스터 · The Long Cut',
+          quote:
+            '세 가지 도구를 SwordPay로 옮기고 실수령이 두 배가 됐습니다. 즉시 정산은 거의 unfair할 정도입니다.',
+          stat: '실수령 +112%',
+        },
+        {
+          name: 'Helena März',
+          role: '교육자 · Design Foundations',
+          quote:
+            '강의는 자는 동안 팔리고 아침에 돈이 있습니다. 30일 대기도, 독촉도 없습니다.',
+          stat: '4,800명 수강',
+        },
+        {
+          name: 'Kai Render',
+          role: '뮤지션 · 샘플 팩',
+          quote:
+            '내 이름을 붙이고 싶은 것처럼 보입니다. 팬은 깔끔한 페이지, 나는 구매 순간에 정산.',
+          stat: '6개월 $3.1만',
+        },
+      ],
+    },
+    faq: {
+      heading: '궁금한 모든 것.',
+      subheading: '아직 궁금하신가요? 크리에이터 팀이 모든 메시지에 답변합니다 — 보통 몇 시간 내.',
+      items: [
+        {
+          q: 'SwordPay 비용은?',
+          a: '설정과 게시는 무료입니다. 성공한 판매당 10% + $0.50을 받으며, 결제 처리, 전달, 즉시 접근을 포함합니다. 설정비, 월 구독, 숨겨진 수수료 없음.',
+        },
+        {
+          q: '구매자는 얼마나 빨리 접근하나요?',
+          a: '즉시. 결제가 확인되는 순간 접근이 자동 해제 — 수동 전달이나 왕복 없음.',
+        },
+        {
+          q: '오디언스는 내 것인가요?',
+          a: '항상. 회원 및 고객 데이터는 언제든 열람, 내보내기, 이동 가능. 오디언스를 가두지 않습니다.',
+        },
+        {
+          q: '다른 플랫폼에서 이전할 수 있나요?',
+          a: '네. 대부분의 주요 플랫폼에서 회원과 상품을 가져올 수 있으며, 팀이 구독자 한 명도 잃지 않고 이전을 돕습니다.',
+        },
+        {
+          q: '무엇을 팔 수 있나요?',
+          a: '멤버십, 디지털 상품, 팁, 유료 메시지, 티켓형 라이브 이벤트 — 자유롭게 조합. 만든 것이면 판매 가능.',
+        },
+      ],
+    },
+    cta: {
+      headingLine1: '당신의 작업은 준비됐습니다.',
+      headingLine2: '수입도 마찬가지입니다.',
+      body: '크리에이터가 오디언스를 수입으로 바꾸는 가장 직접적인 방법. 멤버십, 상품, 정산 — 하나로.',
+      primary: '첫 PayLink 만들기',
+      secondary: '제품 둘러보기',
+    },
+  },
+}
+
+export default ko

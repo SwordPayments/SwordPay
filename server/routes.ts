@@ -23,9 +23,21 @@ export async function registerRoutes(
         (req.headers["x-forwarded-for"] as string)?.split(",")[0]?.trim() ||
         req.socket.remoteAddress ||
         "";
-      const response = await fetch(`http://ip-api.com/json/${ip}?fields=countryCode`);
-      const data = await response.json();
-      res.json({ countryCode: data.countryCode || null });
+      const isPrivate =
+        !ip ||
+        ip === "::1" ||
+        ip.startsWith("127.") ||
+        ip.startsWith("10.") ||
+        ip.startsWith("192.168.") ||
+        /^172\.(1[6-9]|2\d|3[01])\./.test(ip);
+      const url = isPrivate
+        ? "http://ip-api.com/json/?fields=status,countryCode"
+        : `http://ip-api.com/json/${encodeURIComponent(ip)}?fields=status,countryCode`;
+      const response = await fetch(url);
+      const data = (await response.json()) as { status?: string; countryCode?: string };
+      const countryCode =
+        data.status === "success" && data.countryCode ? data.countryCode : null;
+      res.json({ countryCode });
     } catch {
       res.json({ countryCode: null });
     }

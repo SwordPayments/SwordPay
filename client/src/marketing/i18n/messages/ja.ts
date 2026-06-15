@@ -1,0 +1,407 @@
+import type { LandingMessages } from '../types'
+
+const ja: LandingMessages = {
+  meta: {
+    title: 'SwordPay — コンテンツを鋭く収益化。',
+  },
+  nav: {
+    product: 'プロダクト',
+    forCreators: 'クリエイター向け',
+    howTo: 'How to',
+    pricing: '料金',
+    startEarning: '収益を始める',
+    language: '言語',
+    menu: 'メニュー',
+    detected: '検出済み',
+  },
+  footer: {
+    tagline:
+      'クリエイターがオーディエンスを収入に変える、最も直接的な方法。メンバーシップ、商品、支払い — すべてひとつに。',
+    operational: 'すべてのシステムが正常稼働中',
+    company: '会社情報',
+    about: '会社概要',
+    contact: 'お問い合わせ',
+    terms: '利用規約',
+    privacy: 'プライバシーポリシー',
+    cookies: 'Cookieポリシー',
+    acceptableUse: '利用規約・コンテンツポリシー',
+    safety: '安全性・透明性センター',
+    copyright: '© 2026 SwordPay, Inc. ものづくりの人のために。',
+    motto: '鋭く描く。すぐに支払われる。',
+  },
+  storyFlow: {
+    titleLine1: 'リンクからお金へ、',
+    titleIn: '',
+    titleHighlight: '秒',
+    titleLine2: 'で。',
+    steps: [
+      {
+        key: 'upload',
+        label: 'あらゆるデジタルファイルをアップロード',
+        desc: 'ファイル、動画、コース、レポート、コミュニティアクセス。SwordPayがホストし自動配信します。',
+      },
+      {
+        key: 'share',
+        label: 'リンクをひとつ共有',
+        desc: 'WhatsApp、Instagram、Telegram、または購入者がいる場所にプライベートPayLinkを送ります。',
+      },
+      {
+        key: 'paid',
+        label: '支払いを受け取る',
+        desc: '購入者が支払い。販売は自動確認 — 手動チェックもやり取りも不要。',
+      },
+      {
+        key: 'access',
+        label: 'アクセス解除',
+        desc: '支払いが入った瞬間、顧客はすぐにアクセスできます。あなたは何もしません。',
+        noNumber: true,
+      },
+    ],
+    mocks: {
+      uploading: 'アップロード中',
+      lockedPreview: 'ロック済みプレビュー',
+      uploaded: 'アップロード完了',
+      yourPayLink: 'あなたのPayLink',
+      linkCopied: 'リンクをコピーしました',
+      notification: '通知',
+      paymentReceived: '支払いを受信 · $29.00',
+      paymentBody: '新しい購入者が支払いました。アクセスは自動的に付与されました。',
+      saleConfirmed: '販売を自動確認しました',
+      accessUnlocked: 'アクセス解除',
+      availableToBuyer: '購入者が利用可能',
+      done: '完了',
+      notificationNow: '今',
+      uploadImageAlt: 'プレミアム画像をアップロード中',
+      unlockedImageAlt: 'ロック解除されたプレミアム画像',
+      uploadFileMeta: '3.8 MB · JPG',
+      uploadPercent: '100%',
+      demoFileName: 'golden-hour-01.jpg',
+      shareChannels: ['WhatsApp', 'Instagram', 'Telegram'],
+    },
+  },
+  product: {
+    hero: {
+      titlePrefix: 'あらゆるものを',
+      titleHighlight: '価値',
+      titleSuffix: 'に。',
+      tagline1: 'PayLinkひとつ。',
+      tagline2: '複数の支払い。',
+      tagline3: '即時アクセス。',
+      body: 'ファイル、コンテンツ、知識、コミュニティ、アクセス — 何でもアップロードし、リンクをひとつ共有して即座に収益化。顧客は自動的にアクセスを取得します。',
+      ctaPrimary: '最初のPayLinkを作成',
+      ctaSecondary: '▶ 仕組みを見る',
+      chips: [
+        '支払い後すぐにアクセス',
+        '月額サブスクリプションなし',
+        'コラボレーターとの価値共有',
+        '世界中のクリエイターのために',
+      ],
+      creatorAlt: '仕事に取り組むクリエイター',
+      yourPayLink: 'あなたのPayLink',
+      instantAccess: '即時アクセス',
+      paymentReceived: '支払いを受信',
+      titleInto: '',
+      demoPaymentAmount: '$29.00',
+    },
+    problem: {
+      headingLine1: 'ほとんどのクリエイターは',
+      headingLine2: 'ひとつの仕事に多すぎるステップが必要。',
+      chain: [
+        { app: 'ソーシャルメディア', job: 'マーケティング' },
+        { app: 'ウェブサイト', job: '支払いを回収' },
+        { app: '銀行', job: '支払いを確認' },
+        { app: 'Drive', job: 'ファイルを送信' },
+        { app: 'アクセス', job: 'アクセスを付与' },
+        { app: 'サポート', job: '問題を解決' },
+      ],
+      socialMedia: 'ソーシャルメディア',
+      marketing: 'マーケティング',
+      replaces: 'これらすべてを置き換えます。',
+      friction: '摩擦を減らし、アクセスと支払いを増やす',
+      paymentSeconds: '数秒で支払い',
+    },
+    how: {
+      headingLine1: 'アップロードから支払いまで',
+      headingIn: '',
+      headingHighlight: '5秒',
+      headingSuffix: '。',
+      subheading:
+        '一度アップロードし、リンクをひとつ共有 — 支払いが24時間自動で入ってくるのを見守りましょう。',
+      upload: 'アップロード',
+      oneLink: '共有するリンクはひとつ',
+      paymentReceived: '支払いを受信',
+      contentAlt: '販売するコンテンツ',
+      demoFileName: 'golden-hour-01.jpg',
+      pays: [
+        { amount: '$29', label: '写真セット' },
+        { amount: '$99', label: 'フルコースアクセス' },
+        { amount: '$19', label: 'サンプルパック' },
+        { amount: '$59', label: '試合分析' },
+        { amount: '$15', label: 'プライベートグループ招待' },
+        { amount: '$45', label: 'コーチング通話' },
+        { amount: '$120', label: '戦略レポート' },
+        { amount: '$12', label: '限定トラック' },
+      ],
+    },
+    pricing: {
+      heading: '従来の方法 vs',
+      subheading: 'アプリを行き来するのはやめましょう。PayLinkひとつでワークフロー全体を置き換えます。',
+      traditionalFlow: '従来のフロー',
+      swordpay: 'SwordPay',
+      rows: [
+        ['複数のツール', 'PayLinkひとつ'],
+        ['手動の支払い確認', '自動'],
+        ['手動配信', '即時配信'],
+        ['遅延アクセス', '即時アクセス'],
+        ['高い摩擦', '摩擦なし'],
+        ['失われた売上', 'より高いコンバージョン'],
+        ['複数のサブスクリプション', '月額料金なし'],
+      ],
+      noMonthly: '月額料金なし。',
+      feeMain: '10%',
+      feeSub: '+ $0.50',
+      feeNote: '成功した販売時のみ',
+      bullets: [
+        'セットアップ料金なし。',
+        '月額サブスクリプションなし。',
+        '隠れたコストなし。',
+        '収益が出たときだけ支払い。',
+        'ローカル決済方法を含む。',
+      ],
+      cta: '販売を始める',
+    },
+    audience: {
+      heading: 'SwordPayを使うのは誰？',
+      category: 'カテゴリー',
+      whatTheySell: '販売内容',
+      whyItWorks: 'うまくいく理由',
+      rows: [
+        {
+          who: 'クリエイター',
+          sell: 'プレミアム動画、写真、舞台裏コンテンツ',
+          why: 'ファンは一度支払い、すぐにアンロック。',
+        },
+        {
+          who: '占星術師',
+          sell: 'ホロスコープ、出生図、相性レポート',
+          why: 'パーソナライズされたデジタルアクセスは価格設定と配信が簡単。',
+        },
+        {
+          who: '栄養士',
+          sell: '食事プラン、減量ガイド、サプリメントプロトコル',
+          why: 'プランは配信前に直接販売可能。',
+        },
+        {
+          who: 'フィットネスコーチ',
+          sell: 'ワークアウトプログラム、変身プラン、ビデオコーチング',
+          why: 'トレーニングプログラムが有料デジタル商品に。',
+        },
+        {
+          who: 'ミュージシャン',
+          sell: '楽曲、ビート、サンプルパック、限定リリース',
+          why: 'ファンとクライアントは支払い直後にファイルを取得。',
+        },
+        {
+          who: 'スポーツ予想家',
+          sell: '予想、試合分析、VIPピックグループ',
+          why: '時間に敏感な情報は支払いの瞬間にアンロック。',
+        },
+        {
+          who: 'アナリスト',
+          sell: '暗号資産レポート、市場調査、有料インサイト',
+          why: 'プレミアムな知識が会話ではなく取引に。',
+        },
+        {
+          who: 'コミュニティオーナー',
+          sell: 'Telegramグループ、Discordアクセス、メンバーシップ',
+          why: 'PayLinkひとつでアクセスを課金・管理。',
+        },
+      ],
+    },
+    features: {
+      heading: 'ソーシャル活動の収益化のために',
+      subheading: '支払いに必要なすべて。不要なものは一切なし。',
+      items: [
+        '即時アクセス',
+        '価値共有',
+        'グローバル決済',
+        '不正防止',
+        'クリエイターダッシュボード',
+        'サブスクリプション料金なし',
+      ],
+    },
+    localPayments: {
+      badge: 'ローカル決済向け',
+      heading: 'グローバルリーチ。',
+      headingHighlight: 'ローカルな決済行動。',
+      body: 'SwordPayは、クリエイターがDM、WhatsApp、プライベートコミュニティで既に販売している市場向け — 特にブラジルとLATAM。',
+      methods: [
+        { name: 'PIX', place: 'ブラジル' },
+        { name: 'SPEI', place: 'メキシコ' },
+        { name: 'PSE', place: 'コロンビア' },
+        { name: 'カード', place: '全世界' },
+      ],
+    },
+    dazn: {
+      partner: 'DAZNの決済パートナー',
+      heading: '国境を超えた利益。',
+      leagueLogosAlt: 'リーグロゴ',
+      cards: [
+        {
+          title: 'マーケティング',
+          body: 'DAZNやSWORD上の他の主要ブランドに参加し、グローバルなオーディエンスにリーチ。',
+        },
+        {
+          title: 'グローバル決済',
+          body: '世界中から無制限の支払いを受け付け。',
+        },
+      ],
+    },
+    whyNot: {
+      headingLine1: 'なぜ他のツールではなく',
+      headingLine2: 'SwordPayなのか？',
+      subheading:
+        'SwordPayは別のクリエイタープロフィール、ストアフロント、決済ボタンではありません。即時有料アクセスのインフラです。',
+      whyNot: 'なぜ',
+      cards: [
+        {
+          tool: 'Patreon',
+          their: 'Patreonはサブスクリプション向けに作られました。',
+          ours: 'SwordPayは即時取引向け。購入者は一度支払い、すぐにアクセス。メンバーシップ不要。',
+        },
+        {
+          tool: 'Gumroad',
+          their: 'Gumroadは商品販売を支援。',
+          ours: 'SwordPayはアクセスの収益化を支援。支払い、配信、アクセスがPayLinkひとつで自動化。',
+        },
+        {
+          tool: 'Stripe Payment Links',
+          their: 'Stripeは支払いを回収。',
+          ours: 'SwordPayは支払いを回収しアクセスを自動解除。手動配信なし。追加ツールなし。ワークフローの隙間なし。',
+        },
+      ],
+    },
+    cta: {
+      headingLine1: '支払いを追いかけるのはやめて。',
+      headingLine2Prefix: '',
+      headingLine2Highlight: '自動で報酬を受け取る',
+      headingLine2Suffix: '。',
+      body: 'アクセス、コンテンツ、ファイル、知識、コミュニティを即時有料アクセスに。60秒以内に最初のPayLinkを作成。',
+      primary: '最初のPayLinkを作成',
+      secondary: '仕組みを見る',
+    },
+  },
+  creators: {
+    hero: {
+      titleLine1: 'オーディエンスはあなたが作った。',
+      titleLine2Prefix: '次は ',
+      titleLine2Highlight: '生計を立てる',
+      titleLine2Suffix: '番。',
+      bodyLine1: 'ポッドキャスト、絵画、教育、演奏 — SwordPayがあなたに',
+      bodyLine2: '作品から稼ぐあらゆる方法を提供し、ファンが「はい」と言った瞬間に支払います。',
+      ctaPrimary: '最初のPayLinkを作成',
+      ctaSecondary: '稼ぎ方を見る',
+      stats: [
+        { value: '12,847', label: 'クリエイターに支払い' },
+        { value: '$2300万', label: '処理済み' },
+        { value: '190+', label: 'カ国' },
+      ],
+      videoTitle: 'クリエイター向けSwordPay',
+      playLabel: '音声付きで再生',
+      replayLabel: 'もう一度再生',
+      pauseLabel: '動画を一時停止',
+    },
+    steps: {
+      heading: '3つの簡単なステップ',
+      items: [
+        { label: '価格を設定', alt: '価格設定完了' },
+        { label: 'ファイルを追加', alt: 'ファイル追加完了' },
+        { label: '共有', alt: '共有完了' },
+      ],
+    },
+    streams: {
+      heading: 'すべての収入源、ひとつのソリューション。',
+      subheading: 'あなたの仕事に合わせて組み合わせ。スイッチひとつで有効化。',
+      items: [
+        {
+          title: 'メンバーシップ',
+          body: '本当のファンが望むティアと特典付きの月額サポート。',
+        },
+        {
+          title: 'デジタル商品',
+          body: 'コース、プリセット、テンプレート、パック — 一度売って即配信。',
+        },
+        {
+          title: 'チップと有料DM',
+          body: 'ファンに感謝を伝えてもらうか、個人的な返信、シャウトアウト、リクエストに支払ってもらう。',
+        },
+        {
+          title: 'ライブとイベント',
+          body: '有料アクセスのチケット配信、ワークショップ、リスニングパーティー。',
+        },
+      ],
+    },
+    testimonials: {
+      heading: '本物の人、本物の収入。',
+      rating: '2,000人以上のクリエイターから',
+      items: [
+        {
+          name: 'Maya Okonkwo',
+          role: 'ポッドキャスター · The Long Cut',
+          quote:
+            '3つのツールをSwordPayに統合し、手取りが2倍に。即時支払いはほぼ不公平なほど。',
+          stat: '手取り +112%',
+        },
+        {
+          name: 'Helena März',
+          role: '教育者 · Design Foundations',
+          quote:
+            'コースは寝ている間に売れ、朝にはお金がある。30日待ちも催促もなし。',
+          stat: '4,800名の受講生',
+        },
+        {
+          name: 'Kai Render',
+          role: 'ミュージシャン · サンプルパック',
+          quote:
+            '自分の名前を載せたいと思えるものに見える。ファンはきれいなページ、私は購入の瞬間に支払い。',
+          stat: '6ヶ月で$3.1万',
+        },
+      ],
+    },
+    faq: {
+      heading: '聞きたいこと、すべて。',
+      subheading: 'まだ気になる？クリエイターチームがすべてのメッセージに返信 — 通常数時間以内。',
+      items: [
+        {
+          q: 'SwordPayの費用は？',
+          a: 'セットアップと公開は無料。成功した販売ごとに10% + $0.50をいただき、決済処理、配信、即時アクセスをカバー。セットアップ料、月額、隠れた手数料はありません。',
+        },
+        {
+          q: '購入者はどれくらい早くアクセスできる？',
+          a: '即座に。支払いが確認された瞬間、アクセスは自動的に解除 — 手動配信もやり取りも不要。',
+        },
+        {
+          q: 'オーディエンスは自分のもの？',
+          a: '常に。メンバーと顧客データはいつでも閲覧、エクスポート、持ち出し可能。オーディエンスを壁の内に閉じ込めません。',
+        },
+        {
+          q: '他のプラットフォームから移行できる？',
+          a: 'はい。主要プラットフォームからメンバーと商品をインポートでき、チームがサブスクライバーを一人も失わず移行を支援します。',
+        },
+        {
+          q: '何を販売できる？',
+          a: 'メンバーシップ、デジタル商品、チップ、有料メッセージ、チケット制ライブイベント — 任意の組み合わせ。作ったものなら出品できます。',
+        },
+      ],
+    },
+    cta: {
+      headingLine1: 'あなたの技は準備完了。',
+      headingLine2: '収入も同じく。',
+      body: 'クリエイターがオーディエンスを収入に変える最も直接的な方法。メンバーシップ、商品、支払い — すべてひとつに。',
+      primary: '最初のPayLinkを作成',
+      secondary: 'プロダクトを探索',
+    },
+  },
+}
+
+export default ja
