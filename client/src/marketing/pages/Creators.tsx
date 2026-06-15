@@ -194,19 +194,19 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
         </div>
 
         <div className="flex w-full flex-col items-center gap-4 px-5 pb-8 pt-6 text-center text-ink sm:px-6">
-          <h1 className="max-w-full font-display text-[clamp(1.55rem,6.5vw,3.6rem)] font-extrabold leading-[1.05] tracking-tight">
-            <span className="block">{copy.titleLine1}</span>
-            <span className="block">
+          <h1 className="max-w-full font-display text-[clamp(1.55rem,6.5vw,3.6rem)] font-extrabold leading-[1.05] tracking-tight md:leading-[1]">
+            <span className="block md:whitespace-nowrap">{copy.titleLine1}</span>
+            <span className="block md:whitespace-nowrap">
               {copy.titleLine2Prefix}
               <span className="text-[#FFD230]">{copy.titleLine2Highlight}</span>
               {copy.titleLine2Suffix}
             </span>
           </h1>
-          <p className="max-w-md text-[clamp(0.95rem,3.8vw,1.2rem)] leading-relaxed text-ink-soft">
-            <span className="block">{copy.bodyLine1}</span>
-            <span className="block">{copy.bodyLine2}</span>
+          <p className="max-w-md text-[clamp(0.95rem,3.8vw,1.2rem)] leading-relaxed text-ink-soft md:text-[clamp(0.95rem,1.8vw,1.2rem)]">
+            <span className="block md:whitespace-nowrap">{copy.bodyLine1}</span>
+            <span className="block md:whitespace-nowrap">{copy.bodyLine2}</span>
           </p>
-          <div className="flex w-full max-w-md flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
+          <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
             <Button
               href="https://swordpay.me"
               className="w-full justify-center !bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg sm:w-auto"
@@ -223,15 +223,15 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
             </Button>
           </div>
 
-          <div className="mt-1 w-full max-w-md rounded-full border border-line bg-paper-deep px-4 py-2.5 sm:px-6">
-            <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:flex-nowrap sm:gap-x-3">
+          <div className="mt-1 w-full max-w-md rounded-full border border-line bg-paper-deep px-4 py-2.5 sm:px-6 md:max-w-none">
+            <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 md:flex-nowrap md:gap-x-3 md:overflow-x-auto">
               {copy.stats.map((stat, i) => (
-                <span key={stat.label} className="flex shrink-0 items-baseline gap-1 whitespace-nowrap">
+                <span key={stat.label} className="flex shrink-0 items-baseline gap-1 whitespace-nowrap md:gap-1.5">
                   {i > 0 && <span className="text-ink-mute">·</span>}
-                  <strong className="text-[19px] font-bold text-[#FFD230] sm:text-[24.7px]">
+                  <strong className="text-[19px] font-bold text-[#FFD230] md:text-[24.7px]">
                     {stat.value}
                   </strong>
-                  <span className="text-[14px] text-ink-soft sm:text-[20.8px]">{stat.label}</span>
+                  <span className="text-[14px] text-ink-soft md:text-[20.8px]">{stat.label}</span>
                 </span>
               ))}
             </div>
@@ -462,12 +462,12 @@ function ThreeSteps({ copy }: { copy: CreatorsCopy['steps'] }) {
         </h2>
       </Reveal>
 
-      <div className="mt-10 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mt-12 sm:overflow-visible">
-        <div className="mx-auto flex w-max snap-x snap-mandatory gap-8 px-4 sm:grid sm:w-full sm:max-w-4xl sm:grid-cols-3 sm:gap-10 sm:px-0">
+      <div className="mt-10 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mt-12 md:overflow-visible">
+        <div className="mx-auto flex w-max snap-x snap-mandatory gap-8 px-4 md:grid md:w-full md:max-w-4xl md:grid-cols-3 md:gap-10 md:px-0">
         {copy.items.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08}>
-            <div className="flex w-[230px] shrink-0 snap-center flex-col items-center sm:w-auto">
-              <h3 className="mb-5 text-[18px] font-bold uppercase tracking-[0.14em] text-ink sm:text-[21.6px]">
+            <div className="flex w-[230px] shrink-0 snap-center flex-col items-center md:w-auto">
+              <h3 className="mb-5 text-[18px] font-bold uppercase tracking-[0.14em] text-ink md:text-[21.6px]">
                 {s.label}
               </h3>
               <div className="relative w-full max-w-[230px] rounded-[2.4rem] border-[7px] border-ink bg-ink shadow-[0_20px_50px_-20px_rgba(0,0,0,0.45)]">
