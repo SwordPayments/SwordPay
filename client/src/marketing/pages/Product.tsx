@@ -82,7 +82,7 @@ function Hero() {
               <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-[13.2px]">
                 <Button
                   href="https://swordpay.me"
-                  className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg !whitespace-nowrap w-full justify-center !px-[22px] !py-[13px] !text-[18.2px] [&_svg]:!size-[17.6px] sm:w-auto sm:!py-[11px]"
+                  className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg !whitespace-nowrap w-full justify-center !px-4 !py-[13px] !text-[15.5px] sm:!px-[22px] sm:!text-[18.2px] [&_svg]:!size-[15px] sm:w-auto sm:!py-[11px] sm:[&_svg]:!size-[17.6px]"
                 >
                   {h.ctaPrimary}
                 </Button>
@@ -90,7 +90,7 @@ function Hero() {
                   href="#flow"
                   variant="outline"
                   icon={false}
-                  className="!whitespace-nowrap w-full justify-center !px-[22px] !py-[13px] !text-[18.2px] sm:w-auto sm:!py-[11px]"
+                  className="!whitespace-nowrap w-full justify-center !px-4 !py-[13px] !text-[15.5px] sm:!px-[22px] sm:!text-[18.2px] sm:w-auto sm:!py-[11px]"
                 >
                   {h.ctaSecondary}
                 </Button>
@@ -749,9 +749,9 @@ function CTA() {
             <p className="mx-auto mt-6 max-w-lg text-[19.8px] text-ink-soft">
               {c.body}
             </p>
-            <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <Button href="https://swordpay.me" className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg">{c.primary}</Button>
-              <Button href="#how" variant="outline" icon={false}>
+            <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:items-center">
+              <Button href="https://swordpay.me" className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg !whitespace-nowrap w-full justify-center sm:w-auto">{c.primary}</Button>
+              <Button href="#how" variant="outline" icon={false} className="!whitespace-nowrap w-full justify-center sm:w-auto">
                 {c.secondary}
               </Button>
             </div>
