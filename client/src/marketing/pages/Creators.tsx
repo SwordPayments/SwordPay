@@ -235,7 +235,7 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
                   <strong className="text-[20px] font-extrabold leading-none tracking-tight text-cobalt">
                     {stat.value}
                   </strong>
-                  <span className="mt-1 text-center text-[10px] font-semibold leading-tight text-ink">
+                  <span className="mt-1 text-center text-[11px] font-semibold leading-tight text-ink">
                     {stat.label}
                   </span>
                 </div>
@@ -451,7 +451,7 @@ function CTA({ copy }: { copy: CreatorsCopy['cta'] }) {
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-[17.6px] text-paper/80">{copy.body}</p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <Button href="https://swordpay.me" className="!bg-paper !text-ink hover:!bg-cobalt hover:!text-paper">
+              <Button href="https://swordpay.me" className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg">
                 {copy.primary}
               </Button>
               <Button

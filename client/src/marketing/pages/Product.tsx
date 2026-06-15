@@ -717,7 +717,7 @@ function Pricing() {
                 </li>
               ))}
             </ul>
-            <Button href="https://swordpay.me" className="w-full justify-center">
+            <Button href="https://swordpay.me" className="w-full justify-center !bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg">
               {p.cta}
             </Button>
           </div>
@@ -750,7 +750,7 @@ function CTA() {
               {c.body}
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <Button href="https://swordpay.me">{c.primary}</Button>
+              <Button href="https://swordpay.me" className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg">{c.primary}</Button>
               <Button href="#how" variant="outline" icon={false}>
                 {c.secondary}
               </Button>
