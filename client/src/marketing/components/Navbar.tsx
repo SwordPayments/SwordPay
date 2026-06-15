@@ -28,6 +28,15 @@ function navigateToPricing(
 
 export const SCROLL_INTENT_KEY = 'sp_scroll_intent'
 
+function smoothScrollToId(id: string) {
+  const el = document.getElementById(id)
+  if (!el) return false
+  const navH = 80 // fixed navbar height offset
+  const top = el.getBoundingClientRect().top + window.scrollY - navH
+  window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+  return true
+}
+
 function navigateToSection(
   e: React.MouseEvent,
   anchor: string,
@@ -35,13 +44,10 @@ function navigateToSection(
   setLocation: (to: string) => void,
 ) {
   e.preventDefault()
-  // If the section already exists on this page, scroll to it directly
-  const el = document.getElementById(anchor)
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    return
-  }
-  // Element not on current page — navigate to /creators (which has StoryFlow) and scroll on mount
+  e.stopPropagation()
+  // If the section already exists on this page, scroll immediately
+  if (smoothScrollToId(anchor)) return
+  // Element not on this page — store intent, navigate, scroll on mount
   sessionStorage.setItem(SCROLL_INTENT_KEY, anchor)
   setLocation('/creators')
 }
@@ -62,7 +68,7 @@ export default function MarketingNavbar() {
   const links = [
     { to: '/', label: t.nav.product, end: true, hash: false, scrollTop: false, anchor: '' },
     { to: '/creators', label: t.nav.forCreators, end: false, hash: false, scrollTop: true, anchor: '' },
-    { to: '/creators#how-it-works', label: t.nav.howTo, end: false, hash: true, scrollTop: false, anchor: 'how-it-works' },
+    { to: '#how-it-works', label: t.nav.howTo, end: false, hash: true, scrollTop: false, anchor: 'how-it-works' },
     { to: '/#pricing', label: t.nav.pricing, end: false, hash: true, scrollTop: false, anchor: 'pricing' },
   ]
 

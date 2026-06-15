@@ -221,7 +221,8 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
               icon={false}
               onClick={(e: React.MouseEvent) => {
                 e.preventDefault()
-                document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                const el = document.getElementById('how-it-works')
+                if (el) window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - 80), behavior: 'smooth' })
               }}
               className="w-full justify-center sm:w-auto !bg-cobalt !text-paper !border-cobalt hover:!bg-cobalt/90"
             >
@@ -517,16 +518,22 @@ export default function Creators() {
     const anchor = sessionStorage.getItem(SCROLL_INTENT_KEY)
     if (!anchor) return
     sessionStorage.removeItem(SCROLL_INTENT_KEY)
-    // Wait for layout to settle, then scroll
     const doScroll = () => {
       const el = document.getElementById(anchor)
-      if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return true }
-      return false
+      if (!el) return false
+      const navH = 80
+      const top = el.getBoundingClientRect().top + window.scrollY - navH
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+      return true
     }
-    if (!doScroll()) {
-      let n = 0
-      const t = setInterval(() => { if (doScroll() || ++n > 30) clearInterval(t) }, 100)
-    }
+    // Small delay to let layout settle after page mount
+    const timer = setTimeout(() => {
+      if (!doScroll()) {
+        let n = 0
+        const poll = setInterval(() => { if (doScroll() || ++n > 20) clearInterval(poll) }, 100)
+      }
+    }, 120)
+    return () => clearTimeout(timer)
   }, [])
 
   return (
