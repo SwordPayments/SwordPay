@@ -19,9 +19,13 @@
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+html.marketing-site {
+  font-size: 110%;
+  scroll-behavior: smooth;
+}
+
 .marketing-page {
   font-family: var(--font-marketing-sans);
-  font-size: 110%;
   width: 100%;
   max-width: 100%;
 }

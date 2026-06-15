@@ -340,7 +340,7 @@ function How() {
               <div className="rounded-full border border-line bg-paper px-[19.2px] py-[9.6px] font-mono text-[17.16px] font-medium">
                 swordpay.me/pay/abc123
               </div>
-              <div className="text-[17.16px] font-semibold text-ink-mute">
+              <div className="text-[21.45px] font-bold text-[#FFD230]">
                 {h.oneLink}
               </div>
             </div>

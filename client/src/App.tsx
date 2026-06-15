@@ -47,6 +47,12 @@ function Router() {
 function AppLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const isMarketingRoute = location === "/" || location === "/creators";
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("marketing-site", isMarketingRoute);
+    return () => document.documentElement.classList.remove("marketing-site");
+  }, [isMarketingRoute]);
+
   const slug = location.startsWith("/") ? location.slice(1).split("/")[0] : "";
   const isCreatorPage =
     location.startsWith("/creator/") ||
@@ -61,7 +67,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
     return (
       <div className="marketing-page flex min-h-screen w-full max-w-full flex-col bg-paper text-ink">
         <MarketingNavbar />
-        <main className="flex-1 pt-14">{children}</main>
+        <main className="flex-1">{children}</main>
         <MarketingFooter />
       </div>
     );
