@@ -11,6 +11,28 @@ function scrollPageToTop() {
   window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
 }
 
+function scrollToPricing() {
+  const el = document.getElementById('pricing')
+  if (el) el.scrollIntoView({ behavior: 'smooth' })
+}
+
+function navigateToPricing(
+  e: React.MouseEvent,
+  location: string,
+  setLocation: (to: string) => void,
+) {
+  e.preventDefault()
+  if (location === '/') {
+    window.history.pushState(null, '', '/#pricing')
+    scrollToPricing()
+    window.dispatchEvent(new HashChangeEvent('hashchange'))
+    return
+  }
+  setLocation('/')
+  window.history.replaceState(null, '', '/#pricing')
+  ;[50, 300, 800, 1300].forEach((ms) => window.setTimeout(scrollToPricing, ms))
+}
+
 function navLinkClass(isActive: boolean, isHash: boolean) {
   return `rounded-full px-3 py-1.5 text-[18px] font-medium transition-colors duration-200 ${
     isActive && !isHash ? 'text-ink' : 'text-ink-mute hover:text-ink'
@@ -20,7 +42,7 @@ function navLinkClass(isActive: boolean, isHash: boolean) {
 export default function MarketingNavbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const [location] = useLocation()
+  const [location, setLocation] = useLocation()
   const { locale, country, setLocale } = useLocale()
   const t = useMessages()
 
@@ -57,7 +79,12 @@ export default function MarketingNavbar() {
         <div className="hidden items-center gap-1 md:flex">
           {links.map((l) =>
             l.hash ? (
-              <a key={l.to} href={l.to} className={navLinkClass(false, true)}>
+              <a
+                key={l.to}
+                href="/#pricing"
+                onClick={(e) => navigateToPricing(e, location, setLocation)}
+                className={navLinkClass(false, true)}
+              >
                 {l.label}
               </a>
             ) : (
@@ -124,7 +151,11 @@ export default function MarketingNavbar() {
                 l.hash ? (
                   <a
                     key={l.to}
-                    href={l.to}
+                    href="/#pricing"
+                    onClick={(e) => {
+                      navigateToPricing(e, location, setLocation)
+                      setOpen(false)
+                    }}
                     className="rounded-2xl px-4 py-3 text-[17.6px] font-medium text-ink-soft transition-colors hover:bg-paper-deep hover:text-ink"
                   >
                     {l.label}

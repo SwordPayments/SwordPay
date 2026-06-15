@@ -324,7 +324,7 @@ export default function StoryFlow({
                       active + 1
                     )}
                   </span>
-                  <span className="font-display text-[25.3px] font-bold">
+                  <span className="font-display text-[27.83px] font-bold">
                     {resolvedSteps[active].label}
                   </span>
                 </div>
@@ -378,7 +378,7 @@ export default function StoryFlow({
                       {/* label + expanding description */}
                       <div className="pb-[27.6px]">
                         <div
-                          className={`font-display text-[24px] font-bold transition-colors duration-300 ${
+                          className={`font-display text-[26.4px] font-bold transition-colors duration-300 ${
                             current || done ? 'text-ink' : 'text-ink-mute'
                           }`}
                         >

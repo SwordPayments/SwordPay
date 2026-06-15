@@ -1,5 +1,5 @@
 import { Switch, Route, useLocation, useParams } from "wouter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -47,26 +47,33 @@ function Router() {
 
 function MarketingScrollManager() {
   const [location] = useLocation();
+  const [hash, setHash] = useState(() =>
+    typeof window !== "undefined" ? window.location.hash : "",
+  );
 
   useEffect(() => {
-    const hash = window.location.hash;
-    if (!hash) {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      return;
-    }
+    const onHashChange = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
+  useEffect(() => {
     let cancelled = false;
     const align = () => {
-      const el = document.querySelector(hash);
+      if (cancelled) return;
+      const currentHash = window.location.hash;
+      if (!currentHash) {
+        if (location === "/" || location === "/creators") {
+          window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        }
+        return;
+      }
+      const el = document.querySelector(currentHash);
       if (el) el.scrollIntoView({ behavior: "smooth" });
     };
 
     align();
-    const timers = [250, 500, 850, 1300].map((d) =>
-      window.setTimeout(() => {
-        if (!cancelled) align();
-      }, d),
-    );
+    const timers = [250, 500, 850, 1300].map((d) => window.setTimeout(align, d));
     const onLoad = () => {
       if (!cancelled) align();
     };
@@ -79,7 +86,7 @@ function MarketingScrollManager() {
       window.removeEventListener("load", onLoad);
       window.removeEventListener("hashchange", align);
     };
-  }, [location]);
+  }, [location, hash]);
 
   return null;
 }
