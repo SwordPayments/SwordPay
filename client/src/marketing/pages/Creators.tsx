@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { SCROLL_INTENT_KEY } from '../components/Navbar'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Heart,
@@ -221,8 +220,8 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
               icon={false}
               onClick={(e: React.MouseEvent) => {
                 e.preventDefault()
-                const el = document.getElementById('how-it-works')
-                if (el) window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - 80), behavior: 'smooth' })
+                window.history.replaceState(null, '', '/creators#how-it-works')
+                window.dispatchEvent(new HashChangeEvent('hashchange'))
               }}
               className="w-full justify-center sm:w-auto !bg-cobalt !text-paper !border-cobalt hover:!bg-cobalt/90"
             >
@@ -513,28 +512,6 @@ function ThreeSteps({ copy }: { copy: CreatorsCopy['steps'] }) {
 
 export default function Creators() {
   const t = useMessages()
-
-  useEffect(() => {
-    const anchor = sessionStorage.getItem(SCROLL_INTENT_KEY)
-    if (!anchor) return
-    sessionStorage.removeItem(SCROLL_INTENT_KEY)
-    const doScroll = () => {
-      const el = document.getElementById(anchor)
-      if (!el) return false
-      const navH = 80
-      const top = el.getBoundingClientRect().top + window.scrollY - navH
-      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
-      return true
-    }
-    // Small delay to let layout settle after page mount
-    const timer = setTimeout(() => {
-      if (!doScroll()) {
-        let n = 0
-        const poll = setInterval(() => { if (doScroll() || ++n > 20) clearInterval(poll) }, 100)
-      }
-    }, 120)
-    return () => clearTimeout(timer)
-  }, [])
 
   return (
     <>

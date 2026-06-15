@@ -28,15 +28,6 @@ function navigateToPricing(
 
 export const SCROLL_INTENT_KEY = 'sp_scroll_intent'
 
-function smoothScrollToId(id: string) {
-  const el = document.getElementById(id)
-  if (!el) return false
-  const navH = 80 // fixed navbar height offset
-  const top = el.getBoundingClientRect().top + window.scrollY - navH
-  window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
-  return true
-}
-
 function navigateToSection(
   e: React.MouseEvent,
   anchor: string,
@@ -44,12 +35,15 @@ function navigateToSection(
   setLocation: (to: string) => void,
 ) {
   e.preventDefault()
-  e.stopPropagation()
-  // If the section already exists on this page, scroll immediately
-  if (smoothScrollToId(anchor)) return
-  // Element not on this page — store intent, navigate, scroll on mount
-  sessionStorage.setItem(SCROLL_INTENT_KEY, anchor)
-  setLocation('/creators')
+  const el = document.getElementById(anchor)
+  if (el) {
+    // Same page — set hash so MarketingScrollManager won't reset scroll to top
+    window.history.replaceState(null, '', `${window.location.pathname}#${anchor}`)
+    window.dispatchEvent(new HashChangeEvent('hashchange'))
+  } else {
+    // Cross-page — embed hash in navigation so MarketingScrollManager scrolls on mount
+    setLocation(`/creators#${anchor}`)
+  }
 }
 
 function navLinkClass(isActive: boolean, isHash: boolean) {
