@@ -36,7 +36,7 @@ const en: LandingMessages = {
     steps: [
       {
         key: 'upload',
-        label: 'Upload Any Digital File',
+        label: 'Upload Digital File',
         desc: 'Files, videos, courses, reports or community access. SwordPay hosts it and delivers it automatically.',
       },
       {
