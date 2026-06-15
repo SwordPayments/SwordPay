@@ -18,15 +18,12 @@ function navigateToPricing(
   setLocation: (to: string) => void,
 ) {
   e.preventDefault()
-  if (location === '/') {
-    window.history.pushState(null, '', '/#pricing')
-    scrollToPricing()
-    window.dispatchEvent(new HashChangeEvent('hashchange'))
-    return
+  if (location !== '/') {
+    setLocation('/')
   }
-  setLocation('/')
   window.history.replaceState(null, '', '/#pricing')
-  ;[50, 300, 800, 1300].forEach((ms) => window.setTimeout(scrollToPricing, ms))
+  scrollToPricing()
+  window.dispatchEvent(new HashChangeEvent('hashchange'))
 }
 
 function navLinkClass(isActive: boolean, isHash: boolean) {

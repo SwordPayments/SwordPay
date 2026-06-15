@@ -11,7 +11,7 @@ import { LocaleProvider, useLocale } from "@/marketing/context/LocaleContext";
 import { useMessages } from "@/marketing/i18n";
 import MarketingNavbar from "@/marketing/components/Navbar";
 import MarketingFooter from "@/marketing/components/MarketingFooter";
-import { scrollToHash } from "@/marketing/lib/scroll";
+import { scrollToHash, scrollToPricing } from "@/marketing/lib/scroll";
 import Product from "@/marketing/pages/Product";
 import Creators from "@/marketing/pages/Creators";
 import Explore from "@/pages/explore";
@@ -69,10 +69,12 @@ function MarketingScrollManager() {
         }
         return;
       }
-      const el = document.querySelector(currentHash);
-      if (el) {
-        scrollToHash(currentHash);
+      if (currentHash === "#pricing") {
+        scrollToPricing();
+        return;
       }
+      const el = document.querySelector(currentHash);
+      if (el) scrollToHash(currentHash);
     };
 
     align();
@@ -122,7 +124,20 @@ function AppLayout({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     document.documentElement.classList.toggle("marketing-site", isMarketingRoute);
-    return () => document.documentElement.classList.remove("marketing-site");
+    if (!isMarketingRoute) {
+      return () => document.documentElement.classList.remove("marketing-site");
+    }
+
+    const prevRestoration = history.scrollRestoration;
+    history.scrollRestoration = "manual";
+    if (window.location.hash === "#pricing") {
+      scrollToPricing();
+    }
+
+    return () => {
+      document.documentElement.classList.remove("marketing-site");
+      history.scrollRestoration = prevRestoration;
+    };
   }, [isMarketingRoute]);
 
   const slug = location.startsWith("/") ? location.slice(1).split("/")[0] : "";

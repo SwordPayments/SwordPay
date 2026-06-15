@@ -356,6 +356,7 @@ body:has([data-video]:hover) [data-start-now] {
 
   html.marketing-site {
     font-size: 110%;
+    scroll-behavior: auto;
   }
 
   html.marketing-site * {
