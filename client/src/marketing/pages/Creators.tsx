@@ -229,15 +229,15 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
             </Button>
           </div>
 
-          <div className="mt-1 w-full max-w-md rounded-2xl border border-line bg-paper-deep px-4 py-3 sm:rounded-full sm:px-6 sm:py-2.5 md:max-w-none">
-            <div className="grid grid-cols-1 gap-2 text-center sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-2 sm:gap-y-1 md:flex-nowrap md:gap-x-3">
+          <div className="mt-1 w-full max-w-none overflow-x-auto rounded-full border border-line bg-paper-deep px-5 py-3 sm:px-7 sm:py-3.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex min-w-max items-baseline justify-center gap-x-2 sm:gap-x-3">
               {copy.stats.map((stat, i) => (
-                <span key={stat.label} className="flex items-baseline justify-center gap-1 sm:shrink-0 sm:whitespace-nowrap md:gap-1.5">
-                  {i > 0 && <span className="hidden text-ink-mute sm:inline">·</span>}
-                  <strong className="text-[19px] font-bold text-[#FFD230] md:text-[24.7px]">
+                <span key={stat.label} className="flex shrink-0 items-baseline gap-1 sm:gap-1.5">
+                  {i > 0 && <span className="mx-1 text-ink-mute sm:mx-1.5">·</span>}
+                  <strong className="text-[22px] font-bold text-[#FFD230] sm:text-[28px] md:text-[28.4px]">
                     {stat.value}
                   </strong>
-                  <span className="text-[14px] text-ink-soft md:text-[20.8px]">{stat.label}</span>
+                  <span className="text-[16px] text-ink-soft sm:text-[24px] md:text-[23.9px]">{stat.label}</span>
                 </span>
               ))}
             </div>
