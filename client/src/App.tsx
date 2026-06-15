@@ -7,7 +7,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { FloatingWidget } from "@/components/floating-widget";
-import { LocaleProvider } from "@/marketing/context/LocaleContext";
+import { LocaleProvider, useLocale } from "@/marketing/context/LocaleContext";
+import { useMessages } from "@/marketing/i18n";
 import MarketingNavbar from "@/marketing/components/Navbar";
 import MarketingFooter from "@/marketing/components/MarketingFooter";
 import Product from "@/marketing/pages/Product";
@@ -48,25 +49,59 @@ function MarketingScrollManager() {
   const [location] = useLocation();
 
   useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      return;
+    }
+
+    let cancelled = false;
     const align = () => {
-      const hash = window.location.hash;
-      if (!hash) {
-        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-        return;
-      }
       const el = document.querySelector(hash);
       if (el) el.scrollIntoView({ behavior: "smooth" });
     };
 
     align();
-    const timers = [250, 500, 850, 1300].map((d) => window.setTimeout(align, d));
+    const timers = [250, 500, 850, 1300].map((d) =>
+      window.setTimeout(() => {
+        if (!cancelled) align();
+      }, d),
+    );
+    const onLoad = () => {
+      if (!cancelled) align();
+    };
+    window.addEventListener("load", onLoad);
     window.addEventListener("hashchange", align);
 
     return () => {
+      cancelled = true;
       timers.forEach(clearTimeout);
+      window.removeEventListener("load", onLoad);
       window.removeEventListener("hashchange", align);
     };
   }, [location]);
+
+  return null;
+}
+
+function DocumentLocale() {
+  const { locale } = useLocale();
+  const t = useMessages();
+
+  useEffect(() => {
+    document.title = t.meta.title;
+    document.documentElement.lang =
+      locale === "zh"
+        ? "zh-CN"
+        : locale === "pt"
+          ? "pt-BR"
+          : locale === "ko"
+            ? "ko-KR"
+            : locale === "el"
+              ? "el-GR"
+              : locale;
+    document.documentElement.dir = locale === "ar" ? "rtl" : "ltr";
+  }, [locale, t.meta.title]);
 
   return null;
 }
@@ -92,11 +127,12 @@ function AppLayout({ children }: { children: React.ReactNode }) {
 
   if (isMarketingRoute) {
     return (
-      <div className="marketing-page flex min-h-screen w-full max-w-full flex-col bg-paper text-ink">
+      <>
+        <MarketingScrollManager />
         <MarketingNavbar />
-        <main className="flex-1">{children}</main>
+        <main>{children}</main>
         <MarketingFooter />
-      </div>
+      </>
     );
   }
 
@@ -134,9 +170,9 @@ function App() {
 
   return (
     <LocaleProvider>
+      <DocumentLocale />
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <MarketingScrollManager />
           <AppLayout>
             <Router />
           </AppLayout>

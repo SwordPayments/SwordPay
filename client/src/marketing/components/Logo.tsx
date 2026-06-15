@@ -48,7 +48,7 @@ export function Logo({
   textClassName?: string
 }) {
   return (
-    <Link to="/" className={`group flex items-center gap-2.5 ${className}`}>
+    <Link href="/" className={`group flex items-center gap-2.5 ${className}`}>
       <SwordMark
         className={`transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 ${markClassName}`}
       />
