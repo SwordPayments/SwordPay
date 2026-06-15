@@ -114,7 +114,10 @@ export default function MarketingNavbar() {
               <Link key={l.to} href={l.to}>
                 <a
                   onClick={() => {
-                    if (l.scrollTop) scrollPageToTop()
+                    // Always clear any hash and snap to top so #pricing / #how-it-works
+                    // don't keep the page stuck when navigating to a new tab
+                    window.history.replaceState(null, '', l.to)
+                    window.scrollTo({ top: 0, behavior: 'auto' })
                   }}
                   className={navLinkClass(isActive(l.to, l.end), false)}
                 >
@@ -191,7 +194,8 @@ export default function MarketingNavbar() {
                   <Link key={l.to} href={l.to}>
                     <a
                       onClick={() => {
-                        if (l.scrollTop) scrollPageToTop()
+                        window.history.replaceState(null, '', l.to)
+                        window.scrollTo({ top: 0, behavior: 'auto' })
                         setOpen(false)
                       }}
                       className="block rounded-xl px-4 py-3.5 text-[18px] font-semibold text-ink transition-colors hover:bg-paper-deep hover:text-cobalt"
