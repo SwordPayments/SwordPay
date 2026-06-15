@@ -115,7 +115,7 @@ export default function MarketingNavbar() {
           <Button
             href="https://swordpay.me"
             icon={false}
-            className="!py-1.5 !text-[18.6px] !bg-cobalt hover:!bg-cobalt-deep"
+            className="!py-1.5 !text-[18.6px] !bg-[#FFD230] !text-ink hover:!bg-[#FFC800]"
           >
             {t.nav.startEarning}
           </Button>
@@ -182,7 +182,7 @@ export default function MarketingNavbar() {
                     </option>
                   ))}
                 </select>
-                <Button href="https://swordpay.me" icon={false} className="w-full justify-center !bg-cobalt hover:!bg-cobalt-deep">
+                <Button href="https://swordpay.me" icon={false} className="w-full justify-center !bg-[#FFD230] !text-ink hover:!bg-[#FFC800]">
                   {t.nav.startEarning}
                 </Button>
               </div>
