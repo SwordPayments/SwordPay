@@ -230,12 +230,12 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
               {copy.stats.map((stat, i) => (
                 <div
                   key={stat.label}
-                  className={`flex flex-col items-center justify-center px-1 py-3.5 ${i > 0 ? 'border-l border-line' : ''}`}
+                  className={`flex flex-col items-center justify-center py-3.5 ${i > 0 ? 'border-l border-line' : ''}`}
                 >
                   <strong className="text-[20px] font-extrabold leading-none tracking-tight text-cobalt">
                     {stat.value}
                   </strong>
-                  <span className="mt-1 text-center text-[11px] font-semibold leading-tight text-ink">
+                  <span className="mt-1 whitespace-nowrap text-[13px] font-semibold leading-none text-ink">
                     {stat.label}
                   </span>
                 </div>
