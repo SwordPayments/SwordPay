@@ -280,7 +280,7 @@ export default function StoryFlow({
   // ---- MOBILE tap-driven layout (not sticky/scrolljacking) ----
   if (isMobile) {
     return (
-      <section id="how-it-works" className="overflow-x-clip border-y border-line bg-paper-deep py-6 px-4 sm:px-6">
+      <section className="overflow-x-clip border-y border-line bg-paper-deep py-6 px-4 sm:px-6">
         <div className="mx-auto max-w-sm">
           {/* Title */}
           <h2 className="font-display text-[clamp(1.47rem,6.3vw,2.1rem)] font-bold leading-[1.05]">
@@ -362,7 +362,7 @@ export default function StoryFlow({
 
   // ---- DESKTOP scroll-driven layout ----
   return (
-      <section id="how-it-works" className="overflow-x-clip">
+      <section className="overflow-x-clip">
       {/* tall track — each viewport-height advances one step */}
       <div ref={wrapRef} className="max-w-full" style={{ height: `${resolvedSteps.length * 100}dvh` }}>
         <div className="sticky top-0 h-dvh overflow-hidden">

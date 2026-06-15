@@ -62,8 +62,8 @@ export function scrollToHowItWorks() {
   if (!attempt()) {
     let tries = 0
     const timer = setInterval(() => {
-      if (attempt() || ++tries > 25) clearInterval(timer)
-    }, 80)
+      if (attempt() || ++tries > 40) clearInterval(timer)
+    }, 50)
   }
 }
 

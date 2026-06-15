@@ -34,26 +34,33 @@ function navigateToSection(
   setLocation: (to: string) => void,
 ) {
   e.preventDefault()
-  const scrollToAnchor = () => {
+
+  const doScroll = () => {
     const el = document.getElementById(anchor)
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      return true
     }
+    return false
   }
+
   const pagePath = to.split('#')[0]
   if (location !== pagePath) {
+    // Navigate to the target page, then poll until the anchor element mounts
     setLocation(pagePath)
-    // Wait for page to mount then scroll
     let attempts = 0
     const poll = setInterval(() => {
-      const el = document.getElementById(anchor)
-      if (el || ++attempts > 20) {
-        clearInterval(poll)
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
-    }, 100)
+      if (doScroll() || ++attempts > 40) clearInterval(poll)
+    }, 50)
   } else {
-    scrollToAnchor()
+    // Already on the right page — scroll immediately
+    if (!doScroll()) {
+      // Element not yet in DOM (e.g. lazy mount) — retry briefly
+      let attempts = 0
+      const poll = setInterval(() => {
+        if (doScroll() || ++attempts > 20) clearInterval(poll)
+      }, 50)
+    }
   }
 }
 

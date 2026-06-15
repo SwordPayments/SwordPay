@@ -516,7 +516,7 @@ export default function Creators() {
     <>
       <Hero copy={t.creators.hero} />
       <ThreeSteps copy={t.creators.steps} />
-      <StoryFlow />
+      <div id="how-it-works"><StoryFlow /></div>
       <Streams copy={t.creators.streams} />
       <Testimonials copy={t.creators.testimonials} />
       <FAQ copy={t.creators.faq} />
