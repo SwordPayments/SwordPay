@@ -6,10 +6,12 @@ import { Button } from './ui'
 import { Logo } from './Logo'
 import { LOCALE_LABELS, SUPPORTED_LOCALES, useLocale } from '../context/LocaleContext'
 import { useMessages } from '../i18n'
-import { scrollToPricing } from '../lib/scroll'
+import { scrollToPricing, scrollToYInstant } from '../lib/scroll'
 
-function scrollPageToTop() {
-  window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+function clearHashAndScrollTop(path: string) {
+  window.history.replaceState(null, '', path)
+  window.dispatchEvent(new HashChangeEvent('hashchange'))
+  scrollToYInstant(0)
 }
 
 function navigateToPricing(
@@ -111,18 +113,13 @@ export default function MarketingNavbar() {
                 {l.label}
               </a>
             ) : (
-              <Link key={l.to} href={l.to}>
-                <a
-                  onClick={() => {
-                    // Always clear any hash and snap to top so #pricing / #how-it-works
-                    // don't keep the page stuck when navigating to a new tab
-                    window.history.replaceState(null, '', l.to)
-                    window.scrollTo({ top: 0, behavior: 'auto' })
-                  }}
-                  className={navLinkClass(isActive(l.to, l.end), false)}
-                >
-                  {l.label}
-                </a>
+              <Link
+                key={l.to}
+                href={l.to}
+                onClick={() => clearHashAndScrollTop(l.to)}
+                className={navLinkClass(isActive(l.to, l.end), false)}
+              >
+                {l.label}
               </Link>
             ),
           )}
@@ -191,17 +188,16 @@ export default function MarketingNavbar() {
                     {l.label}
                   </a>
                 ) : (
-                  <Link key={l.to} href={l.to}>
-                    <a
-                      onClick={() => {
-                        window.history.replaceState(null, '', l.to)
-                        window.scrollTo({ top: 0, behavior: 'auto' })
-                        setOpen(false)
-                      }}
-                      className="block rounded-xl px-4 py-3.5 text-[18px] font-semibold text-ink transition-colors hover:bg-paper-deep hover:text-cobalt"
-                    >
-                      {l.label}
-                    </a>
+                  <Link
+                    key={l.to}
+                    href={l.to}
+                    onClick={() => {
+                      clearHashAndScrollTop(l.to)
+                      setOpen(false)
+                    }}
+                    className="block rounded-xl px-4 py-3.5 text-[18px] font-semibold text-ink transition-colors hover:bg-paper-deep hover:text-cobalt"
+                  >
+                    {l.label}
                   </Link>
                 ),
               )}
