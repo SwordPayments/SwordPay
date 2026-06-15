@@ -224,15 +224,34 @@ function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
             </Button>
           </div>
 
-          <div className="mt-1 w-full overflow-x-auto rounded-full border border-line bg-paper-deep px-4 py-2.5 sm:w-fit sm:mx-auto sm:px-7 sm:py-3.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <div className="flex min-w-max items-baseline justify-center gap-x-1.5 sm:gap-x-3">
+          {/* Mobile stats: 3-col card grid */}
+          <div className="mt-2 w-full sm:hidden">
+            <div className="grid grid-cols-3 overflow-hidden rounded-2xl border border-line bg-paper-deep">
               {copy.stats.map((stat, i) => (
-                <span key={stat.label} className="flex shrink-0 items-baseline gap-1 sm:gap-1.5">
-                  {i > 0 && <span className="mx-0.5 text-ink-mute sm:mx-1.5">·</span>}
-                  <strong className="text-[15px] font-bold text-cobalt sm:text-[28px] md:text-[28.4px]">
+                <div
+                  key={stat.label}
+                  className={`flex flex-col items-center justify-center px-1 py-3.5 ${i > 0 ? 'border-l border-line' : ''}`}
+                >
+                  <strong className="text-[20px] font-extrabold leading-none tracking-tight text-cobalt">
                     {stat.value}
                   </strong>
-                  <span className="text-[11px] font-bold text-ink sm:text-[24px] md:text-[23.9px]">{stat.label}</span>
+                  <span className="mt-1 text-center text-[10px] font-semibold leading-tight text-ink">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Desktop stats: horizontal pill */}
+          <div className="mt-1 hidden sm:mx-auto sm:flex sm:w-fit sm:overflow-x-auto sm:rounded-full sm:border sm:border-line sm:bg-paper-deep sm:px-7 sm:py-3.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex min-w-max items-baseline justify-center gap-x-3">
+              {copy.stats.map((stat, i) => (
+                <span key={stat.label} className="flex shrink-0 items-baseline gap-1.5">
+                  {i > 0 && <span className="mx-1.5 text-ink-mute">·</span>}
+                  <strong className="text-[28px] font-bold text-cobalt md:text-[28.4px]">
+                    {stat.value}
+                  </strong>
+                  <span className="font-bold text-ink text-[24px] md:text-[23.9px]">{stat.label}</span>
                 </span>
               ))}
             </div>

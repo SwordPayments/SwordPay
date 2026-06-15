@@ -123,10 +123,10 @@ export default function MarketingNavbar() {
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="grid size-9 place-items-center rounded-full text-ink md:hidden"
+          className="grid size-10 place-items-center rounded-full border border-line bg-paper-deep text-ink shadow-sm transition-colors hover:bg-paper md:hidden"
           aria-label={t.nav.menu}
         >
-          {open ? <X size={20} weight="bold" /> : <List size={20} weight="bold" />}
+          {open ? <X size={22} weight="bold" /> : <List size={22} weight="bold" />}
         </button>
       </nav>
 
