@@ -82,7 +82,7 @@ function Hero() {
               <div className="mt-6 flex flex-wrap items-center gap-[13.2px]">
                 <Button
                   href="https://swordpay.me"
-                  className="!px-[22px] !py-[11px] !text-[18.2px] [&_svg]:!size-[17.6px]"
+                  className="!bg-[#FFD230] !text-ink hover:!bg-[#FFC800] !shadow-lg !px-[22px] !py-[11px] !text-[18.2px] [&_svg]:!size-[17.6px]"
                 >
                   {h.ctaPrimary}
                 </Button>

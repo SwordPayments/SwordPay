@@ -139,7 +139,7 @@ export default function MarketingNavbar() {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="glass-nav absolute inset-x-4 top-20 rounded-3xl p-4 md:hidden"
           >
-            <div className="flex flex-col">
+            <div className="flex flex-col divide-y divide-line">
               {links.map((l) =>
                 l.hash ? (
                   <a
@@ -149,7 +149,7 @@ export default function MarketingNavbar() {
                       navigateToPricing(e, location, setLocation)
                       setOpen(false)
                     }}
-                    className="rounded-2xl px-4 py-3 text-[17.6px] font-medium text-ink-soft transition-colors hover:bg-paper-deep hover:text-ink"
+                    className="px-4 py-4 text-[17.6px] font-semibold text-ink transition-colors hover:text-cobalt"
                   >
                     {l.label}
                   </a>
@@ -159,14 +159,14 @@ export default function MarketingNavbar() {
                       onClick={() => {
                         if (l.scrollTop) scrollPageToTop()
                       }}
-                      className="rounded-2xl px-4 py-3 text-[17.6px] font-medium text-ink-soft transition-colors hover:bg-paper-deep hover:text-ink"
+                      className="px-4 py-4 text-[17.6px] font-semibold text-ink transition-colors hover:text-cobalt"
                     >
                       {l.label}
                     </a>
                   </Link>
                 ),
               )}
-              <div className="mt-2 px-1">
+              <div className="pt-4 px-1">
                 <label className="mb-2 block px-1 text-[13px] font-semibold uppercase tracking-wide text-ink-mute">
                   {t.nav.language}
                   {country ? ` · ${country}` : ''}
