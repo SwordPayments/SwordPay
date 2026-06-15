@@ -7,6 +7,7 @@ const ar: LandingMessages = {
   nav: {
     product: 'المنتج',
     forCreators: 'للمبدعين',
+    howTo: 'How to',
     pricing: 'الأسعار',
     startEarning: 'ابدأ الربح',
     language: 'اللغة',

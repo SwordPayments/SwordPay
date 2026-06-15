@@ -7,6 +7,7 @@ const ko: LandingMessages = {
   nav: {
     product: '제품',
     forCreators: '크리에이터',
+    howTo: 'How to',
     pricing: '요금',
     startEarning: '수익 시작',
     language: '언어',

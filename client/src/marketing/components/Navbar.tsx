@@ -26,6 +26,37 @@ function navigateToPricing(
   window.dispatchEvent(new HashChangeEvent('hashchange'))
 }
 
+function navigateToSection(
+  e: React.MouseEvent,
+  to: string,
+  anchor: string,
+  location: string,
+  setLocation: (to: string) => void,
+) {
+  e.preventDefault()
+  const scrollToAnchor = () => {
+    const el = document.getElementById(anchor)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+  const pagePath = to.split('#')[0]
+  if (location !== pagePath) {
+    setLocation(pagePath)
+    // Wait for page to mount then scroll
+    let attempts = 0
+    const poll = setInterval(() => {
+      const el = document.getElementById(anchor)
+      if (el || ++attempts > 20) {
+        clearInterval(poll)
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 100)
+  } else {
+    scrollToAnchor()
+  }
+}
+
 function navLinkClass(isActive: boolean, isHash: boolean) {
   return `rounded-full px-3 py-1.5 text-[18px] font-medium transition-colors duration-200 ${
     isActive && !isHash ? 'text-ink' : 'text-ink-mute hover:text-ink'
@@ -40,9 +71,10 @@ export default function MarketingNavbar() {
   const t = useMessages()
 
   const links = [
-    { to: '/', label: t.nav.product, end: true, hash: false, scrollTop: false },
-    { to: '/creators', label: t.nav.forCreators, end: false, hash: false, scrollTop: true },
-    { to: '/#pricing', label: t.nav.pricing, end: false, hash: true, scrollTop: false },
+    { to: '/', label: t.nav.product, end: true, hash: false, scrollTop: false, anchor: '' },
+    { to: '/creators', label: t.nav.forCreators, end: false, hash: false, scrollTop: true, anchor: '' },
+    { to: '/creators#how-it-works', label: t.nav.howTo, end: false, hash: true, scrollTop: false, anchor: 'how-it-works' },
+    { to: '/#pricing', label: t.nav.pricing, end: false, hash: true, scrollTop: false, anchor: 'pricing' },
   ]
 
   useEffect(() => {
@@ -74,8 +106,12 @@ export default function MarketingNavbar() {
             l.hash ? (
               <a
                 key={l.to}
-                href="/#pricing"
-                onClick={(e) => navigateToPricing(e, location, setLocation)}
+                href={l.to}
+                onClick={(e) =>
+                  l.anchor === 'pricing'
+                    ? navigateToPricing(e, location, setLocation)
+                    : navigateToSection(e, l.to, l.anchor, location, setLocation)
+                }
                 className={navLinkClass(false, true)}
               >
                 {l.label}
@@ -144,9 +180,13 @@ export default function MarketingNavbar() {
                 l.hash ? (
                   <a
                     key={l.to}
-                    href="/#pricing"
+                    href={l.to}
                     onClick={(e) => {
-                      navigateToPricing(e, location, setLocation)
+                      if (l.anchor === 'pricing') {
+                        navigateToPricing(e, location, setLocation)
+                      } else {
+                        navigateToSection(e, l.to, l.anchor, location, setLocation)
+                      }
                       setOpen(false)
                     }}
                     className="rounded-xl px-4 py-3.5 text-[18px] font-semibold text-ink transition-colors hover:bg-paper-deep hover:text-cobalt"
@@ -158,6 +198,7 @@ export default function MarketingNavbar() {
                     <a
                       onClick={() => {
                         if (l.scrollTop) scrollPageToTop()
+                        setOpen(false)
                       }}
                       className="block rounded-xl px-4 py-3.5 text-[18px] font-semibold text-ink transition-colors hover:bg-paper-deep hover:text-cobalt"
                     >

@@ -7,6 +7,7 @@ const ja: LandingMessages = {
   nav: {
     product: 'プロダクト',
     forCreators: 'クリエイター向け',
+    howTo: 'How to',
     pricing: '料金',
     startEarning: '収益を始める',
     language: '言語',

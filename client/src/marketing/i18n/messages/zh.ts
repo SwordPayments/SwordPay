@@ -7,6 +7,7 @@ const zh: LandingMessages = {
   nav: {
     product: '产品',
     forCreators: '创作者专区',
+    howTo: 'How to',
     pricing: '定价',
     startEarning: '开始赚钱',
     language: '语言',

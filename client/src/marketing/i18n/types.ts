@@ -3,6 +3,7 @@ export type LandingMessages = {
   nav: {
     product: string
     forCreators: string
+    howTo: string
     pricing: string
     startEarning: string
     language: string

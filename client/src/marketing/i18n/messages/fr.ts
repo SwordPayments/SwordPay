@@ -7,6 +7,7 @@ const fr: LandingMessages = {
   nav: {
     product: 'Produit',
     forCreators: 'Pour les créateurs',
+    howTo: 'How to',
     pricing: 'Tarifs',
     startEarning: 'Commencer à gagner',
     language: 'Langue',
