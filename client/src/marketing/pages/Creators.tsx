@@ -116,12 +116,12 @@ function HeroVideo() {
   }
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full w-full overflow-hidden rounded-[inherit]">
       {localePending ? (
         <div className="h-full w-full animate-pulse bg-paper-deep" aria-hidden />
       ) : isPt ? (
         <div
-          className="relative h-full w-full cursor-pointer"
+          className="relative h-full w-full cursor-pointer overflow-hidden rounded-[inherit]"
           role="button"
           tabIndex={0}
           aria-label={isPlaying ? t.creators.hero.pauseLabel : t.creators.hero.playLabel}
@@ -136,7 +136,7 @@ function HeroVideo() {
           <video
             ref={videoRef}
             src={PT_HERO_VIDEO}
-            className="pointer-events-none h-full w-full object-cover"
+            className="pointer-events-none h-full w-full rounded-[inherit] object-cover"
             playsInline
             preload="metadata"
             title={t.creators.hero.videoTitle}
@@ -160,7 +160,7 @@ function HeroVideo() {
           <iframe
             ref={iframeRef}
             src={DEFAULT_VIMEO_SRC}
-            className="absolute inset-0 h-full w-full"
+            className="absolute inset-0 h-full w-full rounded-[inherit]"
             allow="autoplay; picture-in-picture"
             title={t.creators.hero.videoTitle}
           />
@@ -168,7 +168,7 @@ function HeroVideo() {
             <button
               type="button"
               onClick={startVimeoPlayback}
-              className="absolute inset-0 z-10 grid place-items-center"
+              className="absolute inset-0 z-10 grid place-items-center rounded-[inherit]"
               aria-label={t.creators.hero.playLabel}
             >
               <span className="grid size-20 place-items-center rounded-full bg-paper/20 text-paper backdrop-blur-sm transition-colors hover:bg-paper/30">
@@ -188,8 +188,8 @@ function HeroVideo() {
 function Hero({ copy }: { copy: CreatorsCopy['hero'] }) {
   return (
     <section className="relative bg-paper pt-24 md:pt-28">
-      <div className="w-full">
-        <div className="relative mx-auto aspect-[9/16] w-full max-w-sm overflow-hidden bg-paper">
+      <div className="w-full max-w-full min-w-0">
+        <div className="relative mx-auto aspect-[9/16] w-full max-w-sm overflow-hidden rounded-[var(--radius-xl)] border border-line bg-paper shadow-[0_24px_60px_-28px_rgba(0,0,0,0.28)]">
           <HeroVideo />
         </div>
 
