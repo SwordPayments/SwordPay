@@ -195,22 +195,25 @@ function Problem() {
   return (
     <Section className="border-y border-line bg-paper-deep !pt-12 !pb-6 md:!pt-16 md:!pb-8">
       <Reveal>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-[clamp(2.3rem,4.6vw,3.57rem)] font-bold whitespace-nowrap">
-            {p.headingLine1} {p.headingLine2}
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-[clamp(2.3rem,4.6vw,3.57rem)] font-bold leading-[1.05]">
+            {p.headingLine1}
+            <br />
+            <span className="whitespace-nowrap">{p.headingLine2}</span>
           </h2>
         </div>
       </Reveal>
 
       <Reveal delay={0.1}>
-        <div className="mt-8 flex flex-wrap items-stretch justify-center gap-3">
+        <div className="mt-8 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mx-auto flex w-max max-w-full items-stretch justify-center gap-2 px-1 sm:gap-3">
           {chain.map((c, i) => {
             const Single = 'icon' in c ? c.icon : undefined
             return (
-            <div key={c.app} className="flex items-center gap-3">
+            <div key={c.app} className="flex shrink-0 items-center gap-2 sm:gap-3">
               <div
                 className={`flex flex-col items-center rounded-[var(--radius-md)] border border-line bg-paper px-3 py-5 text-center ${
-                  'icons' in c && c.icons && c.icons.length > 2 ? 'w-40' : 'w-32'
+                  'icons' in c && c.icons && c.icons.length > 2 ? 'w-36 sm:w-40' : 'w-28 sm:w-32'
                 }`}
               >
                 <span
@@ -236,24 +239,25 @@ function Problem() {
               {i < chain.length - 1 && (
                 <ArrowRight
                   weight="bold"
-                  className="hidden size-5 shrink-0 text-ink sm:block"
+                  className="hidden size-5 shrink-0 text-line-strong sm:block"
                 />
               )}
             </div>
             )
           })}
+          </div>
         </div>
       </Reveal>
 
       <Reveal delay={0.16}>
-        <div className="mx-auto mt-8 max-w-2xl rounded-[var(--radius-lg)] border border-cobalt/30 bg-cobalt-wash px-6 py-4 text-center">
+        <div className="mx-auto mt-8 max-w-3xl rounded-[var(--radius-lg)] border border-cobalt/30 bg-cobalt-wash px-6 py-5 text-center sm:px-8">
           <span className="grid mx-auto size-11 place-items-center rounded-full bg-cobalt text-paper">
             <SwordMark className="h-6 w-auto" />
           </span>
           <h3 className="mt-2.5 font-display text-[clamp(1.5rem,3vw,2rem)] font-bold">
             <span className="text-cobalt">SwordPay</span> {p.replaces}
           </h3>
-          <p className="mx-auto mt-1.5 max-w-xl text-[25.8px] font-bold leading-relaxed text-ink-soft">
+          <p className="mx-auto mt-1.5 max-w-2xl text-[clamp(1.25rem,2.4vw,25.8px)] font-bold leading-snug text-ink-soft">
             {p.friction}
           </p>
           <p className="mt-1 font-display text-[clamp(1.5rem,3vw,2rem)] font-bold text-cobalt">
