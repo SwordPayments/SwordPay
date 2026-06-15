@@ -234,32 +234,39 @@ export default function StoryFlow({
   const wrapRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
 
+  // Mobile tap state — only used when isMobile is true
+  const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
-    let raf = 0
+    const mq = window.matchMedia('(max-width: 1023px)')
+    setIsMobile(mq.matches)
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
 
+  const tapNext = () => {
+    setActive((prev) => Math.min(prev + 1, resolvedSteps.length - 1))
+  }
+  const tapPrev = () => {
+    setActive((prev) => Math.max(prev - 1, 0))
+  }
+
+  // Desktop: scroll-driven
+  useEffect(() => {
+    if (isMobile) return
+
+    let raf = 0
     const update = () => {
       raf = 0
       const el = wrapRef.current
       if (!el) return
-
       const range = el.offsetHeight - window.innerHeight
-      if (range <= 0) {
-        setActive(0)
-        return
-      }
-
+      if (range <= 0) { setActive(0); return }
       const progress = Math.min(Math.max(-el.getBoundingClientRect().top / range, 0), 1)
-      const step = Math.min(
-        resolvedSteps.length - 1,
-        Math.floor(progress * resolvedSteps.length),
-      )
+      const step = Math.min(resolvedSteps.length - 1, Math.floor(progress * resolvedSteps.length))
       setActive((prev) => (prev === step ? prev : step))
     }
-
-    const schedule = () => {
-      if (!raf) raf = requestAnimationFrame(update)
-    }
-
+    const schedule = () => { if (!raf) raf = requestAnimationFrame(update) }
     schedule()
     window.addEventListener('scroll', schedule, { passive: true })
     window.addEventListener('resize', schedule)
@@ -268,8 +275,97 @@ export default function StoryFlow({
       window.removeEventListener('scroll', schedule)
       window.removeEventListener('resize', schedule)
     }
-  }, [resolvedSteps.length])
+  }, [isMobile, resolvedSteps.length])
 
+  // ---- MOBILE tap-driven layout (not sticky/scrolljacking) ----
+  if (isMobile) {
+    return (
+      <section className="overflow-x-clip border-y border-line bg-paper-deep py-12 px-4 sm:px-6">
+        <div className="mx-auto max-w-sm">
+          {/* Title */}
+          <h2 className="font-display text-[clamp(1.75rem,7vw,2.6rem)] font-bold leading-[1.02]">
+            {resolvedTitle}
+          </h2>
+
+          {/* Progress dots */}
+          <div className="mt-5 flex gap-[6.9px]">
+            {resolvedSteps.map((s, i) => (
+              <span
+                key={s.key}
+                className={`h-[4.6px] flex-1 rounded-full transition-colors duration-500 ${
+                  i <= active ? 'bg-cobalt' : 'bg-line'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Step label + counter */}
+          <div className="mt-4 flex items-start justify-between gap-3">
+            <div className="flex min-w-0 flex-1 items-start gap-3">
+              <span className="grid size-[32.2px] shrink-0 place-items-center rounded-full bg-cobalt text-[16.5px] font-bold text-paper">
+                {resolvedSteps[active].noNumber ? (
+                  <LockKeyOpen weight="bold" className="size-[16.5px]" />
+                ) : (
+                  active + 1
+                )}
+              </span>
+              <span className="min-w-0 font-display text-[clamp(1.15rem,4.8vw,1.74rem)] font-bold leading-tight text-cobalt">
+                {resolvedSteps[active].label}
+              </span>
+            </div>
+            <span className="shrink-0 text-[16.5px] font-semibold text-ink-mute">
+              {active + 1} / {resolvedSteps.length}
+            </span>
+          </div>
+
+          <p className="mt-3 text-[16px] leading-relaxed text-ink-soft">
+            {resolvedSteps[active].desc}
+          </p>
+
+          {/* Mock card */}
+          <div className="relative mt-6 flex w-full min-w-0 items-center justify-center">
+            <div className="grid-paper pointer-events-none absolute inset-0 opacity-40 rounded-[var(--radius-lg)]" />
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={resolvedSteps[active].key}
+                initial={swap.initial}
+                animate={swap.animate}
+                exit={swap.exit}
+                transition={swap.transition}
+                className="relative w-full min-w-0 max-w-sm"
+              >
+                <Mock stepKey={resolvedSteps[active].key} mocks={mocks} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Tap nav buttons */}
+          <div className="mt-6 flex gap-3">
+            <button
+              type="button"
+              onClick={tapPrev}
+              disabled={active === 0}
+              className="flex h-12 flex-1 items-center justify-center rounded-full border border-line text-[16px] font-semibold text-ink-mute transition-all disabled:opacity-30 active:scale-95"
+              aria-label="Previous step"
+            >
+              ← Back
+            </button>
+            <button
+              type="button"
+              onClick={tapNext}
+              disabled={active === resolvedSteps.length - 1}
+              className="flex h-12 flex-1 items-center justify-center rounded-full bg-cobalt text-[16px] font-semibold text-paper shadow-md transition-all disabled:opacity-30 active:scale-95"
+              aria-label="Next step"
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  // ---- DESKTOP scroll-driven layout ----
   return (
     <section className="overflow-x-clip">
       {/* tall track — each viewport-height advances one step */}
@@ -283,7 +379,7 @@ export default function StoryFlow({
             />
           </div>
 
-          {/* ---------- MOBILE: full-screen stacked ---------- */}
+          {/* ---------- MOBILE: full-screen stacked (scroll-driven on desktop only) ---------- */}
           <div className="flex h-full min-w-0 flex-col items-center px-4 pb-9 pt-24 sm:px-6 lg:hidden">
             <div className="w-full max-w-sm shrink-0 min-w-0">
               <h2 className="font-display text-[clamp(1.75rem,7vw,2.6rem)] font-bold leading-[1.02]">
