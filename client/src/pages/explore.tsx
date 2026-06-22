@@ -4,6 +4,7 @@ import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/use-seo";
 import { Search, CheckCircle, X, AlertCircle } from "lucide-react";
+import { readFollowedCreators } from "@/lib/followed-creators";
 
 
 const CATEGORY_KEYS = ["all", "art", "music", "podcasts", "gaming", "writing", "video", "education", "photography"];
@@ -16,6 +17,8 @@ interface ExternalCreator {
   slug?: string;
   imageUrl: string | null;
 }
+
+type FollowedCreatorItem = ExternalCreator & { followedAt: number };
 
 function getInitials(first: string, last: string) {
   return ((first?.[0] || "") + (last?.[0] || "")).toUpperCase();
@@ -34,6 +37,9 @@ export default function Explore() {
   const [fetchError, setFetchError] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory] = useState("all");
+  const [followedCreators, setFollowedCreators] = useState<FollowedCreatorItem[]>(
+    [],
+  );
 
   useSEO({
     title: "Explore Creators | Sword Creator",
@@ -102,6 +108,35 @@ export default function Explore() {
     setSearchTerm(q);
   }, [location]);
 
+  useEffect(() => {
+    const loadFollowed = () => {
+      const list = readFollowedCreators().map((creator) => ({
+        id: creator.id,
+        firstName: creator.firstName,
+        lastName: creator.lastName,
+        slug: creator.slug,
+        imageUrl: creator.imageUrl,
+        followedAt: creator.followedAt,
+      }));
+      setFollowedCreators(
+        list.sort((a, b) => (b.followedAt || 0) - (a.followedAt || 0)),
+      );
+    };
+
+    loadFollowed();
+    window.addEventListener("focus", loadFollowed);
+    window.addEventListener("storage", loadFollowed);
+    return () => {
+      window.removeEventListener("focus", loadFollowed);
+      window.removeEventListener("storage", loadFollowed);
+    };
+  }, []);
+
+  const navigateToCreator = (creator: ExternalCreator) => {
+    const slug = creator.slug || vanitySlug(creator.firstName, creator.lastName) || creator.id;
+    navigate(`/${slug}`);
+  };
+
   const filtered = (() => {
     if (!searchTerm) return [];
     const q = searchTerm.toLowerCase();
@@ -112,6 +147,15 @@ export default function Explore() {
       `${c.firstName} ${c.lastName}`.toLowerCase().includes(q)
     );
   })();
+
+  const followedById = new Set(followedCreators.map((creator) => creator.id));
+  const followedVisible = followedCreators.filter(
+    (creator) => !searchTerm ||
+      `${creator.firstName} ${creator.lastName}`
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()),
+  );
+  const searchVisible = filtered.filter((creator) => !followedById.has(creator.id));
 
   return (
     <div className="min-h-screen bg-white pt-24 md:pt-28" data-testid="page-explore">
@@ -162,31 +206,80 @@ export default function Explore() {
 
       {/* Results */}
       <div className="max-w-2xl mx-auto px-4 py-6">
-        {fetchError ? (
+        {followedVisible.length > 0 && (
+          <div className="mb-5">
+            <h2 className="text-sm font-semibold text-gray-700 mb-2">Following</h2>
+            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+              {followedVisible.map((creator, i) => {
+                const color = AVATAR_COLORS[i % AVATAR_COLORS.length];
+                const initials = getInitials(creator.firstName, creator.lastName);
+                return (
+                  <button
+                    key={`following-${creator.id}`}
+                    className="w-full flex items-center gap-3 px-4 py-3 border-b last:border-0 hover:bg-blue-50 transition-colors text-left"
+                    onClick={() => navigateToCreator(creator)}
+                    data-testid={`following-row-${creator.id}`}
+                  >
+                    <div
+                      className="w-12 h-12 rounded-full flex-shrink-0 overflow-hidden flex items-center justify-center text-white font-bold text-base"
+                      style={{ background: creator.imageUrl ? undefined : color }}
+                    >
+                      {creator.imageUrl ? (
+                        <img
+                          src={creator.imageUrl}
+                          alt={creator.firstName}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            const el = e.currentTarget;
+                            el.style.display = "none";
+                            if (el.parentElement) {
+                              el.parentElement.style.background = color;
+                              el.parentElement.textContent = initials;
+                            }
+                          }}
+                        />
+                      ) : initials}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-1">
+                        <span className="font-semibold text-gray-900 truncate">
+                          {creator.firstName} {creator.lastName}
+                        </span>
+                        <CheckCircle className="h-4 w-4 text-blue-600 flex-shrink-0" />
+                      </div>
+                    </div>
+                    <span className="text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1 rounded-md flex-shrink-0">
+                      Following
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {fetchError && creators.length === 0 && followedCreators.length === 0 ? (
           <div className="flex flex-col items-center py-20 text-center text-muted-foreground">
             <AlertCircle className="h-10 w-10 mb-3 text-gray-300" />
             <p className="text-sm">Could not load creators. Please try again later.</p>
           </div>
-        ) : !searchTerm ? (
+        ) : !searchTerm && followedVisible.length === 0 ? (
           /* Empty state */
           <div className="py-20" />
-        ) : filtered.length === 0 ? (
+        ) : searchVisible.length === 0 && followedVisible.length === 0 ? (
           <div className="text-center py-20 text-muted-foreground text-sm">
             No creators found for &ldquo;<strong>{searchTerm}</strong>&rdquo;
           </div>
         ) : (
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm" data-testid="results-list">
-            {filtered.map((creator, i) => {
+            {searchVisible.map((creator, i) => {
               const color = AVATAR_COLORS[i % AVATAR_COLORS.length];
               const initials = getInitials(creator.firstName, creator.lastName);
               return (
                 <button
                   key={creator.id}
                   className="w-full flex items-center gap-3 px-4 py-3 border-b last:border-0 hover:bg-blue-50 transition-colors text-left"
-                  onClick={() => {
-                    const slug = creator.slug || vanitySlug(creator.firstName, creator.lastName) || creator.id;
-                    navigate(`/${slug}`);
-                  }}
+                  onClick={() => navigateToCreator(creator)}
                   data-testid={`creator-row-${creator.id}`}
                 >
                   {/* Avatar */}

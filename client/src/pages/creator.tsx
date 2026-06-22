@@ -3,6 +3,11 @@ import { useParams } from "wouter";
 import { useSEO } from "@/hooks/use-seo";
 import { CheckCircle, AlertCircle } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  followCreator,
+  isCreatorFollowed,
+  unfollowCreator,
+} from "@/lib/followed-creators";
 
 const AVATAR_COLORS = ["#7c3aed","#2563eb","#059669","#dc2626","#d97706","#0891b2","#9333ea","#be185d"];
 
@@ -121,6 +126,7 @@ export default function CreatorPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [avatarOpen, setAvatarOpen] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(false);
 
   useSEO({
     title: creator ? `${creator.firstName} ${creator.lastName} | Sword Creator` : "Creator | Sword Creator",
@@ -228,6 +234,11 @@ export default function CreatorPage() {
     ? `@${creator.firstName.toLowerCase()}.${creator.lastName.toLowerCase().replace(/\s+/g, "")}`
     : "";
 
+  useEffect(() => {
+    if (!creator?.id) return;
+    setIsFollowing(isCreatorFollowed(creator.id));
+  }, [creator?.id]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-white max-w-lg mx-auto" data-testid="page-creator-loading">
@@ -322,8 +333,30 @@ export default function CreatorPage() {
           </div>
           <div className="text-xs text-gray-400">{handle}</div>
         </div>
-        <button className="bg-[#1e3a8a] text-white text-sm font-bold px-4 py-2 rounded-lg flex-shrink-0">
-          Follow
+        <button
+          onClick={() => {
+            if (!creator) return;
+            if (isFollowing) {
+              unfollowCreator(creator.id);
+              setIsFollowing(false);
+              return;
+            }
+            followCreator({
+              id: creator.id,
+              slug: creator.slug,
+              firstName: creator.firstName,
+              lastName: creator.lastName,
+              imageUrl: creator.imageUrl,
+            });
+            setIsFollowing(true);
+          }}
+          className={`text-sm font-bold px-4 py-2 rounded-lg flex-shrink-0 transition-colors ${
+            isFollowing
+              ? "bg-blue-50 text-[#1e3a8a] border border-blue-200"
+              : "bg-[#1e3a8a] text-white"
+          }`}
+        >
+          {isFollowing ? "Following" : "Follow"}
         </button>
       </div>
 
