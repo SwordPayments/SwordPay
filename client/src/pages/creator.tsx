@@ -10,6 +10,7 @@ interface ExternalCreator {
   id: string;
   firstName: string;
   lastName: string;
+  slug?: string;
   imageUrl: string | null;
 }
 
@@ -37,6 +38,12 @@ const symbolFor = (currency?: string): string =>
 function getInitials(first: string, last: string) {
   return ((first?.[0] || "") + (last?.[0] || "")).toUpperCase();
 }
+
+function normalizeSlug(value: string): string {
+  return (value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 // Fetches fresh thumbUrl from detail endpoint on mount to avoid S3 signed URL expiry
 function FileshareCard({ fs }: { fs: Fileshare }) {
@@ -126,31 +133,79 @@ export default function CreatorPage() {
     const controller = new AbortController();
     const { signal } = controller;
 
+    const fetchJsonWithRetry = async (url: string, retries = 2) => {
+      for (let attempt = 0; attempt <= retries; attempt++) {
+        const response = await fetch(url, { signal });
+        if (response.ok) return response.json();
+        if (attempt === retries) throw new Error(`HTTP ${response.status}`);
+      }
+      throw new Error("Request failed");
+    };
+
+    const findCreatorBySlug = async (slug: string): Promise<ExternalCreator | null> => {
+      const normalized = normalizeSlug(slug);
+      let page = 1;
+
+      while (true) {
+        const data = await fetchJsonWithRetry(
+          `https://web-api.swordpay.me/v1/creators?take=50&page=${page}`
+        );
+        const batch: ExternalCreator[] = data.data || [];
+        const found =
+          batch.find((c) => {
+            const candidate = c.slug || normalizeSlug(`${c.firstName}${c.lastName}`);
+            return candidate === normalized;
+          }) || null;
+        if (found) return found;
+        if (batch.length < 50) return null;
+        page++;
+      }
+    };
+
     const fetchData = async () => {
       setLoading(true);
       setError(false);
       try {
-        // Fileshares endpoint accepts UUID OR slug (backend PR #546).
-        const fsRes = await fetch(`https://web-api.swordpay.me/v1/creators/${identifier}/fileshares?take=50`, { signal });
-        if (!fsRes.ok) throw new Error(`Fileshares API ${fsRes.status}`);
-        const fsData = await fsRes.json();
+        const isUuid = UUID_RE.test(identifier);
+        let resolvedCreator: ExternalCreator | null = null;
+        let creatorId = identifier;
 
-        // Find creator. UUID match if identifier is a uuid, otherwise slug match.
-        const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(identifier);
-        let found: ExternalCreator | null = null;
-        let page = 1;
-        while (!found) {
-          const r = await fetch(`https://web-api.swordpay.me/v1/creators?take=50&page=${page}`, { signal });
-          if (!r.ok) break;
-          const data = await r.json();
-          const batch: (ExternalCreator & { slug?: string })[] = data.data || [];
-          found = batch.find((c) => isUuid ? c.id === identifier : c.slug === identifier) || null;
-          if (found || batch.length < 50) break;
-          page++;
+        if (!isUuid) {
+          resolvedCreator = await findCreatorBySlug(identifier);
+          if (!resolvedCreator) {
+            setCreator(null);
+            setFileshares([]);
+            return;
+          }
+          creatorId = resolvedCreator.id;
         }
-        setCreator(found);
 
-        // Store fileshare list — each FileshareCard fetches its own fresh thumbUrl
+        if (resolvedCreator) setCreator(resolvedCreator);
+
+        const fsData = await fetchJsonWithRetry(
+          `https://web-api.swordpay.me/v1/creators/${creatorId}/fileshares?take=50`
+        );
+
+        // If we came from UUID route, we still try to enrich creator profile by scanning once.
+        if (isUuid) {
+          try {
+            let page = 1;
+            let found: ExternalCreator | null = null;
+            while (!found) {
+              const data = await fetchJsonWithRetry(
+                `https://web-api.swordpay.me/v1/creators?take=50&page=${page}`
+              );
+              const batch: ExternalCreator[] = data.data || [];
+              found = batch.find((c) => c.id === identifier) || null;
+              if (found || batch.length < 50) break;
+              page++;
+            }
+            setCreator(found);
+          } catch {
+            // Keep page usable even if creator list enrichment fails.
+          }
+        }
+
         setFileshares(fsData.data || []);
       } catch (err: unknown) {
         if (err instanceof Error && err.name !== "AbortError") setError(true);
@@ -285,12 +340,6 @@ export default function CreatorPage() {
         </div>
       )}
 
-      {/* Sticky Start Now */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-base px-12 py-4 rounded-full shadow-lg shadow-blue-500/40 transition-colors">
-          Start Now
-        </button>
-      </div>
     </div>
   );
 }

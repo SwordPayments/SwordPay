@@ -13,6 +13,7 @@ interface ExternalCreator {
   id: string;
   firstName: string;
   lastName: string;
+  slug?: string;
   imageUrl: string | null;
 }
 
@@ -20,9 +21,13 @@ function getInitials(first: string, last: string) {
   return ((first?.[0] || "") + (last?.[0] || "")).toUpperCase();
 }
 
+function vanitySlug(first: string, last: string) {
+  return `${first ?? ""}${last ?? ""}`.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
 export default function Explore() {
   const { t } = useTranslation();
-  const [, navigate] = useLocation();
+  const [location, navigate] = useLocation();
   const [creators, setCreators] = useState<ExternalCreator[]>([]);
   const [total, setTotal] = useState<number>(673);
   const [loading, setLoading] = useState(true);
@@ -40,20 +45,33 @@ export default function Explore() {
     setLoading(true);
     setFetchError(false);
 
+    const fetchCreatorsPage = async (page: number, retries = 2) => {
+      for (let attempt = 0; attempt <= retries; attempt++) {
+        const response = await fetch(
+          `https://web-api.swordpay.me/v1/creators?take=50&page=${page}`,
+          { signal: controller.signal }
+        );
+        if (response.ok) {
+          return response.json();
+        }
+        if (attempt === retries) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+      }
+      throw new Error("Failed to fetch creators page");
+    };
+
     const fetchAllCreators = async () => {
       const allCreators: ExternalCreator[] = [];
       let page = 1;
       let totalFromApi = 673;
+      let firstPageLoaded = false;
 
       try {
         while (true) {
-          const r = await fetch(
-            `https://web-api.swordpay.me/v1/creators?take=50&page=${page}`,
-            { signal: controller.signal }
-          );
-          if (!r.ok) throw new Error(`HTTP ${r.status}`);
-          const data = await r.json();
+          const data = await fetchCreatorsPage(page);
           const batch: ExternalCreator[] = data.data || [];
+          if (batch.length > 0) firstPageLoaded = true;
           if (data.meta?.total) totalFromApi = data.meta.total;
           allCreators.push(...batch);
           if (batch.length < 50) break; // last page
@@ -62,7 +80,14 @@ export default function Explore() {
         setCreators(allCreators);
         setTotal(totalFromApi);
       } catch (err: any) {
-        if (err.name !== "AbortError") setFetchError(true);
+        if (err.name !== "AbortError") {
+          if (allCreators.length > 0 || firstPageLoaded) {
+            setCreators(allCreators);
+            setTotal(allCreators.length);
+          } else {
+            setFetchError(true);
+          }
+        }
       } finally {
         setLoading(false);
       }
@@ -71,6 +96,11 @@ export default function Explore() {
     fetchAllCreators();
     return () => controller.abort();
   }, []);
+
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("q") || "";
+    setSearchTerm(q);
+  }, [location]);
 
   const filtered = (() => {
     if (!searchTerm) return [];
@@ -84,7 +114,7 @@ export default function Explore() {
   })();
 
   return (
-    <div className="min-h-screen bg-white" data-testid="page-explore">
+    <div className="min-h-screen bg-white pt-24 md:pt-28" data-testid="page-explore">
       {/* Header */}
       <div className="bg-white border-b px-4 py-8">
         <div className="max-w-2xl mx-auto">
@@ -153,7 +183,10 @@ export default function Explore() {
                 <button
                   key={creator.id}
                   className="w-full flex items-center gap-3 px-4 py-3 border-b last:border-0 hover:bg-blue-50 transition-colors text-left"
-                  onClick={() => navigate(`/creator/${creator.id}`)}
+                  onClick={() => {
+                    const slug = creator.slug || vanitySlug(creator.firstName, creator.lastName) || creator.id;
+                    navigate(`/${slug}`);
+                  }}
                   data-testid={`creator-row-${creator.id}`}
                 >
                   {/* Avatar */}
