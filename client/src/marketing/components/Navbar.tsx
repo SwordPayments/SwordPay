@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'wouter'
 import { motion, AnimatePresence } from 'framer-motion'
-import { List, X } from '@phosphor-icons/react'
+import { List, MagnifyingGlass, X } from '@phosphor-icons/react'
 import { Button } from './ui'
 import { Logo } from './Logo'
 import { LOCALE_LABELS, SUPPORTED_LOCALES, useLocale } from '../context/LocaleContext'
 import { useMessages } from '../i18n'
-import { scrollToPricing, scrollToYInstant } from '../lib/scroll'
+import { scrollToPricing, scrollToHowItWorks, scrollToYInstant } from '../lib/scroll'
 
 function clearHashAndScrollTop(path: string) {
   window.history.replaceState(null, '', path)
@@ -39,16 +39,11 @@ function navigateToSection(
   e.preventDefault()
   const el = document.getElementById(anchor)
   if (el) {
-    // Same page — update hash to block scroll-to-top, then scroll once smoothly.
-    // Do NOT dispatch hashchange: that would start MarketingScrollManager's retry
-    // cycle which stutters by restarting smooth scroll every 250 / 500 / 850 ms.
     window.history.replaceState(null, '', `${window.location.pathname}#${anchor}`)
-    const navOffset = 84
-    const top = el.getBoundingClientRect().top + window.scrollY - navOffset
-    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+    window.dispatchEvent(new HashChangeEvent('hashchange'))
+    if (anchor === 'how-it-works') scrollToHowItWorks()
+    else if (anchor === 'pricing') scrollToPricing()
   } else {
-    // Cross-page — embed hash so MarketingScrollManager handles scroll after mount.
-    // scrollToHash uses instant mode for #how-it-works so retries don't stutter.
     setLocation(`/creators#${anchor}`)
   }
 }
@@ -126,22 +121,35 @@ export default function MarketingNavbar() {
         </div>
 
         <div className="hidden items-center gap-2 md:flex">
+          <Link
+            href="/explore"
+            aria-label="Creator search"
+            title="Creator search"
+            className="inline-flex h-8 items-center justify-center rounded-full border border-line-strong bg-paper/85 px-3 text-[14px] font-semibold text-ink transition-colors hover:border-ink hover:text-cobalt"
+          >
+            Search creators
+          </Link>
           <label className="sr-only" htmlFor="locale-select">
             {t.nav.language}
           </label>
-          <select
-            id="locale-select"
-            value={locale}
-            onChange={(e) => setLocale(e.target.value as typeof locale)}
-            title={country ? `${t.nav.detected}: ${country}` : t.nav.language}
-            className="rounded-full border border-line-strong bg-paper/80 px-3 py-1.5 text-[15px] font-semibold text-ink outline-none transition-colors hover:border-ink"
-          >
-            {SUPPORTED_LOCALES.map((code) => (
-              <option key={code} value={code}>
-                {LOCALE_LABELS[code]}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              id="locale-select"
+              value={locale}
+              onChange={(e) => setLocale(e.target.value as typeof locale)}
+              title={country ? `${t.nav.detected}: ${country}` : t.nav.language}
+              className="h-8 w-[58px] appearance-none rounded-full border border-line-strong bg-paper/80 pl-3 pr-6 text-[13px] font-semibold text-ink outline-none transition-colors hover:border-ink"
+            >
+              {SUPPORTED_LOCALES.map((code) => (
+                <option key={code} value={code}>
+                  {LOCALE_LABELS[code]}
+                </option>
+              ))}
+            </select>
+            <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-ink-mute">
+              ▼
+            </span>
+          </div>
           <Button
             href="https://swordpay.me"
             icon={false}
@@ -151,13 +159,23 @@ export default function MarketingNavbar() {
           </Button>
         </div>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="grid size-10 place-items-center rounded-full border border-line bg-paper-deep text-ink shadow-sm transition-colors hover:bg-paper md:hidden"
-          aria-label={t.nav.menu}
-        >
-          {open ? <X size={22} weight="bold" /> : <List size={22} weight="bold" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <Link
+            href="/explore"
+            aria-label="Creator search"
+            title="Creator search"
+            className="inline-flex h-10 items-center justify-center rounded-full border border-line bg-paper-deep px-3 text-[14px] font-semibold text-ink shadow-sm transition-colors hover:bg-paper hover:text-cobalt"
+          >
+            Search creators
+          </Link>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="grid size-10 place-items-center rounded-full border border-line bg-paper-deep text-ink shadow-sm transition-colors hover:bg-paper"
+            aria-label={t.nav.menu}
+          >
+            {open ? <X size={22} weight="bold" /> : <List size={22} weight="bold" />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -202,6 +220,14 @@ export default function MarketingNavbar() {
                 ),
               )}
               <div className="mt-3 border-t border-line pt-3 px-1">
+                <Link
+                  href="/explore"
+                  onClick={() => setOpen(false)}
+                  className="mb-2 flex items-center justify-center gap-2 rounded-xl border border-line-strong bg-paper px-4 py-3 text-[16px] font-semibold text-ink transition-colors hover:bg-paper-deep hover:text-cobalt"
+                >
+                  <MagnifyingGlass size={18} weight="bold" />
+                  Search creators
+                </Link>
                 <label className="mb-2 block px-1 text-[13px] font-semibold uppercase tracking-wide text-ink-mute">
                   {t.nav.language}
                   {country ? ` · ${country}` : ''}
