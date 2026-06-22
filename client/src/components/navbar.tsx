@@ -9,9 +9,16 @@ const isIOS =
   /iphone|ipad|ipod/i.test(navigator.userAgent);
 
 export function Navbar() {
-  const [location] = useLocation();
+  const [, setLocation] = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const { t } = useTranslation();
+
+  const submitCreatorSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = searchTerm.trim();
+    setLocation(q ? `/explore?q=${encodeURIComponent(q)}` : "/explore");
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b" data-testid="navbar">
@@ -22,22 +29,23 @@ export function Navbar() {
           </Link>
 
           <div className="flex items-center gap-0 shrink-0">
-            <Link href="/how-it-works">
-              <Button
-                size="sm"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-[1.8vw] sm:px-6 rounded-full text-[2.2vw] min-[480px]:text-[13px] sm:text-base whitespace-nowrap"
-                style={{ animation: 'button-flash 2s linear infinite', animationDelay: '0.5s' }}
+            <form onSubmit={submitCreatorSearch} className="relative mr-1">
+              <input
+                type="search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search creators"
+                className="h-8 w-[132px] sm:w-[190px] rounded-full border border-blue-100 bg-white px-3 pr-8 text-xs sm:text-sm text-gray-800 outline-none focus:border-blue-500"
+                data-testid="input-navbar-creator-search"
+              />
+              <button
+                type="submit"
+                aria-label="Search creators"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-blue-600"
               >
-                <span style={{ animation: 'button-text-flash 2s linear infinite', animationDelay: '0.5s', display: 'inline-block' }}>
-                  {t('nav.howItWorks')}
-                </span>
-              </Button>
-            </Link>
-            <Link href="/explore">
-              <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 px-2 sm:px-3 h-7 sm:h-9" data-testid="button-search">
-                <Search className="h-5 w-5 sm:h-6 sm:w-6" />
-              </Button>
-            </Link>
+                <Search className="h-4 w-4" />
+              </button>
+            </form>
             <Button
               variant="ghost"
               size="sm"
@@ -57,9 +65,6 @@ export function Navbar() {
           <div className="px-4 py-3 flex flex-col gap-1">
             <Link href="/">
               <button className="w-full text-left px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">{t('nav.home')}</button>
-            </Link>
-            <Link href="/how-it-works">
-              <button className="w-full text-left px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">{t('nav.howItWorks')}</button>
             </Link>
             <Link href="/explore">
               <button className="w-full text-left px-4 py-3 text-sm font-semibold text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">{t('nav.explore')}</button>

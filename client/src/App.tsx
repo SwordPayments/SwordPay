@@ -11,7 +11,7 @@ import { LocaleProvider, useLocale } from "@/marketing/context/LocaleContext";
 import { useMessages } from "@/marketing/i18n";
 import MarketingNavbar from "@/marketing/components/Navbar";
 import MarketingFooter from "@/marketing/components/MarketingFooter";
-import { scrollToHash, scrollToPricing } from "@/marketing/lib/scroll";
+import { scrollToHash, scrollToHowItWorks, scrollToPricing } from "@/marketing/lib/scroll";
 import Product from "@/marketing/pages/Product";
 import Creators from "@/marketing/pages/Creators";
 import Explore from "@/pages/explore";
@@ -73,6 +73,10 @@ function MarketingScrollManager() {
         scrollToPricing();
         return;
       }
+      if (currentHash === "#how-it-works") {
+        scrollToHowItWorks();
+        return;
+      }
       const el = document.querySelector(currentHash);
       if (el) scrollToHash(currentHash);
     };
@@ -120,7 +124,8 @@ function DocumentLocale() {
 
 function AppLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
-  const isMarketingRoute = location === "/" || location === "/creators";
+  const isMarketingRoute =
+    location === "/" || location === "/creators" || location === "/explore";
 
   useEffect(() => {
     document.documentElement.classList.toggle("marketing-site", isMarketingRoute);
@@ -168,7 +173,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
         <main className="flex-1 pt-14">{children}</main>
         {!isCreatorPage && <Footer />}
       </div>
-      {!isCreatorPage && (
+      {!isCreatorPage && location !== "/explore" && (
         <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2" data-start-now>
           <FloatingWidget className="cursor-pointer transition-transform hover:scale-105 min-w-[126px] sm:min-w-[165px] lg:min-w-[198px]" />
         </div>
