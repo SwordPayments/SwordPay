@@ -37,7 +37,12 @@ function ContactModal({ onClose }: { onClose: () => void }) {
           <p className="font-black text-[#1e3a8a] text-lg">SWORDPAY</p>
           <p>{t('contact.address1')}</p>
           <p>{t('contact.address2')}</p>
-          <p>{t('contact.phone')}</p>
+          <div className="space-y-2 pt-3">
+            <p>{t('contact.address3')}</p>
+            <p>{t('contact.address4')}</p>
+            <p>{t('contact.address5')}</p>
+          </div>
+          <p className="pt-3">{t('contact.phone')}</p>
           <a href="mailto:Support@swordpay.io" className="block text-blue-600 hover:underline">
             Support@swordpay.io
           </a>
@@ -312,9 +317,16 @@ export default function MarketingFooter() {
             </div>
           </div>
 
-          <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-line pt-8 text-[14.3px] text-ink-mute sm:flex-row sm:items-center">
-            <p>{t.footer.copyright}</p>
-            <p className="font-medium">{t.footer.motto}</p>
+          <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-line pt-8 text-ink-mute sm:flex-row sm:items-start">
+            <div className="max-w-md">
+              <p className="text-[16.5px] leading-relaxed">{t.footer.copyright}</p>
+              <div className="mt-3 space-y-0.5 text-[7pt] leading-snug text-ink-mute">
+                {t.footer.registration.split('\n').map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
+            </div>
+            <p className="text-[14.3px] font-medium">{t.footer.motto}</p>
           </div>
         </div>
       </footer>

@@ -28,6 +28,8 @@ const de: LandingMessages = {
     safety: 'Sicherheits- und Transparenzzentrum',
     copyright: '© 2026 SwordPay, Inc. Gemacht für Menschen, die etwas erschaffen.',
     motto: 'Scharf gezeichnet. Schnell bezahlt.',
+    registration:
+      'SwordPay is trading with company number 13467691.\n405 Suite Office Number 800\nLondon, United Kingdom\nSW10 0BB',
   },
   storyFlow: {
     titleLine1: 'Vom Link zum Geld,',
