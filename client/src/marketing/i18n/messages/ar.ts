@@ -28,6 +28,8 @@ const ar: LandingMessages = {
     safety: 'مركز الأمان والشفافية',
     copyright: '© 2026 SwordPay, Inc. صُمم لمن يصنع الأشياء.',
     motto: 'مصمم بدقة. يُدفع بسرعة.',
+    registration:
+      'SwordPay is trading with company number 13467691. Its registered office is 405 Suite Office Number 800, London, United Kingdom, SW10 0BB.',
   },
   storyFlow: {
     titleLine1: 'من الرابط إلى المال،',

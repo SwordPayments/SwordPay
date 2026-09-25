@@ -23,6 +23,7 @@ export type LandingMessages = {
     safety: string
     copyright: string
     motto: string
+    registration: string
   }
   storyFlow: {
     titleLine1: string
