@@ -29,7 +29,7 @@ const ko: LandingMessages = {
     copyright: '© 2026 SwordPay, Inc. 만드는 사람들을 위해.',
     motto: '날카롭게. 빠르게 정산.',
     registration:
-      'SwordPay is trading with company number 13467691. Its registered office is 405 Suite Office Number 800, London, United Kingdom, SW10 0BB.',
+      'SwordPay is trading with company number 13467691.\n405 Suite Office Number 800\nLondon, United Kingdom\nSW10 0BB',
   },
   storyFlow: {
     titleLine1: '링크에서 수익까지,',

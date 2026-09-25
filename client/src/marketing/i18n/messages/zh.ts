@@ -29,7 +29,7 @@ const zh: LandingMessages = {
     copyright: '© 2026 SwordPay, Inc. 为创作者而生。',
     motto: '精心打造。快速收款。',
     registration:
-      'SwordPay is trading with company number 13467691. Its registered office is 405 Suite Office Number 800, London, United Kingdom, SW10 0BB.',
+      'SwordPay is trading with company number 13467691.\n405 Suite Office Number 800\nLondon, United Kingdom\nSW10 0BB',
   },
   storyFlow: {
     titleLine1: '从链接到收款，',

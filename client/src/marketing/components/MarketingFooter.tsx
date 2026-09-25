@@ -317,11 +317,16 @@ export default function MarketingFooter() {
             </div>
           </div>
 
-          <p className="mt-12 max-w-3xl text-[14.3px] leading-relaxed text-ink-mute">{t.footer.registration}</p>
-
-          <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-line pt-8 text-[14.3px] text-ink-mute sm:flex-row sm:items-center">
-            <p>{t.footer.copyright}</p>
-            <p className="font-medium">{t.footer.motto}</p>
+          <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-line pt-8 text-ink-mute sm:flex-row sm:items-start">
+            <div className="max-w-md">
+              <p className="text-[16.5px] leading-relaxed">{t.footer.copyright}</p>
+              <div className="mt-3 space-y-0.5 text-[7pt] leading-snug text-ink-mute">
+                {t.footer.registration.split('\n').map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
+            </div>
+            <p className="text-[14.3px] font-medium">{t.footer.motto}</p>
           </div>
         </div>
       </footer>
